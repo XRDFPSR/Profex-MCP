@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BrowseReferenceStructuresDialog</class>
+ <widget class="QDialog" name="BrowseReferenceStructuresDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>733</width>
+    <height>563</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Browse Reference Structures</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QSplitter" name="splitterVertical">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="lineEditFilter">
+           <property name="toolTip">
+            <string>Filter file names</string>
+           </property>
+           <property name="placeholderText">
+            <string>&lt;Filter&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonClearFilter">
+           <property name="toolTip">
+            <string>Clear filter</string>
+           </property>
+           <property name="text">
+            <string>x</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTreeWidget" name="treeWidget">
+         <property name="toolTip">
+          <string>Checked files are added to the &quot;Favorites&quot; collection</string>
+         </property>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QSplitter" name="splitterHorizontal">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLineEdit" name="lineEditCurrentFile">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButtonSaveData">
+            <property name="toolTip">
+             <string>Save peak data to CSV file</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="profex-save-as">
+              <normaloff>.</normaloff>.</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButtonSaveGraph">
+            <property name="toolTip">
+             <string>Save stick pattern to PDF</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="profex-save-pdf">
+              <normaloff>.</normaloff>.</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <widget class="QWidget" name="tabPeakList">
+           <attribute name="title">
+            <string>Peak List</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QTableWidget" name="tableWidgetHkl"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabStrFile">
+           <attribute name="title">
+            <string>Structure File</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="ControlFileEdit" name="plainTextEdit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="XrdCustomPlot" name="plotWidget" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="toolButtonToggleExpand">
+       <property name="toolTip">
+        <string>Expand/Collapse all directories</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-select-all">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="WaveLengthComboBox" name="comboBoxWavelength">
+       <property name="toolTip">
+        <string>Select the wavelength used to calculate 2&amp;theta; peak positions from d-values.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>478</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonClose">
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WaveLengthComboBox</class>
+   <extends>QComboBox</extends>
+   <header>wavelengthcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>XrdCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>xrdcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ControlFileEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>projectWidget/controlfileedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonClose</sender>
+   <signal>clicked()</signal>
+   <receiver>BrowseReferenceStructuresDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>723</x>
+     <y>552</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>243</x>
+     <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonClearFilter</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditFilter</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>350</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>271</x>
+     <y>25</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEditFilter</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>BrowseReferenceStructuresDialog</receiver>
+   <slot>updateFilter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>16</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>62</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxWavelength</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>BrowseReferenceStructuresDialog</receiver>
+   <slot>wavelengthChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>553</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>10</x>
+     <y>453</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSaveData</sender>
+   <signal>clicked()</signal>
+   <receiver>BrowseReferenceStructuresDialog</receiver>
+   <slot>savePeakData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>683</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>470</x>
+     <y>3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSaveGraph</sender>
+   <signal>clicked()</signal>
+   <receiver>BrowseReferenceStructuresDialog</receiver>
+   <slot>saveStickPattern()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>706</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>575</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonToggleExpand</sender>
+   <signal>clicked()</signal>
+   <receiver>BrowseReferenceStructuresDialog</receiver>
+   <slot>toggleExpand()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>21</x>
+     <y>542</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>528</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>updateFilter()</slot>
+  <slot>wavelengthChanged(int)</slot>
+  <slot>savePeakData()</slot>
+  <slot>saveStickPattern()</slot>
+  <slot>toggleExpand()</slot>
+ </slots>
+</ui>

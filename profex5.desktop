@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=5.1.0
+Type=Application
+
+Exec=profex
+Icon=profex5
+
+Name=Profex
+
+Comment=Rietveld refinement of XRD data
+
+Categories=Education;Science;
+MimeType=application/profex
+
+Terminal=false
+NoDisplay=false
+StartupNotify=true

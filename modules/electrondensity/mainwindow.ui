@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>520</width>
+    <height>460</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="EMapScale2D" name="scaleWidget2D" native="true"/>
+      </item>
+      <item>
+       <widget class="EMapWidget2D" name="drawingWidget2D" native="true"/>
+      </item>
+      <item>
+       <widget class="QSlider" name="sliderLevel">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>520</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_File"/>
+    <addaction name="actionSave_Current_Frame"/>
+    <addaction name="actionSave_All_Frames"/>
+    <addaction name="separator"/>
+    <addaction name="actionExport_Map"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionPre_render_Images"/>
+    <addaction name="actionPreferences"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionDraw_Atoms"/>
+    <addaction name="actionDraw_Atom_Labels"/>
+    <addaction name="actionDraw_Axes"/>
+   </widget>
+   <widget class="QMenu" name="menuRun">
+    <property name="title">
+     <string>Run</string>
+    </property>
+    <addaction name="actionCalculate_Map"/>
+    <addaction name="actionRender_Images"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_ProfexED"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuRun"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle">
+    <string>Main Toolbar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionLoad_File"/>
+   <addaction name="actionSave_Current_Frame"/>
+   <addaction name="actionSave_All_Frames"/>
+   <addaction name="separator"/>
+   <addaction name="actionCalculate_Map"/>
+   <addaction name="actionRender_Images"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="parameterToolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset theme="profex-exit">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionLoad_File">
+   <property name="icon">
+    <iconset theme="profex-folder-text">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Load File...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave_Current_Frame">
+   <property name="icon">
+    <iconset theme="profex-save">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Save Current Frame...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSave_All_Frames">
+   <property name="icon">
+    <iconset theme="profex-save-all">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Save All Frames...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="icon">
+    <iconset theme="profex-preferences">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Preferences...</string>
+   </property>
+  </action>
+  <action name="actionCalculate_Map">
+   <property name="icon">
+    <iconset theme="profex-run">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Calculate Map</string>
+   </property>
+  </action>
+  <action name="actionRender_Images">
+   <property name="icon">
+    <iconset theme="profex-export-image">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Render Images</string>
+   </property>
+  </action>
+  <action name="actionPre_render_Images">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Pre-render Images</string>
+   </property>
+  </action>
+  <action name="actionDraw_Atoms">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Draw Atoms</string>
+   </property>
+  </action>
+  <action name="actionDraw_Atom_Labels">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Draw Atom Labels</string>
+   </property>
+  </action>
+  <action name="actionDraw_Axes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Draw Axes</string>
+   </property>
+  </action>
+  <action name="actionAbout_ProfexED">
+   <property name="text">
+    <string>About ProfexED</string>
+   </property>
+  </action>
+  <action name="actionExport_Map">
+   <property name="text">
+    <string>Export Map Data...</string>
+   </property>
+   <property name="toolTip">
+    <string>Export raw electron density data</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>EMapScale2D</class>
+   <extends>QWidget</extends>
+   <header>emapscale2d.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>EMapWidget2D</class>
+   <extends>QWidget</extends>
+   <header>emapwidget2d.h</header>
+   <container>1</container>
+   <slots>
+    <slot>toggleAtoms(bool)</slot>
+    <slot>toggleAxes(bool)</slot>
+    <slot>toggleAtomLabels(bool)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>sliderLevel</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDraw_Atom_Labels</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>drawingWidget2D</receiver>
+   <slot>toggleAtomLabels(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>429</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDraw_Atoms</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>drawingWidget2D</receiver>
+   <slot>toggleAtoms(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>429</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDraw_Axes</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>drawingWidget2D</receiver>
+   <slot>toggleAxes(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>429</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPreferences</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>preferences()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLoad_File</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCalculate_Map</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>calculateMap()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRender_Images</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>renderImages()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave_All_Frames</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave_Current_Frame</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveCurrent()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sliderLevel</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>currentLevelChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>337</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout_ProfexED</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_Map</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveRawMap()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>preferences()</slot>
+  <slot>loadFile()</slot>
+  <slot>saveCurrent()</slot>
+  <slot>saveAll()</slot>
+  <slot>renderImages()</slot>
+  <slot>calculateMap()</slot>
+  <slot>currentLevelChanged(int)</slot>
+  <slot>helpAbout()</slot>
+  <slot>saveRawMap()</slot>
+ </slots>
+</ui>

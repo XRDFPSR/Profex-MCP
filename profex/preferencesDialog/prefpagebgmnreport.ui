@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefPageBgmnReport</class>
+ <widget class="QWidget" name="PrefPageBgmnReport">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>478</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>BGMN - Refinement Report</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabStructure">
+      <attribute name="title">
+       <string>Structure</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QToolButton" name="toolButtonItemUp">
+           <property name="toolTip">
+            <string>Move selected section up</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-arrow-up">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonItemDown">
+           <property name="statusTip">
+            <string>Move selected section down</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-arrow-down">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonAddCustom">
+           <property name="toolTip">
+            <string>Add a custom HTML code section</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-report-custom-add">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonRemoveCustom">
+           <property name="toolTip">
+            <string>Remove the selected custom section</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-report-custom-remove">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonPageBreakAdd">
+           <property name="toolTip">
+            <string>Insert page break after selected item</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-pagebreak-add">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonPageBreakRemove">
+           <property name="toolTip">
+            <string>Remove selected page break</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-pagebreak-remove">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTreeWidget" name="treeWidgetStructure">
+         <property name="toolTip">
+          <string>Double-click items to change text / value</string>
+         </property>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBoxSkipErrors">
+         <property name="toolTip">
+          <string>If checked, GOALs not containing numerical values (UNDEF, ERROR, SPHAR) will be skipped</string>
+         </property>
+         <property name="text">
+          <string>Skip GOALs reporting errors</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabHeader">
+      <attribute name="title">
+       <string>Header</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>Logo:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditLogo">
+           <property name="toolTip">
+            <string>Header logo file (leave empty for the default Profex logo)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonOpenFile">
+           <property name="toolTip">
+            <string>Select a header logo file</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-folder">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="PrefPagePixmapLabel" name="previewLabel" native="true"/>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabStyle">
+      <attribute name="title">
+       <string>Style</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QCheckBox" name="checkBoxUseCss">
+           <property name="text">
+            <string>Use Style Sheet:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditCssFile">
+           <property name="toolTip">
+            <string>Report style sheet (leave empty for the default Profex style)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonOpenCss">
+           <property name="toolTip">
+            <string>Reset to the default Profex CSS style sheet</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-folder">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBoxStyle">
+         <property name="title">
+          <string>Style</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Font:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEditFont">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="toolButtonSelectFont">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Color of table header:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="pushButtonColorHeader">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Color of alternting rows:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="pushButtonColorRows">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Color of table border:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QPushButton" name="pushButtonColorBorder">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>117</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QToolButton" name="toolButtonLoadFromFile">
+       <property name="toolTip">
+        <string>Import the report settings from a file</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-folder">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonExportToFile">
+       <property name="toolTip">
+        <string>Export the report settings to a file</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-save-as">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonResetStructure">
+       <property name="toolTip">
+        <string>Reset the report structure to the Profex default</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-undo">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PrefPagePixmapLabel</class>
+   <extends>QWidget</extends>
+   <header>preferencesDialog/prefpagebgmnreport.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>lineEditLogo</tabstop>
+  <tabstop>toolButtonOpenFile</tabstop>
+  <tabstop>checkBoxUseCss</tabstop>
+  <tabstop>lineEditCssFile</tabstop>
+  <tabstop>toolButtonOpenCss</tabstop>
+  <tabstop>lineEditFont</tabstop>
+  <tabstop>toolButtonSelectFont</tabstop>
+  <tabstop>pushButtonColorHeader</tabstop>
+  <tabstop>pushButtonColorRows</tabstop>
+  <tabstop>pushButtonColorBorder</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>toolButtonOpenFile</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>openHeaderLogo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>378</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEditLogo</sender>
+   <signal>editingFinished()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>logoTextChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>224</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>400</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonColorHeader</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>selectHeaderColor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>191</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonColorRows</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>selectRowColor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>225</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>391</x>
+     <y>241</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonColorBorder</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>selectBorderColor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>255</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>397</x>
+     <y>289</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxUseCss</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>toggleCss(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonOpenCss</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>openCss()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>378</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>334</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSelectFont</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>selectFont()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>366</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonItemUp</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>itemUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>36</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonItemDown</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>itemDown()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>64</x>
+     <y>90</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>191</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonPageBreakAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>pageBreakAdd()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>348</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>394</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonPageBreakRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>pageBreakRemove()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>128</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonAddCustom</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>customAdd()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>288</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>242</x>
+     <y>2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonRemoveCustom</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>customRemove()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>298</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>3</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonLoadFromFile</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>readFromFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>21</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>18</x>
+     <y>477</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonExportToFile</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>saveToFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>467</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>76</x>
+     <y>473</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonResetStructure</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageBgmnReport</receiver>
+   <slot>resetStructure()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>450</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>400</x>
+     <y>450</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>openHeaderLogo()</slot>
+  <slot>logoTextChanged()</slot>
+  <slot>selectFont()</slot>
+  <slot>selectHeaderColor()</slot>
+  <slot>selectRowColor()</slot>
+  <slot>selectBorderColor()</slot>
+  <slot>toggleCss(bool)</slot>
+  <slot>openCss()</slot>
+  <slot>itemUp()</slot>
+  <slot>itemDown()</slot>
+  <slot>pageBreakAdd()</slot>
+  <slot>pageBreakRemove()</slot>
+  <slot>customAdd()</slot>
+  <slot>customRemove()</slot>
+  <slot>saveToFile()</slot>
+  <slot>readFromFile()</slot>
+  <slot>resetStructure()</slot>
+ </slots>
+</ui>

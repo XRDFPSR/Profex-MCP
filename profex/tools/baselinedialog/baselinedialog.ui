@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BaseLineDialog</class>
+ <widget class="QDialog" name="BaseLineDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>692</width>
+    <height>505</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Scan:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBoxScan"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Algorithm:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboBoxAlgo">
+           <item>
+            <property name="text">
+             <string>SNIP</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Golotvin-Williams</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Select manually</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="stackedWidgetParams">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="page">
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Clipping Window:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="comboBoxSnipWindow">
+             <item>
+              <property name="text">
+               <string>Increasing</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Decreasing</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Iterations:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QSpinBox" name="spinBoxSnipM">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>999</number>
+             </property>
+             <property name="value">
+              <number>20</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>258</width>
+               <height>65</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QToolButton" name="toolButtonResetSnip">
+               <property name="icon">
+                <iconset theme="profex-undo"/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page_2">
+          <layout class="QGridLayout" name="gridLayout_3">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="spinBoxGolotSmooth"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QDoubleSpinBox" name="doubleSpinBoxGolotvinN">
+             <property name="minimum">
+              <double>0.500000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>10.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Window Size N:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QToolButton" name="toolButtonResetGolot">
+               <property name="icon">
+                <iconset theme="profex-undo"/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="1">
+            <widget class="QSpinBox" name="spinBoxGolotWindow">
+             <property name="minimum">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Data smoothing M:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0" colspan="2">
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>104</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Last Point:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QSpinBox" name="spinBoxGolotSteps">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QComboBox" name="comboBoxGolotInterpolation"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="labelGolotSteps">
+             <property name="text">
+              <string>Sampling steps:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QComboBox" name="comboBoxGolotLast">
+             <item>
+              <property name="text">
+               <string>Measured value</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Last match</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Lowest match</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>Interpolation:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Noise Multiplier n:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Sensitivity:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QSpinBox" name="spinBoxGolotSensitivity">
+             <property name="minimum">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page_3">
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string>Instructions</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QLabel" name="labelManualAdd">
+                <property name="text">
+                 <string>Ctrl + Double click on graph to add anchors</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="labelManualMove">
+                <property name="text">
+                 <string>Middle mouse button on graph to move anchors</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="labelManualRemove">
+                <property name="text">
+                 <string>Ctrl + right mouse button on graph to remove anchors</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Parameters</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="5" column="0" colspan="3">
+               <spacer name="verticalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>350</width>
+                  <height>44</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_17">
+                <property name="text">
+                 <string>Optimize anchors:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>Optimized position:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QComboBox" name="comboBoxManualPosition">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select if optimizing the anchors places them below the noise or centered on the noise pattern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QComboBox" name="comboBoxManualInterpolation">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the algorithm for interpolation between anchor points.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QSpinBox" name="spinBoxManualWindow">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Optimizing the anchor position analyzes the intensities in a window around the anchor point. &lt;/p&gt;&lt;p&gt;Select the size of the window.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>Interpolation:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Window size:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButtonManualOptimize">
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatically adjusts the vertical position of the anchor points.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="profex-sample-height-zero"/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="2">
+               <widget class="QComboBox" name="comboBoxManualLast">
+                <item>
+                 <property name="text">
+                  <string>Measured value</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Last match</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Lowest match</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_19">
+                <property name="text">
+                 <string>Last point:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButtonResetManual">
+                  <property name="toolTip">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Re-initialize the baseline.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="profex-undo"/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QTableWidget" name="tableWidgetNodes"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonAddAnchor">
+           <property name="icon">
+            <iconset theme="profex-add"/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonRemoveAnchor">
+           <property name="icon">
+            <iconset theme="profex-remove"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButtonAppend">
+       <property name="text">
+        <string>&amp;Append</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>comboBoxScan</tabstop>
+  <tabstop>comboBoxAlgo</tabstop>
+  <tabstop>comboBoxSnipWindow</tabstop>
+  <tabstop>spinBoxSnipM</tabstop>
+  <tabstop>toolButtonResetSnip</tabstop>
+  <tabstop>spinBoxGolotSmooth</tabstop>
+  <tabstop>spinBoxGolotWindow</tabstop>
+  <tabstop>doubleSpinBoxGolotvinN</tabstop>
+  <tabstop>spinBoxGolotSteps</tabstop>
+  <tabstop>spinBoxGolotSensitivity</tabstop>
+  <tabstop>comboBoxGolotLast</tabstop>
+  <tabstop>comboBoxGolotInterpolation</tabstop>
+  <tabstop>toolButtonResetGolot</tabstop>
+  <tabstop>pushButtonAppend</tabstop>
+  <tabstop>tableWidgetNodes</tabstop>
+  <tabstop>toolButtonAddAnchor</tabstop>
+  <tabstop>toolButtonRemoveAnchor</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonAppend</sender>
+   <signal>clicked()</signal>
+   <receiver>BaseLineDialog</receiver>
+   <slot>append()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>492</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>262</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonResetGolot</sender>
+   <signal>clicked()</signal>
+   <receiver>BaseLineDialog</receiver>
+   <slot>resetGolot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>107</x>
+     <y>152</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>398</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonResetSnip</sender>
+   <signal>clicked()</signal>
+   <receiver>BaseLineDialog</receiver>
+   <slot>resetSnip()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>337</x>
+     <y>439</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>400</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>BaseLineDialog</receiver>
+   <slot>closeAndAccept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>542</x>
+     <y>483</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>412</x>
+     <y>449</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>BaseLineDialog</receiver>
+   <slot>closeAndReject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>474</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>561</x>
+     <y>446</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonResetManual</sender>
+   <signal>clicked()</signal>
+   <receiver>BaseLineDialog</receiver>
+   <slot>resetManual()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>369</x>
+     <y>429</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>252</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonManualOptimize</sender>
+   <signal>clicked()</signal>
+   <receiver>BaseLineDialog</receiver>
+   <slot>optimizeManual()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>350</x>
+     <y>210</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>252</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>append()</slot>
+  <slot>closeAndAccept()</slot>
+  <slot>closeAndReject()</slot>
+  <slot>resetGolot()</slot>
+  <slot>resetSnip()</slot>
+  <slot>resetManual()</slot>
+  <slot>optimizeManual()</slot>
+ </slots>
+</ui>

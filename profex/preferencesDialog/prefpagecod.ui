@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefPageCod</class>
+ <widget class="QWidget" name="PrefPageCod">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>329</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QLabel" name="labelTitle">
+     <property name="text">
+      <string>COD Database</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="checkBoxLocalCod">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Check to connect to a local COD database file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Local COD database:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditDbFile">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonSelectDbFile">
+       <property name="toolTip">
+        <string>Select database file</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>CIF files</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QRadioButton" name="radioButtonCifServer">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CIF files are downloaded from the COD server.&lt;/p&gt;&lt;p&gt;Requires an active internet connection.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Download from COD server</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButtonCifDir">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Retrieve CIF files from a local COD mirror.&lt;/p&gt;&lt;p&gt;CIF file names must be identical to the COD file names.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Local directory</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="lineEditCifDir"/>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButtonSelectCifDir">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the directory containing the mirrored CIF files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="plainTextEditDbMessages"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>radioButtonCifDir</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>lineEditCifDir</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>66</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>79</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonCifDir</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>toolButtonSelectCifDir</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>130</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>369</x>
+     <y>165</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSelectCifDir</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageCod</receiver>
+   <slot>selectCifDir()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>152</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSelectDbFile</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageCod</receiver>
+   <slot>selectDatabase()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>383</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>selectCifDir()</slot>
+  <slot>selectDatabase()</slot>
+  <slot>toggleUseDb(bool)</slot>
+ </slots>
+</ui>

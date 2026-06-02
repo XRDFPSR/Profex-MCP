@@ -1,0 +1,38 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/spacegrp.xml</file>
+        <file>resources/SAV.XML</file>
+        <file>resources/STRUC.XML</file>
+        <file>resources/report.css</file>
+        <file>resources/profex-header.svg</file>
+        <file>icons/profex5-active.png</file>
+        <file>icons/profex5-active.svg</file>
+        <file>icons/profex5.icns</file>
+        <file>icons/profex5.ico</file>
+        <file>icons/profex5.png</file>
+        <file>icons/profex5.svg</file>
+        <file>resources/gpl-2.0.html</file>
+        <file>resources/report-structure.xml</file>
+        <file>resources/anoScatData.bin</file>
+        <file>icons/profex5ed.svg</file>
+        <file>icons/profex5st.svg</file>
+        <file>icons/profex5wp.svg</file>
+        <file>icons/profex5-5.2-backdrop.svg</file>
+        <file>icons/profex5-5.3-backdrop.svg</file>
+        <file>icons/profex5-5.4-backdrop.svg</file>
+        <file>icons/profex5-5.5-backdrop.svg</file>
+        <file>resources/contextHelp.css</file>
+        <file>icons/profex5sc.svg</file>
+        <file>icons/profex5-5.6-backdrop.svg</file>
+        <file>icons/profex5-5.7-backdrop.svg</file>
+    </qresource>
+    <qresource prefix="/helpText">
+        <file>resources/moduleHelpGraphWindow.html</file>
+        <file>resources/moduleHelpSearchMatchWidget.html</file>
+        <file>resources/moduleHelpPeakListWidget.html</file>
+        <file>resources/moduleHelpPeakIntegrationWidget.html</file>
+        <file>resources/moduleHelpScanList.html</file>
+        <file>resources/moduleHelpPeakFitWidget.html</file>
+        <file>resources/moduleHelpControlFileEditor.html</file>
+    </qresource>
+</RCC>

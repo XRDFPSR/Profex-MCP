@@ -1,0 +1,2986 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>817</width>
+    <height>626</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>817</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Run">
+    <property name="title">
+     <string>R&amp;un</string>
+    </property>
+    <addaction name="actionRun_Search_Match"/>
+    <addaction name="actionRunRefinement"/>
+    <addaction name="actionRun_Batch_Refinement"/>
+    <addaction name="actionAbortCurrentRefinement"/>
+    <addaction name="actionAbortAllRefinements"/>
+    <addaction name="separator"/>
+    <addaction name="actionRun_Peak_Detection"/>
+    <addaction name="actionRun_Batch_Curve_Fitting"/>
+    <addaction name="actionIndex_Reference_Structures"/>
+    <addaction name="separator"/>
+    <addaction name="actionFollow_Active_Refinement"/>
+   </widget>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionOpenText"/>
+    <addaction name="actionOpenGraph"/>
+    <addaction name="actionOpen_Refinement_Project"/>
+    <addaction name="actionOpen_Project_Archive"/>
+    <addaction name="separator"/>
+    <addaction name="actionInsert_Graph_File"/>
+    <addaction name="actionRemove_Scan"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveAs"/>
+    <addaction name="actionSave_all_files"/>
+    <addaction name="separator"/>
+    <addaction name="actionPrint"/>
+    <addaction name="actionPrint_All_Graphs"/>
+    <addaction name="actionExport_all_Graphs_to_SVG"/>
+    <addaction name="separator"/>
+    <addaction name="actionCloseProject"/>
+    <addaction name="actionClose_All_Projects"/>
+    <addaction name="separator"/>
+    <addaction name="actionImportStructure"/>
+    <addaction name="actionScanBatchConversion"/>
+    <addaction name="actionSave_Batch_Refinement_Script"/>
+    <addaction name="separator"/>
+    <addaction name="action_Quit"/>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionSet_Zoom_Range"/>
+    <addaction name="actionReset_Zoom_Range"/>
+    <addaction name="actionReset_Margin_Color"/>
+    <addaction name="actionLegend"/>
+    <addaction name="separator"/>
+    <addaction name="actionIncrease_Vertical_Displacement"/>
+    <addaction name="actionDecrease_Vertical_Displacement"/>
+    <addaction name="actionDisplace_Left"/>
+    <addaction name="actionDisplace_Right"/>
+    <addaction name="actionReset_Vertical_Displacement"/>
+   </widget>
+   <widget class="QMenu" name="menu_Edit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="actionCut"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen_Structure_File"/>
+    <addaction name="actionApply_Control"/>
+    <addaction name="actionCreate_Refinement_Sequence"/>
+    <addaction name="separator"/>
+    <addaction name="actionRevertControlFile"/>
+    <addaction name="actionSearch_and_Replace"/>
+    <addaction name="actionFind_in_Files"/>
+    <addaction name="separator"/>
+    <addaction name="action_Preferences"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionBGMN_Variables"/>
+    <addaction name="actionMouse_and_Keyboard_commands"/>
+    <addaction name="actionCreate_OQ_Project"/>
+    <addaction name="separator"/>
+    <addaction name="actionCheck_for_updates"/>
+    <addaction name="action_About_Profex"/>
+   </widget>
+   <widget class="QMenu" name="menuInstrument">
+    <property name="title">
+     <string>&amp;Instrument</string>
+    </property>
+    <addaction name="actionEdit_Configuration"/>
+    <addaction name="actionEdit_Current_FPA_Configuration"/>
+    <addaction name="separator"/>
+    <addaction name="actionLearn_Profile"/>
+    <addaction name="separator"/>
+    <addaction name="actionShow_Peak_Profile"/>
+   </widget>
+   <widget class="QMenu" name="menu_Window">
+    <property name="title">
+     <string>&amp;Window</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>&amp;Project</string>
+    </property>
+    <addaction name="actionAdd_Remove_Phase"/>
+    <addaction name="actionAdd_Amorphous_Peak"/>
+    <addaction name="actionCreate_Single_Peak_Refinement_Project"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpenProjectStrFiles"/>
+    <addaction name="actionCloseProjectStrFiles"/>
+    <addaction name="actionEdit_all_Project_STR_files"/>
+    <addaction name="separator"/>
+    <addaction name="actionSet_Internal_Standard"/>
+    <addaction name="actionUnset_Internal_Standard"/>
+    <addaction name="separator"/>
+    <addaction name="actionCreatePreset"/>
+    <addaction name="separator"/>
+    <addaction name="actionCreate_Project_Backup"/>
+    <addaction name="actionSave_Project_Backup_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionSet_Project_Wavelength"/>
+    <addaction name="separator"/>
+    <addaction name="actionEdit_Excel_Export"/>
+   </widget>
+   <widget class="QMenu" name="menu_Results">
+    <property name="title">
+     <string>&amp;Results</string>
+    </property>
+    <addaction name="actionExport_Phase_Quantities"/>
+    <addaction name="actionExport_Results"/>
+    <addaction name="actionExport_Chemistry"/>
+    <addaction name="actionExport_Peak_List"/>
+    <addaction name="actionExport_Peak_Integrals"/>
+    <addaction name="actionExport_Curve_Fits"/>
+    <addaction name="actionExport_CIF_files_from_LST_file"/>
+    <addaction name="actionExport_CELL_files_from_LST_file"/>
+    <addaction name="separator"/>
+    <addaction name="actionGenerateReport"/>
+    <addaction name="actionExport_to_Excel"/>
+   </widget>
+   <widget class="QMenu" name="menu_Tools">
+    <property name="title">
+     <string>&amp;Tools</string>
+    </property>
+    <widget class="QMenu" name="menu_Process_DIA_Files">
+     <property name="title">
+      <string>&amp;Process DIA Files</string>
+     </property>
+     <addaction name="actionStrip_impurity_signals"/>
+     <addaction name="actionSimulate_compositions"/>
+     <addaction name="actionFormat_results"/>
+    </widget>
+    <addaction name="actionBGMN_SPACEGRP_DAT"/>
+    <addaction name="actionAtomic_Scattering_Factors"/>
+    <addaction name="actionElement_Scattering_Data"/>
+    <addaction name="actionBrowse_Reference_Structures"/>
+    <addaction name="separator"/>
+    <addaction name="actionCalculate_Absorption_Coefficients"/>
+    <addaction name="actionCalculate_Bond_Lengths"/>
+    <addaction name="actionCalculate_d_Spacings"/>
+    <addaction name="separator"/>
+    <addaction name="actionScan_Math"/>
+    <addaction name="actionAdd_Base_Line"/>
+    <addaction name="actionSmooth_Scan"/>
+    <addaction name="actionConvert_Divergence_Slit"/>
+    <addaction name="actionSimulate_Tube_Tails"/>
+    <addaction name="separator"/>
+    <addaction name="menu_Process_DIA_Files"/>
+   </widget>
+   <widget class="QMenu" name="menu_Locations">
+    <property name="title">
+     <string>&amp;Locations</string>
+    </property>
+    <addaction name="actionProjectOpenFileManager"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuModules">
+    <property name="title">
+     <string>&amp;Modules</string>
+    </property>
+    <addaction name="actionElectron_Density_Map"/>
+    <addaction name="actionWaterfall_Plot"/>
+    <addaction name="actionTrace_Scan_Figures"/>
+    <addaction name="actionSynchrotron_Configuration"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Edit"/>
+   <addaction name="menu_View"/>
+   <addaction name="menuProject"/>
+   <addaction name="menu_Run"/>
+   <addaction name="menu_Results"/>
+   <addaction name="menuInstrument"/>
+   <addaction name="menu_Tools"/>
+   <addaction name="menuModules"/>
+   <addaction name="menu_Locations"/>
+   <addaction name="menu_Window"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle">
+    <string>Main Toolbar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOpenText"/>
+   <addaction name="actionOpenGraph"/>
+   <addaction name="actionOpen_Refinement_Project"/>
+   <addaction name="actionCloseProject"/>
+   <addaction name="actionInsert_Graph_File"/>
+   <addaction name="actionRemove_Scan"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionSaveAs"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="projectToolBar">
+   <property name="windowTitle">
+    <string>Project Toolbar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionApply_Control"/>
+   <addaction name="actionOpenProjectStrFiles"/>
+   <addaction name="actionCloseProjectStrFiles"/>
+   <addaction name="actionExport_Phase_Quantities"/>
+   <addaction name="actionExport_Results"/>
+   <addaction name="actionExport_Chemistry"/>
+   <addaction name="actionAdd_Remove_Phase"/>
+  </widget>
+  <widget class="QToolBar" name="refinementToolBar">
+   <property name="windowTitle">
+    <string>Refinement Toolbar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionRun_Search_Match"/>
+   <addaction name="actionRunRefinement"/>
+   <addaction name="actionRun_Batch_Refinement"/>
+   <addaction name="actionAbortCurrentRefinement"/>
+   <addaction name="actionAbortAllRefinements"/>
+   <addaction name="actionFollow_Active_Refinement"/>
+  </widget>
+  <action name="actionOpenText">
+   <property name="icon">
+    <iconset theme="profex-folder-text"/>
+   </property>
+   <property name="text">
+    <string>&amp;Open Text File...</string>
+   </property>
+   <property name="iconText">
+    <string>Open text</string>
+   </property>
+   <property name="toolTip">
+    <string>Open a text file (control file, structure file, results file, generic text file) (Ctrl+O)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionCloseProject">
+   <property name="icon">
+    <iconset theme="profex-document-close"/>
+   </property>
+   <property name="text">
+    <string>&amp;Close Project</string>
+   </property>
+   <property name="iconText">
+    <string>Close</string>
+   </property>
+   <property name="toolTip">
+    <string>Close the current project (Ctrl+W)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionRunRefinement">
+   <property name="icon">
+    <iconset theme="profex-run"/>
+   </property>
+   <property name="text">
+    <string>Run &amp;Refinement</string>
+   </property>
+   <property name="iconText">
+    <string>Run</string>
+   </property>
+   <property name="toolTip">
+    <string>Run the refinement (F9)</string>
+   </property>
+   <property name="shortcut">
+    <string>F9</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset theme="profex-save"/>
+   </property>
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="iconText">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the current file under the same name (Ctrl+S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="icon">
+    <iconset theme="profex-save-as"/>
+   </property>
+   <property name="text">
+    <string>Save &amp;file as...</string>
+   </property>
+   <property name="iconText">
+    <string>Save as</string>
+   </property>
+   <property name="toolTip">
+    <string>Saves the current file under a new file name and/or in a different file format (Ctrl+Shift+S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="action_Quit">
+   <property name="icon">
+    <iconset theme="profex-exit"/>
+   </property>
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+   <property name="toolTip">
+    <string>Quit the application (Ctrl+Q)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionRevertControlFile">
+   <property name="icon">
+    <iconset theme="profex-undo"/>
+   </property>
+   <property name="text">
+    <string>&amp;Reset File</string>
+   </property>
+   <property name="iconText">
+    <string>Reset File</string>
+   </property>
+   <property name="toolTip">
+    <string>Revert control file to the state before the last refinement</string>
+   </property>
+   <property name="statusTip">
+    <string>Reset control file to last saved version</string>
+   </property>
+   <property name="whatsThis">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Revert PCR File&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Reverts the content of the PCR file to the state before the last Fullprof execution.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionAbortAllRefinements">
+   <property name="icon">
+    <iconset theme="profex-run-abort-all"/>
+   </property>
+   <property name="text">
+    <string>&amp;Abort All Refinements</string>
+   </property>
+   <property name="iconText">
+    <string>Stop all</string>
+   </property>
+   <property name="toolTip">
+    <string>Abort all running refinements (Shift+F10)</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+F10</string>
+   </property>
+  </action>
+  <action name="action_Preferences">
+   <property name="icon">
+    <iconset theme="profex-preferences"/>
+   </property>
+   <property name="text">
+    <string>&amp;Preferences...</string>
+   </property>
+   <property name="iconText">
+    <string>Preferences...</string>
+   </property>
+  </action>
+  <action name="actionExport_Results">
+   <property name="icon">
+    <iconset theme="profex-export-local"/>
+   </property>
+   <property name="text">
+    <string>Export &amp;Local Parameters and GOALs...</string>
+   </property>
+   <property name="iconText">
+    <string>Export local</string>
+   </property>
+   <property name="toolTip">
+    <string>Exports the Local Parameters and GOALs from the Output Table to a CSV file (Ctrl+Shift+E)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
+   </property>
+  </action>
+  <action name="actionOpenGraph">
+   <property name="icon">
+    <iconset theme="profex-folder-graph"/>
+   </property>
+   <property name="text">
+    <string>Ope&amp;n Raw Scan File...</string>
+   </property>
+   <property name="iconText">
+    <string>Open scan</string>
+   </property>
+   <property name="toolTip">
+    <string>Open a Raw Scan File (Ctrl+G)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionApply_Control">
+   <property name="icon">
+    <iconset theme="profex-document-clone"/>
+   </property>
+   <property name="text">
+    <string>&amp;Copy Control File...</string>
+   </property>
+   <property name="iconText">
+    <string>Apply to all</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy the current control file to all open projects</string>
+   </property>
+   <property name="statusTip">
+    <string>Copy current control file to all open projects</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="icon">
+    <iconset theme="profex-print"/>
+   </property>
+   <property name="text">
+    <string>&amp;Print...</string>
+   </property>
+   <property name="iconText">
+    <string>Print...</string>
+   </property>
+   <property name="toolTip">
+    <string>Print (Ctrl+P)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="action_About_Profex">
+   <property name="text">
+    <string>&amp;About Profex...</string>
+   </property>
+   <property name="toolTip">
+    <string>Show information about Profex</string>
+   </property>
+  </action>
+  <action name="actionRun_Batch_Refinement">
+   <property name="icon">
+    <iconset theme="profex-run-batch"/>
+   </property>
+   <property name="text">
+    <string>Run &amp;Batch Refinement</string>
+   </property>
+   <property name="iconText">
+    <string>Run batch</string>
+   </property>
+   <property name="toolTip">
+    <string>Refine all open projects (F10)</string>
+   </property>
+   <property name="shortcut">
+    <string>F10</string>
+   </property>
+  </action>
+  <action name="actionBGMN_Variables">
+   <property name="text">
+    <string>&amp;BGMN Variables...</string>
+   </property>
+   <property name="iconText">
+    <string>BGMN Variables...</string>
+   </property>
+   <property name="toolTip">
+    <string>Open website  for documentation of BGMN Variables</string>
+   </property>
+  </action>
+  <action name="actionBGMN_SPACEGRP_DAT">
+   <property name="text">
+    <string>&amp;Browse BGMN Space Groups...</string>
+   </property>
+   <property name="iconText">
+    <string>Space Groups</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Browse the BGMN Space Group symbols as defined in the file SPACEGRP.DAT&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionEdit_Configuration">
+   <property name="text">
+    <string>&amp;Edit FPA Configuration...</string>
+   </property>
+   <property name="iconText">
+    <string>Edit FPA Configuration...</string>
+   </property>
+   <property name="toolTip">
+    <string>Edit a BGMN instrument configuration file</string>
+   </property>
+  </action>
+  <action name="actionScanBatchConversion">
+   <property name="text">
+    <string>Scan &amp;Batch Conversion...</string>
+   </property>
+   <property name="iconText">
+    <string>Batch Conversion</string>
+   </property>
+   <property name="toolTip">
+    <string>Convert scans to a different data format</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset theme="profex-undo"/>
+   </property>
+   <property name="text">
+    <string>&amp;Undo</string>
+   </property>
+   <property name="toolTip">
+    <string>Undo (Ctrl+Z)</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset theme="profex-redo"/>
+   </property>
+   <property name="text">
+    <string>R&amp;edo</string>
+   </property>
+   <property name="toolTip">
+    <string>Redo (Ctrl+Shift+Z)</string>
+   </property>
+  </action>
+  <action name="actionSet_Zoom_Range">
+   <property name="text">
+    <string>&amp;Set Zoom Range...</string>
+   </property>
+   <property name="iconText">
+    <string>Set Zoom Range...</string>
+   </property>
+  </action>
+  <action name="actionExport_Phase_Quantities">
+   <property name="icon">
+    <iconset theme="profex-export-global"/>
+   </property>
+   <property name="text">
+    <string>&amp;Export Global Parameters and GOALs...</string>
+   </property>
+   <property name="iconText">
+    <string>Export global</string>
+   </property>
+   <property name="toolTip">
+    <string>Exports the Global Parameters and GOALs from the Output Table to a CSV file (Ctrl+E)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionOpenProjectStrFiles">
+   <property name="icon">
+    <iconset theme="profex-str-open"/>
+   </property>
+   <property name="text">
+    <string>&amp;Open all Project Structure files</string>
+   </property>
+   <property name="iconText">
+    <string>Open structures</string>
+   </property>
+   <property name="toolTip">
+    <string>Open all Project Structure files (Ctrl+F8)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F8</string>
+   </property>
+  </action>
+  <action name="actionCloseProjectStrFiles">
+   <property name="icon">
+    <iconset theme="profex-str-close"/>
+   </property>
+   <property name="text">
+    <string>&amp;Close all Project Structure Files</string>
+   </property>
+   <property name="iconText">
+    <string>Close structures</string>
+   </property>
+   <property name="toolTip">
+    <string>Close all project structure files (Ctrl+F7)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F7</string>
+   </property>
+  </action>
+  <action name="actionLegend">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Legend</string>
+   </property>
+  </action>
+  <action name="actionHkl_Indices">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;hkl Indices</string>
+   </property>
+  </action>
+  <action name="actionExport_Chemistry">
+   <property name="icon">
+    <iconset theme="profex-export-chemistry"/>
+   </property>
+   <property name="text">
+    <string>Export &amp;Chemical Composition...</string>
+   </property>
+   <property name="iconText">
+    <string>Export chem. comp.</string>
+   </property>
+   <property name="toolTip">
+    <string>Export the refined chemical composition to a CSV file</string>
+   </property>
+  </action>
+  <action name="actionInsert_Graph_File">
+   <property name="icon">
+    <iconset theme="profex-scan-insert"/>
+   </property>
+   <property name="text">
+    <string>&amp;Insert Scans...</string>
+   </property>
+   <property name="iconText">
+    <string>Insert scan</string>
+   </property>
+   <property name="toolTip">
+    <string>Insert Scans from other Graph Files (Ctrl+I)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionIncrease_Vertical_Displacement">
+   <property name="text">
+    <string>&amp;Increase Vertical Displacement</string>
+   </property>
+   <property name="toolTip">
+    <string>Increase Vertical Displacement (Ctrl+Up)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Up</string>
+   </property>
+  </action>
+  <action name="actionDecrease_Vertical_Displacement">
+   <property name="text">
+    <string>&amp;Decrease Vertical Displacement</string>
+   </property>
+   <property name="toolTip">
+    <string>Decrease Vertical Displacement (Ctrl+Down)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Down</string>
+   </property>
+  </action>
+  <action name="actionReset_Vertical_Displacement">
+   <property name="text">
+    <string>R&amp;eset Displacement</string>
+   </property>
+   <property name="toolTip">
+    <string>Reset Displacement (Ctrl+Space)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Space</string>
+   </property>
+  </action>
+  <action name="actionRemove_Scan">
+   <property name="icon">
+    <iconset theme="profex-scan-remove"/>
+   </property>
+   <property name="text">
+    <string>&amp;Remove Scan...</string>
+   </property>
+   <property name="iconText">
+    <string>Remove scan</string>
+   </property>
+   <property name="toolTip">
+    <string>Remove Scan from Plot (Ctrl+D)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionDisplace_Left">
+   <property name="text">
+    <string>Displace &amp;Left</string>
+   </property>
+   <property name="toolTip">
+    <string>Displace Left (Ctrl+Left)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Left</string>
+   </property>
+  </action>
+  <action name="actionDisplace_Right">
+   <property name="text">
+    <string>Displ&amp;ace Right</string>
+   </property>
+   <property name="toolTip">
+    <string>Displace Right (Ctrl+Right)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Right</string>
+   </property>
+  </action>
+  <action name="actionAbortCurrentRefinement">
+   <property name="icon">
+    <iconset theme="profex-run-abort"/>
+   </property>
+   <property name="text">
+    <string>Abort &amp;Current Refinement</string>
+   </property>
+   <property name="iconText">
+    <string>Abort</string>
+   </property>
+   <property name="toolTip">
+    <string>Abort the current refinement or current batch, or unschedule the project (Shift+F9)</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+F9</string>
+   </property>
+  </action>
+  <action name="actionCreatePreset">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/icons/save-preset.png</normaloff>:/icons/save-preset.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save as &amp;Refinement Preset...</string>
+   </property>
+   <property name="iconText">
+    <string>Save as preset</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create a refinement preset from the current project&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionMouse_and_Keyboard_commands">
+   <property name="text">
+    <string>&amp;Mouse and Keyboard commands</string>
+   </property>
+  </action>
+  <action name="actionClose_All_Projects">
+   <property name="text">
+    <string>C&amp;lose All Projects</string>
+   </property>
+   <property name="iconText">
+    <string>Close all</string>
+   </property>
+   <property name="toolTip">
+    <string>Close All Projects (Ctrl+Shift+W)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+W</string>
+   </property>
+  </action>
+  <action name="actionFollow_Active_Refinement">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="profex-follow"/>
+   </property>
+   <property name="text">
+    <string>&amp;Follow Active Refinement</string>
+   </property>
+   <property name="iconText">
+    <string>Follow</string>
+   </property>
+   <property name="toolTip">
+    <string>Follow active refinement in batch refinement mode</string>
+   </property>
+  </action>
+  <action name="actionCreate_Project_Backup">
+   <property name="text">
+    <string>Save &amp;Project Backup</string>
+   </property>
+   <property name="iconText">
+    <string>Save project backup</string>
+   </property>
+   <property name="toolTip">
+    <string>Save Project Backup (Ctrl+B)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionSave_Project_Backup_As">
+   <property name="text">
+    <string>Save Project &amp;Backup As...</string>
+   </property>
+   <property name="iconText">
+    <string>Save project backup as</string>
+   </property>
+   <property name="toolTip">
+    <string>Save Project Backup As (Ctrl+Shift+B)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+B</string>
+   </property>
+  </action>
+  <action name="actionAdd_Remove_Phase">
+   <property name="icon">
+    <iconset theme="profex-add-remove"/>
+   </property>
+   <property name="text">
+    <string>&amp;Add / Remove Phase...</string>
+   </property>
+   <property name="iconText">
+    <string>Add / remove</string>
+   </property>
+   <property name="toolTip">
+    <string>Add / Remove Phase (F8)</string>
+   </property>
+   <property name="shortcut">
+    <string>F8</string>
+   </property>
+  </action>
+  <action name="actionSave_all_files">
+   <property name="icon">
+    <iconset theme="profex-save-all"/>
+   </property>
+   <property name="text">
+    <string>Sa&amp;ve all text files in all projects</string>
+   </property>
+   <property name="toolTip">
+    <string>Save all text files in all projects (Ctrl+Alt+S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+S</string>
+   </property>
+  </action>
+  <action name="actionExport_CIF_files_from_LST_file">
+   <property name="text">
+    <string>Export CIF &amp;files from LST file...</string>
+   </property>
+   <property name="iconText">
+    <string>Export CIF</string>
+   </property>
+  </action>
+  <action name="actionExport_CELL_files_from_LST_file">
+   <property name="text">
+    <string>Export CELL files from &amp;RES file...</string>
+   </property>
+   <property name="iconText">
+    <string>Export CELL</string>
+   </property>
+  </action>
+  <action name="actionSet_Internal_Standard">
+   <property name="text">
+    <string>&amp;Set Internal Standard...</string>
+   </property>
+  </action>
+  <action name="actionUnset_Internal_Standard">
+   <property name="text">
+    <string>&amp;Unset Internal Standard</string>
+   </property>
+  </action>
+  <action name="actionGenerateReport">
+   <property name="text">
+    <string>&amp;Generate Report...</string>
+   </property>
+   <property name="iconText">
+    <string>Generate Report...</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate Report</string>
+   </property>
+  </action>
+  <action name="actionImportStructure">
+   <property name="text">
+    <string>I&amp;mport Structure File...</string>
+   </property>
+   <property name="toolTip">
+    <string>Import CIF or ICDD XML structure file</string>
+   </property>
+  </action>
+  <action name="actionLearn_Profile">
+   <property name="text">
+    <string>&amp;Learn Profile...</string>
+   </property>
+  </action>
+  <action name="actionAtomic_Scattering_Factors">
+   <property name="text">
+    <string>Browse Atomic &amp;Scattering Factors...</string>
+   </property>
+   <property name="iconText">
+    <string>Atomic Scattering Factors</string>
+   </property>
+   <property name="toolTip">
+    <string>Browse Atomic Scattering Factors used by BGMN</string>
+   </property>
+  </action>
+  <action name="actionTextBlock">
+   <property name="text">
+    <string>Insert Text Block</string>
+   </property>
+   <property name="iconText">
+    <string>Text blocks</string>
+   </property>
+  </action>
+  <action name="actionSearch_and_Replace">
+   <property name="text">
+    <string>&amp;Find and Replace...</string>
+   </property>
+   <property name="toolTip">
+    <string>Find and Replace (Ctrl+F)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionReset_Margin_Color">
+   <property name="text">
+    <string>&amp;Reset Margin Color</string>
+   </property>
+  </action>
+  <action name="actionPrint_All_Graphs">
+   <property name="icon">
+    <iconset theme="profex-print"/>
+   </property>
+   <property name="text">
+    <string>Print all &amp;Graphs...</string>
+   </property>
+   <property name="toolTip">
+    <string>Print all Graphs (Ctrl+Shift+P)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+P</string>
+   </property>
+  </action>
+  <action name="actionExport_all_Graphs_to_SVG">
+   <property name="icon">
+    <iconset theme="profex-export-image"/>
+   </property>
+   <property name="text">
+    <string>&amp;Export all Graphs to SVG...</string>
+   </property>
+  </action>
+  <action name="actionOpen_Refinement_Project">
+   <property name="icon">
+    <iconset theme="profex-folder-project"/>
+   </property>
+   <property name="text">
+    <string>Open Refinement Pro&amp;ject...</string>
+   </property>
+   <property name="iconText">
+    <string>Open project</string>
+   </property>
+   <property name="toolTip">
+    <string>Open Refinement Project (Ctrl+R)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionCalculate_Absorption_Coefficients">
+   <property name="text">
+    <string>&amp;Calculate Absorption Coefficients...</string>
+   </property>
+  </action>
+  <action name="actionScan_Math">
+   <property name="text">
+    <string>Scan &amp;Math...</string>
+   </property>
+  </action>
+  <action name="actionExport_Peak_Integrals">
+   <property name="text">
+    <string>Export &amp;Peak Integrals...</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="text">
+    <string>Cut</string>
+   </property>
+   <property name="toolTip">
+    <string>Cut (Ctrl+X)</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="text">
+    <string>C&amp;opy</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy (Ctrl+C)</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="text">
+    <string>Pa&amp;ste</string>
+   </property>
+   <property name="toolTip">
+    <string>Paste (Ctrl+V)</string>
+   </property>
+  </action>
+  <action name="actionOpen_Project_Archive">
+   <property name="text">
+    <string>Open Project Arc&amp;hive...</string>
+   </property>
+  </action>
+  <action name="actionProjectOpenFileManager">
+   <property name="text">
+    <string>&amp;Current Project</string>
+   </property>
+   <property name="toolTip">
+    <string>Current Project (F4)</string>
+   </property>
+   <property name="shortcut">
+    <string>F4</string>
+   </property>
+  </action>
+  <action name="actionAdd_Base_Line">
+   <property name="text">
+    <string>Add Base &amp;Line...</string>
+   </property>
+  </action>
+  <action name="actionSave_Batch_Refinement_Script">
+   <property name="text">
+    <string>Save Batch Refinement Script...</string>
+   </property>
+  </action>
+  <action name="actionStrip_impurity_signals">
+   <property name="text">
+    <string>&amp;Strip impurity signals...</string>
+   </property>
+  </action>
+  <action name="actionSimulate_compositions">
+   <property name="text">
+    <string>Simulate &amp;compositions...</string>
+   </property>
+  </action>
+  <action name="actionFormat_results">
+   <property name="text">
+    <string>&amp;Format results...</string>
+   </property>
+  </action>
+  <action name="actionShow_Peak_Profile">
+   <property name="text">
+    <string>Show &amp;Peak Profile...</string>
+   </property>
+  </action>
+  <action name="actionIndex_Reference_Structures">
+   <property name="icon">
+    <iconset theme="profex-index"/>
+   </property>
+   <property name="text">
+    <string>&amp;Index Reference Structures</string>
+   </property>
+   <property name="iconText">
+    <string>Index</string>
+   </property>
+  </action>
+  <action name="actionEdit_Current_FPA_Configuration">
+   <property name="text">
+    <string>Edit &amp;Current FPA Configuration...</string>
+   </property>
+  </action>
+  <action name="actionReset_Zoom_Range">
+   <property name="text">
+    <string>Reset &amp;Zoom Range...</string>
+   </property>
+  </action>
+  <action name="actionEdit_all_Project_STR_files">
+   <property name="text">
+    <string>&amp;Edit all Project STR files...</string>
+   </property>
+  </action>
+  <action name="actionSmooth_Scan">
+   <property name="text">
+    <string>Sm&amp;ooth Scan...</string>
+   </property>
+  </action>
+  <action name="actionRun_Peak_Detection">
+   <property name="text">
+    <string>Run &amp;Peak Detection</string>
+   </property>
+  </action>
+  <action name="actionRun_Search_Match">
+   <property name="icon">
+    <iconset theme="profex-search-match"/>
+   </property>
+   <property name="text">
+    <string>Run &amp;Search-Match</string>
+   </property>
+   <property name="iconText">
+    <string>Search-Match</string>
+   </property>
+  </action>
+  <action name="actionElectron_Density_Map">
+   <property name="text">
+    <string>&amp;Electron Density Map...</string>
+   </property>
+  </action>
+  <action name="actionAdd_Amorphous_Peak">
+   <property name="text">
+    <string>A&amp;dd Amorphous Peak...</string>
+   </property>
+  </action>
+  <action name="actionExport_Curve_Fits">
+   <property name="text">
+    <string>E&amp;xport Curve Fits...</string>
+   </property>
+  </action>
+  <action name="actionStructure_Repositories">
+   <property name="text">
+    <string>Structure Repositories</string>
+   </property>
+  </action>
+  <action name="actionDevice_Repositories">
+   <property name="text">
+    <string>Device Repositories</string>
+   </property>
+  </action>
+  <action name="actionPreset_Repositories">
+   <property name="text">
+    <string>Preset Repositories</string>
+   </property>
+  </action>
+  <action name="actionFind_in_Files">
+   <property name="text">
+    <string>Find &amp;in Files...</string>
+   </property>
+  </action>
+  <action name="actionExport_to_Excel">
+   <property name="text">
+    <string>Exp&amp;ort to Excel...</string>
+   </property>
+  </action>
+  <action name="actionEdit_Excel_Export">
+   <property name="text">
+    <string>Ed&amp;it Excel Export...</string>
+   </property>
+  </action>
+  <action name="actionElement_Scattering_Data">
+   <property name="text">
+    <string>Browse Anomalous Scattering &amp;Data...</string>
+   </property>
+  </action>
+  <action name="actionSet_Project_Wavelength">
+   <property name="text">
+    <string>Set Project &amp;Wavelength...</string>
+   </property>
+  </action>
+  <action name="actionBrowse_Reference_Structures">
+   <property name="text">
+    <string>Browse &amp;Reference Structures...</string>
+   </property>
+  </action>
+  <action name="actionTrace_Scan_Figures">
+   <property name="text">
+    <string>Trace Scan Figures...</string>
+   </property>
+  </action>
+  <action name="actionWaterfall_Plot">
+   <property name="text">
+    <string>Waterfall Plot...</string>
+   </property>
+  </action>
+  <action name="actionCreate_Refinement_Sequence">
+   <property name="icon">
+    <iconset theme="profex-document-sequence"/>
+   </property>
+   <property name="text">
+    <string>Create Refinement &amp;Sequence...</string>
+   </property>
+  </action>
+  <action name="actionOpen_Structure_File">
+   <property name="text">
+    <string>Open Current Structure File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="actionSimulate_Tube_Tails">
+   <property name="text">
+    <string>Simulate Tube Tails...</string>
+   </property>
+  </action>
+  <action name="actionCreate_OQ_Project">
+   <property name="text">
+    <string>Operation Qualification (OQ) Wizard...</string>
+   </property>
+   <property name="toolTip">
+    <string>Perform the Operation Qualification (OQ)</string>
+   </property>
+  </action>
+  <action name="actionExport_Peak_List">
+   <property name="text">
+    <string>Export Peak List...</string>
+   </property>
+  </action>
+  <action name="actionCheck_for_updates">
+   <property name="text">
+    <string>Check for updates...</string>
+   </property>
+  </action>
+  <action name="actionCalculate_d_Spacings">
+   <property name="text">
+    <string>Calculate d-Spacings...</string>
+   </property>
+  </action>
+  <action name="actionCreate_Single_Peak_Refinement_Project">
+   <property name="text">
+    <string>Create Single Peak Refinement Project...</string>
+   </property>
+  </action>
+  <action name="actionConvert_Divergence_Slit">
+   <property name="text">
+    <string>Convert Divergence Slit...</string>
+   </property>
+  </action>
+  <action name="actionCalculate_Bond_Lengths">
+   <property name="text">
+    <string>Calculate Bond Lengths...</string>
+   </property>
+  </action>
+  <action name="actionSynchrotron_Configuration">
+   <property name="text">
+    <string>Synchrotron Configuration...</string>
+   </property>
+  </action>
+  <action name="actionRun_Batch_Curve_Fitting">
+   <property name="text">
+    <string>Run Batch Curve Fitting</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionOpenText</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileOpenText()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCloseProject</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileCloseCurrentProject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRunRefinement</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>runRefinement()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_Quit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSaveAs</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRevertControlFile</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>revertControlFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbortAllRefinements</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>abortAllRefinements()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_Preferences</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>preferences()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_Results</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportResults()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpenGraph</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileOpenGraph()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionApply_Control</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>applyControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPrint</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>print()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_About_Profex</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRun_Batch_Refinement</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>runBatchRefinement()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionBGMN_Variables</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>helpBgmnVariables()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionBGMN_SPACEGRP_DAT</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>spacegrpDat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEdit_Configuration</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editConfiguration()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionScanBatchConversion</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileScanBatchConversion()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLegend</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showLegend(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionUndo</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>undo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRedo</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>redo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSet_Zoom_Range</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setZoomRange()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_Phase_Quantities</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportQuantities()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpenProjectStrFiles</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileOpenProjectStrFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCloseProjectStrFiles</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileCloseProjectStrFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_Chemistry</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportChemistry()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionInsert_Graph_File</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileInsertGraphFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionIncrease_Vertical_Displacement</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scanYOffsetUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDecrease_Vertical_Displacement</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scanYOffsetDown()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionReset_Vertical_Displacement</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scanOffsetReset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRemove_Scan</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>removeScan()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDisplace_Left</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scanXOffsetLeft()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDisplace_Right</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scanXOffsetRight()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbortCurrentRefinement</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>abortCurrentRefinement()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCreatePreset</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>createTemplate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMouse_and_Keyboard_commands</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>helpMouse()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClose_All_Projects</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileCloseAllProjects()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCreate_Project_Backup</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>createZipArchive()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave_Project_Backup_As</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>createZipArchiveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAdd_Remove_Phase</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addRemovePhase()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave_all_files</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_CIF_files_from_LST_file</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportCifFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_CELL_files_from_LST_file</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportCastepCellFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSet_Internal_Standard</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setInternalStandard()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionUnset_Internal_Standard</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>unsetInternalStandard()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionGenerateReport</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>generateReport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionImportStructure</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileImportStructure()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLearn_Profile</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>learnProfile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAtomic_Scattering_Factors</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>afaparmDat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSearch_and_Replace</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>searchReplace()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionReset_Margin_Color</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>resetMarginColor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPrint_All_Graphs</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>printAllGraphs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_all_Graphs_to_SVG</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>renderAllSvg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpen_Refinement_Project</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileOpenProject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCalculate_Absorption_Coefficients</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>absorptionCoefficients()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionScan_Math</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scanMath()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_Peak_Integrals</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportPeakIntegrals()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCut</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editCut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCopy</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editCopy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPaste</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editPaste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpen_Project_Archive</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fileOpenProjectArchive()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionProjectOpenFileManager</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>projectOpenFileManager()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAdd_Base_Line</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addBaseLine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave_Batch_Refinement_Script</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveBatchScript()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionStrip_impurity_signals</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>diaStripImpurities()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSimulate_compositions</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>diaSimulateCompositions()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionFormat_results</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>diaFormatResults()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShow_Peak_Profile</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>instrumentPeakProfile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionIndex_Reference_Structures</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>indexReferenceStructures()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEdit_Current_FPA_Configuration</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editCurrentConfiguration()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionReset_Zoom_Range</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>resetZoomRange()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEdit_all_Project_STR_files</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editProjectStrFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSmooth_Scan</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>smoothScan()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRun_Peak_Detection</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>runPeakDetection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRun_Search_Match</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>runSearchMatch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionElectron_Density_Map</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>electronDensityMap()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAdd_Amorphous_Peak</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>amorphousPeak()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_Curve_Fits</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportCurveFits()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionFind_in_Files</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editFindInFiles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_to_Excel</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportToExcel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEdit_Excel_Export</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editExcelExport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionElement_Scattering_Data</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>elementScatteringData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSet_Project_Wavelength</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>overrideProjectWavelength()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionBrowse_Reference_Structures</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>toolsBrowseReferenceStructures()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionTrace_Scan_Figures</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>traceScanFigures()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionWaterfall_Plot</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>waterfallPlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCreate_Refinement_Sequence</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>applySequenceControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionOpen_Structure_File</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openCurrentStructureFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSimulate_Tube_Tails</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>simulateTubeTails()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCreate_OQ_Project</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>createOqProject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_Peak_List</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportPeakList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCheck_for_updates</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>checkForUpdates()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCalculate_d_Spacings</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>calculateDspacing()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCreate_Single_Peak_Refinement_Project</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>createSinglePeakRefinement()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionConvert_Divergence_Slit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>divSlitConvertScan()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCalculate_Bond_Lengths</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>bondLengths()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSynchrotron_Configuration</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>synchrotronConfiguration()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>408</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRun_Batch_Curve_Fitting</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>runBatchFitting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>408</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>fileOpenText()</slot>
+  <slot>fileCloseCurrentProject()</slot>
+  <slot>runRefinement()</slot>
+  <slot>save()</slot>
+  <slot>saveAs()</slot>
+  <slot>revertControlFile()</slot>
+  <slot>abortAllRefinements()</slot>
+  <slot>preferences()</slot>
+  <slot>exportResults()</slot>
+  <slot>fileOpenGraph()</slot>
+  <slot>applyControl()</slot>
+  <slot>print()</slot>
+  <slot>helpAbout()</slot>
+  <slot>runBatchRefinement()</slot>
+  <slot>helpBgmnVariables()</slot>
+  <slot>spacegrpDat()</slot>
+  <slot>editConfiguration()</slot>
+  <slot>fileScanBatchConversion()</slot>
+  <slot>showLegend(bool)</slot>
+  <slot>undo()</slot>
+  <slot>redo()</slot>
+  <slot>setZoomRange()</slot>
+  <slot>exportQuantities()</slot>
+  <slot>fileOpenProjectStrFiles()</slot>
+  <slot>fileCloseProjectStrFiles()</slot>
+  <slot>exportChemistry()</slot>
+  <slot>fileInsertGraphFile()</slot>
+  <slot>scanYOffsetUp()</slot>
+  <slot>scanYOffsetDown()</slot>
+  <slot>scanOffsetReset()</slot>
+  <slot>removeScan()</slot>
+  <slot>scanXOffsetLeft()</slot>
+  <slot>scanXOffsetRight()</slot>
+  <slot>applyPreset()</slot>
+  <slot>abortCurrentRefinement()</slot>
+  <slot>createTemplate()</slot>
+  <slot>helpMouse()</slot>
+  <slot>fileCloseAllProjects()</slot>
+  <slot>createZipArchive()</slot>
+  <slot>createZipArchiveAs()</slot>
+  <slot>addRemovePhase()</slot>
+  <slot>saveAll()</slot>
+  <slot>exportCifFiles()</slot>
+  <slot>exportCastepCellFiles()</slot>
+  <slot>setInternalStandard()</slot>
+  <slot>unsetInternalStandard()</slot>
+  <slot>generateReport()</slot>
+  <slot>fileImportStructure()</slot>
+  <slot>learnProfile()</slot>
+  <slot>afaparmDat()</slot>
+  <slot>searchReplace()</slot>
+  <slot>resetMarginColor()</slot>
+  <slot>printAllGraphs()</slot>
+  <slot>renderAllSvg()</slot>
+  <slot>fileOpenProject()</slot>
+  <slot>absorptionCoefficients()</slot>
+  <slot>scanMath()</slot>
+  <slot>exportPeakIntegrals()</slot>
+  <slot>editCut()</slot>
+  <slot>editCopy()</slot>
+  <slot>editPaste()</slot>
+  <slot>fileOpenProjectArchive()</slot>
+  <slot>projectOpenFileManager()</slot>
+  <slot>addBaseLine()</slot>
+  <slot>saveBatchScript()</slot>
+  <slot>diaStripImpurities()</slot>
+  <slot>diaFormatResults()</slot>
+  <slot>diaSimulateCompositions()</slot>
+  <slot>instrumentPeakProfile()</slot>
+  <slot>indexReferenceStructures()</slot>
+  <slot>editCurrentConfiguration()</slot>
+  <slot>resetZoomRange()</slot>
+  <slot>editProjectStrFiles()</slot>
+  <slot>smoothScan()</slot>
+  <slot>runPeakDetection()</slot>
+  <slot>runSearchMatch()</slot>
+  <slot>electronDensityMap()</slot>
+  <slot>amorphousPeak()</slot>
+  <slot>openPeakList()</slot>
+  <slot>exportCurveFits()</slot>
+  <slot>editFindInFiles()</slot>
+  <slot>exportToExcel()</slot>
+  <slot>editExcelExport()</slot>
+  <slot>elementScatteringData()</slot>
+  <slot>overrideProjectWavelength()</slot>
+  <slot>toolsBrowseReferenceStructures()</slot>
+  <slot>traceScanFigures()</slot>
+  <slot>waterfallPlot()</slot>
+  <slot>applySequenceControl()</slot>
+  <slot>openCurrentStructureFile()</slot>
+  <slot>simulateTubeTails()</slot>
+  <slot>createOqProject()</slot>
+  <slot>exportPeakList()</slot>
+  <slot>checkForUpdates()</slot>
+  <slot>calculateDspacing()</slot>
+  <slot>createSinglePeakRefinement()</slot>
+  <slot>divSlitConvertScan()</slot>
+  <slot>bondLengths()</slot>
+  <slot>synchrotronConfiguration()</slot>
+  <slot>runBatchFitting()</slot>
+ </slots>
+</ui>

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StrFileBatchEditDialog</class>
+ <widget class="QDialog" name="StrFileBatchEditDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>860</width>
+    <height>487</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edit STR Files</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTreeWidget" name="treeWidgetFiles">
+         <property name="rootIsDecorated">
+          <bool>false</bool>
+         </property>
+         <column>
+          <property name="text">
+           <string notr="true">Files</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QToolButton" name="buttonFilesAll">
+           <property name="toolTip">
+            <string>Select all files</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-select-all">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="buttonFilesOpen">
+           <property name="toolTip">
+            <string>Select all open files</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-select-open">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="buttonFilesCurrent">
+           <property name="toolTip">
+            <string>Select current file</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-select-current">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="buttonFilesNone">
+           <property name="toolTip">
+            <string>Unselect all files</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-select-none">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QTreeWidget" name="treeWidgetParameters">
+         <column>
+          <property name="text">
+           <string notr="true">Parameter</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>State</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="buttonStateCheck">
+           <property name="toolTip">
+            <string>Check group</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-select-all">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="buttonStateUncheck">
+           <property name="toolTip">
+            <string>Uncheck group</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-select-none">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="buttonStateToggle">
+           <property name="toolTip">
+            <string>Increase state by one step</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-arrow-up">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonApply">
+       <property name="text">
+        <string>&amp;Apply</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonClose">
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>treeWidgetFiles</tabstop>
+  <tabstop>treeWidgetParameters</tabstop>
+  <tabstop>buttonFilesAll</tabstop>
+  <tabstop>buttonFilesOpen</tabstop>
+  <tabstop>buttonFilesCurrent</tabstop>
+  <tabstop>buttonFilesNone</tabstop>
+  <tabstop>buttonStateCheck</tabstop>
+  <tabstop>buttonStateUncheck</tabstop>
+  <tabstop>buttonStateToggle</tabstop>
+  <tabstop>pushButtonApply</tabstop>
+  <tabstop>pushButtonClose</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonFilesAll</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>filesCheckAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>17</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonFilesNone</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>filesUncheckAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>442</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonFilesCurrent</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>filesCheckCurrent()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>91</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>315</x>
+     <y>440</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonFilesOpen</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>filesCheckOpen()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>62</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>441</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonStateCheck</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>parametersCheckGroup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>790</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>537</x>
+     <y>440</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonStateUncheck</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>parametersUncheckGroup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>819</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>753</x>
+     <y>442</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonStateToggle</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>parametersToggleGroup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>848</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>860</x>
+     <y>412</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonClose</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>358</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonApply</sender>
+   <signal>clicked()</signal>
+   <receiver>StrFileBatchEditDialog</receiver>
+   <slot>apply()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>49</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>42</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>filesCheckAll()</slot>
+  <slot>filesUncheckAll()</slot>
+  <slot>parametersCheckGroup()</slot>
+  <slot>parametersUncheckGroup()</slot>
+  <slot>parametersToggleGroup()</slot>
+  <slot>filesCheckOpen()</slot>
+  <slot>filesCheckCurrent()</slot>
+  <slot>apply()</slot>
+ </slots>
+</ui>

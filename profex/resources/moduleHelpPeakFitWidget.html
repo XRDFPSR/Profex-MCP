@@ -1,0 +1,50 @@
+<h1>Generic peak fitting</h1>
+<p>This module is used to fit individual or groups of peaks with generic functions.</p>
+<h2>Getting started</h2>
+<p>Peak fitting is usually only performed on a short range of the dataset that contains one or a few peaks.
+As a first step, this range must be defined.</p>
+<h3>Step 1: Defining the data range</h3>
+<p><ol><li>Activate the "Add a new fit range"mode by pressing the corresponding button.</li>
+<li>Zoom in on the graph until the range to fit fills a good portion of the screen.</li>
+<li>Double-click on the graph at the position where the range starts.</li>
+<li>Move the cursor to the position on the graph where the range ends. Double-click to set the end position.
+While dragging the mouse cursor, the range is indicated visually.</li></ol>
+After setting the end position, the range select mode is deactivated automatically and a new
+range item is added to the functions list. By double-clicking the start and end items, the values
+can be entered numerically.</p>
+<h3>Step 2a: Adding functions automatically</h3>
+<p>The add-function wizard tries to add a new function at the most reasonable location:
+<ol><li>Select the range item to which the functions shall be added.</li>
+<li>Select the type of function to be added from the dropdown menu.</li>
+<li>Click the "Automatically add function" button (magic wand icon).</li>
+<li>Verify that the function was added correctly.</li>
+</ol></p>
+<p>It is often recommended to first add a linear or quadratic function to fit the background, and then add one or several peak functions.</p>
+<p>If the wizard doesn't recognize a peak correctly, zoom in on the peak and click the wizard button again. Since the wizard only searches for peaks in the visible range, zooming in on a peak often improves the detection. If the peak is still not recognized, proceed with adding the function manually.</p>
+<h3>Step 2b: Adding functions manually</h3>
+<p>If automatic function adding doesn't work as expected, functions can be added manually:
+<ol><li>Select the range item to which the functions shall be added.</li>
+<li>Select the type of function to be added from the dropdown menu.</li>
+<li>Activate the "Add a new function" mode by clicking on the corresponding button.</li>
+<li>Double-click on the graph to set the location of the first point. Depending on the type of function,
+the first point represents:<ul><li>Polynomials: the left point of the polynome</li><li>Peak functions: The tip of the peak</li></ul></li>
+<li>Double-click on the graph again to set the location of the second point. Depending on the type of function,
+the first point represents:<ul><li>Polynomials: the right point of the polynome</li><li>Peak functions: One of the feet of the peak</li></ul></li>
+<li>The peak selection mode remains active. Double-click again to start adding the next function. Change the type of function
+as needed.</li>
+<li>Disable the "Add a new function" mode by clicking the corresponding button.</li></ol>
+<h3>Step 3: Fitting</h3>
+<p>Click the "fit" button at the bottom right of the module window.</p>
+<h2>Coupling parameters</h2>
+<p>By default, all function parameters are fitted independently. However, it may be recommended to couple certain parameters to reduce the total number of degrees of freedom and to stabilize the fit. For example, using only one shape parameter for all Pseudo-Voigt curves may be recommended. To couple parameters to a common variable, proceed as follows:</p>
+<ol>
+<li>Add functions as described above.</li>
+<li>Double-click on the "Variable" cell of the parameter that should be coupled.</li>
+<li>Select the same variable "$x-y-z" for all function parameters that should be tied to this variable.</li>
+<li>Run the curve fit.</li>
+</ol>
+<h2>Fixing / restricting variables</h2>
+<p>Variables can be fixed (excluded from the fitting) or restricted to a certain range.</p>
+<p>To fix a variable, go to the tab "Variables" and uncheck the box in front of the variable name.</p>
+<p>To restrict the range of a variable, go to the tab "Variables" and double click either on the lower or upper boundary of the variable. Enter a value for the lower or upper limit, or enter "-inf" or "+inf" to remove all restrictions.</p>
+

@@ -1,0 +1,830 @@
+5.6.0
+* fixed drawing of hkl line intensities on background
+* new option to configure the position of permanently added hkl scans (BGMN -> Reference Structures -> Appearance -> hkl Plots)
+* load par and lst files delayed to avoid incomplete loading
+* new option in preferences (Graphs -> Appearance) to sort stacked graphs either bottom-to-top or top-to-bottom
+* new option in legend context menu to invert the sorting of the legend to align with bottom-to-top stacked scans
+* don't disable "add amorphous peak" action on text editors
+* save more project parameters in the backup ZIP file (scan state, curve fits, peak integrals, etc.)
+* output standard deviations and correlation matrix of generic peak fits in output protocol
+* offer to run peak fitting again if convergence has not been reached
+* more granular control over manual convergence criteria in generic peak fit module
+* show file extension when loading configuration files in synchrotron configurator on linux
+* copy actions (ctrl + c) on many dock widgets added
+* separate configuration options for the mode of the chemistry table displayed and exported to HTML reports
+* new implementation of chemistry table
+* new actions to only copy x or y data of scans in plot options list
+* when opening project structure files, close the same files in all other projects
+
+5.5.2
+* fixed loading of *.dia files on platforms using comma decimal separator
+
+5.5.1
+* fixed crash when closing all projects, then opening one, while a tools dialog is open
+* tool tips added to preferences dialog
+* code optimizations in preferences dialog
+
+5.5.0
+* new module "synchrotron configurator" to create synchrotron image plate instrument configurations
+* major overhaul of "File -> Import structure files" dialog to improve usability
+* new checkbox in module "electron density maps" to toggle between automatic and manual scaling
+* abort button in curve fitting module works now
+* AlgLib updated to 4.04.0
+* new context menu action to renumber parameters in SAV files
+* new functions and better organization of context menu for STR files
+* new shortcuts CTRL+n to raise tabs 1 - 9
+* new shortcut CTRL+0 to reset text zoom
+* fixed bug when parsing DIA files with multiple scans
+* updated context help text
+* automatic peak detection added to peak fitting module
+* new function "batch curve fitting"
+* new style for peak fit ranges
+* multi-treaded curve fitting when fitting multiple regions
+* double-click on peak fit range label zooms to range
+* removed center line from peak fit ranges
+
+5.4.1
+* xye file import filter now reads values in scientific notation
+* Fixed regression not reading settings from previous versions for local and global goals in summary table
+* Report parameter values UNDEF and ERROR as n.a. in summary table
+* Fixed parsing error in pyFai import filter
+
+5.4.0
+* Report infinite crystallite size as „n.a.“ instead of „ERROR“ in the refinement results table
+* Use same precision for refinement results in refinement results table as in LST file
+* Fixed opening text files with spaces in file name from mouse context menu in control file editor
+* Fixed wrong intensity cursor coordinates on difference curve in sqrt and log10 scale
+* Draw center line on difference curve also in sqrt and log10 scale
+* Fixed crash when faulty STR files are indexed in structure import dialog
+* Allow arbitrary background colors for graphs rather than predefined gray levels
+* Show tick marks and labels on the difference curve (labels are deactivated by default, can be activated in Edit -> Preferences -> Graphs -> Axes and Lines -> Show tick labels on difference curve)
+* Matching phases in search-match window can be sorted
+* STR file of selected phase in search-match window is shown in a new editor (behind „pinned phases“)
+* New context menu action „refine / fix all TDS“ in STR file editor
+* Unneeded statistics results can be hidden from refinement results table (Edit -> Preferences -> BGMN -> Summary Tables)
+* New context help text for control file editors
+
+5.3.1
+* Fixed crash with Rigaku RAS files containing empty comment fields
+* Fixed multi-scan DIA import
+* GUI improvements in „format results“ and „process dia files“ tools
+
+5.3.0
+* new mouse menu actions to refine or fix all fractional coordinates
+* new module in Tools to convert divercence slit intensities
+* remember default instrument when creating a new refinement project
+* improved messages when refinements are aborted or crashed
+* Electron density map module: fixed automatic scaling of intensity
+* Electron density map module: added unit to scale
+* Electron density map module: fixed transparent background when rendering contour lines
+* show 'complete' graph status after search-match completes
+* fixed crash upon program exit when a pixmap was copied to the clipboard
+* Ctrl+C can now be used on various dock windows (Plot options, peak list) to copy data to the clipboard
+* optimized colors in dark mode
+* new module in Tools to calculate bond lengths
+* fixed drawing of active scans below the background curve (e.g. curves from peak fitting module)
+* do not pre-select peak list filters when saving a preset and no filters are active
+* fixed numbering of curves in peak fit module when curves were deleted prior to adding new ones
+* new import filter for pyFAI synchrotron datasets
+* fixed bug in simulated tube tail scans generating datasets that are incompatible with BGMN
+* new menu Modules to reduce clutter in Tools menu
+* fixed crash in CIF import
+* Waterfall Plot and Scan Tracer modules can use dark mode
+* actions on scans in plot options list can now be applied to multiple selected scans
+* changing color and style of scans in plot options list is now volatile (does not change the preferences) and can be applied to multiple scans at once
+* new smooting algorithm using discrete cosine transform (DCT) in smoothing dialog
+* zlib updated to 1.3.1
+* more key actions added to scan list
+
+5.2.9
+* fixed wrong symmetry operands in exported CIF files
+* new export filter for Profex Graph Exchange files
+* set default wavelength correctly when opening a file without wavelength information
+* fixed wrong tool tip of EPS2 spinbox in the toolbar
+* fixed crash when opening Bruker Raw V4 files in waterfall plot module
+
+5.2.8
+* fixed bug when importing cubic structures from CIF files
+* improved mouse context menu actions in text editor
+* Changing names of scans manually no longer appends the file name in case of multi-scan projects
+* CIF import: negative translations (e.g. -3/4) are converted to positive (+1/4) for consistency with BGMN
+* Separate import filter for xye files, ignores the error scan for display
+* Added tool tips and reset button to search-match settings in preferences dialog
+* Changed preferences implementation for not converting natively supported scan files
+* Fixed crash when exporting scans to xy that only contain hkl data
+
+5.2.7
+* fixed a crash when closing projects
+
+5.2.6
+* Phase selection is saved and resored in peak list filter presets
+* Multiple single-peak refinement projects
+* fixed bug in CIF parser with HM symbols containing the setting or origin
+* fixed bugs in generation of instrument template files
+* fixed linear background drawing in peak integrals with sqrt or log10 axis
+* draw the region of peak fits
+* added refinement toggling for B2 parameter
+* disabled "reset file" for BGMN projects
+* increase file name when adding more than one amorphous peak
+* new import filter for CHI files
+* fixed bug in search-match module refusing to run with synchrotron radiation
+* phase selection is saved and restored in peak list filter presets
+* improved context help text
+
+5.2.5
+* new manual base line in tools -> add baseline
+* save peak list filters in presets
+* apply peak list filters to other projects
+* list *.xye files in ASCII import filter
+* copy instrument sav and tpl files when applying control files to other projects
+* fixed tab order in instrument dialog pages
+* new import filter for Thermo Fisher TXL file format
+* improved recognition of typos in syntax highlighter
+* fixed phase names imported from COD files only containing numeric values
+
+5.2.4
+* fixed icons disappearing when changing preferences
+* fixed COD database not connecting after program restart
+
+5.2.3
+* Fixed accidentally enabled instrument configuration box in add-remove dialog
+* Removed option to select composition mode of graphs
+* Fixed filled color of graphs in dark mode
+* Added custom wavelength selection to absorption coefficient dialog
+* Added key sequences to navigate graphs
+* Option to specify a local COD CIF repository instead of using the online repository.
+* Show proper error message when downloading CIF files from COD fails
+* New Tool to calculate lattice plane spacings
+* Improved context help system
+* Ignore mouse events on the graph outside the plot if they don't make sense
+* Improved CIF import
+* Fixed bug in GNR ESG files with negative 2theta values
+* Fixed Rigaku XML import of files with multiple scans
+
+5.2.2
+* Show iterations and Chi^2 in project list
+* Context menu to show/hide columns in project list
+* Fixed regression with search-match refusing to run due to missing instrument or wavelength selection despite using project settings
+* Fixed regression with closing projects from project list context menu not working
+* Removed option to select light or dark GUI theme from preferences
+* Added option to select graph background color to preferences -> Graph -> Appearance
+
+5.2.1
+* moved configuration of COD database from structure import dialog to preferences dialog
+* fixed issues with CIF import whe CIF files don't specify a phase name
+* change scan color and style directly from context menu in plot options list
+* fixed a crash when changing y-axis scaling on the fly, then changing scan styles in the preferences
+* new function to export peak lists of all open projects at once
+* fixed calculation of peak intensity in peak list
+* improved filtering of peak list
+* new import filter for all files (*.*) to auto-detect the format
+* instrument selection boxes in add-remove dialog and search-match module are now editable and use auto-completion
+* improved handling of instrument selection in add-remove dialog and search-match module when no specific instrument is selected
+* fixed scan offsets randomly not being applied in plot options list
+* minor GUI improvements
+* context help text for additional modules added
+* check for updates on Windows
+
+5.2.0
+* New operation qualification wizard
+* Presets are categorized in menues
+* New tool to simulate tube tail measurements
+* Applying presets saves control files immediately
+* Fixed bug in Excel export presets
+* Fixed bug in peaklist with wrong normalization of intensities
+* Fixed bug in export of CIF files from LST files
+* Export Uaniso to CIF files instead of beta, as recommended by the CIF dictionary
+* Fixed crash when indexing structure repositories when indexing is disabled for some repositories
+* Re-arranged elements for control file templates in graphical instrument editor
+* Add LAMBDA when using a tube tail measurement in the instrument editor
+* Fixed duplicate preset entries due to upper- and lower-case file names
+* Fixed bug in ICDD XML importer when parsing hexagonal/rhombohedral space groups
+* New import filter for Rigaku Smartlab XML file format
+* Re-introduced toggling of phase visibility with Ctrl+0
+
+5.1.1
+* Avoid duplication of instruments when opening the add/remove phases dialog multiple times
+* Do not list text blocks multiple times when opening the preferences multiple times
+* Fixed several bugs in CIF import
+* New export filter for ASCII text format
+* Fixed bug in UDF import filter
+* Fixed bugs in export of waterfall plots
+
+5.1.0
+* Fixed error in CIF export ignoring the space group setting and missing symmetry operands
+* Allow editing of source files in the structure import dialog
+* Fixed an error in CIF import if several sites use the same _atom_site_label
+* Fixed wrong handling of sample height displacement in peak integral module
+* Context help in various modules
+* Multi-range curve fitting
+* Added support for divergenceCorrection data in xrdml files
+* Export of electron density map raw data
+* Fixed drawing issues in electron density map dialog
+* Moved favorites selection from preferences dialog to tools -> browse reference structures
+* Tool tips added in various dialogs
+* New selection box to specify the reference structure repository
+* Better error handling if creating projects goes wrong
+* Double-click on status bar opens dialogs
+* Option to show the wavelength in the x-axis label
+* Option to open STR files after adding new phases
+* Fixed crash when activating the inspector cursor
+* Fix chemistry table to work with internal standard quantifications
+* Improved CIF import to work with SPF SpringerMaterials ISP files
+* Fixed parsing error for Bruker raw V4 and Rigaku RasX files
+* More Dectris detectors added to the detector configuration page in the instrument editor
+* Fixed wrong scaling and blurry fonts on high-DPI displays
+* Show-legend action removed from the context menu (use the View menu instead)
+* Fixed bugs in exported SVG files
+* Added Q scale for x-axis
+* Dynamically adjust significant digits in axis labels according to zoom level
+* Open STR file of active scan from graph using Ctrl+T
+* Open STR files under cursor in SAV or LST file using Ctrl+T
+* Jump to phase in LST file when selecting a graph in the plot options list
+* Toggle LeBail mode with F5/F6 key
+* Show scan name as tool tip when hovering the mouse over a scan
+* Option to draw a highlight rectangle behind the hkl lines of the active scan
+
+5.0.2
+* Select scans by holding Shift and clicking on the graph
+* Fixed selection of scans during running refinements
+* Fixed regression with apply button in preferences dialog not working
+* New preference options to display only scans, only hkl lines, or both of refined phases
+* New scan styles: line with points or crosses, dashed line with points or crosses
+* Show / hide columns in the scan list
+* Don't ask for instrument / wavelength when peak searching on an existing project
+* Fixed certain wavelengths not being assigned to characteristic spectra correctly
+* Preserve the scale factor of hkl reference lines when selecting a new reference structure
+
+5.0.1
+ * removed option to customize quantity goal nomenclature in preferences
+ * automatically run verification when opening CIF files in the structure import dialog
+ * automatically run indexing when closing the structure import dialog
+ * improved scan-math help dialog
+ * better handling of settings in all dock window modules (search-match, peak fitting, peak list etc)
+ * disabled selection of instrument and wavelength in search-match module when runnig search-match on an existing project
+ * fixed calculation of Rexp in convergence progress window
+ * removed the menu option to hide hkl indices
+ * added a reload button to the peak list table
+ * fixed inconsistent behaviour of view -> show / hide phase patterns
+ * fixed phase duplication in search-match window when creating a project from pinned phases
+ * fixed encoding bug in import filter for binary raw data formats (also fixes issues with SVG export and refinement reports)
+ * displace scans also when EPSn values are hard-coded
+ * fixed regression with copying graphs to clipboard not working
+ * selection, activation, and export of multiple scans from scan list
+ * sorting of projects, scans, and waterfall scans by drag-and-drop
+ * waterfall plot accepts drop events
+ * fixed various drawing issues in waterfall plot dialog
+
+5.0.0
+ * indexing and hkl buffer code rewritten
+ * speed improvements in project loading and preferences
+ * enable / disable menu actions depending on graph / text widgets
+ * new default text block and text block handling
+ * better scan highlighting in waterfall plot dialog
+ * new indexing progress dialog with skip button added
+ * implementation of context help changed to capture interpreter functions
+ * sequential refinements, first working implementation
+ * sorting actions for project tree widget items added
+ * Don't clear search-match results list when running a regular refinement
+ * changed range limits of peak fit widget
+ * fixed batch script code
+ * added more comment signs to ascii import filter
+ * added verbose level to preferences and debug output
+ * show full file path as tool tip in search-match results list
+ * handling of tube tail files fixed, are now also added to project backups
+ * don't process VAL files natively on non-windows platforms
+ * fix resetting of wavelength in graphwindow when changing preferences
+ * configuration option for number of double click matches
+ * fix encoding of file names with umlauts on windows
+ * fix text encoding when reading and writing text files
+ * optimized dia polling intervals
+ * set number of strongest peak for double clicking
+ * major rewrite of instrument dialog
+ * context help for editinstrumentdialog
+ * new menu to toggle base of hkl lines quickly
+ * show hkl reference lines on difference curve
+ * show best matching reference structures in search-match results
+ * RU added to search-match controls
+ * context menu for increasing and decreasing refinement values
+ * add B1, k2, k1 when toggling RP parameter
+ * handling of T and D in reflexion geometry in instrument config dialog
+ * improved new dia file poller2
+ * fixed instrument editor for fixed or variable slits
+ * don't set geometry, only resize dialogs upon init
+ * port to apple ARM64 platform
+
+4.3.6
+ * show full file path as tool tip in search-match results list
+ * do not reset the wavelength to default in graphwindow when updating the settings
+ * number of double-click matches to be optional
+ * don't process VAL files natively on non-windows platforms
+ * number of strongest peaks for double-click phase identification
+ * fix struct scaling with mouse wheel when starting below zero line
+ * show hkl reference lines on difference curve
+ * show best matching reference structures in search-match results
+ * context menu and handling of k1, k2, B1 in text editors
+ * handling of T and D in reflexion geometry in instrument config dialog
+ * fixed crash in peak detection
+ * new str indexing implementation
+ * only save geometry, not position of the strucimport dialog
+ * removed option to index full pattern
+
+4.3.5
+ * Various fixes in instrument dialog to avoid changes to the configuration unnoticed by the user
+ * Does not open dialogs off-screen when disconnecting an external monitor
+ * Fixed resetting of custom wavelength when scaling reference hkl lines
+ * Fixed code in Windows batch refinement scripts
+ * Additional features and improved GUI of waterfall plot dialog
+ * Fixed project backup adding files multiple times to zip archive
+ * Fixed crash when noise cursor goes to negative counts
+ * New import filter for Rigaku RasX file format
+ * More detector models added to instrument dialog
+
+4.3.4
+ * new waterfall plot dialog
+ * fixed missing file extension when exporting all graphs as svg
+ * fixed wrong file extension when saving PDF graph
+ * added missing instrument configurations to bundles
+ * fixed regression of peak search, curve fitting, and search-match when no active scan is selected
+ * fixed empty cvs files when exporting convoluted instrument profiles
+ * activate multpile scans
+ * apply settings without closing preferences dialog
+
+4.3.3
+ * new scan tracer dialog
+ * fixed wrong position of file name in exported graphs
+ * fixed export of XmGrace and GnuPlot graphs
+ * fill area of active scans
+ * new preference options to fill active scans and disable bold lines
+ * show grain sizes with negative hkl indices in summary tables
+ * fixed clipping error in exported svg files
+
+4.3.2a
+ * Fixed bug in Search-Match widget
+
+4.3.2
+ * Tools -> Reference structure browser
+ * Fixed bug in saving / restoring HTML report structures
+ * More PANalytical detector models added to instrument dialog
+ * Locations menu for log file location
+ * COD query dialog: Search for COD IDs and DOI
+ * Get CIF files from COD by their ID
+ * Import filter for GNR ESG files
+ * Improved anomalous scattering dialog
+ * GEOMET calculation multitrheaded
+ * Fixed crash in Search-Match module
+ * New dialog to set project wavelength
+ * New presets are available immediately without restart
+ * Automatically select correct instrument configuration in search-match module
+
+4.3.1
+ * Use EPS2 value from spinbox during search-match
+ * Fixed bug with reference structures containing dots in file name
+ * Allow inserting DIA files to projects
+ * Show file name in legend when graphs contain data from more than one file
+ * New CIF parser
+ * Fixed wrong font in legend
+ * Crash in CODdownloader fixed
+ * Use progress bar instead of progress dialog in Structure import dialog
+ * New anomalous scattering factor dialog
+
+4.3.0
+ * New dialog to query the COD database
+ * Fixed bug in CIF import with space group 47
+ * Show error messages of global GOALs in results list and HTML reports
+ * Save baselines in presets
+
+4.2.5
+ * Log file moved to a writable directory on Windows
+
+4.2.4
+ * Disabled automatic check for updates due to issues with certain malware protection software
+ * Added ESD export to Excel export
+ * Fixed error with custom local goals not being exported to refinement reports
+
+4.2.3
+ * Run multiple refinements in parallel in batch refinements (optional)
+ * Optimized screen update
+ * Export position of hkl tick marks in degrees 2theta instead of d when selecting „copy hkl data“ from the scan list.
+ * Various 3rd party components updated to latest versions
+ * Code notarization on Mac OS X
+
+4.2.2
+ * Improved CIF and XML structure import
+ * Fixed bug with anti-scatter slit in graphical instrument editor
+ * Redirect DIA file to local temporary directory during refinements to improve performance
+
+4.2.1
+ * improved CIF import with batch verification
+ * new import filter for RRUFF structure files
+ * export to Excel using ActiveX
+ * fixed multiple listing of local goals right after installation
+ * fixed crash and display bug when adding hkl lines by double click
+ * fixed decimals in some instrument configuration pages
+
+4.2.0
+ * F5 and F6 keys increment/decrement some variables in control files
+ * select *.lam files directly from mouse context menu
+ * calculates area of peak fit curves
+ * shows variable values in curve list of peak fit dialog
+ * use scroll areas in dock widgets
+ * activate scans when curves are selected in peak fit dialog
+ * auto-detection of BGMN backend and repositories improved
+ * option to always used the bundled BGMN version added
+ * fixed wrong display of letter theta in SVG export
+ * fixed persistent wait cursor at program start
+ * show B1 and k2 in peak list
+ * improved CIF import
+ * process batch refinements in correct order
+ * options to draw box and fill background of graph legend
+ * removed graph flickering when running search-match
+ * support for multiple device and preset repositories
+ * automatically set up user repositories outside of the application bundle
+ * toggle X-axis unit to d-values
+ * function to add synthetic noise to scans
+ * export of scans with angular corrections applied
+ * new find in files dialog
+ * new graphical instrument editor
+ * new chemical restrictions page in search-match module
+ * added id tags to tables in html report
+ * new backdrop watermark
+ * some optimizations for dark mode
+ * checks online for updates
+
+4.1.0
+
+4.0.1
+ * merge atom positions with identical coordinates in cif import
+ * show number of background coefficients in statistics summary
+ * new function to center peak integrals
+ * fixed crash in scanmath dialog with scans only containing hkl data
+ * show B1 and B2 values in peak detection list
+ * fixed wrong sequence of initialization of settings in Add/Remove dialog
+ * refactored code for log file destination
+ * more limitation options in search-match widget
+ * fixed compile bug due to wrong path to zlib.h
+
+4.0.0
+ * new report generator
+ * new search-match module
+ * new electron density map module
+ * peak detection routine based on EFLECH
+ * new code editor with line numbers and spell checking
+ * dark mode support for OS X
+	- new syntax highlighter for dark mode
+	- new icons for dark mode
+ * new icons (flat, lightly colored)
+ * refinement of amorphous peak
+ * new dash line scan style
+ * export of peak lists
+ * new results window for statistical parameters, global and local goals
+ * text zooming with mouse wheel + ctrl
+ * new import filters for Thermo WinXRD
+ * improved ScanMath dialog
+ * improved error handling in "import structure files" dialog
+ * new dialog to smooth scans
+
+3.14.0
+ * new dialog to edit all project str files at a time
+ * new button to copy system information to clipboard in help->about dialog
+ * customizable limits for B1, k2 and TDS in preferences dialog
+ * Actions "show all control/output/graph" removed and replaced with double-click action on tabs
+ * Improved edit instrument dialog
+ * Direct editing of current instrument config
+ * Import and export filters for GSAS Standard Powder Data files
+ * Shows more information about the project in the projects list
+ * Opening project backup works accross Mac/Unix/Win platforms
+ * Structure indexing is now available from tools menu
+ * Location of hkl buffer file and temporary directory for indexing can be customized
+ * Paste integral ranges from clipboard to peak integrals widget
+ * Improved grace export filter
+ * Automatically disable favourites filter in add/remove dialog if no favourites are selected
+ * Add hkl lines permanently to graphs
+ * Improvements in structure import dialog
+ * Ask for Div slit conversion when running Fullprof refinements with unknown file formats
+ * hold control key during drop events to insert scan in current project
+
+3.13.0
+ * fixed a bug with spaces in str file names
+ * major improvements in "Import structure file" dialog
+ * dialog to display radiation spectrum from *.lam file
+ * choose between opaque or filled background in exported graphs
+ * fix Fullprof module
+ * fix reading of neutron diffraction dia files
+ * presets can store baselines and peak integrals
+ * changed behaviour with sample height displacement: now shifting the measured pattern
+ * export batch refinement script
+ * new baseline editor
+ * fixed editor context menu to open file names with underscores
+ * fixed parsing and encoding bug in seifert val import filter
+ * convert multi-scan files to multi-val projects
+ * improved context menu for controlfile editors
+ * new function to open project zip archive
+ * comment / uncomment lines with F7 key
+
+3.12.0
+ * auto-completion in reference structure menu
+ * filter in add-remove dialog
+ * copy scans to clipboard as ASCII tables
+ * copy graphs to clipboard as pixel images
+ * new sytax for quantity GOALs (optional)
+ * new dialog to calculate peak integrals
+ * new dialog to perform mathematical operations on scans
+ * new dialog to calculate absorption coefficient
+ * rewritten reference structure code
+ * fixed bug with hanging system tray icon
+ * favorites in add-remove dialog
+ * favorites in reference structure combobox
+ * tools from xrdtoolbox merged
+
+3.11.1
+ * fixed bug causing crash with New FPA Configuration feature
+ * fixed wrong converge display on some systems
+
+3.11.0
+ * more variables in the control files can be toggled with F5 and F6 keys
+ * show sampleID in graph title
+ * removed dat and out from Fullprof specific file extensions
+ * new import filter for old Rigaku RAW formats
+ * show tooltips of all overlapping hkl indices
+ * new action "Open Refinement Project"
+ * show goodness of fit in summary table
+ * customizable chi2 acceptance limit for convergence display
+ * improved refinement presets
+ * show number of open projects in status bar
+ * improved atomic scattering factor dialog
+
+3.10.2
+ * fixed bug with reloading LST files after refinement (on Windows 10)
+ * fixed bug with increasing refinement state (F6) for non-SPHAR GEWICHT
+
+3.10.1
+ * fixed bug with GOALs in summary tables if SAVE=Y is used in control files
+
+3.10.0
+ * sample ID is written to exported results tables
+ * major improvements in cif export
+ * new function in y-axis context menu to zoom to minimum intensity
+ * context menu on project list to run or close projects
+ * batch printing and SVG export of graphs
+ * export of single scans by right-clicking on Plot Options
+ * bug fixes in CSV export files
+ * non-modal dialog for help on mouse and keyboards commands
+ * multiple selection of projects, used for closing and batch features
+ * show graph file name only, without absolute file path (optional)
+ * show current file name in status bar
+ * draw hkl reference lines on background scan instead of zero line (optional)
+ * improved management of GOALs (preserves custom goals when adding / removing phases)
+ * add sample id to SAV file when applying a refinement preset
+ * normalize phase quantities to 100 instead of 1 (optional)
+ * scroll wheel on convergence display zooms vertically
+
+3.9.0
+ * copy chemistry table to clipboard
+ * context menus for graph axis settings
+ * Option to read wavelenghts for spectral line cursor from lam file
+ * Margin colors of plot area can be customized and reset
+ * Find and replace dialog for control and structure file editors
+ * Plot atomic form factors with Debye-Waller factors
+ * Text blocks
+ * New dockwindow to show covergence progress Rwp and Rexp
+ * major internal code optimizations
+
+3.8.0
+ * new graph export filter for XmGrace
+ * new dialog to plot atomic form factors
+ * improved compatibility of exported CIF files
+ * writes SampleID as a comment to the SAV file
+ * plot instrument profile shape
+ * support for learnt profiles
+ * export of HKL lines to ASCII files
+ * new implementation of BGMN backend autoconfiguration
+
+3.7.0
+ * improved CIF and XML import
+ * fixed bug with wrong unit cell angles in CIF export
+ * F5 and F6 change refinement of SPHAR stepwise down or up
+ * fixed export to TexturePlus format
+ * new layout for AddRemove Dialog
+ * open "Add File" dialog of Structure import dialog in correct folder
+ * HTML report output
+ * export of CIF and CELL files
+ * selection dialog for global and local goal export
+ * mark global goals below limit of quantification and detection
+ * add internal standard quantification
+
+3.6.0
+ * activate scan and scale active scan with the mouse
+ * 2theta shift due to sample height displacement is applied to graphs
+ * Improved autodetection of BGMN configuration
+ * New action "Save all text files in all projects" added
+ * R and Chi2 values are exported to CSV
+ * revamped preferences dialog
+ * major improvement of FullProf structure and device database
+ * new setting to manage quantification GOALs
+ * new layout for add/remove phase dialog
+ * support for multiple structure database directories
+ * "apply control file" feature also copies structure and device files
+ * create a zip archive of a project for backup and sharing purpose
+ * new shortcuts to toggle refinement of parameters (F5 and F6)
+ * fixed graph update interval on Windows 7
+ * new function to follow active batch refinement
+ * checksums for refinement presets
+ * fixed progress bar in editinstrument dialog
+
+3.5.0
+ * support for old Bruker BRML file format (uncompressed single XML file)
+ * new cursor to show spectral lines for Ka1, Ka2, Kb, and tungsten contamination lines
+ * import ICDD XML structure files
+ * new menu "Project" in menu bar
+ * new short cuts for actions (remove phase, open/close str files)
+ * removed option to show/hide texture in tooltips
+ * create presets from existing refinements
+ * completely new storage of reference hkl lines
+ * new zooming and dragging actions
+ * show grid lines
+ * fixed scales of non-linear y axis (sqrt, log10)
+ * removed coordinate conversion from CIF import
+ * tooltip (shift) and help menu for mouse and keyboard actions
+ * improved context help
+
+3.4.0
+ * progress dialog for instrument profile calculation is closed after completion
+ * show all phase contributions (hkl ticks, patterns, legend) by default
+ * mouse menu to add FCF, RES etc. output files from STRUC file entries
+ * create instrument template files from instrument configuration dialog
+ * create instrument configuration files from raw data files
+ * refinement presets
+ * minor GUI improvements
+
+3.3.1
+ * fixed weired GUI behaviour in Plot Options window
+ * fixed severe bug in chemistry calculation
+ * using Alt+LeftMouseButton to drag reference lines (in addition to middle mouse button)
+
+3.3.0
+ * Option to restore session
+ * Non-modal cifimport dialog
+ * New implementation of spacegrp.dat dialog
+ * Fixed a problem with selecting the wrong project after closing one
+ * Improved insert and delete of double STRUC entries
+ * Option to use counts per second instead of counts
+ * Ctrl + DoubleClicke dumps coordinates to refinement output console
+ * Moved "Copy control file" button to different toolbar
+ * New Icons for various actions
+ * Insert and remove individual scans to/from open projects
+ * Stacking of scans
+ * New export filter for Fityk
+ * Context menu to fix/release parameters for refinement
+ * Context menu to open files from control file
+ * Added "Recent Files" menues
+ * Calculation of oxide composition
+ * Removed Qt4 support
+ * Internal format converted to QVector
+
+3.2.0
+ * DIA files can be used as input files
+ * fixed printing of graphs on OS X
+ * major improvements for Bruker RAW version 4 files
+ * support for STOE Raw files (experimental)
+ * improved format of results exported to CSV
+ * new export filter for Gnuplot
+ * new icons and toolbar layout
+ * new functions File -> Open/Close all str files
+ * new function to search and index new structure files
+ * writing log file on OS X
+ * show/hide phase contributions and hkl indices was improved
+ * improved auto-recognition of VAL[]= files
+ * run batch refinement on selected projects only
+ * improved error handling
+ * new output tables for global and local parameters and goals
+ * cursor showing noise amplitude (hold Shift key)
+ * dialog to enter precise zoom range
+ * support for sub-directories in STR and DEV file database
+ * new option to change size of scan symbols
+ * new option to switch off automatic scan conversion
+ * fixed Save As function for text files to load the new file name
+ * fixed infinite loop in case of non-existent STR and Device file directories
+ * fixed asymmetric cross symbols for scans
+ * point symbols follow the setting "symbol size"
+ * fixed crash with preferences dialog
+ * fixed bug in STR File Handling
+ * fixed bug in copyControlFile when convertToXy is deactivated
+ * fixed flickering of left y axis
+ * performance improvements
+
+3.1.3
+ * Fixes a crash when closing the preferences dialog
+
+3.1.2
+ * Fixes a bug with scan files containing spaces or umlauts in the file name
+
+3.1.1
+ * fixes a bug with file names containing spaces
+
+3.1.0
+ * Mac OS X port
+ * syntax highlighting
+ * improved Bruker V3 and V4 import
+ * auto-detect whether a default control file must be created in Append Phase dialog
+ * context help dialog
+ * shows hkl indices in the correct color
+ * shows reference hkl positions
+ * double-click to identify strong peaks
+ * indicates files containing unsaved data
+ * option to use custom wavelength
+ * auto-detect number of cpu cores
+ * shows Rwp, Rext and Chi^2 in summary table
+ * generates bitmap thumbnails
+ * removed flickering of graph files during refinement
+ * rendering graphs to PNG and SVG files
+ * "save file as" function for graphs added
+ * fixed issue with font sizes on printouts and exported graphs
+ * shows texture value of hkl indices (if available)
+ * draws a line in the center of the difference curve
+ * shows correct intensities of the difference curve in the status bar
+ * shows progress and status in a system tray icon
+ * various new configuration options
+ * various code optimizations
+
+3.0.0
+ * new import filters for Philips RD/UDF, Reynolds PLT, TexturePlus OVL/XYP, Stoe PRO
+ * new import filters for Rigaku DAT/RAW/BIN
+ * new import filters for MDI Jade XML/MDI
+ * new import filters for Bruker RAW V1/2/3/4 (V4 highly experimental)
+ * new import filter for Bruker BRML
+ * new export filter for UDF, TexturePlus XYP
+ * new dialog to show/hide individual scans
+ * uses double precision to avoid rounding errors
+ * export and batch conversion for graph files
+ * support for multi-column free-format scans (*.xy)
+ * support for header lines in free-format scans (*.xy)
+ * option to use a custom profile function, custom GOALs, and custom correction for Micro-absorption in BGMN structure files
+ * shows text cursor positions in the status bar
+ * shows hkl positions in diagram (if *.OUT file is available)
+ * menu entry to show/hide legend
+ * shows crosshair cursor when holding control key
+ * new layout of BGMN Phase Append dialog
+ * finds MakeGeq, Geomet, Gertest, Output executables automatically after choosing BGMN executable file
+ * shows correct axis lables for Omega scans
+ * linear, log10, and sqrt scaling for y-axis
+ * configure handling of multi-scan files (individual, summed, average intensities)
+ * use dock widget for output console
+ * Converter for CIF files to STR files
+ * Copy Control file only to selected projects, not to all
+ * Show/hide individual phases
+ * ported to Qt5
+ * various bug fixes and code optimizations
+
+2.3.2
+ * show individual phase contributions to calculated pattern
+ * new dialog to edit BGMN instrument configuration files
+ * new dialogs to remove phase for BGMN and Fullprof
+ * support for gertest and peak profiles
+ * dialog to browse SPACEGRP.DAT
+ * option to overwrite existing STR files in Append Phase dialog
+ * shows d-spacing in status bar
+ * rewrite of automatic file name handling in BGMN SAV files
+ * import filter for Seifert VAL files
+ * linux version: correct file encoding
+ * creates instrument template file if none is found
+ * phase append dialog for Fullprof fixed
+ * new implementation of Fullprof structure and instrument database
+ * various bug fixes
+
+2.3.1
+ * new layout of Preferences dialog
+ * improved autodetection of executables and databases for BGMN
+ * launch a browser with BGMN homepage from Help menu
+ * minor bug fixes
+
+2.3.0
+ * running output.exe after finishing bgmn.exe
+ * batch processing
+ * toolbar layout configurable
+ * action Open Graph re-added to File menu
+ * support for MakeGEQ and Geomet
+
+2.2.3
+ * auto-detect Device and Structure DB on Windows (assume profex.exe directory)
+ * parse output when complete project is loaded
+ * use html table for quantification summary (BGMN only)
+ * reset the color of the graph to white for printing
+ * apply Brindley correction for summary (BGMN only)
+ * fix text of some icons
+ * change mP to Mean GEWICHT (BGMN only)
+ * report XrayDensity (BGMN only)
+ * input filter for Rigaku DIF scans
+ * help/about window
+ * command line parameter to open files
+ * drag'n'drop to add files
+
+2.2.1
+ * fixed crash with invalid PCR files
+ * some code cleanup
+ * fixed crash with emtpy scan files
+ * changed default project type to BGMN
+ * changed default printing line width
+
+2.2.0
+ * printing implemented

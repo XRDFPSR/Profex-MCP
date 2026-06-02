@@ -1,0 +1,3441 @@
+<helpdata>
+<flagdef>
+
+<flag>
+<term>
+STRUC[i]=
+</term>
+<name>
+BGMN
+</name>
+</flag>
+
+<flag>
+<term>
+STRUC[i]=
+</term>
+<name>
+BGMNassumed
+</name>
+</flag>
+
+<flag>
+<term>
+GOAL[i]=
+</term>
+<name>
+BGMNassumed
+</name>
+</flag>
+
+<flag>
+<term>
+PARAM[i]=
+</term>
+<name>
+BGMNassumed
+</name>
+</flag>
+
+<flag>
+<term>
+LIST=
+</term>
+<name>
+BGMNassumed
+</name>
+</flag>
+
+<flag>
+<term>
+OUTPUT=
+</term>
+<name>
+BGMNassumed
+</name>
+</flag>
+
+<flag>
+<term>
+DIAGRAMM=
+</term>
+<name>
+BGMNassumed
+</name>
+</flag>
+
+<flag>
+<term>
+R=
+</term>
+<name>
+GEOMET
+</name>
+</flag>
+
+<flag>
+<term>
+STANDARDPAR=
+</term>
+<name>
+VERZERRassumed
+</name>
+</flag>
+
+<flag>
+<term>
+GEOMETRY=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+FocusH=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+FOCUSW=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+HSlitR=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+HSlitW=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+RoundSlitR=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+RoundSlitD=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+VSlitR=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+VSlitH=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+PColl=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+SColl=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+SamplD=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+SamplH=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+SamplW=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+DetW=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+
+<flag>
+<term>
+DetH=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+MonR=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+MonH=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+zweiTheta[i]=
+</term>
+<name>
+GEOMETassumed
+</name>
+</flag>
+
+<flag>
+<term>
+WSTEP=
+</term>
+<name>
+MAKEGEQassumed
+</name>
+</flag>
+
+<flag>
+<term>
+D=
+</term>
+<name>
+MAKEGEQassumed
+</name>
+</flag>
+
+<flag>
+<term>
+T=
+</term>
+<name>
+MAKEGEQassumed
+</name>
+</flag>
+
+
+
+</flagdef>
+
+<helpitems>
+
+<item>
+<flag>
+</flag>
+<helpID>
+SAVCOMMENT
+</helpID>
+<content>
+This line is a comment. Comments in control files <code>*.sav</code> start
+with a percent sign % in the first column. Logically, they are
+attached to the following line. This means:
+<ul>
+<li>If the program deletes the following data line for some reason,
+the comment will be deleted too.
+<li>Multiple comments in sequence are not allowed, only the last comment
+will be attached to the next following data line.
+<li>comments at the file end without following data lines will be ignored.
+</ul>
+</content>
+<seeAlso>
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+allBGMNvariables:
+</helpID>
+<content>
+BGMN is controlled by a task-specific file with the extension *.sav.
+This file must contain one assignment per line, at least.
+</content>
+<seeAlso>
+VAL[i]=
+STRUC[i]=
+STRUCOUT[i]=
+SimpleSTRUCOUT[i]=
+OUTPUT=
+VERZERR=
+GEQ=
+DIAGRAMM=
+PROTOKOLL=
+LIST=
+GOAL[i]=
+PARAM[i]=
+EPS1
+EPS2
+EPS3
+EPS4
+PDBOUT[i]=
+RESOUT[i]=
+FCFOUT[i]=
+RU=
+UNT=
+UNTC=
+DDM=
+POL=
+ONLYISO=
+ITMAX=
+WMIN=
+WMAX=
+CUT[i]=
+LAMBDA=
+SYNCHROTRON=
+NEUTRONS=
+STEPWIDTH=
+NTHREADS=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+allVERZERRvariables:
+</helpID>
+<content>
+VERZERR is controlled by a task-specific file with the extension 
+<code>*.sav</code>.
+It must contain one assignment per line, at least.
+</content>
+<seeAlso>
+VAL[i]=
+VERZERR=
+POL=
+GSUM=
+EPSILON=
+STANDARDPAR=
+LAMBDA=
+SYNCHROTRON=
+NEUTRONS=
+STEPWIDTH=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+allGEOMETvariables:
+</helpID>
+<content>
+GEOMET is controlled by a task-specific file with the extension 
+<code>*.sav</code>.
+It must contain one assignment per line, at least.
+</content>
+<seeAlso>
+VERZERR=
+GEOMETRY=
+TubeTails=
+GSUM=
+R=
+FocusH=
+FocusW=
+FocusS=
+HSlitR=
+HSlitW=
+RoundSlitD=
+RoundSlitR=
+VSlitR=
+VSlitH=
+TSlitH=
+TSlitR=
+PColl=
+PCollA=
+SColl=
+SCollA=
+SamplD=
+SamplH=
+SamplW=
+SamplWavyness=
+DeltaOmega=
+AirScat=
+DetW=
+DetH=
+DetArrayW=
+MonR=
+MonH=
+FocusA=
+EPSG=
+zweiTheta[i]=
+SSlitW=
+SSlitH=
+SSlitR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+allMAKEGEQvariables:
+</helpID>
+<content>
+MAKEGEQ is controlled by a task-specific file with the extension 
+<code>*.sav</code>.
+It must contain one assignment per line, at least .
+</content>
+<seeAlso>
+VERZERR=
+EPS1
+EPS2
+EPS3
+WMIN=
+WMAX=
+D=
+T=
+R=
+GEQ=
+zweiTheta
+WSTEP=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+VAL[i]=
+</helpID>
+<content>
+<code>VAL[i]=</code> assigns the file(s) containing the raw pattern data.
+BGMN assumes patterns in free XY[E] format, in general: Leading comments
+starting with # will be ignored, all following lines may contain
+<ol>
+<li>angle 2 Theta
+<li>intensity (cps)
+<li>(optionally) esd.
+</ol>
+If esd is omitted, it will be calculated as the square root of the intensity.
+<p>
+Special file formats are chosen depending from the filename suffix:
+<ul>
+<li><b>*.val</b> files will be assumed to be in the APX file format of the
+firm SEIFERT FPM.
+<li><b>*.rd</b> files with be assumed to be in an old PHILLIPS format. In this
+case, the variable STEPWIDTH may be uses to assing a non-raster stepwidht
+(STEPWIDTH != n*0.005)of the pattern data (e.g. PHILLIPS format in conjunction
+with a scanning PSD from SIEMENS).
+<li><b>*.raw</b>files will be assumed to be in an old SIEMENS format.
+<li><b>*.gsa</b>files will be assumed in GSAS format, restricted to equidistant
+angular steps (both the variants STD and ESD of the GSAS data format).
+</ul>
+Assignments must start with <code>VAL[1]=...</code>, the next file
+must be assigned with <code>VAL[2]=...</code> and so on. Data are not 
+allowed to be
+smoothed, K<sub>alpha</sub> stripped, background corrected or corrected in 
+any other way. The files must contain the original measured data.
+</content>
+<seeAlso>
+allBGMNvariables:
+STEPWIDTH=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+STRUC[i]=
+</helpID>
+<content>
+<code>STRUC[i]=</code> defines the structure(s) as to be refined by BGMN.
+Each structure must be defined in a file with the extension <code>*.str</code>.
+For more details, open a new structure in the editor and use help.
+</content>
+<seeAlso>
+allBGMNvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+STRUCOUT[i]=
+</helpID>
+<content>
+In contrary to <code>STRUC[i]=</code>, BGMN writes a result structure 
+file to the file given by <code>STRUCOUT[i]=</code>. In particular, 
+all refined parameter values are set as initial values.
+</content>
+<seeAlso>
+allBGMNvariables:
+SimpleSTRUCOUT[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+SimpleSTRUCOUT[i]=
+</helpID>
+<content>
+Generates "Simple Structure" file output. These structure files
+will contain no atomic positions data. Instead of, a complete list
+of <code>F</code> values depending on <code>h k l</code> (and 
+<code>iref</code> for compatibility) will be provided.
+<p>
+In case you want to convert a LeBail refinement (without atomic positions)
+into a Simple Structure, you must provide non-zero values for 
+<code>density</code> and <code>GEWICHT</code> in the input structure file. 
+<code>GEWICHT</code> should refer to the true value as expected for 
+quantitative analysis. E.g. for a 50:50 mixture of an internal standard and 
+an unknown phase, you should place an assignement of the value of the 
+internal standard's <code>GEWICHT</code> inside the unknown phase.
+</content>
+<seeAlso>
+allBGMNvariables:
+STRUCOUT[i]=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+OUTPUT=
+</helpID>
+<content>
+The name of the result peak parameter file is defined by 
+<code>OUTPUT=...</code>.
+If not given, it defaults to the SAV file name. The extension
+<code>*.par</code> will be used.
+</content>
+<seeAlso>
+allBGMNvariables:
+STANDARDPAR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+VERZERR=
+</helpID>
+<content>
+<code>VERZERR=</code> sets the geometry shape definition file, which may be 
+constructed either by GEOMET (raytracing) or by VERZERR (measurement of 
+standard profile lines). If not given, it may result from the entry 
+<code>GEQ=...</code>.
+The standard extension of this file is <code>*.ger</code>.
+<p>
+In particular, this entry may hold an expression depending from 
+<code>zweiTheta</code> (or <code>THETA</code>). In this case, only 
+<b>one</b> squared lorentzian will
+be assumed as geometric part of the profile shape function.
+The value of this file gives the width parameter (=squared standard deviation)
+of this squared lorentzian in the <code>THETA</code> scale in radian. 
+The intensity will be one, the zero point will be shifted according to 
+<code>EPS1...EPS4</code>.
+<p>
+If not defined at all, a delta function like geometric shape function
+will be assumed (standard deviation=zero)
+</content>
+<seeAlso>
+allBGMNvariables:
+GEQ=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+GEQ=
+</helpID>
+<content>
+<code>GEQ=</code> gives the interpolated geometric shape file, which
+results (in general) from a run of the MAKEGEQ program. If not
+given, its name defaults from the <code>VERZERR=</code> entry. The file
+name extension is <code>*.geq</code>
+</content>
+<seeAlso>
+VERZERR=
+allBGMNvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+DIAGRAMM=
+</helpID>
+<content>
+<code>DIAGRAMM=</code> must be defined if you wish to observe the iteration 
+progress. Creates a file <code>*.dia</code> containing the raw data for 
+plotting the diagram and may also be used for external plotting from 
+other programs.
+</content>
+<seeAlso>
+allBGMNvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+PROTOKOLL=
+</helpID>
+<content>
+<code>PROTOKOLL=</code> is a logical switch. If defined as 
+Y(es), y(es), J(a), j(a), the iteration
+progress will be included into the BGMN protocol. One line per step.
+</content>
+<seeAlso>
+allBGMNvariables:
+LIST=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+LIST=
+</helpID>
+<content>
+<code>LIST=</code> gives the results of the BGMN run:
+<ul>
+<li>refined parameters
+<li>results of the <code>GOAL</code>s
+<li>information about anisotropies
+</ul>
+etc.<br>
+If not given, it will be written to the protocol window.
+</content>
+<seeAlso>
+allBGMNvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+GOAL[i]=
+</helpID>
+<content>
+<code>GOAL[i]=</code> defines a result value. In several cases (e.g. 
+quantitative phase analysis)
+the results are not the parameters itself, but some
+functions of the refined parameters. By setting this
+function as the right side of a <code>GOAL[i]=...</code> assignment,
+the value of this function <b>plus</b> its random error
+resulting from counting statistics will be calculated.
+<p>
+<code>GOAL</code> numbers must start with one (<code>GOAL[1]=...</code>) and 
+so on.
+</content>
+<seeAlso>
+allBGMNvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+PARAM[i]=
+</helpID>
+<content>
+<code>PARAM[i]=</code> defines a global refined parameter:
+<pre>
+PARAM[i]=start_lowerlimit^upperlimit
+</pre>
+BGMN needs for a start value <code>start</code>.
+BGMN allows the definition of hard lower (<code>_lower</code>)
+and upper (<code>^upper</code>) limits. Limits are static, this
+means they cannot be refined itself.
+<p>
+<code>PARAM</code> numbers must start with one (<code>PARAM[1]=...</code>) 
+and so on.
+</content>
+<seeAlso>
+allBGMNvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+EPS1
+</helpID>
+<content>
+<code>EPS1</code> is the zero point shift of the pattern, in general. May 
+be refined within BGMN
+as a global parameter. Defines the zero point shift of <b>one</b> Theta
+in radians. Attention: Usually, the x axis of the pattern is <b>two</b>
+Theta.
+</content>
+<seeAlso>
+allBGMNvariables:
+PARAM[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+EPS2
+</helpID>
+<content>
+<code>EPS2</code> is the specimen out of axis shift of the pattern 
+(sample displacement errror). 
+May be refined within BGMN as a global parameter. 
+<ul>
+<li><code>EPS2*sin(Theta)</code> for transmission geometry
+<li><code>EPS2*cos(Theta)</code> otherwise, e.g. for BRAGG-BRENTANO geometry
+</ul>
+gives the pattern shift in <b>one</b> Theta
+in radians. Attention: Usually, the x axis of the pattern is <b>two</b>
+Theta.
+</content>
+<seeAlso>
+allBGMNvariables:
+PARAM[i]=
+GEOMETRY=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+EPS3
+</helpID>
+<content>
+<code>EPS3</code> is the sample trancparency shift of the pattern. Useful 
+in cases without
+exact knowledge of the sample's penetration depth. 
+May be refined within BGMN as a global parameter.
+<pre>
+EPS3*sin(2Theta)
+</pre>
+gives the penetration depth shift of the pattern for <b>one</b> Theta
+in radians. Attention: Usually, the x axis of the pattern is <b>two</b>
+Theta.
+</content>
+<seeAlso>
+allBGMNvariables:
+PARAM[i]=
+T=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+EPS4
+</helpID>
+<content>
+<code>EPS4</code> is a first idea of a divergency shift of the pattern. 
+Useful in cases without raytraced/learnt geometry shape function, e.g. for 
+synchrotron data. May be refined within BGMN as a global parameter.
+<ul>
+<li><code>EPS4*cot(2Theta)</code> for 2 Theta &less; 90 degree,
+<li>zero above 90 degree
+</ul>
+gives the divergency shift.
+</content>
+<seeAlso>
+allBGMNvariables:
+PARAM[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+PDBOUT[i]=
+</helpID>
+<content>
+<code>PDBOUT[i]=</code> gives the refined atomic coordinates in the PDB 
+(<b>P</b>rotein <b>D</b>ata <b>B</b>ase) of the <code>i</code>-th 
+structure as defined by
+<code>STRUC[i]=</code>. May be used for graphic representation of the refined 
+atomic positions using RasMol (Sayle 1996). <b>Attention:</b> There are 
+different versions of RasMol for UNIX and Winxx, which differ in the 
+dependency of cartesian coordinates from lattice parameters.
+</content>
+<seeAlso>
+allBGMNvariables:
+STRUC[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+RESOUT[i]=
+</helpID>
+<content>
+<code>RESOUT[i]=</code> gives the refined atomic coordinates in the ShelX 
+(<code>*.res</code>) format for the <code>i</code>-th structure as defined by 
+<code>STRUC[i]=</code>.
+<p>
+Due to the nature of calculation within BGMN (different from other
+crystallographic programs) all spacegroups are reduced to No. 1
+(non-centrosymmetric) or No. 2 (centrosymmetric) in this output.
+</content>
+<seeAlso>
+allBGMNvariables:
+STRUC[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+FCFOUT[i]=
+</helpID>
+<content>
+<code>FCFOUT[i]=</code> gives the observed and calculated structure 
+amplitudes |F| plus phase angles for the <code>i</code>-th phase in 
+ShelX format No. 5 (see Shelx97 manual). Cited from this manual:
+<p>
+Write h, k, l, Fo, Fc and f (phase angle in degree)...
+This is indented for input to some standard macromolecular FFT
+programs (such as W. Furey's PHASES program), thereby providing
+a possible route to a graphical display of the electron density.
+<p>
+All |F|s  and the phase angles are corrected for dispersion. This means:
+They really are fourier coefficients of electron density maps.
+See ShelX manual.
+<p>
+This output is disabled if the <code>i</code>-th phase uses the
+"user calculated structure amplitudes" feature by defining <code>FMult</code>
+it its <code>*.str</code> file.
+</content>
+<seeAlso>
+allBGMNvariables:
+STRUC[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+RU=
+</helpID>
+<content>
+<code>RU=</code> sets the parameter count of the background polynomial manually.
+In general, BGMN as well as VERZERR chose this number automatically.
+This may fail in special cases, then try setting this value by hand.
+<p>
+Other methods for refining patterns with complicated background are
+<ul>
+<li>Using a measured pattern as a scaled background: <code>UNT=</code>
+<li>Using a measured pattern as an unscaled background: <code>UNTC=</code>
+<li>The Derivative Difference Minimization (DDM) Method: <code>DDM=Y</code>
+</ul>
+</content>
+<seeAlso>
+allBGMNvariables:
+UNT=
+UNTC=
+DDM=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+RU=
+</helpID>
+<content>
+<code>RU=</code> sets the parameter count of the background polynomial manually.
+In general, BGMN as well as VERZERR chose this number automatically.
+This may fail in special cases, then try setting this value by hand.
+</content>
+<seeAlso>
+allVERZERRvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+UNTC=
+</helpID>
+<content>
+<code>UNTC=</code> gives some predefined background diagram. For possible
+formats see <code>VAL[i]</code>.
+This diagramm will be added to the background polynomial. May be used, 
+for example, in cases of known amorphous contamination of the specimen.
+<p>
+Other methods for refining patterns with complicated background are
+<ul>
+<li>Using a measured pattern as a scaled background: <code>UNT=</code>
+<li>User-defined degree of the background polynomial: <code>RU=</code>
+<li>The Derivative Difference Minimization (DDM) Method: <code>DDM=Y</code>
+</ul>
+</content>
+<seeAlso>
+allBGMNvariables:
+UNT=
+DDM=
+RU=
+VAL[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+UNT=
+</helpID>
+<content>
+<code>UNT=</code> gives some predefined background diagram. For possible 
+formats see <code>VAL[i]</code>.
+This diagramm will be multiplied by an additionally refined positive parameter
+and added to the background polynomial. May be used, for example,
+in cases of known amorphous contamination of the specimen.
+<p>
+Other methods for refining patterns with complicated background are
+<ul>
+<li>Using a measured pattern as an unscaled background: <code>UNTC=</code>
+<li>User-defined degree of the background polynomial: <code>RU=</code>
+<li>The Derivative Difference Minimization (DDM) Method: <code>DDM=Y</code>
+</ul>
+</content>
+<seeAlso>
+allBGMNvariables:
+UNTC=
+RU=
+DDM=
+VAL[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+DDM=
+</helpID>
+<content>
+Modulated background intensity may correlate with the intensities of Bragg
+reflections and in this way cause errorneous structural parameters. In some
+cases, defining of a complex background by a polynomial (large 
+<code>RU</code>) or using a measured diagram of the amorphous phase 
+(<code>UNT=...</code> or <code>UNTC=...</code>) does not solve the
+problem or is impossible for practical reasons. To deal with such cases,
+the Derivative Difference Minimization (DDM) method as described at
+<p>
+L. A. Solovyov<br>
+Full-profile refinement by derivative difference minimization<br>
+J. Appl. Cryst. <b>37</b> (2004), pp. 743-749
+<pre>
+http://www.geocities.com/l_solovyov/ddm.html
+</pre>
+was enabled within BGMN. Simply give the entry
+<pre>
+DDM=Yes
+</pre>
+and all will be done automatically. As inherent for this 
+method, no background is used at all (<code>RU=0</code> will be set 
+automatically). The default value is
+<pre>
+DDM=No
+</pre>
+</content>
+<seeAlso>
+allBGMNvariables:
+RU=
+UNT=
+UNTC=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+POL=
+</helpID>
+<content>
+<code>POL=</code> defaults to one. Must be set in cases of secondary graphite 
+monochromators or synchrotron data. In the case of Cu K<sub>alpha</sub> 
+radiation and a secondary graphite monochromator it should be set to:
+<pre>
+pi==2*acos(0)
+POL=sqr(cos(26.6*pi/180))
+</pre>
+In other cases, the monochromator's angle is different from 26.6 degree.
+</content>
+<seeAlso>
+allBGMNvariables:
+allVERZERRvariables:
+LAMBDA=
+SYNCHROTRON=
+NEUTRONS=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+ONLYISO=
+</helpID>
+<content>
+<code>ONLYISO=</code> is a logical switch. If defined as 
+Y(es), y(es), J(a) or j(a);
+only the first (isotropic) part of the BGMN iteration is done.
+All anisotropies including preferred orientation correction models are not
+refined.
+<p>
+In special, <code>ONLYISO</code> may hold a numeric value. Then, the refinement
+will be cancelled if the relative progress is less than this value.
+</content>
+<seeAlso>
+allBGMNvariables:
+ITMAX=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+ITMAX=
+</helpID>
+<content>
+<code>ITMAX=</code> is the maximum number of iteration steps, 
+valid in any of the (maximum 4) refinement stages of BGMN.
+</content>
+<seeAlso>
+allBGMNvariables:
+ONLYISO=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+WMIN=
+</helpID>
+<content>
+<code>WMIN=</code> is the minimum angle in two Theta. All pattern points 
+below this angle are ignored.
+</content>
+<seeAlso>
+allBGMNvariables:
+allVERZERRvariables:
+WMAX=
+CUT[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+WMAX=
+</helpID>
+<content>
+<code>WMAX=</code is the maximum angle in two Theta. All pattern points 
+above this angle are ignored.
+</content>
+<seeAlso>
+allBGMNvariables:
+allVERZERRvariables:
+WMIN=
+CUT[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+CUT[i]=
+</helpID>
+<content>
+<code>CUT[i]=</code> defines a cutoff angular range in two Theta:
+<pre>
+CUT[i]=low:high
+</pre>
+All pattern points inside this range are ignored. Must be start
+with <code>CUT[1]=...</code> and so on.
+</content>
+<seeAlso>
+allBGMNvariables:
+allVERZERRvariables:
+WMAX=
+WMIN=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+LAMBDA=
+</helpID>
+<content>
+<code>LAMBDA=</code> may (or must) be specified for manually setting the 
+wavelength/wavelength
+distribution. Specifies the combination of a <code>*.lam</code> and
+a <code>*.ano</code> files. The first gives the wavelength distribution
+as a sum of lorentzians, the second the anomalous dispersion for this
+wavelength. In particular, <code>LAMBDA</code> may specify a numeric value.
+Thus, the wavelength itself in <b>Nanometers</b> is specified.
+Its distribution will be assumed as a delta-function (zero width parameter).
+In this case, no anomalous dispersion will be defined. 
+Additionally, <code>my</code> will set to zero for every phase (no brindley
+correction).
+</content>
+<seeAlso>
+allBGMNvariables:
+allVERZERRvariables:
+SYNCHROTRON=
+NEUTRONS=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+SYNCHROTRON=
+</helpID>
+<content>
+<code>SYNCHROTRON=</code> does same as <code>LAMBDA=</code>. In addition, 
+some internal behaviour is changed in assuming this pattern is a synchrotron
+measured one (no <code>TubeTails</code>, narrow lines and so on).
+In case you give a number, no anomalous dispersion will be defined. 
+Additionally, <code>my</code> will set to zero for every phase (no brindley
+correction).
+</content>
+<seeAlso>
+allBGMNvariables:
+allVERZERRvariables:
+LAMBDA=
+NEUTRONS=
+TubeTails=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+NEUTRONS=
+</helpID>
+<content>
+<code>NEUTRONS=</code> does same as <code>LAMBDA=</code>. In addition,
+some internal behaviour is changed in assuming this pattern is a neutron CW
+measured one (no <code>TubeTails</code>, narrow lines and so on).
+Additionally, <code>my</code> will set to zero for every phase (no brindley
+correction).
+</content>
+<seeAlso>
+allBGMNvariables:
+allVERZERRvariables:
+LAMBDA=
+SYNCHROTRON=
+TubeTails=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+STEPWIDTH=
+</helpID>
+<content>
+Some of the files formats as possible for pattern input are not
+able to specify complicated stepwidths. Such stepwidths may, for
+example, result from linear position sensitive detectors (PSDs).
+In such case, simply specify
+<pre>
+STEPWIDTH=0.017538
+</pre>
+for example. This gives the step width in two Theta (the usual
+x-axis of the pattern) and will be used instead of the value
+specified in the pattern file.
+</content>
+<seeAlso>
+allBGMNvariables:
+allVERZERRvariables:
+VAL[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+VAL[i]=
+</helpID>
+<content>
+<code>VAL[i]=</code> gives the patterns of the reference material 
+(SRM660a emphasized). For best precision, identic angular ranges should be
+measured multiple times and the resulting patterns given to multiple
+<code>VAL[i]</code>. VERZERR accumulates such patterns, thereby a single, 
+high-precision pattern will be constructed.
+</content>
+<seeAlso>
+allVERZERRvariables:
+allMAKEGEQvariables:
+EPSILON=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+VERZERR=
+</helpID>
+<content>
+The deconvoluted geometric shapes will be written to the fileas set by
+<code>VERZERR=</code>, default extension is <code>*.ger</code>
+</content>
+<seeAlso>
+allVERZERRvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+GSUM=
+</helpID>
+<content>
+<code>GSUM=</code> is a logical switch. If defined as 
+Y(es), y(es), J(a) or j(a);
+the intensities of the peaks in the deconvoluted pattern will be used
+for variable-intensity deconvoluted geometric shapes. Useful for example
+while using variable slit dimension etc.
+</content>
+<seeAlso>
+allVERZERRvariables:
+allMAKEGEQvariables:
+POL=
+VERZERR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+EPSILON=
+</helpID>
+<content>
+<code>EPSILON=</code> defines the precision as to be reached. 
+Defaults to 0.007.
+The larger this value, the less squared lorentzians will be used
+in the resulting <code>*.ger</code> file and the less is the
+computing time.
+</content>
+<seeAlso>
+allVERZERRvariables:
+allMAKEGEQvariables:
+VERZERR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+VERZERRassumed
+</flag>
+<helpID>
+STANDARDPAR=
+</helpID>
+<content>
+<code>STANDARDPAR=</code> gives the <code>*.par</code> file containing the 
+natural line widths of the standard material (SRM660a emphasized).
+<p>
+<b>Attention</b>: Take care to unify all multiple reflectios.
+Unequal crystallographic directions giving identic 1/d should be unified
+to one line in this file.
+</content>
+<seeAlso>
+allVERZERRvariables:
+allMAKEGEQvariables:
+OUTPUT=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+VERZERR=
+</helpID>
+<content>
+Raytracing results will be written to the file (<code>*.ger</code> 
+extension) as set by <code>VERZERR=</code>. The results are parametrized 
+as sums of squared lorentzians.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+GEQ=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+GEOMETRY=
+</helpID>
+<content>
+<code>GEOMETRY=</code>describes the diffraction geometry. Possible values are:
+<dl>
+<dt><code>REFLEXION</code>
+<dd>for reflection geometry,
+<dt><code>TRANSMISSION</code>
+<dd>for planar transmission geometry,
+<dt><code>CAPILLARY</code>
+<dd>for capillary geometry.
+</dl>
+If not set, the default value <code>REFLEXION</code> is used (common
+Bragg-Brentano geometry):
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+TubeTails=
+</helpID>
+<content>
+<h1>Tube Tails and size/strain estimation</h1>
+Since the time of our first usage of the fundamental parameters profile model,
+our measurements are disturbed by so-called "tube tails". Tube tails mean:
+A small part of the X-rays emitted by the tube originates not inside the
+nominal focus, but up to 1 cm outside the focus. This means 1 mm equatorial
+broadening towards both sides of the optical focus. If not corrected,
+this tube tails may totally disturb the profile shapes calculated by 
+fundamental parameters. See the following figure:
+<p>
+<img src="images/fokus3.gif">
+</p>
+This figure shows tube tails of three different tubes operating with identic
+current/voltage as measured with a 40&micro;m slit at sample position plus
+a 30&micro;m receiving slit. All tubes were long fine focus types
+(12<code>x</code>0.04mm<sup>2</sup> optical focus). The AEG FK61 tube was at 
+4500 hours life stage, the Thomson FK61/Siemens KFLCu2K tubes were new. 
+KFLCu2K is a brand new ceramic type. Maximum intensities are 5500...7000 cps. 
+Diffractometer was an XRD7 with 175mm radius.
+<p>
+Learnt profile shapes include this tube tails as part of the geometric
+function.
+<p>
+The tube tails depend on
+<ul>
+<li>Manufacturer
+<li>Tube type/specimen
+<li>Current/voltage
+<li>Life stage
+<li>Take-off angle of the X-rays (usually 6&deg;)
+</ul>
+of the tube.
+<p>
+<pre>
+TubeTails=...
+</pre>
+simply gives a file containing the measured tube tails.
+You may use the same file format as for the
+<code>VAL[i]=</code> entry for measurement data input.
+<p>
+For explanation, we show the measurement of SRM 660 standard (LaB<sub>6</sub>)
+without (a) and with (b) tube tails correction for the used AEG tube:
+<p>
+<img src="images/aegab.gif">
+<p>
+We have measured the SRM 660 standard with two different tubes using 
+identic slits. For demonstration of remaining errors, we give results using
+two different Cu K<sub>alpha</sub>
+spectrae as cited from
+<ul>
+<li>H. Berger; X-ray Spectrom. <b>15</b> (1986) 241-243
+<li>G. H&ouml;lzer, M. Fritsch, M. Deutsch, J. H&auml;rtwig, E. F&ouml;rster;
+    Phys. Rev. A <b>56</b> (1997) 4554-4568
+</ul>
+These are the results:
+<p>
+<table>
+<tr>
+<td align=center>Cu K<sub>alpha</sub> from
+Berger (1986)<br>
+Diffractometer: XRD3000TT</td>
+<td align=center>Cu K<sub>alpha</sub> from
+H&ouml;lzer et al. (1997)<br>
+Diffractometer: XRD3000TT</td>
+<td align=center>Co K<sub>alpha</sub> from
+ibid.<br>Diffractometer: URD6</td>
+</tr>
+<tr>
+<td align=center>
+<table border=1>
+<tr>
+<td align=center>Tube type</td>
+<td align=center>AEG</td>
+<td align=center>Rudolstadt</td>
+</tr>
+<tr><td colspan=3 align=center><b>Without Tube Tails correction</b></td></tr>
+<tr>
+<td align=center>size/nm</td>
+<td align=center>324(4)</td>
+<td align=center>496(6)</td>
+</tr>
+<tr>
+<td align=center>strain <code>x</code>10<sup>6</sup></td>
+<td align=center>0</td>
+<td align=center>0</td>
+</tr>
+<tr><td colspan=3 align=center><b>With Tube Tails correction</b></td></tr>
+<tr>
+<td align=center>size/nm</td>
+<td align=center>1109(51)</td>
+<td align=center>995(38)</td>
+</tr>
+<tr>
+<td align=center>strain <code>x</code>10<sup>6</sup></td>
+<td align=center>156(7)</td>
+<td align=center>152(7)</td>
+</tr>
+</table>
+</td><td align=center>
+<table border=1>
+<tr>
+<td align=center>Tube type</td>
+<td align=center>AEG</td>
+<td align=center>Rudolstadt</td>
+</tr>
+<tr><td colspan=3 align=center><b>Without Tube Tails correction</b></td></tr>
+<tr>
+<td align=center>size/nm</td>
+<td align=center>308(4)</td>
+<td align=center>468(6)</td>
+</tr>
+<tr>
+<td align=center>strain <code>x</code>10<sup>6</sup></td>
+<td align=center>0</td>
+<td align=center>0</td>
+</tr>
+<tr><td colspan=3 align=center><b>With Tube Tails correction</b></td></tr>
+<tr>
+<td align=center>size/nm</td>
+<td align=center>884(31)</td>
+<td align=center>793(23)</td>
+</tr>
+<tr>
+<td align=center>strain <code>x</code>10<sup>6</sup></td>
+<td align=center>115(8)</td>
+<td align=center>105(8)</td>
+</tr>
+</table>
+</td><td align=center>
+<table border=1>
+<tr>
+<td align=center>Tube type</td>
+<td align=center>Philips</td>
+</tr>
+<tr><td colspan=2 align=center><b>Without TT corr.</b></td></tr>
+<tr>
+<td align=center>size/nm</td>
+<td align=center>610(10)</td>
+</tr>
+<tr>
+<td align=center>strain <code>x</code>10<sup>6</sup></td>
+<td align=center>0</td>
+</tr>
+<tr><td colspan=2 align=center><b>With TT corr.</b></td></tr>
+<tr>
+<td align=center>size/nm</td>
+<td align=center>944(34)</td>
+</tr>
+<tr>
+<td align=center>strain <code>x</code>10<sup>6</sup></td>
+<td align=center>96(10)</td>
+</tr>
+</table>
+</td></tr></table>
+<p>
+Both tables greatly illustrate the success of the tube tails correction.
+At our opinion, tube tails are the strongest fault of fundamental parameters
+profiles. Obviously, the uncertainties of different
+Cu K<sub>alpha</sub> spectrae overdominate
+the residual error of our fundamental 
+parameters approach. Otherwise, our measurements clearly shows the 
+imperfectness of line profile standards. The total error of our approach, 
+including  Cu K<sub>alpha</sub> 
+uncertainty, is much less compared to line standard imperfectness.
+<p>
+Obviously, the data given by Berger (1986) are somewhat to broad compared to 
+H&ouml;lzer et al. (1997). Data given by H&ouml;lzer et al. give comparable
+results for different anodes. Therefore, we recommend using the data given
+by H&ouml;lzer et al., which are available for Cr-, Fe-, Co- and Cu-anodes.
+<p>
+Using tube tails correction, one may think about
+using BGMN for line profile analysis (size/strain analysis).
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+VAL[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+GSUM=
+</helpID>
+<content>
+<code>GSUM=</code> is a logical switch. If set to 
+Y(es), y(es), J(a) or j(a); the raytracing
+process counts the successful and the failed ray paths separately.
+The ratio of successful to total ray path counts gives the
+total intensity <code>GSUM</code>, which will be marked up
+in the resulting <code>*.ger</code> file. Necessary for variable slits etc.
+In case some ray paths fail and <code>GSUM</code> is not set,
+GEOMET will give a warning hint.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+R=
+</helpID>
+<content>
+<code>R=</code> sets the diffractometer radius (distance of focus to axis and
+receiving slit to axis) in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+FocusH=
+</helpID>
+<content>
+<code>FocusH=</code> sets the axial x-ray tube focus dimension in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+FocusW=
+</helpID>
+<content>
+<code>FocusW=</code> sets the <b>optical</b> equatorial x-ray tube 
+focus dimension in mm. This differs from
+the <b>true</b> focus width (commonly around or below 1mm) by the
+sinus of the take-off angle (commonly 6&deg;). E.g. 0.1mm for a 1mm focus and 
+6&deg; take-off angle.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+FocusS=
+</helpID>
+<content>
+<code>FocusS=</code> sets the axial shift of the x-ray tube focus in mm. 
+For special purposes only.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+FocusH=
+FocusW=
+FocusA=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+HSlitW=
+</helpID>
+<content>
+<code>HSlitW=</code> sets the equatorial dimension (in mm) of a 
+primary equatorial divergency slit.
+May depend from the variable <code>zweiTheta</code> (two Theta) for
+definition of variable divergency angle (e.g. theta-compensating 
+divergence slit).
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+HSlitR=
+zweiTheta
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+HSlitR=
+</helpID>
+<content>
+<code>HSlitR=</code> sets the distance of the primary equatorial 
+divergency slit from the axis, in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+HSlitW=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+RoundSlitD=
+</helpID>
+<content>
+<code>RoundSlitD=</code> sets the diameter (in mm) of a round slit
+(a circular hole in a metal plate) in the primary beam.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+RoundSlitR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+RoundSlitR=
+</helpID>
+<content>
+<code>HSlitR=</code> sets the distance of a primary round slit from the axis,
+in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+RoundSlitD=
+</seeAlso>
+</item>
+
+%%
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+VSlitR=
+</helpID>
+<content>
+<code>VSlitR=</code> sets the distance of the primary axial 
+divergency slit from the axis, in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+VSlitH=
+PColl=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+VSlitH=
+</helpID>
+<content>
+<code>VSlitH=</code> sets the axial dimension of the primary 
+axial divergency slit, in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+VSlitR=
+PColl=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+PColl=
+</helpID>
+<content>
+<code>PColl=</code> should be set to the half of the acceptance angle 
+of the primary axial soller slits, in radian.
+Simply give the ratio
+<pre>
+PColl=distance/length
+</pre>
+where <code>distance</code> is the axial distance between neighboured soller
+plates and <code>length</code> is the (radial) length of the plates.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+VSlitH=
+VSlitR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+TSlitH=
+</helpID>
+<content>
+<code>TSlitH=</code> may be set for defining an additional axial ray 
+path limit near to the X-ray tube, in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+TSlitR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+TSlitR=
+</helpID>
+<content>
+<code>TSlitR=</code> sets the radial distance from the axis of the 
+additional ray path limit near to the X-ray tube, in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+TSlitH=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+PCollA=
+</helpID>
+<content>
+<code>PCollA=</code> may be set to the axial misfit angle of the 
+primary soller slits, in degree. For special purposes only.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+PColl=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SColl=
+</helpID>
+<content>
+<code>SColl=</code> is half of the acceptance angle of the secondary axial 
+soller slits, in radian. Simply give the ratio
+<pre>
+SColl=distance/length
+</pre>
+where <code>distance</code> is the axial distance between neighboured soller
+plates and <code>length</code> is the (radial) length of the plates.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SCollA=
+</helpID>
+<content>
+<code>SCollA=</code> may be set to the axial misfit angle of the 
+secondary soller slits, in degree. For special purposes only.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+SColl=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SamplD=
+</helpID>
+<content>
+<code>SamplD=</code> is:
+<ul>
+<li>In reflection and transmission geometry: Diameter of a round sample, in mm.
+<li>In capillary geometry: Axial dimension ot the capillary, in mm.
+</ul>
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+SamplH=
+SamplW=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SamplH=
+</helpID>
+<content>
+<code>SamplH=</code> is:
+<ul>
+<li>In reflection and transmission geometry: Axial dimension of a
+rectangular sample. Do not rotate a rectangular sample!
+<li>In capillary geometry: Axial dimension of the capillary.
+</ul>
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+SamplD=
+SamplW=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SamplW=
+</helpID>
+<content>
+<code>SamplW=</code> is the length (radial dimension) of a rectangular, 
+not rotated sample, in mm. Not used in capillary geometry.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+SamplD=
+SamplH=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SamplWavyness=
+</helpID>
+<content>
+<code>SamplWavyness=</code> may be set to the roughness of the sample 
+surface, in mm. For special purposes only.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+SamplH=
+SamplD=
+SamplW=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+DetW=
+</helpID>
+<content>
+<code>DetW=</code> is the equatorial dimension of the receiving slit, 
+in mm. May depend from
+the variable <code>zweiTheta</code> for definition of variable
+receiving slits.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+DetH=
+DetArrayW=
+MonR=
+MonH=
+zweiTheta
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+DetH=
+</helpID>
+<content>
+<code>DetH=</code is the axial receiving slit dimension. 
+<b>Caution in cases of a secondary beam monochromator:</b> 
+Mostly the axial dimension 
+of the monochromator crystal and <b>not</b> the axial receiving slit dimension
+is the axial ray path limit! In this case, MonH must be set accordingly.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+DetW=
+DetArrayW=
+MonR=
+MonH=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+DetArrayW=
+</helpID>
+<content>
+<code>DetArrayW</code> is the total equatorial dimension (in mm) of a 1D 
+array of detectors such as Vantec-1, Lynxeye (Bruker) or X'Celerator 
+(Panalytical). In such cases, <code>DetW</code> should be assigned the 
+equatorial dimension of a single detection unit and <code>DetH</code> the 
+axial dimension of the detection units.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+DetW=
+DetH=
+MonR=
+MonH=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+MonR=
+</helpID>
+<content>
+<code>MonR=</code> is the radial distance of the secondary 
+monochromator from the diffractometer axis, in mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+DetH=
+DetW=
+MonH=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+MonH=
+</helpID>
+<content>
+<code>MonH=</code> is the axial dimension of the secondary monochromator, 
+unit is mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+DetH=
+DetW=
+MonR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+FocusA=
+</helpID>
+<content>
+<code>FocusA=</code> may be set to the angular misfit 
+(rotation around the radial axis) of the X-ray focus, in
+degree. For special purposes only.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+FocusH=
+FocusW=
+FocusS=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+EPSG=
+</helpID>
+<content>
+<code>EPSG=</code> may be set to the precision limit for raytracing. 
+The raytracing/interpolating process runs until
+this precision is reached. Predefines to 0.007.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+zweiTheta[i]=
+</helpID>
+<content>
+A series of <code>zweiTheta[i]=</code> assigments give the values of 
+two Theta (0...180 degree) for which the
+geometric shape function should be raytraced. Must start with
+<code>zweiTheta[1]</code> and so on. More values will result in 
+a more precise description of the angular dependency of the profile shape.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+zweiTheta
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+zweiTheta
+</helpID>
+<content>
+The variable <code>zweiTheta</code> may be used for defining the 
+opening formula of the variable slits.
+<ul>
+<li>Will be predefined by GEOMET for every raytraced geometric shape function 
+<li>Will be predefined by MAKEGEQ for every interpolated geometric
+shape function
+</ul>
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+zweiTheta[i]=
+SSlitW=
+DetW=
+HSlitW=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SSlitW=
+</helpID>
+<content>
+<code>SSlitW=</code> defines the equatorial dimension of the secondary 
+beam anti-scatter slit. May be variable (dependent from 
+<code>zweiTheta</code>). Unit mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+zweiTheta
+SSlitH=
+SSlitR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SSlitH=
+</helpID>
+<content>
+<code>SSlitH=</code> defines the axial dimension of the secondary beam 
+anti-scatter slit. Unit mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+SSlitW=
+SSlitR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+SSlitR=
+</helpID>
+<content>
+<code>SSlitR=</code> defines the distance of secondary beam 
+anti-scatter slit from the axis. Unit mm.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+zweiTheta
+SSlitH=
+SSlitW=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+AirScat=
+</helpID>
+<content>
+<code>AirScat=</code> may be set for defining an air scatter blocker
+(a metal plate perpendicular to the sample surface, the goniometer axis
+within the plane of the plate). <code>AirScat</code> should be set
+to the height of the blocker above sample surface. Valid only for
+<code>GEOMETRY=REFLEXION</code>.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+GEOMETassumed
+</flag>
+<helpID>
+DeltaOmega=
+</helpID>
+<content>
+<code>DeltaOmega=</code> may be set for defining an angular (Omega) 
+misfit of the specimen from the Theta - two Theta
+Bragg Brentano rule. May depend from the value of the predefined
+variable <code>zweiTheta</code> (two Theta). For special purposes:
+definition of grazing incidence onto surface for example. Unit is radian.
+</content>
+<seeAlso>
+allGEOMETvariables:
+allMAKEGEQvariables:
+zweiTheta
+</seeAlso>
+</item>
+
+<item>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+VERZERR=
+</helpID>
+<content>
+<code>VERZERR=</code> defines the file (<code>*.ger</code>), 
+which should be interpolated into the
+<code>*.geq</code> format. Defaults from <code>GEQ=</code>.
+</content>
+<seeAlso>
+allMAKEGEQvariables:
+GEQ=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+GEQ=
+</helpID>
+<content>
+<code>GEQ=</code> defines the result file containing the interpolated 
+geometric shape functions. Defaults from <code>VERZERR=</code>.
+</content>
+<seeAlso>
+allMAKEGEQvariables:
+VERZERR=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+WMIN=
+</helpID>
+<content>
+<code>WMIN=</code> sets the starting angle of the interpolation.
+</content>
+<seeAlso>
+allMAKEGEQvariables:
+WMAX=
+WSTEP=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+WMAX=
+</helpID>
+<content>
+<code>WMAX=</code> sets the end angle (upper limit) of the interpolation.
+</content>
+<seeAlso>
+allMAKEGEQvariables:
+WMIN=
+WSTEP=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+WSTEP=
+</helpID>
+<content>
+<code>WSTEP=</code> defines the step width between two neighboured 
+interpolated functions. Smaller steps need more interpolation time 
+but give a better description of the angular dependency of the 
+profile shapes. May depend from <code>zweiTheta</code>. 
+</content>
+<seeAlso>
+allMAKEGEQvariables:
+WMIN=
+WMAX=
+zweiTheta
+</seeAlso>
+</item>
+
+<item>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+D=
+</helpID>
+<content>
+<code>D=</code> defines the penetration depth (reciprocal linear 
+attenuation coefficient) of the sample in mm.
+</content>
+<seeAlso>
+allMAKEGEQvariables:
+T=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+MAKEGEQassumed
+</flag>
+<helpID>
+T=
+</helpID>
+<content>
+<code>T=</code> defines the sample thickness 
+(for <code>GEOMETRY=REFLEXION</code> or <code>GEOMETRY=TRANSMISSION</code>) 
+or capillary diameter (for <code>GEOMETRY=CAPILLARY</code>)
+</content>
+<seeAlso>
+allMAKEGEQvariables:
+D=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+BGMNassumed
+</flag>
+<helpID>
+NTHREADS=
+</helpID>
+<content>
+Some parts of BGMN may work in parallel, this will speed up the computation
+on dual- or multicore processors. <code>NTHREADS=</code>
+tells BGMN how many cores it should use. Depending on the problems
+BGMN has to solve, the computation time will shrink.
+</content>
+<seeAlso>
+allBGMNvariables:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+*(i):
+</helpID>
+<content>
+Definition of a function. The brackets () contain one number,
+setting the parameter count of the defined function.
+A number below zero defines a function with variable argument count. 
+In this case, the absolute value of the number gives a minimum number of 
+parameters. The character : must be followed by any expression, which may
+contain placeholders for the actual parameters #1, #2 and so on.
+For example
+<pre>
+prod(2):#1*#2
+a==prod(2,3)
+</pre>
+assignes the value 6 to the variable a.
+</content>
+<seeAlso>
+expression:
+*(x...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+expression:
+</helpID>
+<content>
+An expression is a string containing numbers, variables, function calls,
+brackets () and the operators + - * / in the commonly known way.
+Expressions may be resolved to a numeric value on demand.
+This is done by the built-in data interpreter using
+high-precision floating point numbers in general.
+</content>
+<seeAlso>
+*(x...)
+*
+*[i...]
+assignment:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+predefinedFunctions:
+</helpID>
+<content>
+All global predefined functions are listed below. BGMN predefines
+some additional functions, which are valid only in special cases/positions.
+</content>
+<seeAlso>
+abs(x)
+sqr(x)
+sqrt(x)
+sin(x)
+cos(x)
+tan(x)
+asin(x)
+acos(x)
+atan(x)
+log(x)
+exp(x)
+mod(x,y)
+power(x,y)
+min(x...)
+max(x...)
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+ifthenelse(b,x,y)
+select(i,v1,v2...)
+integral(y,x,xu,xo...)
+cintegral(phi,yabs,yphase,x,xu,xo...)
+ifdef(x...)
+cat(a...)
+while(b...)
+ergibt(a)
+gauss(A,x,b,eps,n)
+cgauss(Areal,Aimag,xreal,ximag,breal,bimag,eps,n)
+*(x...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+abs(x)
+</helpID>
+<content>
+<code>abs(x)</code> returns the absolute value of its argument x.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+sqr(x)
+</helpID>
+<content>
+<code>sqr(x)</code> returns the squared value of its argument x.
+</content>
+<seeAlso>
+sqrt(x)
+power(x,y)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+sqrt(x)
+</helpID>
+<content>
+<code>sqrt(x)</code> returns the square root of its argument x.
+</content>
+<seeAlso>
+sqr(x)
+power(x,y)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+power(x,y)
+</helpID>
+<content>
+<code>power(x,y)</code> returns the value x to the y-th power.
+</content>
+<seeAlso>
+sqr(x)
+sqrt(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+sin(x)
+</helpID>
+<content>
+<code>sin(x)</code> is the common sin function with x in radians.
+</content>
+<seeAlso>
+cos(x)
+tan(x)
+asin(x)
+acos(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+cos(x)
+</helpID>
+<content>
+<code>cos(x)</code> is the common cos function with x in radians.
+</content>
+<seeAlso>
+sin(x)
+tan(x)
+asin(x)
+acos(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+tan(x)
+</helpID>
+<content>
+<code>tan(x)</code> is the common tan function with x in radians.
+</content>
+<seeAlso>
+sin(x)
+cos(x)
+asin(x)
+acos(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+asin(x)
+</helpID>
+<content>
+<code>asin(x)</code> is the common asin function, return value in radians.
+</content>
+<seeAlso>
+sin(x)
+cos(x)
+tan(x)
+acos(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+acos(x)
+</helpID>
+<content>
+<code>acos(x)</code> is the common acos function, return value in radians.
+</content>
+<seeAlso>
+sin(x)
+cos(x)
+tan(x)
+asin(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+atan(x)
+</helpID>
+<content>
+<code>atan(x)</code> is the common atan function, return value in radians.
+</content>
+<seeAlso>
+sin(x)
+cos(x)
+tan(x)
+asin(x)
+acos(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+log(x)
+</helpID>
+<content>
+<code>log(x)</code> is the common log function (base e).
+</content>
+<seeAlso>
+exp(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+exp(x)
+</helpID>
+<content>
+<code>exp(x)</code> is the common exp function (base e).
+</content>
+<seeAlso>
+log(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+mod(x,y)
+</helpID>
+<content>
+<code>mod(x,y)</code> is the common modulo function.
+It accepts non-integer values of x and/or y, too.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+min(x...)
+</helpID>
+<content>
+<code>min(x...)</code> with variable argument count returns the minimum value 
+of all the arguments.
+</content>
+<seeAlso>
+max(x...)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+max(x...)
+</helpID>
+<content>
+<code>max(x...)</code> with variable argument count returns the maximum value 
+of all the arguments.
+</content>
+<seeAlso>
+min(x...)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ge(x,y...)
+</helpID>
+<content>
+<code>ge(x,y...)</code> returns 1.0 (a non-zero value as a representation of 
+true) if the x&gt;=y holds for each neighboured pair of arguments, starting 
+from the first. If some pair does not hold the condition, 0.0 (false) will be 
+returned immediately without looking for possible following argument pairs.
+</content>
+<seeAlso>
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+gt(x,y...)
+</helpID>
+<content>
+<code>gt(x,y...)</code> returns 1.0 (a non-zero value as a representation of 
+true) if the x&gt;y holds for each neighboured pair of arguments, 
+starting from the first. If some pair does not hold the condition, 0.0 
+(false) will be returned immediately without evaluation of the possible 
+following argument pairs.
+</content>
+<seeAlso>
+ge(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+le(x,y...)
+</helpID>
+<content>
+<code>le(x,y...)<code> returns 1.0 (a non-zero value as a representation of 
+true) if the x&lt;=y holds for each neighboured pair of arguments, starting 
+from the first. If some pair does not hold the condition, 0.0 (false) will be 
+returned immediately without evaluation of the possible following argument 
+pairs.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+lt(x,y...)
+</helpID>
+<content>
+<code>lt(x,y...)</code> returns 1.0 (a non-zero value as a representation of 
+true)
+if the x&lt;y holds for each neighboured pair of arguments, starting from the 
+first. If some pair does not hold the condition, 0.0 (false) will be 
+returned immediately without evaluation of the possible following argument 
+pairs.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+eq(x,y...)
+</helpID>
+<content>
+<code>eq(x,y...)</code> returns 1.0 (a non-zero value as a representation of 
+true) if all arguments are equal. Comparison starts from the 
+first pair of neighboured arguments. If some argument does not hold the 
+condition, 0.0 (false) will be returned immediately without evaluation of the  
+possible following arguments.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ne(x,y...)
+</helpID>
+<content>
+<code>ne(x,y...)</code> looks for inequality between any pair 
+(also not neighboured)
+of arguments. If two arguments are equal, 0.0 (false) will be returned.
+Otherwise, 1.0 as a representation of true will be returned.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+and(b...)
+</helpID>
+<content>
+<code>and(b...)</code> with variable argument count returns 1.0 
+(a non-zero value as a representation of true) if all arguments are non-zero 
+(true). Otherwise, it returns zero (false).
+All arguments behind a zero value (false) argument will not be checked
+for validity.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+or(b...)
+</helpID>
+<content>
+<code>or(b...)</code> with variable argument count returns 1.0 
+(a non-zero value as a representation of true) if any argument is non-zero 
+(true). Otherwise, it returns zero (false).
+All arguments behind a non-zero value (true) argument will not be checked
+for validity.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+not(b)
+</helpID>
+<content>
+<code>not(b)</code> 1.0 (a non-zero value as a representation of true) 
+if the argument is zero (false). Otherwise it returns 1.0 
+(a non-zero value as a representation of true).
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ifthenelse(b,x,y)
+</helpID>
+<content>
+<code>ifthenelse(b,x,y)</code> returns its second value x if b is non-zero 
+(true). Else it returns its third value y. In each case, the other value 
+(y or x) will cause no error if it is undefined or cannot be evaluated as a 
+number.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+select(i,v1,v2...)
+</helpID>
+<content>
+<code>select(i,v1,v2...)</code> returns the value of the i+1-th argument
+<code>vi</code> depending on the value of the first argument <code>i</code>.
+An error occurs if <code>i</code> is zero, below zero or above the number
+of select values. The other parameters will cause no error if they are 
+undefined or cannot be evaluated as a number.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+integral(y,x,xu,xo...)
+</helpID>
+<content>
+<code>integral(y,x,xu,xo)</code> calculates a numeric integral. integrand will
+be y, the integral will be carried out over x between xu and xo. For
+minmization of the numeric effort, an adaptive 7-point-formula will be used.
+The precision of the numeric integration may be set as a fifth parameter,
+default is 1E-13 (which will, for the fast converging 7-point formula,
+reach a precision near to 1E-15). Example:
+<pre>
+integral(sin(x),x,0,acos(0))
+</pre>
+will calculate 1.0.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+cintegral(phi,yabs,yphase,x,xu,xo...)
+</helpID>
+<content>
+<code>cintegral(phy,yabs,yphase,x,xu,xo)</code> calculates a complex
+numeric integral. The absolute value of the integrand will be yabs, its
+complex phase angle yphase. The integral will be carried out over x 
+between xu and xo. For minmization of the numeric effort, an 
+adaptive 7-point-formula will be used. The precision of the numeric 
+integration may be set as a fifth parameter, default is 1E-13 (which will, 
+for the fast converging 7-point formula, reach a precision near to 1E-15).
+cintegral returns the absolute value of the integral, its phase angle
+will be set to the variable given at first position (phi). 
+Example:
+<pre>
+cintegral(phi,1,90*x/acos(0),x,0,acos(0))
+</pre>
+will calculate the square root of 2, phi will be set to 45.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ifdef(x...)
+</helpID>
+<content>
+<code>ifdef(x...)</code>
+tries to get a double value from all of its arguments x...
+It returns 1.0 as a representation of true on success.
+On any fail it returns zero (false) without trying the following
+arguments.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+cat(a...)
+</helpID>
+<content>
+<code>cat(a...)</code> may have expressions or assignments as arguments.
+All are evaluated. At least one argument must be an expression,
+the value of the last such expression will be returned.
+</content>
+<seeAlso>
+expression:
+assignment:
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+while(b...)
+</helpID>
+<content>
+<code>while(b...)</code> allows the definition of loops. As long as the first
+argument is non-zero (true), all following arguments will be
+evaluated as expressions or assignments. The count of loop iterations
+is returned.
+</content>
+<seeAlso>
+expression:
+assignment:
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ergibt(a)
+</helpID>
+<content>
+<code>ergibt(a)</code> must have an assignment as argument. It tries to do
+this assignment. It returns 1.0 as a representation of true on success.
+Otherwise, it returns zero (false).
+</content>
+<seeAlso>
+assignment:
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+gauss(A,x,b,eps,n)
+</helpID>
+<content>
+<code>gauss(A,x,b,eps,n)</code> is a high-level standard functions for 
+solving linear equation systems.
+A,x,b are placeholder for arrays, therefore only non-indexed
+names are allowed. gauss solves the inhomogen linear equation system<br>
+<b>Ax</b>=<b>b</b><br>
+where <b>A</b> is the matrix A[1,1]...A[n,n], <b>b</b> is
+the right side b[1]...b[n] and <b>x</b> is the unknown solution
+x[1]...x[n]. eps is a limit for the pivot element, if any pivot
+element is smaller than eps the equation leaves unsolved
+and zero (false) will be returned. If the equation system has been solved
+and x[1]...x[n] hold the solution, 1 (true) will be returned.
+</content>
+<seeAlso>
+cgauss(Areal,Aimag,xreal,ximag,breal,bimag,eps,n)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+cgauss(Areal,Aimag,xreal,ximag,breal,bimag,eps,n)
+</helpID>
+<content>
+<code>cgauss(Areal,Aimag,xreal,ximag,breal,bimag,eps,n)</code> 
+is a high-level standard functions for solving complex linear equation systems.
+Areal,Aimag,xreal,ximag,breal,bimag are placeholder for arrays, 
+therefore only non-indexed names are allowed. gauss solves the inhomogen 
+complex linear equation system<br>
+<b>Ax</b>=<b>b</b><br>
+<b>A</b> is defined by its real part Areal[1,1]...Areal[n,n] and its
+imaginary part Aimag[1,1]...Aimag[n,n], in equivalence the complex
+arrays <b>b</b> (right side) and <b>x</b> (unknown solution) are defined.
+eps is a limit for the pivot element, if any pivot
+element is smaller than eps the equation leaves unsolved
+and zero (false) will be returned. If the equation system has been solved
+and xreal[1]/ximag[1]...xreal[n]/ximag[n] hold the solution, 1 (true) 
+will be returned.
+</content>
+<seeAlso>
+gauss(A,x,b,eps,n)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+*(x...)
+</helpID>
+<content>
+A function call is a name followed by a list of actual parameters in
+brackets () separated by commas. There are some predefined
+functions, in general. In addition, functions may be
+defined in the input file. Functions calls may become recursive.
+Only the actual stack depth of the BGMN program may become
+a run time problem for deeply nested function calls.
+</content>
+<seeAlso>
+*(i):
+predefinedFunctions:
+</seeAlso>
+</item>
+
+
+
+<item>
+<flag>
+</flag>
+<helpID>
+*[i...]
+</helpID>
+<content>
+Arrays are variable names followed by a list of indices separated
+by commas, in brackets []. Indices may be arbitrary expressions.
+</content>
+<seeAlso>
+*
+*(x...)
+expression:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+*
+</helpID>
+<content>
+Arbitrary variables may be defined by assigning a value. The first character
+of the name must be a letter, the following characters may be letters or
+decimal digits. This rule is also valid for the names of arrays and
+functions. Any variable may, in general, hold one of two types of values:
+either a double number or a string value. An expression is a special
+case of a string value. All programs use some variable names for program 
+control. In addition, some variables may be predefined in special 
+cases/positions by the program.
+</content>
+<seeAlso>
+*(x...)
+*[i...]
+expression:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+assignment:
+</helpID>
+<content>
+Assignments are variable names (maybe indexed) followed by one ore
+more assignment characters = and a string. In special, the string
+may be a variable or an expression. In general, a single = assigns 
+the string value of the right hand side to the left hand variable.
+Other behaviour may be controlled by multiple =. Some examples:<br>
+A=1<br>
+B=A<br>
+C=B<br>
+D==C<br>
+E===C<br>
+F====C<br>
+G=====C<br>
+H==(C)
+I==C+B<br>
+K==1
+<p>
+After doing the above assignments from top to bottom,<br>
+A holds the string 1<br>
+B holds the string A<br>
+C holds the string B<br>
+D holds the string B<br>
+E holds the string A<br>
+F holds the string 1<br>
+G holds the double value 1.0<br>
+H holds the double value 1.0<br>
+I holds the double value 2.0<br>
+K holds the double value 1.0
+</content>
+<seeAlso>
+expression:
+predefinedFunctions:
+*
+*[i...]
+*(x...)
+</seeAlso>
+</item>
+
+</helpitems>
+</helpdata>

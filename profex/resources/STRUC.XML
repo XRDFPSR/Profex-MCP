@@ -1,0 +1,3679 @@
+<helpdata>
+
+<flagdef>
+</flagdef>
+
+<helpitems>
+
+<item>
+<flag>
+</flag>
+<helpID>
+STRCOMMENT
+</helpID>
+<content>
+This is a comment. Comments in structure files (<code>*.str</code>) start
+with <code>//</code> . All text from here to newline will be ignored, so it
+may be used for comments.
+</content>
+<seeAlso>
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+aboutStruc:
+</helpID>
+<content>
+<code>*.str</code> files describe the crystal structures as to be refined.
+In general, every <code/>*.str</code> file contains
+two parts: (i) describing the lattice (spacegroup, lattice parameters) and real structure (line widths etc.)
+and (ii) describing the atomic settings for this structure. The latter
+starts with the first occurrence of the <code>E=</code> assignment in the file.
+If <b>no</b> atomic positions are given and <code>FMult</code> is not in use,
+a LeBail-Fit (refinement of independent peak intensities) will be done.
+<p>
+Comments start with <code>//</code> as a single item.
+<p>
+</content>
+<seeAlso>
+LatticeDefinition:
+RealStructure:
+IdealStructure:
+molecules:
+GeneralCondition=
+PARAM=
+UNIT=
+GOAL
+FMult=
+my
+my[i]
+density
+density[i]
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+GeneralCondition=
+</helpID>
+<content>
+The term as assigned to <code>GeneralCondition</code> should depend
+from <code>h k l</code>. Enables the deselection of peaks from the pattern.
+Example:
+<pre>
+GeneralCondition=and(eq(h,0),eq(k,0),eq(abs(l),2)
+</pre>
+will select the 002 reflection only, for hexagonal lattice.
+Of course, such a selection must select/deselect <b>all</b>
+equivalent reflections in an equal manner.
+<p>
+May depend from <code>iref</code>, so different conditions
+for different subphases may be used.
+</content>
+<seeAlso>
+aboutStruc:
+RefMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+PARAM=
+</helpID>
+<content>
+Each structure or real structure <code>variable</code> may be declared as a 
+parameter to be refined by typing
+<pre>
+PARAM=variable_lowerlimit^upperlimit
+</pre>
+<code>upperlimit</code> and <code>lowerlimit<code> are hard limits, the 
+parameter value is not allowed to leave that interval during refinement.
+</content>
+<seeAlso>
+aboutStruc:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+my=
+</helpID>
+<content>
+Using <code>my=</code> you may set a user defined linear attenuation 
+coefficient of the phase. You may use the variables <code>my[i]</code>.
+<br>
+<b>Attention</b>: In difference to the usual
+conventions, <code>my</code> has the unit &micro;m<sup>-1</sup>.
+</content>
+<seeAlso>
+aboutStruc:
+my[i]
+RefMult=
+FMult=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+my
+</helpID>
+<content>
+<code>my</code> will be preset to the linear attenuation
+coefficient. <b>Attention</b>: In difference to the usual
+conventions, <code>my</code> has the unit &micro;m<sup>-1</sup>.
+May be used for the Brindley correction as follows:
+<pre>
+GOAL:xxx=GEWICHT*exp(my*d*3/4)
+</pre>
+where <code>xxx</code> is the name of the phase and <code>d</code> is its
+grain size.<br>
+In the case RefMult&gt;1, my refers to the linear attenuation
+coefficient of the first subphase <code>iref=1</code>.
+<p>
+In cases you use other wavelengths than the usual (Co, Cr, Cu, Fe) for which
+no file *.mdr exist, <code>my</code> will be set to zero. This is especially
+the case when using 
+<code>SYNCHROTRON=</code> or <code>LAMDA=</code>
+with an numeric value in the *.sav file for this BGMN run.
+</content>
+<seeAlso>
+aboutStruc:
+GEWICHT
+GOAL
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+my[i]
+</helpID>
+<content>
+In case <code>FMult&gt;0</code>, <code>my[i]</code> will be set to
+the linear attenuation coefficient as caused by all atomic
+positions which contribute to the calculation of <code>F[i]</code>. Otherwise,
+<code>my[i]</code> will be preset to the linear attenuation
+coefficient of the i<sup>th</sup> Subphase, which may
+useful in cases <code>RefMult&gt;1</code>. 
+<b>Attention</b>: In difference to the usual
+conventions, <code>my</code> has the unit &micro;m<sup>-1</sup>.
+</content>
+<seeAlso>
+aboutStruc:
+my
+RefMult=
+FMult=
+GEWICHT
+GOAL
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+density=
+</helpID>
+<content>
+Using <code>density=</code> you may set a user-defined X ray density
+of the phase. You may use the variables density[i].
+</content>
+<seeAlso>
+aboutStruc:
+density[i]
+RefMult=
+FMult=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+density
+</helpID>
+<content>
+<code>density</code> will be preset to the X ray density of the
+phase. In case you set <code>RefMult</code> the X ray density of the
+<code>1<sup>st</sup></code> sub phase, but in case you set <code>FMult</code>
+the sum of the densities of the sub phases.
+</content>
+<seeAlso>
+aboutStruc:
+density[i]
+RefMult=
+FMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+density[i]
+</helpID>
+<content>
+In case <code>FMult&gt;0</code>, <code>density[i]</code> will be set to
+the X ray density as caused by all atomic
+positions which contribute to the calculation of <code>F[i]</code>. Otherwise,
+<code>density[i]</code> will be preset to the X ray density of the
+<code>i<sup>th</sup></code> subphase, which may be useful in case 
+<code>RefMult&gt;1</code>
+</content>
+<seeAlso>
+aboutStruc:
+density
+RefMult=
+FMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+LatticeDefinition:
+</helpID>
+<content>
+The lattice <b>must</b> be defined for every run of BGMN. Therefore
+<ul>
+<li> <code>SpacegroupNo=</code> or <code>HermannMauguin</code> must be 
+given. In addition, the lattice constants <code>A B C ALPHA BETA GAMMA</code> 
+must be set corresponding to the given lattice. For example, a cubic 
+lattice needs only for setting of <code>A</code>. It is favourable to set 
+meaningful limits for the lattice parameters like
+</pre>
+PARAM=A=0.325_0.324^0.326
+</pre>
+<item>
+</content>
+<seeAlso>
+aboutStruc:
+A=
+B=
+C=
+ALPHA=
+BETA=
+GAMMA=
+SpacegroupNo=
+HermannMauguin=
+CellChoice=
+OriginChoice=
+Setting=
+GeneralCondition=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+UNIT=
+</helpID>
+<content>
+On default, the unit of all values in lattice and reciprocal lattice is
+Nanometer.
+<pre>
+UNIT=NM
+</pre>
+If set to
+<pre>
+UNIT=ANGSTROEM
+</pre>
+all lengths in space and reciprocal space are given in Angstroem:
+<code>A B C ALPHA BETA GAMMA sk DELTAsk TDS B1 B2</code>
+<p>
+The exception is the linear attenuation coefficient &micro;, which
+is always given in 1/&micro;m.
+</content>
+<seeAlso>
+aboutStruc:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+A=
+</helpID>
+<content>
+Lattice parameter <b>a</b>, default unit nm. Normally parametrized as
+<pre>
+PARAM=A=startValue_lowerlimit^upperlimit
+</pre>
+</content>
+<seeAlso>
+LatticeDefinition:
+UNIT=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+B=
+</helpID>
+<content>
+Lattice parameter <b>b</b>, default unit nm. Normally parametrized as
+<pre>
+PARAM=B=startValue_lowerlimit^upperlimit
+</pre>
+</content>
+<seeAlso>
+LatticeDefinition:
+UNIT=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+C=
+</helpID>
+<content>
+Lattice parameter <b>c</b>, default unit nm. Normally parametrized as
+<pre>
+PARAM=C=startValue_lowerlimit^upperlimit
+</pre>
+</content>
+<seeAlso>
+LatticeDefinition:
+UNIT=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+ALPHA=
+</helpID>
+<content>
+Lattice constant <b>alpha</b>, unit degree. Normally parametrized as
+<pre>
+PARAM=ALPHA=startValue_lowerlimit^upperlimit
+</pre>
+</content>
+<seeAlso>
+LatticeDefinition:
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+BETA=
+</helpID>
+<content>
+Lattice constant <b>beta</b>, unit degree. Normally parametrized as
+<pre>
+PARAM=BETA=startValue_lowerlimit^upperlimit
+</pre>
+</content>
+<seeAlso>
+LatticeDefinition:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+GAMMA=
+</helpID>
+<content>
+Lattice constant <b>gamma</b>, unit degree. Normally parametrized as
+<pre>
+PARAM=GAMMA=startValue_lowerlimit^upperlimit
+</pre>
+</content>
+<seeAlso>
+LatticeDefinition:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+SpacegroupNo=
+</helpID>
+<content>
+Defines the spacegroup of the phase. Number between 1 and 230. Maybe, there
+exist different settings for the same spacegroup, see file 
+<code>spacegrp.dat</code> and International Tables for Crystallography Vol. A.
+In such cases, you should choose the appropriate setting by
+<ol>
+<li>defining <code>Hermannmauguin=</code>, see again <code>spacegroup.dat</code>
+<li>defining <code>CellChoice=</code> and/or <code>UniqueAxis=</code>
+</ol>
+</content>
+<seeAlso>
+LatticeDefinition:
+HermannMauguin=
+CellChoice=
+OriginChoice=
+Setting=
+UniqueAxis=
+GeneralCondition=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+HermannMauguin=
+</helpID>
+<content>
+Defines the spacegroup symbol of the phase. For possible values, see
+the file <code>spacegrp.dat</code> and International Tables for Crystallography Vol. A.
+</content>
+<seeAlso>
+LatticeDefinition:
+SpacegroupNo=
+CellChoice=
+OriginChoice=
+Setting=
+UniqueAxis=
+GeneralCondition=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+CellChoice=
+</helpID>
+<content>
+In case of multiple settings for the same spacegroup, you <b>must</b> define
+this value. Otherwise, BGMN uses the first setting for this
+spacegroup and errors for the atomic positions may occur. See file 
+<code>spacegrp.dat</code> and International Tables for Crystallography Vol. A 
+for the appropriate settings.
+</content>
+<seeAlso>
+LatticeDefinition:
+HermannMauguin=
+SpacegroupNo=
+OriginChoice=
+Setting=
+UniqueAxis=
+GeneralCondition=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+OriginChoice=
+</helpID>
+<content>
+may be used to select the origin of the space group setting,
+see file spacegrp.dat
+</content>
+<seeAlso>
+LatticeDefinition:
+SpacegroupNo=
+HermannMauguin=
+CellChoice=
+Setting=
+UniqueAxis=
+GeneralCondition=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+Setting=
+</helpID>
+<content>
+may be used to select the setting number for the selected spacegroup,
+see file <code>spacegrp.dat</code>.
+</content>
+<seeAlso>
+LatticeDefinition:
+SpacegroupNo=
+HermannMauguin=
+CellChoice=
+OriginChoice=
+UniqueAxis=
+GeneralCondition=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+UniqueAxis=
+</helpID>
+<content>
+May be used in the case of a monoclinic lattice.
+See file <code>spacegrp.dat</code> and International Tables for 
+Crystallography Vol. A.
+</content>
+<seeAlso>
+LatticeDefinition:
+HermannMauguin=
+SpacegroupNo=
+CellChoice=
+OriginChoice=
+Setting=
+GeneralCondition=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+RealStructure:
+</helpID>
+<content>
+There are several ways to define the peak broadening model. In every case, 
+the defined peak profile is only the sample contribution P
+of the folding product Lambda*G*P,
+where
+<dl>
+<dt>Lambda</dd> is the wavelenth distribution = spectrum of the
+X-rays. (e.g. the CuKalpha doublet)
+<dt>G<dd>is the geometry function as computed by GEOMET/VERZERR 
+and MAKEGEQ.
+</dl>
+</content>
+<seeAlso>
+aboutStruc:
+RP=
+h
+k
+l
+H
+F
+Finv
+sk
+RefMult=
+FMult=
+iref
+LeBail=
+F[i]
+phi[i]
+Finv[i]
+phiinv[i]
+B1=
+B1[i]=
+B2=
+B2[i]=
+k1=
+k1[i]=
+k2=
+k2[i]=
+DELTAsk=
+DELTAsk[i]=
+DELTAzweiTheta=
+DELTAzweiTheta[i]=
+GEWICHT
+ANISO
+ANISOSQR
+ANISOLIN
+ANISOLIMIT=
+ANISO4
+ANISO4LIMIT=
+SPHAR0
+SPHAR2
+LIMIT2=
+SPHAR4
+LIMIT4=
+SPHAR6
+LIMIT6=
+SPHAR8
+LIMIT8=
+SPHAR10
+LIMIT10=
+TDS=
+TDS[i]=
+GEWICHT[i]=
+my
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+RP=
+</helpID>
+<content>
+Defines the type of peak shape assumed for P (sample broadening)
+in the folding LAMBDA*G*P.
+Possible values are
+<dl>
+<dt>2<dd>Only a delta-peak will be used for P. Therefore,
+all assignments to <code>B1</code> and <code>B2</code> will be ignored.
+<dt>3<dd>A Lorentzian with width parameter <code>B1</code>/<code>B1[i]</code>
+will be used for P. This model describes pure crystallite size 
+caused line broadening.
+<dt>4 (default value)<dd> To combine crystallite size and micro strain
+brodening effects, the Lorentzian will be folded with a squared Lorentzian
+with width parameter <code>B2</code> or <code>B2[i]</code>. In normal, 
+<code>B2</code> will not be set directly,
+it defaults to
+<pre>
+B2=k1*sqr(B1)+k2*sqr(sk)
+</pre>
+</content>
+<seeAlso>
+RealStructure:
+k1=
+k2=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+h
+</helpID>
+<content>
+BGMN pre-sets this variable to the Laue index <code>h</code>.
+</content>
+<seeAlso>
+RealStructure:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+k
+</helpID>
+<content>
+BGMN pre-sets this variable to the Laue index <code>k</code>.
+</content>
+<seeAlso>
+RealStructure:
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+l
+</helpID>
+<content>
+BGMN pre-sets this variable to the Laue index <code>l</code>.
+</content>
+<seeAlso>
+RealStructure:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+H
+</helpID>
+<content>
+The multiplicity factor for every line in the diagram, will be pre-set by BGMN.
+</content>
+<seeAlso>
+RealStructure:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+F=
+</helpID>
+<content>
+In case of having set <code>FMult</code>, you may calculate some user-defined
+structure amplitude and assign it by
+<pre>
+F=...
+</pre>
+You may use <code>F[i]</code>, <code>phi[i]</code>, <code>Finv[i]</code>,
+<code>phiinv[i]</code> for calculation.
+</content>
+<seeAlso>
+FMult=
+LeBail=
+F[i]
+phi[i]
+Finv[i]
+phiinv[i]
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+F
+</helpID>
+<content>
+The absolut value of the structure amplitude of the 
+reflection <code>h k l</code> will be pre-set while computing every 
+line in the diagram.
+</content>
+<seeAlso>
+RealStructure:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+Finv
+</helpID>
+<content>
+The absolute value of the structure amplitude of the inverse
+reflection <code>-h -k -l</code> will be pre-set while computing every 
+line in the diagram.
+</content>
+<seeAlso>
+RealStructure:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+sk
+</helpID>
+<content>
+This variable will be pre-set to the ideal BRAGG 
+position s=<sup>n</sup>/<sub>d</sub> of a reflection. 
+This means sk=2sin(Theta)/lambda for the ideal case.
+</content>
+<seeAlso>
+RealStructure:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+RefMult=
+</helpID>
+<content>
+For special cases, a multiplet of lines for each index triplet 
+<code>h k l</code> is useful. <code>Refmult=</code> defines the multiplicity 
+of each line. The individual number of a line in a multiplet will be pre-set 
+in <code>iref</code>. <code>RefMult</code> defaults to 1.
+</content>
+<seeAlso>
+RealStructure:
+B1[i]=
+B2[i]=
+k1[i]=
+k2[i]=
+DELTAsk[i]=
+DELTAzweiTheta[i]=
+TDS[i]=
+GEWICHT[i]=
+my[i]
+density[i]
+E(p...)=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+FMult=
+</helpID>
+<content>
+One may set
+<pre>
+FMult
+</pre>
+to a positive integer.  Using <code>FMult</code>, BGMN will provide 
+<pre>
+F[i]
+</pre> 
+and 
+<pre>
+phi[i]
+</pre>
+for the absolute value resp. phase angle (in degree 0...360)
+of the complex structure amplitudes of the sub-phases. From that, one may
+do arbitrary operations and at the end set the structural amplitude 
+<code>F</code> of the whole phase, which will then used for intensity 
+calculation.
+<br>
+The values for the inverse reflection are set to
+<code>Finv[i]</code> and <code>phiinv[i]<code/>.
+<br>
+In such cases, you must probably reset the phase's density by
+<pre>
+density=
+</pre>
+</content>
+<seeAlso>
+RefMult=
+F[i]
+Finv[i]
+phi[i]
+phiinv[i]
+F=
+density=
+my=
+E(p...)=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+F[i]
+</helpID>
+<content>
+In case of having defined <code>FMult</code>, <code>F[i]</code> will hold the 
+absolute value of the complex structure amplitude of the reflection
+<code>h k l</code> for the sub-phase no. <code>i</code>.
+</content>
+<seeAlso>
+FMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+Finv[i]
+</helpID>
+<content>
+In case of having defined <code>FMult</code>, <code>Finv[i]</code> will hold 
+the absolute value of the complex structure amplitude of the inverse reflection
+<code>-h -k -l</code> for the sub-phase no. <code>i</code>.
+</content>
+<seeAlso>
+FMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+phi[i]
+</helpID>
+<content>
+In case of having defined <code>FMult</code>, <code>phi[i]</code> will hold 
+the phase angle of the complex structure amplitude of the reflection
+<code>h k l</code> for the sub-phase no. <code>i</code> in degree (0...360).
+</content>
+<seeAlso>
+FMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+phiinv[i]
+</helpID>
+<content>
+In case of having defined <code>FMult</code>, <code>phiinv[i]</code>
+will hold the phase angle of the complex structure amplitude of the 
+inverse reflection <code>h k l</code> for the sub-phase no. <code>i</code>
+in degree (0...360).
+</content>
+<seeAlso>
+FMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+iref
+</helpID>
+<content>
+will be pre-set for every comutation of a line, values are 
+<code>1...RefMult</code>.
+</content>
+<seeAlso>
+RealStructure:
+RefMult=
+FMult=
+LeBail=
+B1[i]=
+B2[i]=
+k1[i]=
+k2[i]=
+DELTAsk[i]=
+DELTAzweiTheta[i]=
+TDS[i]=
+GEWICHT[i]=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+LeBail=
+</helpID>
+<content>
+<pre>
+LeBail=i
+</pre>
+will cause to ingore all structure information for the i<sup>th</sup>
+subphase (<code>i=1...RefMult</code>). In following, for that suphase
+all intensities are refined independently (LeBail-fit).
+<p>
+In case no atomic positions are given (no <code>E=</code> or
+<code>E(p...)=</code> keywords), LeBail is set for all <code>RefMult</code>
+subphases.
+</content>
+<seeAlso>
+RealStructure:
+RefMult=
+iref
+FMult=
+B1[i]=
+B2[i]=
+k1[i]=
+k2[i]=
+DELTAsk[i]=
+DELTAzweiTheta[i]=
+TDS[i]=
+GEWICHT[i]=
+E=
+E(p...)=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+B1=
+</helpID>
+<content>
+width of the lorentzian part of P in 1/nm, assuming a
+crystallite size caused line broadening. The special setting
+<pre>
+B1=ANISO
+</pre>
+defines an ellipsoidal crystallite shape and is a shortkey for
+<pre>
+B1=ANISOLIN
+</pre>
+<code>B1</code> can be converted to crystallite sizes (in the same
+unit used for lattice parameters, default is nm) using the function
+<pre>
+GOAL=GrainSize(h,k,l)
+</pre>
+where h, k, l are Miller indices.
+</content>
+<seeAlso>
+RealStructure:
+B1[i]=
+iref
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+B1[i]=
+</helpID>
+<content>
+width of the lorentzian part (unit same as 1/d) of P for the given 
+sub phase. For anisotropic broadening of a subphase, <code>ANISOLIN</code>
+can be assigned. Attention! The shortkey <code>ANISO</code> will not work for 
+<code>B1[i]</code>, in contrast to unindexed <code>B1</code>.
+<code>1&lt;=i&lt;=RefMult</code>.
+</content>
+<seeAlso>
+RealStructure:
+ANISOLIN
+RefMult=
+iref
+B1=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+B2=
+</helpID>
+<content>
+width of the squared lorentzian part (unit same as 1/d) of P. Defaults to
+<pre>
+B2=k1*sqr(B1)+k2*sqr(sk)
+</pre>
+</content>
+<seeAlso>
+RealStructure:
+sk
+k1=
+k2=
+B2[i]=
+iref
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+B2[i]=
+</helpID>
+<content>
+width of the squared Lorentzian part (unit same as 1/d) of P for the given 
+sub phase <code>1&lt;=i&lt;=RefMult</code>.
+</content>
+<seeAlso>
+RealStructure:
+B2=
+RefMult=
+iref
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+k1=
+</helpID>
+<content>
+Using the default setting
+<pre>
+B2=k1*sqr(B1)+k2*sqr(sk)
+</pre>
+<code>k1</code> modifies the crystallite size distribution. Should be 
+between zero and one. Therefore
+<pre>
+PARAM=k1=0_0^1
+</pre>
+is the valid parametrization for this value. Zero gives wide,
+one gives narrow crystallite size distribution.
+</content>
+<seeAlso>
+RealStructure:
+B2=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+k1[i]=
+</helpID>
+<content>
+<code>k1[i]</code> is a special setting of the value <code>k1</code> for the 
+subphase <code>i</code> (<code>1&lt;=i&lt;=RefMult</code>)
+</content>
+<seeAlso>
+RealStructure:
+k1=
+iref
+RefMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+k2=
+</helpID>
+<content>
+using the default setting
+<pre>
+B2=k1*sqr(B1)+k2*sqr(sk)
+</pre>
+<code>k2</code> defines the square of the micro strain in 1/nm^2. Special settings
+for anisotropic strain are
+<pre>
+k2=ANISO
+</pre>
+which means
+<pre>
+k2=ANISOSQR
+</pre>
+and for complicated cases
+<pre>
+k2=ANISO4
+</pre>
+<code>k2</code> can be converted to micro-strain (in 1/nm) using the formula
+<pre>
+GOAL=sqrt(k2(h,k,l))
+</pre>
+where h, k, l are Miller indices.
+</content>
+<seeAlso>
+RealStructure:
+ANISOSQR
+ANISO4
+B2=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+k2[i]=
+</helpID>
+<content>
+<code>k2[i]</code> is a special setting for the value <code>k2</code> for the 
+sub phase <code>i</code> (<code>1&lt;=i&lt;=RefMult</code>)
+</content>
+<seeAlso>
+RealStructure:
+k2=
+iref
+RefMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+DELTAsk=
+</helpID>
+<content>
+By assigning a value to <code>DELTAsk</code, the resulting peak will be shifted
+out from its ideal position. The new position 1/d is
+<code>sk+DELTAsk</code>. Defaults to zero, if not assigned.
+</content>
+<seeAlso>
+RealStructure:
+sk
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+DELTAsk[i]=
+</helpID>
+<content>
+<code>DELTAsk[i]</code> is a special setting for the value <code>DELTAsk</code>
+for the subphase <code>i</code> (<code>1&lt;=i&lt;=RefMult</code>)
+</content>
+<seeAlso>
+RealStructure:
+DELTAsk=
+sk
+RefMult=
+iref
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+DELTAzweiTheta=
+</helpID>
+<content>
+<code>DELTAzweiTheta</code> is same as <code>DELTAsk</code>, but in the 
+angular scale of <code>2 Theta</code>. Unit: degree
+</content>
+<seeAlso>
+RealStructure:
+DELTAsk=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+DELTAzweiTheta[i]=
+</helpID>
+<content>
+<code>DELTAzweiTheta[i]</code> is same as <code>DELTAsk[i]</code>, but in the 
+angular scale of 2 Theta. Unit: degree
+</content>
+<seeAlso>
+RealStructure:
+DELTAsk[i]=
+DELTAzweiTheta=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+GEWICHT
+</helpID>
+<content>
+<code>GEWICHT</code> is the scale factor while refining multiphase specimens.
+It is proportional directly to the weight fraction, no 
+additional calculation of ZMV is necessary.
+The simplest way is typing
+<pre>
+PARAM=GEWICHT=0_0 
+</pre>
+There are different ways in using this key. For example
+<pre>
+GEWICHT=SPHAR6
+</pre>
+defines a series of symmetrized spherical harmonics of 6th order including 
+the scale factor. That means, for every line <code>h k l</code> a new value 
+for <code>GEWICHT</code> will be computed following these spherical harmonics.
+<p>
+For getting the mean weight proportional scale factor (as needed for 
+quantitative analysis) just type 
+<pre>
+GOAL:phaseid=GEWICHT
+</pre>
+and the mean value of the spherical harmonic will be assigned to phaseid.
+In following, phaseid is exported and may be used in <code>GOALS</code> inside
+the <code>*.sav</code> file for the calculation of relative phase abundances.
+The predefined value of <code>GEWICHT</code> is corrected for phase density as
+to the value as predefined for the value <code>density</code>, which  is that 
+of the first suphase in cases RefMult&gt;1. Therefore the results refers 
+directly to the weight content of the phase.
+<p>
+For the Brindley correction, see <code>my</code>.
+</content>
+<seeAlso>
+RealStructure:
+SPHAR0
+SPHAR2
+LIMIT2=
+SPHAR4
+LIMIT4=
+SPHAR6
+LIMIT6=
+SPHAR8
+LIMIT8=
+SPHAR10
+LIMIT10=
+my
+density
+RefMult=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+SPHAR0
+</helpID>
+<content>
+<code>PARAM=GEWICHT=0_0</code> can also be written as 
+<code>GEWICHT=SPHAR0</code>, indicating an isotropic scale factor.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+</seeAlso>
+</item>
+
+ 
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+SPHAR2
+</helpID>
+<content>
+<code>GEWICHT=SPHAR2</code> defines spherical harmonics of order 2 as a 
+preferred orientation correction.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+LIMIT2=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+LIMIT2=
+</helpID>
+<content>
+BGMN always tries a first run, whereby <code>GEWICHT=SPHAR0</code> 
+(no preferred orientation) will be assumed.
+Afterwards the resulting scale factor will be checked
+for significance. <code>LIMIT2</code> sets this significance. 
+If this significance test fails, all <code>SPHARx</code> equal or above 2 
+will reduced to <code>SPHAR0</code>. If not given (which should be in normal), 
+BGMN uses an advanced value depending from the Laue Group of the phase.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+SPHAR2
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+SPHAR4
+</helpID>
+<content>
+<code>GEWICHT=SPPHAR4</code> defines spherical harmonics of order 4 as a 
+preferred orientation correction.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+LIMIT4=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+LIMIT4=
+</helpID>
+<content>
+BGMN always tries a first run, whereby <code>GEWICHT=SPHAR0</code>
+(no preferred orientation) will be assumed.
+Afterwards the resulting scale factor will be checked
+for significance. <code>LIMIT4</code> sets this significance. 
+If this significance test fails, all <code>SPHARx</code> equal or above 4 will 
+reduced to <code>SPHAR2</code>. If not given (which should be in normal), 
+BGMN uses an advanced value depending from the Laue Group of the phase.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+SPHAR4
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+SPHAR6
+</helpID>
+<content>
+<code>GEWICHT=SPPHAR6</code> defines spherical harmonics of order 6 as a 
+preferred orientation correction.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+LIMIT6=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+LIMIT6=
+</helpID>
+<content>
+BGMN always tries a first run, whereby <code>GEWICHT=SPHAR0</code> 
+(no preferred orientation) will be assumed.
+Afterwards the resulting scale factor will be checked
+for significance. <code>LIMIT6</code> sets this significance. 
+If this significance test fails, all <code>SPHARx</code> equal or above 6 will 
+reduced to <code>SPHAR4</code>.  If not given (which should be in normal), 
+BGMN uses an advanced value depending from the Laue Group of the phase.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+SPHAR4
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+SPHAR8
+</helpID>
+<content>
+<code>GEWICHT=SPPHAR8</code> defines spherical harmonics of 8. order as a 
+preferred orientation correction.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+LIMIT8=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+LIMIT8=
+</helpID>
+<content>
+BGMN always tries a first run, whereby <code>GEWICHT=SPHAR0</code>
+(no preferred orientation) will be assumed.
+Afterwards the resulting scale factor will be checked
+for significance. <code>LIMIT8</code> sets this significance. 
+If this significance test fails, all <code>SPHARx</code> equal or above 8 will 
+reduced to <code>SPHAR6</code>. If not given (which should be in normal), BGMN 
+uses an advanced value depending from the Laue Group of the phase.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+SPHAR8
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+SPHAR10
+</helpID>
+<content>
+<code>GEWICHT=SPPHAR10</code> defines spherical harmonics of order 10 as a 
+preferred orientation correction.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+LIMIT10=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+LIMIT10=
+</helpID>
+<content>
+BGMN always tries a first run, whereby <code>GEWICHT=SPHAR0</code>
+(no preferred orientation) will be assumed.
+Afterwards the resulting scale factor will be checked
+for significance. <code>LIMIT10</code> sets this significance. 
+If this significance test fails, all <code>SPHARx</code> equal or above 10 
+will reduced to <code>SPHAR8</code>.  If not given (which should be in normal), BGMN uses an advanced 
+value depending from the Laue Group of the phase.
+</content>
+<seeAlso>
+RealStructure:
+GEWICHT
+SPHAR10
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+ANISO
+</helpID>
+<content>
+<code>ANISO</code> is a shortcut for the four special cases:<br>
+<code>B1=ANISO</code> means <code>B1=ANISOLIN</code><br>
+<code>k2=ANISO</code> means <code>k2=ANISOSQR</code><br>
+<code>GEWICHT=ANISO</code> means <code>GEWICHT=ANISOQR</code><br>
+<code>TDS=ANISO</code> means <code>TDS=ANISOQR</code><br>
+The use of <code>ANISO</code> for any other variable is faulty!
+</content>
+<seeAlso>
+RealStructure:
+ANISOLIN
+ANISOSQR
+ANISOLIMIT=
+ANISO4
+ANISO4LIMIT=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+ANISOSQR
+</helpID>
+<content>
+<code>ANISOSQR</code> may be assigned to real structure variable. While 
+computing the pattern, for each peak a quadratic form of the normalized Laue 
+indices vector over a positive definite matrix will be refined and assigned to 
+the variable. This means, in maximum 6 parameters have to be calculated. The 
+matrix fulfills automatically the symmetry conditions of the point group. This 
+is useful for anisotropic strain (<code>k2</code>) broadening as well as for 
+anisotropic temperature factors (<code>TDS</code>).
+</content>
+<seeAlso>
+RealStructure:
+k2=
+TDS=
+ANISOLIN
+ANISOLIMIT=
+ANISO4
+ANISO4LIMIT=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+ANISOLIN
+</helpID>
+<content>
+<code>ANISOLIN</code>may be assigned to real structure variables. While 
+computing the pattern, 
+for each peak a quadratic form of the normalized Laue indices vector over a 
+positive definite matrix will be refined and its square root will be
+assigned to the variable. This means, in maximum 6 parameters have to be 
+calculated. The matrix fulfills automatically the symmetry conditions of the 
+point group. This is useful for anisotropic size (<code>B1</code>).
+factors.
+</content>
+<seeAlso>
+RealStructure:
+B1=
+ANISOSQR
+ANISOLIMIT=
+ANISO4
+ANISO4LIMIT=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+ANISOLIMIT=
+</helpID>
+<content>
+BGMN tries a first run, whereby isotropic replacements to <code>ANISOLIN</code> 
+and <code>ANISOSQR</code>
+are assumed. Afterwards the resulting parameter value will be checked
+for significance. <code>ANISOLIMIT</code> sets this significance limit. 
+If this significance test fails, an isotropic model for the parameter will be 
+choosen instead of <code>ANISO</code>. If not given (which should be in 
+normal), BGMN uses an advanced value depending from the Laue Group of the phase.
+</content>
+<seeAlso>
+RealStructure:
+ANISOLIN
+ANISOSQR
+ANISO4
+ANISO4LIMIT=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+ANISO4
+</helpID>
+<content>
+<code>ANISO4</code> may be assigned to any real structure variable. While 
+computing the pattern, for each peak the full (4x) product of the normalized 
+Laue indices over a positive definite tensor of 4th stage  will be refined. 
+This means, in general 15 parameters have to be calculated.
+The tensor fulfills automatically the symmetry conditions of the point group.
+<br>
+<code>ANISO4</code> was designed for <code>k2</code> and <code>k2[i]</code>.
+</content>
+<seeAlso>
+RealStructure:
+ANISOSQR
+ANISOLIN
+ANISOLIMIT=
+ANISO4LIMIT=
+k2=
+k2[i]=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+ANISO4LIMIT=
+</helpID>
+<content>
+BGMN tries a first run, whereby an isotropic replacements to 
+<code>ANISO4</code> will be assumed.
+Afterwards the resulting parameter value will be checked
+for significance. <code>ANISO4LIMIT</code> sets this significance limit. 
+If this significance test fails, the <code>ANISOSQR</code> model for the 
+parameter will be 
+choosen instead of <code>ANISO4</code>. If not given (which should be in 
+normal), BGMN 
+uses an advanced value depending from the Laue Group of the phase.
+</content>
+<seeAlso>
+RealStructure:
+ANISOLIN
+ANISOSQR
+ANISOLIMIT=
+ANISOSQR
+ANISO4
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+TDS=
+</helpID>
+<content>
+<code>TDS</code>defines a global Debye-Waller factor for the whole structure.
+May be anisotropic by setting
+<pre>
+TDS=ANISO
+</pre>
+In this case, the matrix fulfills automatically the symmetry conditions 
+of the point group. 
+</content>
+<seeAlso>
+RealStructure:
+ANISO
+TDS[i]=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+TDS[i]=
+</helpID>
+<content>
+<code>TDS[i]</code>Defines a global Debye-Waller factor for the  Subphase 
+<code>i</code> (<code>1&lt;=i&lt;=RefMult</code>).
+<b>Attention:</b><code>TDS[i]=ANISO</code> is faulty, you must
+specify <code>TDS[i]=ANISOSQR</code>.
+</content>
+<seeAlso>
+RealStructure:
+ANISO
+ANISOSQR
+RefMult=
+iref
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+GEWICHT[i]=
+</helpID>
+<content>
+<code>GEWICHT[i]</code>defines the weight (scale factor) of the subphase
+<code>i</code> (<code>1&lt;=i&lt;=RefMult</code>).
+</content>
+<seeAlso>
+RealStructure:
+RefMult=
+iref
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+molecules:
+</helpID>
+<content>
+<p>
+The molecules feature will be switched on by assigning a positive
+value to
+<pre>
+THEORY=
+</pre>
+Using <code>set(a,x,y,z)</code>/<code>setgitter(a,x,y,z)</code>, one may 
+define molecules. Molecules
+are no rigid bodies, their internal angles and molecular distances may
+be changed by <code>T(a,b,c,alpha,beta,gamma,e...)</code> or 
+<code>D(a,b,chi,e...)</code>. The static interaction energy between 
+molecules may be set by <code>WW(a,m,b,n,liste...)</code>. Internal bondings 
+may be defined by <code>Bondings=</code> and <code>BondLevel=</code>.
+Atoms which are &quot;bonded&quot; are not used while executing the 
+<code>WW(a,m,b,n,liste...)</code> functions.
+<p>
+In general, the molecules extension uses arrays to hold the atom positions.
+Thereby, an atomic position descriptor (e.g. N6) must be a non-indexed variable.
+Looking at this example N6, BGMN uses N6[1], N6[2] and N6[3] for the cartesian 
+coordinate description.
+</content>
+<seeAlso>
+aboutStruc:
+set(a,x,y,z)
+setgitter(a,x,y,z)
+cross(a,b,c,x)
+diffvec(a,b,c)
+normvec(a,b)
+skalpro(vec1,vec2)
+distance(a,b)
+angle(a,b...)
+Theory=
+cpXYZ(a,b...)
+T(a,b,c,alpha,beta,gamma,e...)
+T2(a,b,c,alpha,beta,gamma,ein,eout...)
+D(a,b,chi,e...)
+D2(a,b,chi,ein,eout...)
+X(a)
+Y(a)
+Z(a)
+XYZ(a)
+WW(a,m,b,n,liste...)
+WWalt(a,m,b,n,liste...)
+Straf(x)
+Bondings=
+</seeAlso>
+</item>
+&&
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+set(a,x,y,z)
+</helpID>
+<content>
+<code>set(a,x,y,z)</code> defines an atomic position a at the three cartesian 
+coordinates x,y,z
+</content>
+<seeAlso>
+molecules:
+setgitter(a,x,y,z)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+setgitter(a,x,y,z)
+</helpID>
+<content>
+<code>setgitter(a,x,y,z)</code> defines an atomic position a at the three 
+lattice coordinates x,y,z
+</content>
+<seeAlso>
+molecules:
+set(a,x,y,z)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+cross(a,b,c,x)
+</helpID>
+<content>
+The first three arguments of <code>cross(a,b,c,x)</code> define atomic 
+positions. cross sets the 4th as the cross product of the both distance 
+vectors a-b and b-c starting on c. So, c-x will be orthogonal to a-b and b-c. 
+If a,b,c are collinear, x coincides with b.
+</content>
+<seeAlso>
+molecules:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+diffvec(a,b,c)
+</helpID>
+<content>
+<code>diffvec(a,b,c)</code> sets the third vector as the difference vector 
+between the first an the second atomic position.
+</content>
+<seeAlso>
+molecules:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+normvec(a,b)
+</helpID>
+<content>
+<code>normvec(a,b)</code> normalizes the three cartesian coordinates as given 
+by <code>a[1]...a[3]</code>, the result will be set to 
+<code>b[1]...b[3]</code>.
+The resulting vector b has the same direction as a, but the length 1
+(unit vector in direction of a)
+</content>
+<seeAlso>
+molecules:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+skalpro(vec1,vec2)
+</helpID>
+<content>
+<code>skalpro(vec1,vec2)</code> returns the skalar product of both the 
+argument vectors.
+</content>
+<seeAlso>
+molecules:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+distance(a,b)
+</helpID>
+<content>
+<code>distance(a,b)</code> returns the distance between both the argument 
+vectors (absolute value of the difference vector).
+</content>
+<seeAlso>
+molecules:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+angle(a,b...)
+</helpID>
+<content>
+<code>angle(a,b...)</code> has three definitions depending on the
+parameter count:
+<dl>
+<dt>with 2 arguments:
+<dd>returns the angle between both vectors in degree
+<dt>with 3 arguments:
+<dd>returns the angle enclosed between the atomic positions a-b-c
+<dt>with 4 arguments:
+<dd>returns the torsion angle between the 4 atomic positions a-b-c-d
+</dl>
+</content>
+<seeAlso>
+molecules:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+Theory=
+</helpID>
+<content>
+<code>Theory</code> defaults to zero. By setting to a positive value, the 
+force field extensions 
+<ul>
+<li><code>WW(a,m,b,n,liste...)</code>, <code>WWalt(a,m,b,n,liste...)</code>
+<li><code>Straf(x)</code>
+</ul>
+will be added to the refinemnt. By this way, a combined minimum for both
+the measured pattern and the force field will be computed.
+<br>
+The numerical value of the force field extension will be multiplied
+with the value assigned to <code>Theory</code> during refinement.
+</content>
+<seeAlso>
+molecules:
+WW(a,m,b,n,liste...)
+WWalt(a,m,b,n,liste...)
+Straf(x)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+cpXYZ(a,b...)
+</helpID>
+<content>
+After having defined the molecule with <code>set(a,x,y,z)</code>
+(or <code>setgitter(a,x,y,z)</code>), <code>cpXYZ(a,b...)</code> generates
+copies with identic co-ordinates. <code>cpXYZ</code> must be called
+with even parameter count. Within each pair of parameters, the co-ordinates
+of the left one are copied to the right-one. The right-one parameter
+may be a comma-separated list in brackets:
+<pre>
+cpXYZ(a,(b,c,d))
+</pre>
+By this way, multiple copies are generated from one source.
+</content>
+<seeAlso>
+molecules:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+T(a,b,c,alpha,beta,gamma,e...)
+</helpID>
+<content>
+After having defined the molecule with <code>set(a,x,y,z)</code>
+(or <code>setgitter(a,x,y,z)</code>), 
+<code>T(a,b,c,alpha,beta,gamma,e...)<(code>
+may be used for shifting the whole molecule for a,b,c and
+rotating for the 3 Eulerian angles alpha,beta,gamma. Therefore,
+all atomes of the molecule must be named beginning as the sixth parameter.
+</content>
+<seeAlso>
+molecules:
+T2(a,b,c,alpha,beta,gamma,ein,eout...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+T2(a,b,c,alpha,beta,gamma,ein,eout...)
+</helpID>
+<content>
+After having defined the molecule with <code>set(a,x,y,z)</code>
+(or <code>setgitter(a,x,y,z)</code>),
+<code>T(a,b,c,alpha,beta,gamma,e...)<(code>
+may be used for shifting the whole molecule for a,b,c and
+rotating for the 3 Eulerian angles alpha,beta,gamma. Therefore,
+all atomes of the molecule must be named beginning as the sixth parameter.
+In difference to T, T2 uses pairs of in- and out-parameters, so you may
+omit a separate call to cpXYZ.
+</content>
+<seeAlso>
+molecules:
+T(a,b,c,alpha,beta,gamma,e...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+D(a,b,chi,e...)
+</helpID>
+<content>
+<code>D(a,b,chi,e...)</code> may be used while folding the molecules. Rotates 
+all atoms as named after the 4th position for the angle chi around the 
+axis a-b.
+</content>
+<seeAlso>
+molecules:
+D2(a,b,chi,ein,eout...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+D2(a,b,chi,ein,eout...)
+</helpID>
+<content>
+<code>D2(a,b,chi,ein,eout...)</code> may be used while folding the molecules.
+Rotates all atoms as named after the 4th position for the angle chi around the
+axis a-b.In difference to D, D2 uses pairs of in- and out-parameters, so you
+may omit a separate call to cpXYZ.
+</content>
+<seeAlso>
+molecules:
+D(a,b,chi,e...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+X(a)
+</helpID>
+<content>
+<code>X(a)</code> returns the lattice coordinate x of the atomic position a.
+Usage: <code>x=X(a)</code>
+</content>
+<seeAlso>
+molecules:
+XYZ(a)
+Y(a)
+Z(a)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+Y(a)
+</helpID>
+<content>
+<code>Y(a)</code> returns the lattice coordinate y of the atomic position a.
+Usage: <code>y=Y(a)</code>
+</content>
+<seeAlso>
+molecules:
+XYZ(a)
+X(a)
+Z(a)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+Z(a)
+</helpID>
+<content>
+<code>Z(a)</code> returns the lattice coordinate z of the atomic position a.
+Usage: <code>z=Z(a)</code>
+</content>
+<seeAlso>
+molecules:
+XYZ(a)
+X(a)
+Y(a)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+XYZ(a)
+</helpID>
+<content>
+<code>XYZ(a)</code> is an abbreviation for the sequence
+<pre>
+x=X(a) y=Y(a) z=Z(a)
+</pre>
+</content>
+<seeAlso>
+molecules:
+X(a)
+Y(a)
+Z(a)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+F(phi...)
+</helpID>
+<content>
+<code>F</code> calculated dynamically a structure factor. The atomic 
+positions in part 2 of the structure file will be calculated only once
+prior to all hkl calculations. In contrast, F will be calculated
+every time it will be called. In special, F may be used within
+the standard function <code>cintegral</code> for calculation of
+arbitrary random distribution of molecules. Example:
+<pre>
+FMult=1
+F=cat(fmittelbetrag==cintegral(fi,F(psi,
+D2(r1,r2,rot,EOZ1,eoz1,EOZ2,eoz2,EOZ3,eoz3,EOZ4,eoz4,EOZ5,eoz5,EOZ6,eoz6),
+E=NA+1(pCA),Wyckoff=c,XYZ(ECA),TDS==tdsint,
+E=O-2(pOZ),Wyckoff=c,XYZ(eoz1),TDS==tdsH2O,
+E=O-2(pOZ),Wyckoff=c,XYZ(eoz2),TDS==tdsH2O,
+E=O-2(pOZ),Wyckoff=c,XYZ(eoz3),TDS==tdsH2O,
+E=O-2(pOZ),Wyckoff=c,XYZ(eoz4),TDS==tdsH2O,
+E=O-2(pOZ),Wyckoff=c,XYZ(eoz5),TDS==tdsH2O,
+E=O-2(pOZ),Wyckoff=c,XYZ(eoz6),TDS==tdsH2O),
+psi,rot,0,120)/120,
+sqrt(sqr(F[1]*cos(pi*phi[1]/180)+fmittelbetrag*cos(pi*fi/180))+
+sqr(F[1]*sin(pi*phi[1]/180)+fmittelbetrag*sin(pi*fi/180))))
+</pre>
+will calculate the strucure factor including a rotating octahedron.
+</content>
+<seeAlso>
+molecules:
+cintegral(phi,yabs,yphase,x,xu,xo...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+WW(a,m,b,n,liste...)
+</helpID>
+<content>
+<code>WW(a,m,b,n,liste...)</code>
+defines nonbonding or bonding interactions (likehydrogen bonds) using list 
+of atomic positions descriptors as define by set/setgitter an moved around 
+by using the <code>T(a,b,c,alpha,beta,gamma,e...)</code> and
+<code>D(a,b,chi,e...)</code>
+functions.In every case, the bonding/nonbonding energy will be
+<br>
+a*r<sup>m</sup>+b*r<sup>n</sup>
+<br>
+May be used with 5 or 6 parameters. Uses one or two lists of atomic
+descriptors, for example
+<dl>
+<dt><code>WW(a,m,b,n,(C1,C2,C3))</code>
+<dd>declares all force fields between C1,C2 und C3, which are 3:<br>
+    C1-C2, C1-C3 and C2-C3
+<dt><code>WW(a,m,b,n,(C1,C2),(N1,N2))</code>
+<dd>declares all force fieldsbetween both lists, which  ar 4:<br>
+    C1-N1, C1-N2, C2-N1 anc C2-N2
+</dl>
+for partially occupied settings, the product of both settings (always
+<code>0&lt;=p1*p2&lt;=1</code> will be multiplied to the force field penalty.
+<p>
+In every case, Bondings and BondLevel may exclude atomic pairings from
+the penalty function.
+</content>
+<seeAlso>
+molecules:
+Theory=
+WWalt(a,m,b,n,liste...)
+Bondings=
+BondLevel=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+WWalt(a,m,b,n,liste...)
+</helpID>
+<content>
+In some cases partial atomic settings are correlated. In such cases,
+<code>WWalt(a,m,b,n,liste...)</code>
+ may give an interaction probability <code>0&lt;=p&lt;=1</code> as additional 
+last parameter. Therefore, <code>WWalt(a,m,b,n,liste...)</code> may be used 
+with 6 or 7 parameters.
+</content>
+<seeAlso>
+molecules:
+Theory=
+WW(a,m,b,n,liste...)
+Bondings=
+BondLevel=
+E(p...)=
+</seeAlso>
+</item>
+   
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+Bondings=
+</helpID>
+<content>
+Usage as <code>Bondings=H1,C2,C3,H4</code>
+is equivaent to
+<code>Bondings=H1,C2,C3  Bondings=C3,H4</code>
+<dl>
+<dt><code>Bondlevel=0</code>
+<dd>All 4 atoms may be interact, when used in 
+<code>WW(a,m,b,n,liste...)</code>.
+<dt><code>BondLevel=1</code>
+<dd>All direct neighbours are excluded 
+<dt><code>BondLevel=2</code><dd>Next neighbours are excluced, too.
+    In the above settings this means only H1-H4 may interact via WW
+</dl>
+</content>
+<seeAlso>
+molecules:
+BondLevel=
+WW(a,m,b,n,liste...)
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+BondLevel=
+</helpID>
+<content>
+For <code>BondLevel</code> see <code>Bondings</code>.
+</content>
+<seeAlso>
+molecules:
+Bondings=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+</flag>
+<helpID>
+Straf(x)
+</helpID>
+<content>
+<code>Straf(x)</code>
+simply introduceds a single penalty as an expression which has to be refined
+to zero. The square of the argument will be added to the total energy.
+</content>
+<seeAlso>
+molecules:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+IdealStructure:
+</helpID>
+<content>
+With the first occurence of <code>E=</code> or <code>E(p...)=</code> the 
+second part of the <code>*.str</code> file starts. This second part
+determines the ideal structure. If no second part is defined, all
+peak intensities are defined independly (LeBail-fit, see
+<code>LeBail=</code>.
+</content>
+<seeAlso>
+aboutStruc:
+E=
+E(p...)=
+LeBail=
+x=
+y=
+z=
+Wyckoff=
+TDS=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part2
+</flag>
+<helpID>
+E=
+</helpID>
+<content>
+Each definition of an atomic place starts with <code>E=</code> or 
+<code>E(p...)=</code>, for example
+<pre>
+E=C
+E=(NA(p),K(1-p))
+E=(NA(p),K)
+</pre>
+The last two lines are equivalent. All non-weighted elements are used
+to complete the position's total occupation probability to one.
+</content>
+<seeAlso>
+IdealStructure:
+E(p...)=
+LeBail=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part2
+</flag>
+<helpID>
+E(p...)=
+</helpID>
+<content>
+<code>E(p...)</code>
+If <code>FMult&gt;0</code>, then between both the brackets are
+<code>Fmult</code>expressions describing arbitrary factors as used for this
+atomic positions contribution to the partial structure factors
+<code>F[i]</code>, <code>phi[i]</code>, <code>Finv[i]</code>,
+<code>phiinv[i]</code>.
+<p>
+In case no <code>FMult</code> is used, then between both the brackets
+there are <code>RefMult</code> expressions, for each 
+subphase <code>1...RefMult</code> 
+describing arbitrary factors as used for this atomic positions 
+contribution to the total structure amplitude F. E.g.
+<pre>
+RefMult=3
+E=
+E(0,-1,-1)=...
+</pre>
+defines the intensity of subphase 1 only depending from the first 
+<code>E=</code> and the intensity of subphases 2, 3 depending from the
+differency of both the atomic places.
+</content>
+<seeAlso>
+IdealStructure:
+RefMult=
+FMult=
+iref
+LeBail=
+E=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part2
+</flag>
+<helpID>
+x=
+</helpID>
+<content>
+atomic coordinate <code>x</code> of the atomic position. For structure
+refinement, the normal use is
+<pre>
+PARAM=x=...
+</pre>
+However, for quant analysis etc. only <code>x=</code>... can be given.
+Another way is <code>x=X(a)</code>.
+</content>
+<seeAlso>
+IdealStructure:
+X(a)
+y=
+z=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part2
+</flag>
+<helpID>
+y=
+</helpID>
+<content>
+atomic coordinate <code>y</code> of the atomic position. For structure
+refinement, the normal use is
+<pre>
+PARAM=y=...
+</pre>
+However, for quant analysis etc. only <code>y=...</code> can be given.
+Another way is <code>y=Y(a)</code>.
+</content>
+<seeAlso>
+IdealStructure:
+Y(a)
+x=
+z=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part2
+</flag>
+<helpID>
+z=
+</helpID>
+<content>
+atomic coordinate <code>z</code> of the atomic position. For structure
+refinement, the normal use is
+<pre>
+PARAM=z=...
+</pre>
+However, for quant analysis etc. only <code>z=...</code> can be given.
+Another way is <code>z=Z(a)</code>.
+</content>
+<seeAlso>
+IdealStructure:
+Z(a)
+x=
+y=
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+GOAL
+</helpID>
+<content>
+There are two kinds of <code>GOAL</code>:
+<ul>
+<li>direct: <code>GOAL=A/C</code>
+<li>indirect: <code>GOAL:outer=A/C</code>
+</ul>
+The difference: The direct <code>GOAL</code> will be reported with
+errors in the result file <code>*.lst</code>.
+The indirect <code>GOAL</code> assignes the result of an expression to
+a helper variable, which then can be used in an outer environment.
+<p>
+For example: We assume 2 phase files named <code>a.str</code> and 
+<code>b.str</code>.<br>
+File <code>a.str</code> contains the item <code>GOAL:a=GEWICHT</code><br>
+File <code>b.str</code> contains the item <code>GOAL:b=GEWICHT</code><br>
+Then, in the outer <code>*.sav</code> file, one may
+set the items
+<pre>
+GOAL[1]=a/(a+b)
+GOAL[2]=b/(a+b)
+</pre>
+which will give the total weight fractions of both phases and
+their random errors.
+</content>
+<seeAlso>
+aboutStruc:
+B1(h,k,l)
+k2(h,k,l)
+TDS(h,k,l)
+ANISO(x,h,k,l)
+GEWICHT(h,k,l)
+GrainSize(h,k,l)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+B1(h,k,l)
+</helpID>
+<content>
+<code>B1(h,k,l)</code> is
+usable only inside of <code>GOAL</code>s.
+In case there is defined <code>B1=ANISO</code>, this function will return
+the value of <code>B1</code> in the direction <code>h k l</code>.
+</content>
+<seeAlso>
+GOAL
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+k2(h,k,l)
+</helpID>
+<content>
+<code>k2(h,k,l)</code> is
+usable only inside of <code>GOAL</code>s.
+In case there is defined <code>k2=ANISO</code>, this function will return
+the value of <code>k2</code> in the direction <code>h k l</code>.
+</content>
+<seeAlso>
+GOAL
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+TDS(h,k,l)
+</helpID>
+<content>
+<code>TDS(h,k,l)</code> is
+usable only inside of <code>GOAL</code>s.
+In case there is defined a global <code>TDS=ANISO</code>, this function will 
+return the value of TDS in the direction (hkl).
+</content>
+<seeAlso>
+GOAL
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+ANISO(x,h,k,l)
+</helpID>
+<content>
+<code>ANISO(x,h,k,l)</code> is usable only inside of <code>GOAL</code>s.
+Assuming x as an anisotropic variable (set by <code>x=ANISOLIN</code> or
+<code>x=ANISOSQR</code> or <code>x=ANISO4</code>), this serves the value plus
+random error of x in the direction <code>h k l</code>.
+</content>
+<seeAlso>
+GOAL
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+GEWICHT(h,k,l)
+</helpID>
+<content>
+<code>GEWICHT(h,k,l)</code> is usable only inside of <code>GOAL</code>s.
+In case there is defined <code>GEWICHT=SPHARx</code>, this function will return
+the value of <code>GEWICHT</code> (product of scaling factor and
+preferred orientation) in the direction <code>h k l</code>.
+</content>
+<seeAlso>
+GOAL
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part1
+</flag>
+<helpID>
+GrainSize(h,k,l)
+</helpID>
+<content>
+<code>GrainSize(h,k,l)</code> is usable only in <code>GOAL</code>s. 
+Serves the mean crystallite diameter in the given direction <code>h k l</code>.
+</content>
+<seeAlso>
+GOAL
+</seeAlso>
+</item>
+
+<item>
+<flag>
+part2
+</flag>
+<helpID>
+TDS=
+</helpID>
+<content>
+<code>TDS=</code> declares a position dependent Debye Waller factor 
+(unit: squared nanometers). Useful also in the combination with
+<pre>
+TDS=ANISO
+</pre>
+In this case, anisotropic (ellipsoidal) Debye-Waller factors will
+be introduced. They fulfill the symmetry conditions of the actual position.
+</content>
+<seeAlso>
+IdealStructure:
+ANISO
+</seeALso>
+</item>
+
+<item>
+<flag>
+part2
+</flag>
+<helpID>
+ANISO
+</helpID>
+<content>
+<code>ANISO</code> is only valid in combination with <code>TDS=ANISO</code>.
+</content>
+<seeAlso>
+TDS=
+</seeAlso>
+</item>
+
+
+<item>
+<flag>
+part2
+</flag>
+<helpID>
+Wyckoff=
+</helpID>
+<content>
+<code>Wyckoff=</code>
+sets the Wyckoff notation for this atomic position.
+For deeper knowledge, see the file <code>spacegrp.dat</code> 
+or International Tables for Crystallography Vol. A.
+</content>
+<seeAlso>
+IdealStructure:
+</seeAlso>
+</item>
+
+
+
+
+<item>
+<flag>
+</flag>
+<helpID>
+*(i):
+</helpID>
+<content>
+Definition of a function. The brackets () contain one number,
+setting the parameter count of the defined function.
+A number below zero defines a function with variable argument count. 
+In this case, the absolute value of the number gives a minimum number of 
+parameters. The character : must be followed by any expression, which may
+contain placeholders for the actual parameters #1, #2 and so on.
+For example
+<pre>
+prod(2):#1*#2
+a==prod(2,3)
+</pre>
+assignes the value 6 to the variable a.
+</content>
+<seeAlso>
+expression:
+*(x...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+expression:
+</helpID>
+<content>
+An expression is a string containing numbers, variables, function calls,
+brackets () and the operators + - * / in the commonly known way.
+Expressions may be resolved to a numeric value on demand.
+This is done by the built-in data interpreter using
+high-precision floating point numbers in general.
+</content>
+<seeAlso>
+*(x...)
+*
+*[i...]
+assignment:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+predefinedFunctions:
+</helpID>
+<content>
+All global predefined functions are listed below. BGMN predefines
+some additional functions, which are valid only in special cases/positions.
+</content>
+<seeAlso>
+abs(x)
+sqr(x)
+sqrt(x)
+sin(x)
+cos(x)
+tan(x)
+asin(x)
+acos(x)
+atan(x)
+log(x)
+exp(x)
+mod(x,y)
+power(x,y)
+min(x...)
+max(x...)
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+ifthenelse(b,x,y)
+select(i,v1,v2...)
+integral(y,x,xu,xo...)
+cintegral(phi,yabs,yphase,x,xu,xo...)
+ifdef(x...)
+cat(a...)
+while(b...)
+ergibt(a)
+gauss(A,x,b,eps,n)
+cgauss(Areal,Aimag,xreal,ximag,breal,bimag,eps,n)
+*(x...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+abs(x)
+</helpID>
+<content>
+<code>abs(x)</code> returns the absolute value of its argument x.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+sqr(x)
+</helpID>
+<content>
+<code>sqr(x)</code> returns the squared value of its argument x.
+</content>
+<seeAlso>
+sqrt(x)
+power(x,y)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+sqrt(x)
+</helpID>
+<content>
+<code>sqrt(x)</code> returns the square root of its argument x.
+</content>
+<seeAlso>
+sqr(x)
+power(x,y)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+power(x,y)
+</helpID>
+<content>
+<code>power(x,y)</code> returns the value x to the y-th power.
+</content>
+<seeAlso>
+sqr(x)
+sqrt(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+sin(x)
+</helpID>
+<content>
+<code>sin(x)</code> is the common sin function with x in radians.
+</content>
+<seeAlso>
+cos(x)
+tan(x)
+asin(x)
+acos(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+cos(x)
+</helpID>
+<content>
+<code>cos(x)</code> is the common cos function with x in radians.
+</content>
+<seeAlso>
+sin(x)
+tan(x)
+asin(x)
+acos(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+tan(x)
+</helpID>
+<content>
+<code>tan(x)</code> is the common tan function with x in radians.
+</content>
+<seeAlso>
+sin(x)
+cos(x)
+asin(x)
+acos(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+asin(x)
+</helpID>
+<content>
+<code>asin(x)</code> is the common asin function, return value in radians.
+</content>
+<seeAlso>
+sin(x)
+cos(x)
+tan(x)
+acos(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+acos(x)
+</helpID>
+<content>
+<code>acos(x)</code> is the common acos function, return value in radians.
+</content>
+<seeAlso>
+sin(x)
+cos(x)
+tan(x)
+asin(x)
+atan(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+atan(x)
+</helpID>
+<content>
+<code>atan(x)</code> is the common atan function, return value in radians.
+</content>
+<seeAlso>
+sin(x)
+cos(x)
+tan(x)
+asin(x)
+acos(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+log(x)
+</helpID>
+<content>
+<code>log(x)</code> is the common log function (base e).
+</content>
+<seeAlso>
+exp(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+exp(x)
+</helpID>
+<content>
+<code>exp(x)</code> is the common exp function (base e).
+</content>
+<seeAlso>
+log(x)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+mod(x,y)
+</helpID>
+<content>
+<code>mod(x,y)</code> is the common modulo function.
+It accepts non-integer values of x and/or y, too.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+min(x...)
+</helpID>
+<content>
+<code>min(x...)</code> with variable argument count returns the minimum value 
+of all the arguments.
+</content>
+<seeAlso>
+max(x...)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+max(x...)
+</helpID>
+<content>
+<code>max(x...)</code> with variable argument count returns the maximum value 
+of all the arguments.
+</content>
+<seeAlso>
+min(x...)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ge(x,y...)
+</helpID>
+<content>
+<code>ge(x,y...)</code> returns 1.0 (a non-zero value as a representation of 
+true) if the x&gt;=y holds for each neighboured pair of arguments, starting 
+from the first. If some pair does not hold the condition, 0.0 (false) will be 
+returned immediately without looking for possible following argument pairs.
+</content>
+<seeAlso>
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+gt(x,y...)
+</helpID>
+<content>
+<code>gt(x,y...)</code> returns 1.0 (a non-zero value as a representation of 
+true) if the x&gt;y holds for each neighboured pair of arguments, 
+starting from the first. If some pair does not hold the condition, 0.0 
+(false) will be returned immediately without evaluation of the possible 
+following argument pairs.
+</content>
+<seeAlso>
+ge(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+le(x,y...)
+</helpID>
+<content>
+<code>le(x,y...)<code> returns 1.0 (a non-zero value as a representation of 
+true) if the x&lt;=y holds for each neighboured pair of arguments, starting 
+from the first. If some pair does not hold the condition, 0.0 (false) will be 
+returned immediately without evaluation of the possible following argument 
+pairs.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+lt(x,y...)
+</helpID>
+<content>
+<code>lt(x,y...)</code> returns 1.0 (a non-zero value as a representation of 
+true)
+if the x&lt;y holds for each neighboured pair of arguments, starting from the 
+first. If some pair does not hold the condition, 0.0 (false) will be 
+returned immediately without evaluation of the possible following argument 
+pairs.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+eq(x,y...)
+</helpID>
+<content>
+<code>eq(x,y...)</code> returns 1.0 (a non-zero value as a representation of 
+true) if all arguments are equal. Comparison starts from the 
+first pair of neighboured arguments. If some argument does not hold the 
+condition, 0.0 (false) will be returned immediately without evaluation of the  
+possible following arguments.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ne(x,y...)
+</helpID>
+<content>
+<code>ne(x,y...)</code> looks for inequality between any pair 
+(also not neighboured)
+of arguments. If two arguments are equal, 0.0 (false) will be returned.
+Otherwise, 1.0 as a representation of true will be returned.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+and(b...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+and(b...)
+</helpID>
+<content>
+<code>and(b...)</code> with variable argument count returns 1.0 
+(a non-zero value as a representation of true) if all arguments are non-zero 
+(true). Otherwise, it returns zero (false).
+All arguments behind a zero value (false) argument will not be checked
+for validity.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+or(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+or(b...)
+</helpID>
+<content>
+<code>or(b...)</code> with variable argument count returns 1.0 
+(a non-zero value as a representation of true) if any argument is non-zero 
+(true). Otherwise, it returns zero (false).
+All arguments behind a non-zero value (true) argument will not be checked
+for validity.
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+not(b)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+not(b)
+</helpID>
+<content>
+<code>not(b)</code> 1.0 (a non-zero value as a representation of true) 
+if the argument is zero (false). Otherwise it returns 1.0 
+(a non-zero value as a representation of true).
+</content>
+<seeAlso>
+ge(x,y...)
+gt(x,y...)
+le(x,y...)
+lt(x,y...)
+eq(x,y...)
+ne(x,y...)
+and(b...)
+or(b...)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ifthenelse(b,x,y)
+</helpID>
+<content>
+<code>ifthenelse(b,x,y)</code> returns its second value x if b is non-zero 
+(true). Else it returns its third value y. In each case, the other value 
+(y or x) will cause no error if it is undefined or cannot be evaluated as a 
+number.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+select(i,v1,v2...)
+</helpID>
+<content>
+<code>select(i,v1,v2...)</code> returns the value of the i+1-th argument
+<code>vi</code> depending on the value of the first argument <code>i</code>.
+An error occurs if <code>i</code> is zero, below zero or above the number
+of select values. The other parameters will cause no error if they are
+undefined or cannot be evaluated as a number.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+integral(y,x,xu,xo...)
+</helpID>
+<content>
+<code>integral(y,x,xu,xo)</code> calculates a numeric integral. integrand will
+be y, the integral will be carried out over x between xu and xo. For
+minmization of the numeric effort, an adaptive 7-point-formula will be used.
+The precision of the numeric integration may be set as a fifth parameter,
+default is 1E-13 (which will, for the fast converging 7-point formula,
+reach a precision near to 1E-15). Example:
+<pre>
+integral(sin(x),x,0,acos(0))
+</pre>
+will calculate 1.0.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+cintegral(phi,yabs,yphase,x,xu,xo...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+cintegral(phi,yabs,yphase,x,xu,xo...)
+</helpID>
+<content>
+<code>cintegral(phy,yabs,yphase,x,xu,xo)</code> calculates a complex
+numeric integral. The absolute value of the integrand will be yabs, its
+complex phase angle yphase. The integral will be carried out over x 
+between xu and xo. For minmization of the numeric effort, an 
+adaptive 7-point-formula will be used. The precision of the numeric 
+integration may be set as a fifth parameter, default is 1E-13 (which will, 
+for the fast converging 7-point formula, reach a precision near to 1E-15).
+cintegral returns the absolute value of the integral, its phase angle
+will be set to the variable given at first position (phi). 
+Example:
+<pre>
+cintegral(phi,1,90*x/acos(0),x,0,acos(0))
+</pre>
+will calculate the square root of 2, phi will be set to 45.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+integral(y,x,xu,xo...)
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ifdef(x...)
+</helpID>
+<content>
+<code>ifdef(x...)</code>
+tries to get a double value from all of its arguments x...
+It returns 1.0 as a representation of true on success.
+On any fail it returns zero (false) without trying the following
+arguments.
+</content>
+<seeAlso>
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+cat(a...)
+</helpID>
+<content>
+<code>cat(a...)</code> may have expressions or assignments as arguments.
+All are evaluated. At least one argument must be an expression,
+the value of the last such expression will be returned.
+</content>
+<seeAlso>
+expression:
+assignment:
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+while(b...)
+</helpID>
+<content>
+<code>while(b...)</code> allows the definition of loops. As long as the first
+argument is non-zero (true), all following arguments will be
+evaluated as expressions or assignments. The count of loop iterations
+is returned.
+</content>
+<seeAlso>
+expression:
+assignment:
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+ergibt(a)
+</helpID>
+<content>
+<code>ergibt(a)</code> must have an assignment as argument. It tries to do
+this assignment. It returns 1.0 as a representation of true on success.
+Otherwise, it returns zero (false).
+</content>
+<seeAlso>
+assignment:
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+gauss(A,x,b,eps,n)
+</helpID>
+<content>
+<code>gauss(A,x,b,eps,n)</code> is a high-level standard functions for 
+solving linear equation systems.
+A,x,b are placeholder for arrays, therefore only non-indexed
+names are allowed. gauss solves the inhomogen linear equation system<br>
+<b>Ax</b>=<b>b</b><br>
+where <b>A</b> is the matrix A[1,1]...A[n,n], <b>b</b> is
+the right side b[1]...b[n] and <b>x</b> is the unknown solution
+x[1]...x[n]. eps is a limit for the pivot element, if any pivot
+element is smaller than eps the equation leaves unsolved
+and zero (false) will be returned. If the equation system has been solved
+and x[1]...x[n] hold the solution, 1 (true) will be returned.
+</content>
+<seeAlso>
+cgauss(Areal,Aimag,xreal,ximag,breal,bimag,eps,n)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+cgauss(Areal,Aimag,xreal,ximag,breal,bimag,eps,n)
+</helpID>
+<content>
+<code>cgauss(Areal,Aimag,xreal,ximag,breal,bimag,eps,n)</code> 
+is a high-level standard functions for solving complex linear equation systems.
+Areal,Aimag,xreal,ximag,breal,bimag are placeholder for arrays, 
+therefore only non-indexed names are allowed. gauss solves the inhomogen 
+complex linear equation system<br>
+<b>Ax</b>=<b>b</b><br>
+<b>A</b> is defined by its real part Areal[1,1]...Areal[n,n] and its
+imaginary part Aimag[1,1]...Aimag[n,n], in equivalence the complex
+arrays <b>b</b> (right side) and <b>x</b> (unknown solution) are defined.
+eps is a limit for the pivot element, if any pivot
+element is smaller than eps the equation leaves unsolved
+and zero (false) will be returned. If the equation system has been solved
+and xreal[1]/ximag[1]...xreal[n]/ximag[n] hold the solution, 1 (true) 
+will be returned.
+</content>
+<seeAlso>
+gauss(A,x,b,eps,n)
+*(x...)
+predefinedFunctions:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+*(x...)
+</helpID>
+<content>
+A function call is a name followed by a list of actual parameters in
+brackets () separated by commas. There are some predefined
+functions, in general. In addition, functions may be
+defined in the input file. Functions calls may become recursive.
+Only the actual stack depth of the BGMN program may become
+a run time problem for deeply nested function calls.
+</content>
+<seeAlso>
+*(i):
+predefinedFunctions:
+</seeAlso>
+</item>
+
+
+
+<item>
+<flag>
+</flag>
+<helpID>
+*[i...]
+</helpID>
+<content>
+Arrays are variable names followed by a list of indices separated
+by commas, in brackets []. Indices may be arbitrary expressions.
+</content>
+<seeAlso>
+*
+*(x...)
+expression:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+*
+</helpID>
+<content>
+Arbitrary variables may be defined by assigning a value. The first character
+of the name must be a letter, the following characters may be letters or
+decimal digits. This rule is also valid for the names of arrays and
+functions. Any variable may, in general, hold one of two types of values:
+either a double number or a string value. An expression is a special
+case of a string value. All programs use some variable names for program 
+control. In addition, some variables may be predefined in special 
+cases/positions by the program.
+</content>
+<seeAlso>
+*(x...)
+*[i...]
+expression:
+</seeAlso>
+</item>
+
+<item>
+<flag>
+</flag>
+<helpID>
+assignment:
+</helpID>
+<content>
+Assignments are variable names (maybe indexed) followed by one ore
+more assignment characters = and a string. In special, the string
+may be a variable or an expression. In general, a single = assigns 
+the string value of the right hand side to the left hand variable.
+Other behaviour may be controlled by multiple =. Some examples:<br>
+A=1<br>
+B=A<br>
+C=B<br>
+D==C<br>
+E===C<br>
+F====C<br>
+G=====C<br>
+H==(C)
+I==C+B<br>
+K==1
+<p>
+After doing the above assignments from top to bottom,<br>
+A holds the string 1<br>
+B holds the string A<br>
+C holds the string B<br>
+D holds the string B<br>
+E holds the string A<br>
+F holds the string 1<br>
+G holds the double value 1.0<br>
+H holds the double value 1.0<br>
+I holds the double value 2.0<br>
+K holds the double value 1.0
+</content>
+<seeAlso>
+expression:
+predefinedFunctions:
+*
+*[i...]
+*(x...)
+</seeAlso>
+</item>
+
+</helpitems>
+</helpdata>

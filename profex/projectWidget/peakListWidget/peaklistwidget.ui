@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PeakListWidget</class>
+ <widget class="QWidget" name="PeakListWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>396</width>
+    <height>554</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Phases:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBoxHklData">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Select phase</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButtonToolsMenu">
+        <property name="toolTip">
+         <string>Tools</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="popupMode">
+         <enum>QToolButton::InstantPopup</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButtonFilter">
+        <property name="toolTip">
+         <string>Filter peak list</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButtonContextHelp">
+        <property name="toolTip">
+         <string>Show module context help (Window -&gt; Context help)</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="PeakListFilterForm" name="peakListFilterForm" native="true"/>
+     <widget class="QTableView" name="tableViewHklData">
+      <property name="showDropIndicator" stdset="0">
+       <bool>false</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ExtendedSelection</enum>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectItems</enum>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PeakListFilterForm</class>
+   <extends>QWidget</extends>
+   <header>projectWidget/peakListWidget/peaklistfilterform.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>comboBoxHklData</tabstop>
+  <tabstop>tableViewHklData</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>toolButtonFilter</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>PeakListWidget</receiver>
+   <slot>toggleFilterWidget()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>356</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>391</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonContextHelp</sender>
+   <signal>clicked()</signal>
+   <receiver>PeakListWidget</receiver>
+   <slot>showHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>376</x>
+     <y>18</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>phaseFilterChanged(int)</slot>
+  <slot>toggleFilterWidget()</slot>
+  <slot>showHelp()</slot>
+ </slots>
+</ui>

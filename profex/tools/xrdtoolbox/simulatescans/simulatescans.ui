@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SimulateScans</class>
+ <widget class="QDialog" name="SimulateScans">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>841</width>
+    <height>721</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Simulate Compositions</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
+    <widget class="QSplitter" name="splitterH2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QSplitter" name="splitterV">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QGroupBox" name="groupBoxPhases">
+       <property name="title">
+        <string>Phases</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QSplitter" name="splitterH1">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Phase:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonPhaseAdd">
+                <property name="icon">
+                 <iconset theme="profex-add">
+                  <normaloff>.</normaloff>.</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonPhaseRemove">
+                <property name="icon">
+                 <iconset theme="profex-remove">
+                  <normaloff>.</normaloff>.</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QListWidget" name="listWidgetPhases"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Reference Scans:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonScanAdd">
+                <property name="icon">
+                 <iconset theme="profex-add">
+                  <normaloff>.</normaloff>.</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonScanRemove">
+                <property name="icon">
+                 <iconset theme="profex-remove">
+                  <normaloff>.</normaloff>.</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QListWidget" name="listWidgetScanFiles"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Mass Absorption Coeff.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDoubleSpinBox" name="doubleSpinBoxMAC">
+            <property name="decimals">
+             <number>5</number>
+            </property>
+            <property name="maximum">
+             <double>999.990000000000009</double>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Simulations</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QTableWidget" name="tableWidgetCompositions"/>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="2" column="1">
+           <widget class="QSpinBox" name="spinBoxSimulations">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDoubleSpinBox" name="doubleSpinBoxScale">
+            <property name="decimals">
+             <number>5</number>
+            </property>
+            <property name="maximum">
+             <double>10.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="value">
+             <double>1.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Overall Scale Factor</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Number of Simulations</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="checkBoxNoise">
+            <property name="text">
+             <string>Add Noise</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Number of compositions</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spinBoxCompositions">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QPlainTextEdit" name="textEditLog"/>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="toolButtonSimulate">
+       <property name="toolTip">
+        <string>Run the simulation</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-run">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonClose">
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>toolButtonPhaseAdd</tabstop>
+  <tabstop>toolButtonPhaseRemove</tabstop>
+  <tabstop>listWidgetPhases</tabstop>
+  <tabstop>toolButtonScanAdd</tabstop>
+  <tabstop>toolButtonScanRemove</tabstop>
+  <tabstop>listWidgetScanFiles</tabstop>
+  <tabstop>doubleSpinBoxMAC</tabstop>
+  <tabstop>tableWidgetCompositions</tabstop>
+  <tabstop>doubleSpinBoxScale</tabstop>
+  <tabstop>spinBoxSimulations</tabstop>
+  <tabstop>checkBoxNoise</tabstop>
+  <tabstop>textEditLog</tabstop>
+  <tabstop>toolButtonSimulate</tabstop>
+  <tabstop>pushButtonClose</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonClose</sender>
+   <signal>clicked()</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>830</x>
+     <y>710</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>491</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSimulate</sender>
+   <signal>clicked()</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>runSynthesis()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>708</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>229</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonPhaseAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>addPhase()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>374</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>35</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonPhaseRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>removePhase()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>404</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>70</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonScanAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>addScan()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>374</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>237</x>
+     <y>5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonScanRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>removeScan()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>404</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>303</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxMAC</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>macChanged(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>405</x>
+     <y>483</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>472</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidgetPhases</sender>
+   <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>currentPhaseChanged(QListWidgetItem*,QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>109</x>
+     <y>137</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidgetScanFiles</sender>
+   <signal>currentItemChanged(QListWidgetItem*,QListWidgetItem*)</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>currentScanChanged(QListWidgetItem*,QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>363</x>
+     <y>447</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>525</x>
+     <y>5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tableWidgetCompositions</sender>
+   <signal>itemChanged(QTableWidgetItem*)</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>phaseQuantityChanged(QTableWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>819</x>
+     <y>349</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>577</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxCompositions</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>SimulateScans</receiver>
+   <slot>numberOfCompositionsChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>758</x>
+     <y>365</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>841</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>runSynthesis()</slot>
+  <slot>addPhase()</slot>
+  <slot>removePhase()</slot>
+  <slot>addScan()</slot>
+  <slot>removeScan()</slot>
+  <slot>macChanged(double)</slot>
+  <slot>currentPhaseChanged(QListWidgetItem*,QListWidgetItem*)</slot>
+  <slot>currentScanChanged(QListWidgetItem*,QListWidgetItem*)</slot>
+  <slot>phaseQuantityChanged(QTableWidgetItem*)</slot>
+  <slot>numberOfCompositionsChanged(int)</slot>
+ </slots>
+</ui>

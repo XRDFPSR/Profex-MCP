@@ -1,0 +1,64 @@
+<h1>Plot Options</h1>
+<p>This module gives access to the scans within a project. The changes only affect the current display on screen.
+Files on the disk are not modified. To preserve the changes, scans must be exported manually.</p>
+<h2>Showing / hiding columns</h2>
+<p>Right-clicking on the header allows to show or hide offset and scaling columns.</p>
+<h2>Mouse interactions</h2>
+<ul><li>The order of scans can be re-arranged by drag-and-drop.</li>
+<li>Selecting a scan with the mouse sets it to "active" state. Active scans are indicated by the letter "A".
+Other purposes of setting scans active are explained below.</li>
+<li>Right-clicking a scan opens a context menu for more interactions.</li></ul>
+<h2>Offsets and scaling</h2>
+<p>The values for scaling and horizontal / vertical offset can be changed by double-clicking on the current value. These values
+are only used for screen display, the scan's data is not changed. The changes are volatile. Closing a project or running a refinement
+will reset scaling and offsets.</p>
+<p>All offset values can be reset by pressing CTRL + Space bar.</p>
+<p>Scaling can be reset by right-clicking (unzooming) in the graph while the scan is activated.</p>
+<h2>Active Scans</h2>
+<p>Selecting a scan with the mouse sets its status to active, as indicated by the letter "A". Active scans are drawn with bold
+lines and the area under the scan is filled with a transparent color.</p>
+<p>Multiple scans can be set active by holding the CTRL or SHIFT key while selecting the scans.</p>
+<p>To unset all active scans, click on the empty area below the last scan in the list.</p>
+<p>Some modules perform actions on the active scan:</p>
+<ul><li>The Search-Match module runs phase matching on the first active scan, or on the first scan in the Plot Options list if
+no scan is active.</li>
+<li>Peak detection ("Run -> Run Peak Detection") runs on the first active scan, or on the first scan in the Plot Options list if
+no scan is active.</li>
+<li>Generic peak fitting runs on the first active scan, or on the first scan in the Plot Options list if
+no scan is active.</li></ul>
+<h2>Context Menu</h2>
+<p>Right-clicking on a scan opens a context menu allowing further interactions with the selected scan:</p>
+<p><b>Export scan:</b> Exports the selected scan to a new file. A file dialog opens to specify the file name.
+If multiple scans are selected, the tag &lt;scan name&gt; will be replaced with the scan's name. All export
+data formats supported by Profex can be selected. Raw scan data will be exported, scale factors and offsets will be ignored.</p>
+<p><b>Remove selected scans:</b> The selected scan will be removed from the project. This change is volatile, no files on the
+hard disk will be modified. Running the refinement or re-loading the file from disk will revert the change.</p>
+<p><b>Copy current scan data:</b> The selected scan's raw data is copied to the clipboard in ASCII format. The fields are
+separated by the separator specified in the preferences dialog ("Graphs -> Print and Export -> ASCII data export -> Field separator").
+The default separator is the space character. Scale factors and offsets will be ignored.</p>
+<p><b>Copy current HKL data:</b> If the selected scan has HKL data, it will be copied to the clipboard in ASCII format. Scale factors
+and offsets will be ignored.</p>
+<p><b>Export scan with offsets:</b> Exports the selected scan to a new file. A file dialog opens to specify the file name. If multiple
+scans are selected, the tag &lt;scan name&gt; will be replaced with the scan's name. All export
+data formats supported by Profex can be selected. Refined offsets (EPS1, EPS2, EPS3), as well as the scale factor and offsets
+specified in the Plot Options list are applied to the exported data.</p>
+<p>The name of the scan will be automatically appended to the selected file name. This avoids accidental overwriting of
+other scans exported from the same project.</p>
+<p><b>Copy scan data with offsets:</b> The selected scan's data with all offsets and scalings applied is copied to the
+clipboard in ASCII format. The fields are
+separated by the separator specified in the preferences dialog ("Graphs -> Print and Export -> ASCII data export -> Field separator").
+The default separator is the space character.</p>
+<p><b>Hide all phases:</b> Unchecks and hides all scans flagged as "Phase".</p>
+<p><b>Show all phases:</b> Checks and shows all scans flagged as "Phase".</p>
+<p><b>Add synthetic noise:</b> Applies a synthetic Poisson noise pattern to the selected scan. This change is volatile, no files
+on the disk are modified. Export the modified scan to a new file to preserve the change.</p>
+<p><b>Change scan color:</b> Changes the color of the selected scan. This change is permanent and modifies the settings in
+the preferences dialog ("Graphs -> Scan Styles").</p>
+<p><b>Change scan style:</b>Changes the line and symbol style of the selected scan. This change is permanent and
+modifies the settings in the preferences dialog ("Graphs -> Scan Styles").</p>
+<p><b>Show context help:</b> Show this help text in the Context Help module ("Window -> Context Help").</p>
+<h2>Temporary Scans</h2>
+<p>Some modules create scans marked as temporary ("T"). One example is the Peak Fitting module. These scans are volatile
+(not written do disk) and will be discarded when the project is closed. Furthermore, they may be updated or deleted by
+the module that created them. Usually, the module allows to pin them to the project permanently. But they still need to be
+exported to disk manually to preserve them after closing the project.</p>

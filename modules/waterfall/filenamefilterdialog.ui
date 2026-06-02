@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FileNameFilterDialog</class>
+ <widget class="QDialog" name="FileNameFilterDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>507</width>
+    <height>252</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Regular expression:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEditRegExp">
+       <property name="toolTip">
+        <string>Regular expression to capture parts of the file name.
+
+Use single quotes (\d). The first capture group in parentheses () will be returned.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Prefix:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEditPrefix"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Suffix:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEditSuffix"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Preview:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Label:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>File name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEditPrevLabel">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="comboBoxPrevFileName"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>lineEditRegExp</tabstop>
+  <tabstop>lineEditPrefix</tabstop>
+  <tabstop>lineEditSuffix</tabstop>
+  <tabstop>comboBoxPrevFileName</tabstop>
+  <tabstop>lineEditPrevLabel</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>FileNameFilterDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>268</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>FileNameFilterDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>336</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEditRegExp</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>FileNameFilterDialog</receiver>
+   <slot>regExpChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>213</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>354</x>
+     <y>2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxPrevFileName</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>FileNameFilterDialog</receiver>
+   <slot>regExpChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>80</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEditPrefix</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>FileNameFilterDialog</receiver>
+   <slot>regExpChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>467</x>
+     <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>502</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEditSuffix</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>FileNameFilterDialog</receiver>
+   <slot>regExpChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>483</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>505</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>regExpChanged(QString)</slot>
+ </slots>
+</ui>

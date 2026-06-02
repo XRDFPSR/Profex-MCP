@@ -1,0 +1,12 @@
+[Desktop Entry]
+GenericName=XRD Rietveld Refinement Application
+Name=Profex
+Version=3.12.0
+Exec=/opt/Profex-BGMN/Profex/profex
+Icon=/opt/Profex-BGMN/Profex/profex.png
+Type=Application
+Terminal=false
+StartupNotify=false
+Endocidng=UTF-8
+Categories=Science;Geoscience;
+

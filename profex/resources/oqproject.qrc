@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>oqproject/LaB6.str</file>
+        <file>oqproject/LaB6_PW1800_5-120.sav</file>
+        <file>oqproject/LaB6_PW1800_5-120.xrdml</file>
+        <file>oqproject/pw1800-ads-10mm.geq</file>
+        <file>oqproject/pw1800-ads-10mm.ger</file>
+        <file>oqproject/OQ1.png</file>
+        <file>oqproject/OQ2.png</file>
+        <file>oqproject/OQ3.png</file>
+        <file>oqproject/OQ4.png</file>
+    </qresource>
+</RCC>

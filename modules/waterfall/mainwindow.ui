@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>520</width>
+    <height>460</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QSplitter" name="splitterV">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Appearance</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Color scheme:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QDoubleSpinBox" name="doubleSpinBoxXrangeMin"/>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="doubleSpinBoxXrangeMax"/>
+             </item>
+             <item>
+              <widget class="QToolButton" name="toolButtonResetXRange">
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset theme="profex-undo"/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="1" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QSpinBox" name="spinBoxYrangeMin"/>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBoxYrangeMax"/>
+             </item>
+             <item>
+              <widget class="QToolButton" name="toolButtonResetYRange">
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset theme="profex-undo"/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="2">
+            <widget class="QComboBox" name="comboBoxColorTemp"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Intensity scale:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>X range:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Y range:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="comboBoxColorScale"/>
+           </item>
+           <item row="1" column="1" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QSlider" name="sliderGamma">
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>10</number>
+               </property>
+               <property name="pageStep">
+                <number>5</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="tickPosition">
+                <enum>QSlider::TicksBelow</enum>
+               </property>
+               <property name="tickInterval">
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="toolButtonResetGamma">
+               <property name="toolTip">
+                <string>Reset gamma to linear scale</string>
+               </property>
+               <property name="text">
+                <string>...</string>
+               </property>
+               <property name="icon">
+                <iconset theme="profex-undo"/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTreeWidget" name="treeWidgetScans">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string notr="true">1</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="LutScale2D" name="lutScaleWidget" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="WaterfallPlotWidget" name="plotWidget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>520</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_Scan_Files"/>
+    <addaction name="actionSave_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionClear_Scans"/>
+    <addaction name="actionRemove_selected_scans"/>
+    <addaction name="actionRemove_unchecked_scans"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionDraw_scan_names"/>
+    <addaction name="actionSmooth_interpolation"/>
+    <addaction name="actionHorizontal_grid"/>
+    <addaction name="actionVertical_grid"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionHighlight_selected_scans"/>
+    <addaction name="actionSet_Label_Filter"/>
+   </widget>
+   <widget class="QMenu" name="menuMonitor">
+    <property name="title">
+     <string>Monitor</string>
+    </property>
+    <addaction name="actionDirectory"/>
+    <addaction name="actionMonitor"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_ProfexWP"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuMonitor"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle">
+    <string>Main Toolbar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOpen_Scan_Files"/>
+   <addaction name="actionSave_As"/>
+   <addaction name="actionClear_Scans"/>
+   <addaction name="actionMonitor"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionOpen_Scan_Files">
+   <property name="icon">
+    <iconset theme="profex-folder-graph"/>
+   </property>
+   <property name="text">
+    <string>Open Scan Files...</string>
+   </property>
+  </action>
+  <action name="actionSave_As">
+   <property name="icon">
+    <iconset theme="profex-save-as"/>
+   </property>
+   <property name="text">
+    <string>Save As...</string>
+   </property>
+  </action>
+  <action name="actionClear_Scans">
+   <property name="icon">
+    <iconset theme="profex-document-close"/>
+   </property>
+   <property name="text">
+    <string>Clear Scans...</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset theme="profex-exit"/>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionRemove_selected_scans">
+   <property name="text">
+    <string>Remove selected scans</string>
+   </property>
+  </action>
+  <action name="actionRemove_unchecked_scans">
+   <property name="text">
+    <string>Remove unchecked scans</string>
+   </property>
+  </action>
+  <action name="actionHighlight_selected_scans">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Highlight selected scans</string>
+   </property>
+  </action>
+  <action name="actionSmooth_interpolation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Smooth interpolation</string>
+   </property>
+  </action>
+  <action name="actionHorizontal_grid">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Horizontal grid</string>
+   </property>
+  </action>
+  <action name="actionVertical_grid">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Vertical grid</string>
+   </property>
+  </action>
+  <action name="actionDirectory">
+   <property name="text">
+    <string>Select Directory...</string>
+   </property>
+  </action>
+  <action name="actionMonitor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="profex-search-match"/>
+   </property>
+   <property name="text">
+    <string>Start directory monitoring</string>
+   </property>
+   <property name="toolTip">
+    <string>Start directory monitoring</string>
+   </property>
+  </action>
+  <action name="actionSet_Label_Filter">
+   <property name="text">
+    <string>Set Label Filter...</string>
+   </property>
+  </action>
+  <action name="actionAbout_ProfexWP">
+   <property name="text">
+    <string>About ProfexWP</string>
+   </property>
+  </action>
+  <action name="actionDraw_scan_names">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Draw scan names</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>LutScale2D</class>
+   <extends>QWidget</extends>
+   <header>lutscale2d.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WaterfallPlotWidget</class>
+   <extends>QFrame</extends>
+   <header>waterfallplotwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>setSmoothInterpolation(bool)</slot>
+    <slot>setDrawGridVertical(bool)</slot>
+    <slot>setDrawGridHorizontal(bool)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>comboBoxColorScale</tabstop>
+  <tabstop>comboBoxColorTemp</tabstop>
+  <tabstop>sliderGamma</tabstop>
+  <tabstop>toolButtonResetGamma</tabstop>
+  <tabstop>doubleSpinBoxXrangeMin</tabstop>
+  <tabstop>doubleSpinBoxXrangeMax</tabstop>
+  <tabstop>toolButtonResetXRange</tabstop>
+  <tabstop>spinBoxYrangeMin</tabstop>
+  <tabstop>spinBoxYrangeMax</tabstop>
+  <tabstop>toolButtonResetYRange</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionOpen_Scan_Files</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave_As</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClear_Scans</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clearScans()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonResetXRange</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>resetX()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonResetYRange</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>resetY()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxXrangeMin</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>xRangeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>322</x>
+     <y>44</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxXrangeMax</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>xRangeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>143</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>527</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxYrangeMin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>yRangeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxYrangeMax</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>yRangeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>665</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDirectory</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selectDir()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>867</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sliderGamma</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>gammaChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>871</x>
+     <y>145</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonResetGamma</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>resetGamma()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>868</x>
+     <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRemove_selected_scans</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>removeSelected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRemove_unchecked_scans</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>removeUnchecked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionHighlight_selected_scans</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scanHighlightingToggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMonitor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>monitorDir(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSmooth_interpolation</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plotWidget</receiver>
+   <slot>setSmoothInterpolation(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVertical_grid</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plotWidget</receiver>
+   <slot>setDrawGridVertical(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionHorizontal_grid</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plotWidget</receiver>
+   <slot>setDrawGridHorizontal(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSet_Label_Filter</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setLabelFilter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout_ProfexWP</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDraw_scan_names</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>toggleDrawScanNames(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>saveAs()</slot>
+  <slot>preferences()</slot>
+  <slot>monitorDir(bool)</slot>
+  <slot>resetY()</slot>
+  <slot>resetX()</slot>
+  <slot>selectDir()</slot>
+  <slot>addFile()</slot>
+  <slot>clearScans()</slot>
+  <slot>yRangeChanged()</slot>
+  <slot>xRangeChanged()</slot>
+  <slot>itemsSorted()</slot>
+  <slot>gammaChanged(int)</slot>
+  <slot>resetGamma()</slot>
+  <slot>removeSelected()</slot>
+  <slot>removeUnchecked()</slot>
+  <slot>scanHighlightingToggled(bool)</slot>
+  <slot>setLabelFilter()</slot>
+  <slot>helpAbout()</slot>
+  <slot>toggleDrawScanNames(bool)</slot>
+ </slots>
+</ui>

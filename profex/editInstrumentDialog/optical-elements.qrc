@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/opticalElements">
+        <file>svgFiles/light-mode/airscat-active.svg</file>
+        <file>svgFiles/light-mode/airscat-inactive.svg</file>
+        <file>svgFiles/light-mode/detector-active.svg</file>
+        <file>svgFiles/light-mode/detector-inactive.svg</file>
+        <file>svgFiles/light-mode/monochromator-active.svg</file>
+        <file>svgFiles/light-mode/monochromator-inactive.svg</file>
+        <file>svgFiles/light-mode/pinhole-active.svg</file>
+        <file>svgFiles/light-mode/pinhole-inactive.svg</file>
+        <file>svgFiles/light-mode/sample-active.svg</file>
+        <file>svgFiles/light-mode/sample-inactive.svg</file>
+        <file>svgFiles/light-mode/slit-active.svg</file>
+        <file>svgFiles/light-mode/slit-inactive.svg</file>
+        <file>svgFiles/light-mode/soller-active.svg</file>
+        <file>svgFiles/light-mode/soller-inactive.svg</file>
+        <file>svgFiles/light-mode/tube-active.svg</file>
+        <file>svgFiles/light-mode/tube-inactive.svg</file>
+        <file>svgFiles/dark-mode/airscat-active.svg</file>
+        <file>svgFiles/dark-mode/airscat-inactive.svg</file>
+        <file>svgFiles/dark-mode/detector-active.svg</file>
+        <file>svgFiles/dark-mode/detector-inactive.svg</file>
+        <file>svgFiles/dark-mode/monochromator-active.svg</file>
+        <file>svgFiles/dark-mode/monochromator-inactive.svg</file>
+        <file>svgFiles/dark-mode/pinhole-active.svg</file>
+        <file>svgFiles/dark-mode/pinhole-inactive.svg</file>
+        <file>svgFiles/dark-mode/sample-active.svg</file>
+        <file>svgFiles/dark-mode/sample-inactive.svg</file>
+        <file>svgFiles/dark-mode/slit-active.svg</file>
+        <file>svgFiles/dark-mode/slit-inactive.svg</file>
+        <file>svgFiles/dark-mode/soller-active.svg</file>
+        <file>svgFiles/dark-mode/soller-inactive.svg</file>
+        <file>svgFiles/dark-mode/tube-active.svg</file>
+        <file>svgFiles/dark-mode/tube-inactive.svg</file>
+        <file>svgFiles/light-mode/sample-capillary-active.svg</file>
+        <file>svgFiles/light-mode/sample-capillary-inactive.svg</file>
+        <file>svgFiles/dark-mode/sample-capillary-active.svg</file>
+        <file>svgFiles/dark-mode/sample-capillary-inactive.svg</file>
+        <file>svgFiles/dark-mode/sample-transmission-active.svg</file>
+        <file>svgFiles/dark-mode/sample-transmission-inactive.svg</file>
+        <file>svgFiles/light-mode/sample-transmission-active.svg</file>
+        <file>svgFiles/light-mode/sample-transmission-inactive.svg</file>
+    </qresource>
+</RCC>

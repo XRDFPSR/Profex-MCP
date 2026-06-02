@@ -1,0 +1,19 @@
+<h1>Support peaks</h1>
+<p>If a reference dataset with ideal peak shape is available (no sample-related peak broadening), beamline configuration parameters can be fitted to these peaks as follows:</p>
+<p>
+<ol>
+<li>Use conventional curve fitting to fit Pseudo-Voigt functions to the experimental peaks.</li>
+<li>Store the fitted parameters in a text file in the format:<br><br>
+2theta;hwhm;shape<br>
+2theta;hwhm;shape<br>
+2theta;hwhm;shape<br><br>
+2theta and hwhm must be given in degrees. Lines starting with "!" and "#" are treated as comments. Save the file with the extension CSV.
+</li>
+<li>Click "File -&gt; Import support peak list" to load the peak list in the synchrotron configurator. The FWHMs of the support peaks will be drawn on the graph.</li>
+<li>Go to the "Computation range" page and adjust the 2&theta; range to the effective range covered by the current beamline configuration.</li>
+<li>Go to the "Beamline configuration" page and check the boxes of the parameters to be fitted.</li>
+<li>Click "Run -&gt; Fit fundamental parameters."</li>
+</ol>
+</p>
+<p>Double-clicking support peak parameters allows to modify them after loading.</p>
+

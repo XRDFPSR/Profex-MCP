@@ -1,0 +1,19 @@
+<!DOCTYPE profexReportStructure>
+<profexReportStructure>
+    <section ident="strucSampleInfo" title="Sample Information" display="Sample Information" checkable="true" doubleClickable="true" status="true">
+        <subsection ident="strucOpName" title="Operator Name" display="" checkable="true" doubleClickable="true" status="true"/>
+        <subsection ident="strucStatistics" title="Refinement Statistics" display="" checkable="true" doubleClickable="false" status="true"/>
+    </section>
+    <section ident="strucGlobalGoals" title="Global GOALs" display="Global GOALs" checkable="true" doubleClickable="true" status="true"/>
+    <section ident="strucDiffPattern" title="Diffraction Pattern" display="Diffraction Pattern" checkable="true" doubleClickable="true" status="true">
+        <subsection ident="strucDiffPatternAspect" title="Aspect Ratio" display="1.414" checkable="false" doubleClickable="true" />
+    </section>
+    <section ident="strucLocalGoals" title="Local GOALs" display="Local GOALs" checkable="true" doubleClickable="true" status="false"/>
+    <section ident="strucChemComp" title="Chemical Composition" display="Refined Chemical Composition" checkable="true" doubleClickable="true" status="false">
+        <subsection ident="strucChemTableMode" title="Chemistry table mode" display="Elements by weight-%" checkable="false" doubleClickable="true" />
+    </section>
+    <section ident="strucPeakList" title="Peak List" display="Peak List" checkable="true" doubleClickable="true" status="false"/>
+    <banner fileName=""/>
+    <style styleSheet="" useStyleSheet="1" styleFont="Helvetica,10,-1,5,50,0,0,0,0,0" styleColorHeader="#7ec3eb" styleColorRow="#e5f4fb" styleColorBorder="#797972"/>
+    <skipErrors status="false"/>
+</profexReportStructure>

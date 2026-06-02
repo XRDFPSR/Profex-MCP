@@ -1,0 +1,26 @@
+<h1>Peak integrals</h1>
+<p>This module is used to integrate the area under peaks.</p>
+<h2>Getting started</h2>
+<p>Peak integration is usually only performed on individual peaks.</p>
+<h3>Step 1: Defining integral ranges</h3>
+<p><ol><li>Activate the "Add ranges"mode by pressing the "+" button.</li>
+<li>Double-click on the graph at the position where the first range starts.</li>
+<li>Move the cursor to the position on the graph where the first range ends. Double-click to set the end position.
+While dragging the mouse cursor, the range is indicated visually.</li>
+<li>Repeat steps 2 and 3 to add more ranges.</li>
+<li>Then disable the "Add ranges" mode by clicking the "+" button again.</li></ol>
+Integrals &Phi; are automatically calculated for each scan in each range as follows:</p>
+<p>&Phi; = &sum; &Delta;&sdot;<i>I<sub>i</sub></i></p>
+<p>where <i>i</i> is the index of the data point within the range, &Delta; is the stepsize, and <i>I<sub>i</sub></i>
+is the measured intensity of data point i.</p>
+<h3>Step 2: Subtracting the background</h3>
+<p>Normally the area between 0 and the measured intensity is integrated. To only integrate the area between the background
+curve and the measured intensity, a simple linear background interpolated between the first and the last data point in
+the range can be activated. Click the button "subtract linear background" to activate background subtraction.
+The integrals are updated automatically.
+<h3>Centering the integral ranges</h3>
+<p>Integral ranges can automatically be centered on the peaks:
+<ol><li>Highlight the ranges to be centered by clicking on their names in the table.</li>
+<li>Click "Shift all selected ranges..." (button "&gt;|&lt;") to shift the selected ranges until the center lines lie on the
+highest intensity in the range.</li></ol>
+The width of the ranges is not changed by centering. Integrals are updated automatically.</p>

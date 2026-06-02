@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditInstrumentDialog</class>
+ <widget class="QDialog" name="EditInstrumentDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>903</width>
+    <height>603</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Instrument Configuration</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QToolButton" name="toolButtonLoadFile">
+       <property name="toolTip">
+        <string>Load instrument configuration</string>
+       </property>
+       <property name="statusTip">
+        <string>Load instrument configuration file</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-folder-text"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="topButtonBox" native="true">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="toolButtonSaveAs">
+          <property name="toolTip">
+           <string>Save the SAV file under a new name</string>
+          </property>
+          <property name="icon">
+           <iconset theme="profex-save-as"/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButtonSave">
+          <property name="toolTip">
+           <string>Save the SAV file</string>
+          </property>
+          <property name="icon">
+           <iconset theme="profex-save"/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButtonToggleGraphicalEditor">
+          <property name="toolTip">
+           <string>Show graphical editor</string>
+          </property>
+          <property name="statusTip">
+           <string>Show graphical control file editor</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset theme="profex-instrument"/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButtonToggleControlFileEditor">
+          <property name="toolTip">
+           <string>Show control file text editor</string>
+          </property>
+          <property name="statusTip">
+           <string>Show control file in text editor</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset theme="profex-edit-text"/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButtonToggleOrigFileEditor">
+          <property name="toolTip">
+           <string>Show original control file</string>
+          </property>
+          <property name="statusTip">
+           <string>Show original control file in text editor</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset theme="profex-text-block"/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButtonRevertFile">
+          <property name="toolTip">
+           <string>Reset control file</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset theme="profex-undo"/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="toolButtonHelp">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show the context help for this module.&lt;/p&gt;&lt;p&gt;(Window -&amp;gt; Context Help)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset theme="profex-help"/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <widget class="QStackedWidget" name="stackedWidgetEditor">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="pageGraphicalEditor">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QSplitter" name="splitterInstrument">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <widget class="QSplitter" name="splitterParameters">
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <widget class="QTreeWidget" name="treeWidget">
+            <attribute name="headerVisible">
+             <bool>false</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string notr="true">1</string>
+             </property>
+            </column>
+           </widget>
+           <widget class="QTabWidget" name="tabWidgetParams">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tab">
+             <attribute name="title">
+              <string>Parameters</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="0" column="0">
+               <widget class="QStackedWidget" name="stackedWidgetParameter"/>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_2">
+             <attribute name="title">
+              <string>Description</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QTextEdit" name="textEditParameterHelp">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </widget>
+          <widget class="InstrumentGraphicsView" name="graphicsViewInstrument"/>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageTextEditor">
+       <layout class="QGridLayout" name="gridLayout_5">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QSplitter" name="splitterFileHelp">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <widget class="ControlFileEdit" name="textEditFile">
+           <property name="font">
+            <font/>
+           </property>
+           <property name="lineWrapMode">
+            <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+           </property>
+          </widget>
+          <widget class="ContextHelpDisplay" name="plainTextEditFileContextHelp"/>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageOriginalFile">
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="textEditOrigFile">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QPlainTextEdit" name="textEditOutput"/>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="toolButtonRun">
+       <property name="toolTip">
+        <string>Run calculations</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-run"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonClose">
+       <property name="toolTip">
+        <string>Close Dialog</string>
+       </property>
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>InstrumentGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>editInstrumentDialog/instrumentgraphicsview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ControlFileEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>projectWidget/controlfileedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ContextHelpDisplay</class>
+   <extends>QPlainTextEdit</extends>
+   <header>contexthelpdisplay.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>toolButtonLoadFile</tabstop>
+  <tabstop>toolButtonSaveAs</tabstop>
+  <tabstop>toolButtonSave</tabstop>
+  <tabstop>toolButtonToggleGraphicalEditor</tabstop>
+  <tabstop>toolButtonToggleControlFileEditor</tabstop>
+  <tabstop>toolButtonToggleOrigFileEditor</tabstop>
+  <tabstop>toolButtonRevertFile</tabstop>
+  <tabstop>toolButtonHelp</tabstop>
+  <tabstop>treeWidget</tabstop>
+  <tabstop>graphicsViewInstrument</tabstop>
+  <tabstop>tabWidgetParams</tabstop>
+  <tabstop>textEditOutput</tabstop>
+  <tabstop>toolButtonRun</tabstop>
+  <tabstop>pushButtonClose</tabstop>
+  <tabstop>textEditFile</tabstop>
+  <tabstop>textEditParameterHelp</tabstop>
+  <tabstop>textEditOrigFile</tabstop>
+  <tabstop>plainTextEditFileContextHelp</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonClose</sender>
+   <signal>clicked()</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>892</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSave</sender>
+   <signal>clicked()</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>fileSave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>87</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>231</x>
+     <y>572</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonRun</sender>
+   <signal>clicked()</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>runCalculation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>593</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>576</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonToggleGraphicalEditor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>toggleGraphEditor(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>780</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>316</x>
+     <y>11</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonToggleControlFileEditor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>toggleControlFileEditor(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>808</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>370</x>
+     <y>19</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonToggleOrigFileEditor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>toggleOrigFileEditor(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>26</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonLoadFile</sender>
+   <signal>clicked()</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>loadFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>24</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>40</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonRevertFile</sender>
+   <signal>clicked()</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>fileReset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>864</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>899</x>
+     <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonHelp</sender>
+   <signal>clicked()</signal>
+   <receiver>EditInstrumentDialog</receiver>
+   <slot>showHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>886</x>
+     <y>17</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>904</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>runCalculation()</slot>
+  <slot>fileSaveAs()</slot>
+  <slot>fileSave()</slot>
+  <slot>toggleGraphEditor(bool)</slot>
+  <slot>toggleControlFileEditor(bool)</slot>
+  <slot>toggleOrigFileEditor(bool)</slot>
+  <slot>loadFile()</slot>
+  <slot>fileReset()</slot>
+  <slot>selectBackgroundScan()</slot>
+  <slot>showHelp()</slot>
+ </slots>
+</ui>

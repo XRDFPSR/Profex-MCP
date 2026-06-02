@@ -1,0 +1,11 @@
+[Icon Theme]
+Name=ProfexDark
+Comment=Profex UI icons
+Directories=svg
+
+[svg]
+Size=32
+MinSize=1
+MaxSize=256
+Type=Scalable
+Context=Applications

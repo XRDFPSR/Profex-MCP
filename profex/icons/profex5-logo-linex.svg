@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="1000"
+   version="1.1"
+   id="svg71"
+   sodipodi:docname="kornkreis-inkscape.svg"
+   inkscape:export-filename="/home/doebelinn/kornkreis-inkscape.svg.png"
+   inkscape:export-xdpi="1200"
+   inkscape:export-ydpi="1200"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata75">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1135"
+     id="namedview73"
+     showgrid="false"
+     inkscape:zoom="0.6675088"
+     inkscape:cx="496.07233"
+     inkscape:cy="490.99141"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg71" />
+  <defs
+     id="defs5">
+    <clipPath
+       id="outer">
+      <circle
+         cx="0"
+         cy="0"
+         r="200"
+         id="circle2" />
+    </clipPath>
+  </defs>
+  <g
+     transform="matrix(2.5,0,0,2.5,500,500)"
+     clip-path="url(#outer)"
+     id="g23"
+     style="fill:none;stroke:#2a0a2a;stroke-width:0.40000001;stroke-opacity:1">
+    <circle
+       cx="0"
+       cy="0"
+       r="173.20508"
+       id="circle7"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="0"
+       r="200"
+       id="circle9"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="100"
+       cy="0"
+       r="100"
+       id="circle11"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="100"
+       cy="0"
+       r="100"
+       transform="rotate(60)"
+       id="circle13"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="100"
+       cy="0"
+       r="100"
+       transform="rotate(120)"
+       id="circle15"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="100"
+       cy="0"
+       r="100"
+       transform="scale(-1)"
+       id="circle17"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="100"
+       cy="0"
+       r="100"
+       transform="rotate(-120)"
+       id="circle19"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="100"
+       cy="0"
+       r="100"
+       transform="rotate(-60)"
+       id="circle21"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+  </g>
+  <g
+     transform="matrix(2.5,0,0,2.5,500,500)"
+     clip-path="url(#outer)"
+     id="g39"
+     style="fill:none;stroke:#2a0a2a;stroke-width:0.40000001;stroke-opacity:1">
+    <circle
+       cx="0"
+       cy="0"
+       r="100"
+       id="circle25"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="173.20508"
+       r="100"
+       id="circle27"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="173.20508"
+       r="100"
+       transform="rotate(60)"
+       id="circle29"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="173.20508"
+       r="100"
+       transform="rotate(120)"
+       id="circle31"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="173.20508"
+       r="100"
+       transform="scale(-1)"
+       id="circle33"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="173.20508"
+       r="100"
+       transform="rotate(-120)"
+       id="circle35"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="173.20508"
+       r="100"
+       transform="rotate(-60)"
+       id="circle37"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+  </g>
+  <g
+     transform="matrix(2.5,0,0,2.5,500,500)"
+     clip-path="url(#outer)"
+     id="g55"
+     style="fill:none;stroke:#2a0a2a;stroke-width:0.40000001;stroke-opacity:1">
+    <circle
+       cx="0"
+       cy="0"
+       r="50"
+       id="circle41"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="200"
+       r="50"
+       transform="rotate(30)"
+       id="circle43"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="200"
+       r="50"
+       transform="rotate(90)"
+       id="circle45"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="200"
+       r="50"
+       transform="rotate(150)"
+       id="circle47"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="200"
+       r="50"
+       transform="rotate(-150)"
+       id="circle49"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="200"
+       r="50"
+       transform="rotate(-90)"
+       id="circle51"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="200"
+       r="50"
+       transform="rotate(-30)"
+       id="circle53"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+  </g>
+  <g
+     transform="matrix(2.5,0,0,2.5,500,500)"
+     id="g69"
+     style="fill:none;stroke:#2a0a2a;stroke-width:0.40000001;stroke-opacity:1">
+    <circle
+       cx="0"
+       cy="100"
+       r="41.421356"
+       id="circle57"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="100"
+       r="41.421356"
+       transform="rotate(60)"
+       id="circle59"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="100"
+       r="41.421356"
+       transform="rotate(120)"
+       id="circle61"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="100"
+       r="41.421356"
+       transform="scale(-1)"
+       id="circle63"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="100"
+       r="41.421356"
+       transform="rotate(-120)"
+       id="circle65"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+    <circle
+       cx="0"
+       cy="100"
+       r="41.421356"
+       transform="rotate(-60)"
+       id="circle67"
+       style="fill:none;stroke-width:0.40000001;stroke:#2a0a2a;stroke-opacity:1" />
+  </g>
+</svg>

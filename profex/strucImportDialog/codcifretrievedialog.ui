@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CodCifRetrieveDialog</class>
+ <widget class="QDialog" name="CodCifRetrieveDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>747</width>
+    <height>502</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>COD Structure Retrieval</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Structure</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Number of Elements:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Temperature:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" colspan="2">
+       <widget class="QLineEdit" name="lineEditHM">
+        <property name="toolTip">
+         <string>Hermann-Mauguin space-group symbol</string>
+        </property>
+        <property name="placeholderText">
+         <string>&lt;Hermann-Mauguin symbol&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Elements:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Space Group:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLineEdit" name="lineEditElementsExclude">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>List of elements to exclude: Example: Fe Ca Al</string>
+        </property>
+        <property name="placeholderText">
+         <string>&lt;exclude&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QComboBox" name="comboBoxTemperature">
+        <property name="toolTip">
+         <string>Temperature at data collection</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="2">
+       <widget class="QLineEdit" name="lineEditMineralName">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Mineral name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEditElementsInclude">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>List of elements to include. Example: Mg Si O</string>
+        </property>
+        <property name="placeholderText">
+         <string>&lt;include&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="spinBoxElementsMin">
+        <property name="toolTip">
+         <string>Minimum number of elements</string>
+        </property>
+        <property name="specialValueText">
+         <string>min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Mineral Name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QSpinBox" name="spinBoxElementsMax">
+        <property name="toolTip">
+         <string>Maximum number of elements</string>
+        </property>
+        <property name="specialValueText">
+         <string>max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="checkBoxRestrictTemp">
+        <property name="toolTip">
+         <string>Restrict temperature range</string>
+        </property>
+        <property name="text">
+         <string>Restrict to:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>COD ID:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2">
+       <widget class="QLineEdit" name="lineEditCodId">
+        <property name="toolTip">
+         <string>One or more COD ID numbers (7 digits)</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Reference</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="4" column="2">
+       <widget class="QSpinBox" name="spinBoxJournalYearMax">
+        <property name="toolTip">
+         <string>Most recent year of publication</string>
+        </property>
+        <property name="specialValueText">
+         <string>most recent</string>
+        </property>
+        <property name="maximum">
+         <number>2100</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="2">
+       <widget class="QLineEdit" name="lineEditJournalVolume">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Journal Volume</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="lineEditAuthors2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Author name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Title:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditText1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Key word</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Authors:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Journal:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Year:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditAuthors1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Author name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="lineEditText2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Key word</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="2">
+       <widget class="QLineEdit" name="lineEditJournalName">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Journal title</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QSpinBox" name="spinBoxJournalYearMin">
+        <property name="toolTip">
+         <string>Oldest year of publication</string>
+        </property>
+        <property name="specialValueText">
+         <string>oldest</string>
+        </property>
+        <property name="maximum">
+         <number>2100</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Volume:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>DOI:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" colspan="2">
+       <widget class="QLineEdit" name="lineEditDOI">
+        <property name="toolTip">
+         <string>DOI of the original publication</string>
+        </property>
+        <property name="placeholderText">
+         <string>&lt;10.1107/S2052520616015675&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QPushButton" name="pushButtonSearch">
+       <property name="text">
+        <string>&amp;Search</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelDbStatus">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonClear">
+       <property name="toolTip">
+        <string>Clear form</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-delete">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QTableWidget" name="tableWidgetMatches"/>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QToolButton" name="toolButtonCheckAll">
+       <property name="toolTip">
+        <string>Select all</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-select-all">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonCheckNone">
+       <property name="toolTip">
+        <string>Select none</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-select-none">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonSaveQueries">
+       <property name="toolTip">
+        <string>Export the match list to a CSV file</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-save-as">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>lineEditMineralName</tabstop>
+  <tabstop>spinBoxElementsMin</tabstop>
+  <tabstop>spinBoxElementsMax</tabstop>
+  <tabstop>lineEditElementsInclude</tabstop>
+  <tabstop>lineEditElementsExclude</tabstop>
+  <tabstop>lineEditHM</tabstop>
+  <tabstop>checkBoxRestrictTemp</tabstop>
+  <tabstop>comboBoxTemperature</tabstop>
+  <tabstop>lineEditText1</tabstop>
+  <tabstop>lineEditText2</tabstop>
+  <tabstop>lineEditAuthors1</tabstop>
+  <tabstop>lineEditAuthors2</tabstop>
+  <tabstop>lineEditJournalName</tabstop>
+  <tabstop>lineEditJournalVolume</tabstop>
+  <tabstop>spinBoxJournalYearMin</tabstop>
+  <tabstop>spinBoxJournalYearMax</tabstop>
+  <tabstop>pushButtonSearch</tabstop>
+  <tabstop>toolButtonClear</tabstop>
+  <tabstop>tableWidgetMatches</tabstop>
+  <tabstop>toolButtonCheckAll</tabstop>
+  <tabstop>toolButtonCheckNone</tabstop>
+  <tabstop>toolButtonSaveQueries</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>CodCifRetrieveDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>876</x>
+     <y>717</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>CodCifRetrieveDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>876</x>
+     <y>717</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonCheckAll</sender>
+   <signal>clicked()</signal>
+   <receiver>CodCifRetrieveDialog</receiver>
+   <slot>checkAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>716</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>22</x>
+     <y>448</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonCheckNone</sender>
+   <signal>clicked()</signal>
+   <receiver>CodCifRetrieveDialog</receiver>
+   <slot>checkNone()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>716</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>90</x>
+     <y>416</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSaveQueries</sender>
+   <signal>clicked()</signal>
+   <receiver>CodCifRetrieveDialog</receiver>
+   <slot>saveQueries()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>93</x>
+     <y>716</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonSearch</sender>
+   <signal>clicked()</signal>
+   <receiver>CodCifRetrieveDialog</receiver>
+   <slot>queryDatabase()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>62</x>
+     <y>258</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonClear</sender>
+   <signal>clicked()</signal>
+   <receiver>CodCifRetrieveDialog</receiver>
+   <slot>clearForm()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>855</x>
+     <y>256</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>883</x>
+     <y>221</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>queryDatabase()</slot>
+  <slot>connectDatabase()</slot>
+  <slot>checkAll()</slot>
+  <slot>checkNone()</slot>
+  <slot>saveQueries()</slot>
+  <slot>selectDbFile()</slot>
+  <slot>clearForm()</slot>
+ </slots>
+</ui>

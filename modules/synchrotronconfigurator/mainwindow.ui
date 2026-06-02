@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>835</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitterConfig">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <widget class="QTreeWidget" name="treeWidgetModules">
+        <attribute name="headerVisible">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string notr="true">1</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QTabWidget" name="tabWidgetParameters">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tabParameters">
+         <attribute name="title">
+          <string>Parameters</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QStackedWidget" name="stackedWidgetParameters">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="pageBlankBeamline"/>
+            <widget class="QWidget" name="pagePrimaryBeam">
+             <layout class="QGridLayout" name="gridLayout_5">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Wavelength:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxWavelength">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Wavelength&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The wavelength in nm.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string> nm</string>
+                </property>
+                <property name="decimals">
+                 <number>8</number>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.001000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="checkBoxPhi">
+                <property name="toolTip">
+                 <string>Check to fit to support peaks</string>
+                </property>
+                <property name="text">
+                 <string>Beam Divergence (φ):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxPhi">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Beam divergence (&amp;phi;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Divergence angle of the primary beam in degrees.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string>°</string>
+                </property>
+                <property name="decimals">
+                 <number>6</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="checkBoxPhiFocused">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Focused beam&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Primary beam is focused on the detector surface.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Focused</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="2">
+               <spacer name="verticalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="pageSample">
+             <layout class="QGridLayout" name="gridLayout_7">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Geometry:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBoxGeometry"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="checkBoxD">
+                <property name="toolTip">
+                 <string>Check to fit to support peaks</string>
+                </property>
+                <property name="text">
+                 <string>Distance Sample-to-Detector (D):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxD">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Sample-to-detector distance (D)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Distance between the sample and the detector in mm.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>3</number>
+                </property>
+                <property name="maximum">
+                 <double>9999.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="checkBoxC">
+                <property name="toolTip">
+                 <string>Check to fit to support peaks</string>
+                </property>
+                <property name="text">
+                 <string>Sample Size (c):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxC">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Sample size in mm (c)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;For capillaries: The smaller value of the inner capillary diameter and the beam diameter.&lt;/p&gt;&lt;p&gt;For transmission: The beam diameter.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>3</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="2">
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="pageDetector">
+             <layout class="QGridLayout" name="gridLayout_10">
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="checkBoxP">
+                <property name="toolTip">
+                 <string>Check to fit to support peaks</string>
+                </property>
+                <property name="text">
+                 <string>Detector Pixel Size (p):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxP">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Pixel size (p)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Size of the detector pixels in mm.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>4</number>
+                </property>
+                <property name="maximum">
+                 <double>1.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="checkBoxT">
+                <property name="toolTip">
+                 <string>Check to fit to support peaks</string>
+                </property>
+                <property name="text">
+                 <string>Detector Layer Thickness (t):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxT">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Detector layer thickness (t)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Thickness of the sensitive layer of the detector in mm&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>3</number>
+                </property>
+                <property name="maximum">
+                 <double>9.990000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Detector tilt (alpha):</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxDetectorTilt">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Detector tilt (&amp;alpha;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Angle of the detector tilt in degrees.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="maximum">
+                 <double>90.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Detector Material:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QComboBox" name="comboBoxDetectorMaterial">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Detector material&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Select the material of the detector surface. It is required for calculation of the linear absorption coefficient (LAC).&lt;/p&gt;&lt;p&gt;Additional materials can be added in the preferences.&lt;/p&gt;&lt;p&gt;If the material is unknown, but the LAC is known, leave this value at &amp;lt;unknown&amp;gt; and enter the value for the LAC directly.&lt;/p&gt;&lt;p&gt;If neither the material nor the LAC are known, the positional correction and correction of detector transparency will be skipped.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="labelLac">
+                <property name="text">
+                 <string>Linear Absorption Coefficient:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxLAC">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Linear absorption coefficient (LAC)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The absorption coefficient in cm&lt;span style=&quot; vertical-align:super;&quot;&gt;-1&lt;/span&gt; for the selected wavelength in the selected detector material.&lt;/p&gt;&lt;p&gt;The value is calculated from the detector material. If the material is &amp;lt;unknown&amp;gt;, a value for the LAC can be entered directly.&lt;/p&gt;&lt;p&gt;If the LAC is unknown or 0.0, the positional correction and correction for detector transparency will be skipped.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string> cm-1</string>
+                </property>
+                <property name="decimals">
+                 <number>4</number>
+                </property>
+                <property name="maximum">
+                 <double>999.990000000000009</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0" colspan="2">
+               <widget class="QGroupBox" name="groupBoxDetectorExpertOptions">
+                <property name="title">
+                 <string>Expert Options</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_4">
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_6">
+                   <property name="text">
+                    <string>Detector transparency:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QCheckBox" name="checkBoxTransparencyCutoff">
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Detector transparency cutoff&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Restrict the intensity distribution within the detector layer to the layer thickness (only available for convolution correction).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="text">
+                    <string>Apply cutoff</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_3">
+                   <property name="text">
+                    <string>Positional Correction:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QComboBox" name="comboBoxPosCorrectionMode">
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Positional correction&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Apply a positional correction of the profiles due to absorption in the sensitive layer of the detector. Two different implementations are offered:&lt;/p&gt;&lt;p&gt;- Convolution of the Pseudo-Voigt profile with an exponential decay function (eqs. 20 and 21 in Chernyshov et al. 2021)&lt;/p&gt;&lt;p&gt;- Approximation with an exGaussian function (eq. 22 in Chernyshov et al. 2021)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="6" column="0" colspan="2">
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="pageSupportPeaks">
+             <layout class="QGridLayout" name="gridLayout_8">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="TreeWidgetSupportPeaks" name="treeWidgetSupportPeaks" native="true">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Support Peaks&lt;/span&gt;&lt;/p&gt;&lt;p&gt;A list of experimentally determined peak positions, width, and shape parameters can be loaded from &amp;quot;File -&amp;gt; Import support peak list&amp;quot;.&lt;/p&gt;&lt;p&gt;The CSV file must be in the following format:&lt;/p&gt;&lt;p&gt;2theta;fwhm;shape&lt;br/&gt;2theta;fwhm;shape&lt;br/&gt;2theta;fwhm;shape&lt;/p&gt;&lt;p&gt;Loaded values can be changed by double-clicking.&lt;/p&gt;&lt;p&gt;Beamline parameters can be fitted to the support peak data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="pageBlankProfiles"/>
+            <widget class="QWidget" name="pageProfileRange">
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Computation Range Start:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxRangeStart">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Range start&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Start of the profile simulation range in degrees 2θ.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string>° 2θ</string>
+                </property>
+                <property name="maximum">
+                 <double>90.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Computation Range End:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxRangeEnd">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Range end&lt;/span&gt;&lt;/p&gt;&lt;p&gt;End of the profile simulation range in degrees 2θ.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string>° 2θ</string>
+                </property>
+                <property name="maximum">
+                 <double>90.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Computation Interval:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxRangeInterval">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Profile computation interval&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Interval of the profile calculation in degrees 2θ.&lt;/p&gt;&lt;p&gt;Recommended value: 0.2 degrees&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="suffix">
+                 <string>° 2θ</string>
+                </property>
+                <property name="maximum">
+                 <double>45.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>Pseudo-Voigt Shape:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QDoubleSpinBox" name="doubleSpinBoxPeakShape">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Shape parameter&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Shape parameter of the Pseudo-Voigt profiles.&lt;/p&gt;&lt;p&gt;Typically values are close to 0.5.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="decimals">
+                 <number>4</number>
+                </property>
+                <property name="maximum">
+                 <double>1.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0" colspan="2">
+               <spacer name="verticalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="pageProfilePeaks">
+             <layout class="QGridLayout" name="gridLayout_6">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="TreeWidgetModelPeaks" name="treeWidgetModelPeaks" native="true">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Simulated profiles&lt;/span&gt;&lt;/p&gt;&lt;p&gt;List of all computed profiles.&lt;/p&gt;&lt;p&gt;Right mouse button opens a menu for fitting individual profiles with L2 curves.&lt;/p&gt;&lt;p&gt;All profiles can be fitted with &amp;quot;Run -&amp;gt; Run approximation&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tabDescription">
+         <attribute name="title">
+          <string>Description</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_12">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="textEditHelp"/>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QSplitter" name="splitterPlots">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <widget class="InstrumentGraphicsView" name="graphicsViewInstrument" native="true"/>
+       <widget class="QTabWidget" name="tabWidgetPlots">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>FWHM</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_11">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QCustomPlot" name="plotFwhm" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>Profiles</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QCustomPlot" name="plotPeakFit" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>835</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionLoad_File"/>
+    <addaction name="actionSaveAs"/>
+    <addaction name="actionImport_Peak_List"/>
+    <addaction name="actionExport_Raw_Curves"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout_ProfexSC"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="action_Preferences"/>
+   </widget>
+   <widget class="QMenu" name="menu_Run">
+    <property name="title">
+     <string>&amp;Run</string>
+    </property>
+    <addaction name="actionFit_Fundamental_Parameters"/>
+    <addaction name="actionRun_Profile_Calculation"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menu_Run"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionLoad_File"/>
+   <addaction name="actionSaveAs"/>
+   <addaction name="actionImport_Peak_List"/>
+   <addaction name="actionFit_Fundamental_Parameters"/>
+   <addaction name="actionRun_Profile_Calculation"/>
+  </widget>
+  <action name="actionLoad_File">
+   <property name="icon">
+    <iconset theme="profex-folder-text"/>
+   </property>
+   <property name="text">
+    <string>Load Configuration File...</string>
+   </property>
+   <property name="toolTip">
+    <string>Load a configuration file</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="icon">
+    <iconset theme="profex-save-as"/>
+   </property>
+   <property name="text">
+    <string>Save Configuration As...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save configuration under a new name</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionAbout_ProfexSC">
+   <property name="text">
+    <string>About ProfexSC</string>
+   </property>
+  </action>
+  <action name="action_Preferences">
+   <property name="text">
+    <string>&amp;Preferences...</string>
+   </property>
+  </action>
+  <action name="actionFit_Fundamental_Parameters">
+   <property name="icon">
+    <iconset theme="profex-fit-instrument"/>
+   </property>
+   <property name="text">
+    <string>Fit Fundamental Parameters</string>
+   </property>
+   <property name="toolTip">
+    <string>Fit fundamental parameters to support peaks</string>
+   </property>
+  </action>
+  <action name="actionImport_Peak_List">
+   <property name="icon">
+    <iconset theme="profex-trace"/>
+   </property>
+   <property name="text">
+    <string>Import Support Peak List...</string>
+   </property>
+   <property name="toolTip">
+    <string>Import support peak list from CSV file</string>
+   </property>
+  </action>
+  <action name="actionExport_Raw_Curves">
+   <property name="text">
+    <string>Export Raw Curves...</string>
+   </property>
+  </action>
+  <action name="actionRun_Profile_Calculation">
+   <property name="icon">
+    <iconset theme="profex-run"/>
+   </property>
+   <property name="text">
+    <string>Run Profile Calculation</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot/qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TreeWidgetModelPeaks</class>
+   <extends>QWidget</extends>
+   <header>treewidgetmodelpeaks.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TreeWidgetSupportPeaks</class>
+   <extends>QWidget</extends>
+   <header>treewidgetsupportpeaks.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>InstrumentGraphicsView</class>
+   <extends>QWidget</extends>
+   <header>instrumentgraphicsview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>checkBoxD</tabstop>
+  <tabstop>doubleSpinBoxD</tabstop>
+  <tabstop>checkBoxC</tabstop>
+  <tabstop>doubleSpinBoxC</tabstop>
+  <tabstop>comboBoxDetectorMaterial</tabstop>
+  <tabstop>doubleSpinBoxLAC</tabstop>
+  <tabstop>doubleSpinBoxRangeStart</tabstop>
+  <tabstop>doubleSpinBoxRangeEnd</tabstop>
+  <tabstop>doubleSpinBoxRangeInterval</tabstop>
+  <tabstop>doubleSpinBoxPeakShape</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionLoad_File</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSaveAs</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout_ProfexSC</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionFit_Fundamental_Parameters</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fitFundamentalParameters()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionImport_Peak_List</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>importPeakList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>action_Preferences</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>preferences()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxPhiFocused</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleSpinBoxPhi</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>621</x>
+     <y>420</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>607</x>
+     <y>387</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExport_Raw_Curves</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>exportCurves()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRun_Profile_Calculation</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>runProfileCalculation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loadFile()</slot>
+  <slot>saveAs()</slot>
+  <slot>helpAbout()</slot>
+  <slot>generateAllProfiles()</slot>
+  <slot>fitAllProfiles()</slot>
+  <slot>generatePeaks()</slot>
+  <slot>saveGeqFile()</slot>
+  <slot>computeFwhm()</slot>
+  <slot>fitFundamentalParameters()</slot>
+  <slot>importPeakList()</slot>
+  <slot>preferences()</slot>
+  <slot>exportCurves()</slot>
+  <slot>runProfileCalculation()</slot>
+ </slots>
+</ui>

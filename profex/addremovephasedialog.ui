@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddRemovePhaseDialog</class>
+ <widget class="QDialog" name="AddRemovePhaseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>652</width>
+    <height>528</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Add / Remove Phases</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QCheckBox" name="checkBoxGenerateControlFile">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Creates a new refinement control file.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Check this box if no control file was created yet, or if an existing one should be overwritten.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Do not check this box if a phase should be added to an existing control file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Generate default control file for instrument configuration:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBoxDevices">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the instrument configuration file used to measure the open scan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabAdd">
+      <attribute name="icon">
+       <iconset theme="profex-add">
+        <normaloff>.</normaloff>.</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Add Phases</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="labelFilter">
+           <property name="text">
+            <string>Filter:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditFilter">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Apply a filter to the list of structure files. The filter supports regular expression patterns.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonClearFilter">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clear the filter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-delete">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonFilterOptions">
+           <property name="toolTip">
+            <string>Filter options</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-preferences">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+           <property name="popupMode">
+            <enum>QToolButton::MenuButtonPopup</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTreeWidget" name="treeWidgetStructures">
+         <property name="showDropIndicator" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QCheckBox" name="checkBoxOverwrite">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overwriting existing structure files may affect other projects in the same directory!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Overwrite existing files</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelFavWarning">
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonFavorites">
+           <property name="toolTip">
+            <string>Show favorites only</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-favorites">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonExpand">
+           <property name="toolTip">
+            <string>Expand or collaps structure tree</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-select-all">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabRemove">
+      <attribute name="icon">
+       <iconset theme="profex-remove">
+        <normaloff>.</normaloff>.</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>RemovePhases</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTreeWidget" name="treeWidgetRemovePhases">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBoxDeleteFiles">
+         <property name="text">
+          <string>Delete files</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="labelMessage">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>checkBoxGenerateControlFile</tabstop>
+  <tabstop>comboBoxDevices</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>lineEditFilter</tabstop>
+  <tabstop>toolButtonClearFilter</tabstop>
+  <tabstop>toolButtonFilterOptions</tabstop>
+  <tabstop>treeWidgetStructures</tabstop>
+  <tabstop>checkBoxOverwrite</tabstop>
+  <tabstop>toolButtonFavorites</tabstop>
+  <tabstop>treeWidgetRemovePhases</tabstop>
+  <tabstop>checkBoxDeleteFiles</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>AddRemovePhaseDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>515</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>AddRemovePhaseDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>569</x>
+     <y>515</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxGenerateControlFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AddRemovePhaseDialog</receiver>
+   <slot>generateDefaultControlFileToggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>141</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>325</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonFavorites</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AddRemovePhaseDialog</receiver>
+   <slot>toggleFavorites(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>583</x>
+     <y>458</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>651</x>
+     <y>411</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonClearFilter</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditFilter</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>588</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>558</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEditFilter</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>AddRemovePhaseDialog</receiver>
+   <slot>applyFilter(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>558</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>81</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonFilterOptions</sender>
+   <signal>clicked()</signal>
+   <receiver>toolButtonFilterOptions</receiver>
+   <slot>showMenu()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>603</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>630</x>
+     <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonExpand</sender>
+   <signal>clicked()</signal>
+   <receiver>AddRemovePhaseDialog</receiver>
+   <slot>toggleExpand()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>619</x>
+     <y>462</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>648</x>
+     <y>466</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxDevices</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>AddRemovePhaseDialog</receiver>
+   <slot>instrumentConfigChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>17</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>toggleExpand()</slot>
+  <slot>toggleFavorites(bool)</slot>
+  <slot>applyFilter(QString)</slot>
+  <slot>instrumentConfigChanged(int)</slot>
+  <slot>generateDefaultControlFileToggled(bool)</slot>
+ </slots>
+</ui>

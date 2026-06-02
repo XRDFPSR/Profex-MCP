@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BgmnInstrumentProfileDialog</class>
+ <widget class="QDialog" name="BgmnInstrumentProfileDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>930</width>
+    <height>620</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidgetMain">
+     <property name="currentIndex">
+      <number>-1</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="toolButtonLoadFile">
+       <property name="toolTip">
+        <string>Load an instrument parameter file</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-folder-text"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonReload">
+       <property name="toolTip">
+        <string>Reload the current instrument parameter file</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-refresh"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonSubCurves">
+       <property name="toolTip">
+        <string>Show/hide sub curves</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-pattern"/>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonExportCsv">
+       <property name="toolTip">
+        <string>Export current graph as CSV data file</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-save-as"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonExportPdf">
+       <property name="toolTip">
+        <string>Export current graph as PDF file</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-save-pdf"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonExportPng">
+       <property name="toolTip">
+        <string>Export current graph as PNG pixel image</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-export-image"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="sliderTwoTheta">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonClose">
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>toolButtonLoadFile</sender>
+   <signal>clicked()</signal>
+   <receiver>BgmnInstrumentProfileDialog</receiver>
+   <slot>loadFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>24</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>554</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonReload</sender>
+   <signal>clicked()</signal>
+   <receiver>BgmnInstrumentProfileDialog</receiver>
+   <slot>reloadFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>599</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>497</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonExportCsv</sender>
+   <signal>clicked()</signal>
+   <receiver>BgmnInstrumentProfileDialog</receiver>
+   <slot>exportCsv()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>610</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>412</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonExportPdf</sender>
+   <signal>clicked()</signal>
+   <receiver>BgmnInstrumentProfileDialog</receiver>
+   <slot>exportPdf()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>190</x>
+     <y>610</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonExportPng</sender>
+   <signal>clicked()</signal>
+   <receiver>BgmnInstrumentProfileDialog</receiver>
+   <slot>exportPng()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>228</x>
+     <y>610</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>261</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonClose</sender>
+   <signal>clicked()</signal>
+   <receiver>BgmnInstrumentProfileDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>891</x>
+     <y>594</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>930</x>
+     <y>388</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSubCurves</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>BgmnInstrumentProfileDialog</receiver>
+   <slot>toggleSubCurves(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>98</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>455</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loadFile()</slot>
+  <slot>reloadFile()</slot>
+  <slot>exportCsv()</slot>
+  <slot>exportPdf()</slot>
+  <slot>exportPng()</slot>
+  <slot>toggleSubCurves(bool)</slot>
+ </slots>
+</ui>

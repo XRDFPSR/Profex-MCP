@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1223</width>
+    <height>743</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QToolBox" name="toolBox">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="pageCalib">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>796</width>
+          <height>508</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Calibration</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Start of X and Y axis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Start axis calibration</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QLineEdit" name="lineEditTLX"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Start of X and Y axis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QSpinBox" name="spinBoxTLY"/>
+         </item>
+         <item row="5" column="1">
+          <widget class="QSpinBox" name="spinBoxTLX"/>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="spinBoxBLX"/>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>End of Y axis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2">
+          <widget class="QLineEdit" name="lineEditBLY"/>
+         </item>
+         <item row="2" column="0" colspan="3">
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Pixel coordinates</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="2">
+          <widget class="QLineEdit" name="lineEditBRY"/>
+         </item>
+         <item row="10" column="2">
+          <widget class="QLineEdit" name="lineEditTLY"/>
+         </item>
+         <item row="11" column="1" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonCalibNext">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset theme="profex-arrow-down">
+               <normaloff>.</normaloff>.</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="2">
+          <widget class="QSpinBox" name="spinBoxBLY"/>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>End of Y axis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>End of X axis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QSpinBox" name="spinBoxBRY"/>
+         </item>
+         <item row="12" column="0" colspan="3">
+          <widget class="ScanTracerCalibInfoWidget" name="calibInfoWidget" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>150</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0" colspan="3">
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>End of X axis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QLineEdit" name="lineEditBRX"/>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLineEdit" name="lineEditBLX"/>
+         </item>
+         <item row="7" column="0" colspan="3">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Calibrated coordinates</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonStartCalibMode">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset theme="profex-axis">
+               <normaloff>.</normaloff>.</iconset>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="1">
+          <widget class="QSpinBox" name="spinBoxBRX"/>
+         </item>
+         <item row="1" column="0" colspan="3">
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0" colspan="3">
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pageBaseLine">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>796</width>
+          <height>508</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Base Line</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="3" column="0" colspan="2">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="1">
+          <widget class="QToolButton" name="toolButtonBaseLineMode">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-baseline">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Draw baseline</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QToolButton" name="toolButtonBaseLineNext">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-arrow-down">
+             <normaloff>.</normaloff>.</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="ScanTracerBaseLineInfoWidget" name="baseLineInfoWidget" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>200</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pageTraceScan">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>796</width>
+          <height>508</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Trace Scan</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="5" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonTrace">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset theme="profex-trace">
+               <normaloff>.</normaloff>.</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>Background color</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="labelColorBackground">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonSelectBackgroundColor">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset theme="profex-color-select">
+               <normaloff>.</normaloff>.</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonPickBackgroundColor">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset theme="profex-color-pick">
+               <normaloff>.</normaloff>.</iconset>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="labelColorScan">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonSelectScanColor">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset theme="profex-color-select">
+               <normaloff>.</normaloff>.</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonPickScanColor">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset theme="profex-color-pick">
+               <normaloff>.</normaloff>.</iconset>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>Color sensitivity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_14">
+           <property name="text">
+            <string>Line center</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboBoxLineCenter">
+           <item>
+            <property name="text">
+             <string>Top</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Center</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Bottom</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string>Trace scan</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QDoubleSpinBox" name="doubleSpinBoxStepSize">
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.001000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>10.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.010000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.020000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonTraceNext">
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset theme="profex-arrow-down">
+               <normaloff>.</normaloff>.</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_15">
+           <property name="text">
+            <string>Step size</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Scan color</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="spinBoxColorSensitivity">
+           <property name="minimum">
+            <number>2</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>4</number>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0" colspan="2">
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pageSave">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>796</width>
+          <height>508</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Export</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_19">
+           <property name="text">
+            <string>Subtract intensity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="spinBoxSubtractIntensity"/>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QCheckBox" name="checkBoxAllowNegative">
+           <property name="text">
+            <string>Allow negative values</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="ScanTracerGraphicsView" name="graphicsViewGraph"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1223</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_File"/>
+    <addaction name="actionFrom_Clipboard"/>
+    <addaction name="actionSave_Scan"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_ProfexST"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionLoad_File"/>
+   <addaction name="actionFrom_Clipboard"/>
+   <addaction name="actionSave_Scan"/>
+  </widget>
+  <action name="actionLoad_File">
+   <property name="icon">
+    <iconset theme="profex-folder-text">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Load File...</string>
+   </property>
+  </action>
+  <action name="actionFrom_Clipboard">
+   <property name="icon">
+    <iconset theme="profex-export-image">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>From Clipboard</string>
+   </property>
+  </action>
+  <action name="actionSave_Scan">
+   <property name="icon">
+    <iconset theme="profex-save">
+     <normaloff>.</normaloff>.</iconset>
+   </property>
+   <property name="text">
+    <string>Save Scan...</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionAbout_ProfexST">
+   <property name="text">
+    <string>About ProfexST</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ScanTracerGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>scantracergraphicsview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ScanTracerCalibInfoWidget</class>
+   <extends>QWidget</extends>
+   <header>scantracercalibinfowidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ScanTracerBaseLineInfoWidget</class>
+   <extends>QWidget</extends>
+   <header>scantracerbaselineinfowidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>toolButtonStartCalibMode</tabstop>
+  <tabstop>spinBoxBLX</tabstop>
+  <tabstop>spinBoxBLY</tabstop>
+  <tabstop>spinBoxBRX</tabstop>
+  <tabstop>spinBoxBRY</tabstop>
+  <tabstop>spinBoxTLX</tabstop>
+  <tabstop>spinBoxTLY</tabstop>
+  <tabstop>lineEditBLX</tabstop>
+  <tabstop>lineEditBLY</tabstop>
+  <tabstop>lineEditBRX</tabstop>
+  <tabstop>lineEditBRY</tabstop>
+  <tabstop>lineEditTLX</tabstop>
+  <tabstop>lineEditTLY</tabstop>
+  <tabstop>toolButtonCalibNext</tabstop>
+  <tabstop>toolButtonBaseLineMode</tabstop>
+  <tabstop>toolButtonBaseLineNext</tabstop>
+  <tabstop>toolButtonSelectScanColor</tabstop>
+  <tabstop>toolButtonPickScanColor</tabstop>
+  <tabstop>toolButtonSelectBackgroundColor</tabstop>
+  <tabstop>toolButtonPickBackgroundColor</tabstop>
+  <tabstop>spinBoxColorSensitivity</tabstop>
+  <tabstop>comboBoxLineCenter</tabstop>
+  <tabstop>doubleSpinBoxStepSize</tabstop>
+  <tabstop>toolButtonTrace</tabstop>
+  <tabstop>toolButtonTraceNext</tabstop>
+  <tabstop>spinBoxSubtractIntensity</tabstop>
+  <tabstop>checkBoxAllowNegative</tabstop>
+  <tabstop>graphicsViewGraph</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionLoad_File</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionFrom_Clipboard</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pasteFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave_Scan</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout_ProfexST</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonBaseLineNext</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>nextPage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>791</x>
+     <y>203</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonCalibNext</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>nextPage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>778</x>
+     <y>423</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonTraceNext</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>nextPage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>794</x>
+     <y>402</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonStartCalibMode</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setCalibMode(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>778</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxBLX</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>calibBLChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>193</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>203</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxBLY</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>calibBLChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>659</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>622</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxBRX</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>calibBRChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>227</x>
+     <y>68</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxBRY</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>calibBRChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>676</x>
+     <y>229</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>671</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxTLX</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>calibTLChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>270</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxTLY</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>calibTLChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>717</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>697</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSelectScanColor</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scanColorDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>740</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>714</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSelectBackgroundColor</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>backgroundColorDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>752</x>
+     <y>229</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>744</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonPickScanColor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pickScanColor(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>783</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>763</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonPickBackgroundColor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>pickBackgroundColor(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>770</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>808</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxLineCenter</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>lineCenter(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxColorSensitivity</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>colorSensitivity(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>259</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonTrace</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>trace()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>841</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonBaseLineMode</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setBaseLineMode(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>779</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>loadFile()</slot>
+  <slot>pasteFile()</slot>
+  <slot>saveAs()</slot>
+  <slot>helpAbout()</slot>
+  <slot>nextPage()</slot>
+  <slot>setCalibMode(bool)</slot>
+  <slot>calibBLChanged()</slot>
+  <slot>calibBRChanged()</slot>
+  <slot>calibTLChanged()</slot>
+  <slot>pickScanColor(bool)</slot>
+  <slot>pickBackgroundColor(bool)</slot>
+  <slot>scanColorDialog()</slot>
+  <slot>backgroundColorDialog()</slot>
+  <slot>trace()</slot>
+  <slot>setBaseLineMode(bool)</slot>
+  <slot>colorSensitivity(int)</slot>
+  <slot>lineCenter(int)</slot>
+ </slots>
+</ui>

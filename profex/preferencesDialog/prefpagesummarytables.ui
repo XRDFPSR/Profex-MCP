@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefPageSummaryTables</class>
+ <widget class="QWidget" name="PrefPageSummaryTables">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>549</width>
+    <height>439</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QLabel" name="labelTitle">
+     <property name="text">
+      <string>BGMN - Summary Tables</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="lineTitle">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabGlobal">
+      <attribute name="title">
+       <string>Global Parameters and GOALs</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QCheckBox" name="checkBoxShowLOWarn">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked, a warning &amp;quot;&amp;lt; LOD&amp;quot; or &amp;quot;&amp;lt; LOQ&amp;quot; will be shown in the Global GOALs summary table if the relative standard deviation exceeds the limits specified below.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Show warnings for values below detection and quantification limit</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labelLOQ">
+           <property name="text">
+            <string>Variation coefficient for LOQ:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QDoubleSpinBox" name="doubleSpinBoxLOQ">
+           <property name="toolTip">
+            <string>Relative Standard Deviation (ESD/Value) above which the value will be marked as &quot;Below Limit of Quantification (LOQ)&quot;.
+
+Default = 0.25</string>
+           </property>
+           <property name="decimals">
+            <number>3</number>
+           </property>
+           <property name="maximum">
+            <double>5.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.050000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.250000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="pushButtonLOQColor">
+           <property name="text">
+            <string>Color</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labelLOD">
+           <property name="text">
+            <string>Variation coefficient for LOD:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QDoubleSpinBox" name="doubleSpinBoxLOD">
+           <property name="toolTip">
+            <string>Relative Standard Deviation (ESD/Value) above which the value will be marked as &quot;Below Limit of Detection (LOD)&quot;.
+
+Default = 0.50</string>
+           </property>
+           <property name="decimals">
+            <number>3</number>
+           </property>
+           <property name="maximum">
+            <double>5.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.050000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.500000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pushButtonLODColor">
+           <property name="text">
+            <string>Color</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labelMinEsd">
+           <property name="text">
+            <string>Minimum ESD (ignore ESDs below) =</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="doubleSpinBoxMinEsd">
+           <property name="toolTip">
+            <string>Refined ESDs below this value will be ignored, instead the value specified here will be used to determine LOQ and LOD. This can be used to avoid unreasonably low LOQs and LODs.
+
+Set to 0.000 if all ESDs shall be used as refined.
+
+Default: 0.050
+</string>
+           </property>
+           <property name="suffix">
+            <string> wt-%</string>
+           </property>
+           <property name="decimals">
+            <number>3</number>
+           </property>
+           <property name="maximum">
+            <double>5.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.050000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Show statistics</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="checkBoxRwp">
+           <property name="toolTip">
+            <string>Show the refined Rwp value in the statistics tree</string>
+           </property>
+           <property name="text">
+            <string>Rwp</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QCheckBox" name="checkBoxChi2">
+           <property name="toolTip">
+            <string>Show the refined Chi² value in the statistics tree</string>
+           </property>
+           <property name="text">
+            <string>Chi²</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="checkBoxBgCoeff">
+           <property name="toolTip">
+            <string>Show the number of background coefficients in the statistics tree</string>
+           </property>
+           <property name="text">
+            <string>Background coefficients</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QCheckBox" name="checkBoxRexp">
+           <property name="toolTip">
+            <string>Show the refined Rexp value in the statistics tree</string>
+           </property>
+           <property name="text">
+            <string>Rexp</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QCheckBox" name="checkBoxGoF">
+           <property name="toolTip">
+            <string>Show the refined Goodness of Fit (GoF) value in the statistics tree</string>
+           </property>
+           <property name="text">
+            <string>Goodness of Fit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="labelGlobalListedGoals">
+           <property name="text">
+            <string>Listed GOALs:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonResetGlobalGoals">
+           <property name="toolTip">
+            <string>Reset the listed global GOALs to the defaul selection</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-undo"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="plainTextEditBgmnGlobalGoals">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Specify which global GOALs are listed in the summary tables. The GOAL name must be specified as a regular expression pattern. &lt;/p&gt;&lt;p&gt;Delete all text to list all GOALs.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Example: list all goals of type &amp;quot;PhaseName/sum&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;^[^\/]+\/sum$&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Example: list all EPS values&lt;/span&gt;&lt;/p&gt;&lt;p&gt;^EPS\d$&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabLocal">
+      <attribute name="title">
+       <string>Local Parameters and GOALs</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="labelLocalListedGoals">
+           <property name="text">
+            <string>Listed GOALs:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButtonResetLocalGoals">
+           <property name="toolTip">
+            <string>Reset the listed local GOALs to the defaul selection</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset theme="profex-undo"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="plainTextEditBgmnOutputParameters">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Specify which local parameters and GOALs (phase specific refinement results) will be summarized in the table and exported to CSV. Parameters must be specified as regular expression patterns.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Example: To export unit cell parameters and the crystallite size, enter&lt;/span&gt;&lt;/p&gt;&lt;p&gt;^A$&lt;br/&gt;^B$&lt;br/&gt;^C$&lt;br/&gt;^ALPHA$&lt;br/&gt;^BETA$&lt;br/&gt;^GAMMA$&lt;br/&gt;^GrainSize\(\d+,\d+,\d+\)$&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>checkBoxShowLOWarn</tabstop>
+  <tabstop>doubleSpinBoxLOQ</tabstop>
+  <tabstop>pushButtonLOQColor</tabstop>
+  <tabstop>doubleSpinBoxLOD</tabstop>
+  <tabstop>pushButtonLODColor</tabstop>
+  <tabstop>doubleSpinBoxMinEsd</tabstop>
+  <tabstop>plainTextEditBgmnGlobalGoals</tabstop>
+  <tabstop>toolButtonResetLocalGoals</tabstop>
+  <tabstop>plainTextEditBgmnOutputParameters</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

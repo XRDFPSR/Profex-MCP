@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AbsorptionCoefficientDialog</class>
+ <widget class="QDialog" name="AbsorptionCoefficientDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>772</width>
+    <height>513</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Absorption Coefficient</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QSplitter" name="splitterH">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QSplitter" name="splitterV">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Phase Parameters</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="1" column="0" colspan="2">
+            <widget class="QLabel" name="labelFormula">
+             <property name="text">
+              <string>Empirical formula:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <widget class="QLabel" name="labelQuantity">
+             <property name="text">
+              <string>Phase Quantity:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2" colspan="2">
+            <widget class="QLineEdit" name="lineEditSumFormula">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Empirical formula of the phase. No parentheses allowed. Examples:&lt;/p&gt;&lt;p&gt;Al2 O3&lt;br/&gt;Si O2&lt;br/&gt;Ca3 P2 O8&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2" colspan="2">
+            <widget class="QLineEdit" name="lineEditPhase">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Phase name&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2" colspan="2">
+            <widget class="QLineEdit" name="lineEditDensity">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Phase density in g/cm&lt;span style=&quot; vertical-align:super;&quot;&gt;3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2" colspan="2">
+            <widget class="QLineEdit" name="lineEditQuantity">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Phase quantity in weight fraction (0-1)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QLabel" name="labelDensity">
+             <property name="text">
+              <string>Density:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QLabel" name="labelPhase">
+             <property name="text">
+              <string>Phase:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="4">
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="title">
+           <string>Sample Parameters</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="4" column="0">
+            <widget class="QLabel" name="labelDepthPacking">
+             <property name="text">
+              <string>Packing density [%]:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="labelDepthIncidentAngle">
+             <property name="text">
+              <string>Incident angle [°]:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="labelDepthAbsorption">
+             <property name="text">
+              <string>Attenuation [%]:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QDoubleSpinBox" name="doubleSpinBoxDepthPacking">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sample packing density.&lt;/p&gt;&lt;p&gt;Set to 100% for intrinsic material absorption.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="maximum">
+              <double>100.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>100.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QDoubleSpinBox" name="doubleSpinBoxDepthAttenuation">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Attenuation coefficient (0-100%).&lt;/p&gt;&lt;p&gt;Absorption is an exponential decay function. In theory the radiation is never completely absorbed. The penetration depth is therefore defined as the distance after which the intensity is attenuated by a certain percentage. Typical values are: &lt;/p&gt;&lt;p&gt;99%&lt;br/&gt;95%&lt;br/&gt;90%&lt;br/&gt;36.79% &lt;/p&gt;&lt;p&gt;The last factor corresponds to 1/e, which is a common definition of penetration depth.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="maximum">
+              <double>100.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>100.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QDoubleSpinBox" name="doubleSpinBoxDepthIncident">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Incident angle of the beam relative to the sample surface.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="maximum">
+              <double>90.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>30.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="WaveLengthComboBox" name="comboBoxWaveLength">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Characteristic wavelength&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QDoubleSpinBox" name="doubleSpinBoxCustomWl">
+             <property name="suffix">
+              <string> nm</string>
+             </property>
+             <property name="decimals">
+              <number>8</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="radioButtonWLcharact">
+             <property name="text">
+              <string>Wavelength (charact.)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="radioButtonWLcustom">
+             <property name="text">
+              <string>Wavelength (custom)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>Absorption</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QLabel" name="labelPhaseMac">
+             <property name="toolTip">
+              <string>Phase mass absorption coefficient (MAC)</string>
+             </property>
+             <property name="text">
+              <string>Phase MAC:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="labelPhaseLac">
+             <property name="toolTip">
+              <string>Phase linear absorption coefficient (LAC)</string>
+             </property>
+             <property name="text">
+              <string>Phase LAC:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="labelDepthLayer">
+             <property name="text">
+              <string>Layer thickness [um]:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="labelDepthPath">
+             <property name="text">
+              <string>Path length [um]:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="labelSampleMac">
+             <property name="toolTip">
+              <string>Sample mass absorption coefficient (MAC)</string>
+             </property>
+             <property name="text">
+              <string>Sample MAC:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="labelSampleLac">
+             <property name="toolTip">
+              <string>Sample linear absorption coefficient (LAC)</string>
+             </property>
+             <property name="text">
+              <string>Sample LAC:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="3">
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="3">
+            <widget class="Line" name="line_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QLineEdit" name="lineEditDepthLayer">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Penetration depth normal to the sample surface.&lt;/p&gt;&lt;p&gt;Depends on the beam's incident angle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QLineEdit" name="lineEditDepthPath">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Penetration depth along the beam direction.&lt;/p&gt;&lt;p&gt;Independent of the beam's incident angle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="lineEditSampleLAC">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sample linear absorption coefficient (LAC)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="lineEditSampleMAC">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sample mass absorption coefficient (MAC)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEditLAC">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Phase linear absorption coefficient (LAC)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEditMAC">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Phase mass absorption coefficient (MAC)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>MAC: Mass absorption coefficient</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>LAC: Linear absorption coefficient</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QTreeView" name="treeViewCollection"/>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="toolButtonToCollection">
+       <property name="toolTip">
+        <string>Add a new phase</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-add"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonClearCurrent">
+       <property name="toolTip">
+        <string>Remove the selected phase</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-remove"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonClearAll">
+       <property name="toolTip">
+        <string>Clear all phases</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-delete"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonSaveAs">
+       <property name="toolTip">
+        <string>Save list to a CSV file</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-save-as"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonLoad">
+       <property name="toolTip">
+        <string>Load an LST file</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-folder-text"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonClose">
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WaveLengthComboBox</class>
+   <extends>QComboBox</extends>
+   <header>wavelengthcombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>lineEditPhase</tabstop>
+  <tabstop>lineEditSumFormula</tabstop>
+  <tabstop>lineEditDensity</tabstop>
+  <tabstop>lineEditQuantity</tabstop>
+  <tabstop>comboBoxWaveLength</tabstop>
+  <tabstop>doubleSpinBoxDepthAttenuation</tabstop>
+  <tabstop>doubleSpinBoxDepthPacking</tabstop>
+  <tabstop>doubleSpinBoxDepthIncident</tabstop>
+  <tabstop>treeViewCollection</tabstop>
+  <tabstop>lineEditMAC</tabstop>
+  <tabstop>lineEditLAC</tabstop>
+  <tabstop>lineEditSampleMAC</tabstop>
+  <tabstop>lineEditSampleLAC</tabstop>
+  <tabstop>lineEditDepthPath</tabstop>
+  <tabstop>lineEditDepthLayer</tabstop>
+  <tabstop>toolButtonToCollection</tabstop>
+  <tabstop>toolButtonClearCurrent</tabstop>
+  <tabstop>toolButtonClearAll</tabstop>
+  <tabstop>toolButtonSaveAs</tabstop>
+  <tabstop>toolButtonLoad</tabstop>
+  <tabstop>pushButtonClose</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonClose</sender>
+   <signal>clicked()</signal>
+   <receiver>AbsorptionCoefficientDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>761</x>
+     <y>502</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>237</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonToCollection</sender>
+   <signal>clicked()</signal>
+   <receiver>AbsorptionCoefficientDialog</receiver>
+   <slot>appendItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>502</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>128</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonClearCurrent</sender>
+   <signal>clicked()</signal>
+   <receiver>AbsorptionCoefficientDialog</receiver>
+   <slot>clearCurrent()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>502</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>74</x>
+     <y>424</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonClearAll</sender>
+   <signal>clicked()</signal>
+   <receiver>AbsorptionCoefficientDialog</receiver>
+   <slot>clearAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>93</x>
+     <y>502</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>127</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSaveAs</sender>
+   <signal>clicked()</signal>
+   <receiver>AbsorptionCoefficientDialog</receiver>
+   <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>502</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>174</x>
+     <y>456</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>AbsorptionCoefficientDialog</receiver>
+   <slot>loadFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>153</x>
+     <y>502</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>238</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonWLcharact</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBoxWaveLength</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>77</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>248</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonWLcharact</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleSpinBoxCustomWl</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>62</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>211</x>
+     <y>240</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>recalc()</slot>
+  <slot>clearCurrent()</slot>
+  <slot>clearAll()</slot>
+  <slot>saveAs()</slot>
+  <slot>selectionChanged(QTreeWidgetItem*,QTreeWidgetItem*)</slot>
+  <slot>appendItem()</slot>
+  <slot>changeWavelength()</slot>
+  <slot>loadFile()</slot>
+ </slots>
+</ui>

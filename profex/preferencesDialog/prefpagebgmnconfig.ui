@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefPageBgmnConfig</class>
+ <widget class="QWidget" name="PrefPageBgmnConfig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>557</width>
+    <height>522</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_38">
+     <property name="text">
+      <string>BGMN - Configuration</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="Line" name="line_5">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QRadioButton" name="radioButtonInstBundled">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Check this option if the BGMN installation bundled with Profex should be used.&lt;/p&gt;&lt;p&gt;Normally this is the preferred option.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Use bundled BGMN installation</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QRadioButton" name="radioButtonInstCustom">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Check this option to use a BGMN installation outside of the Profex program directory.&lt;/p&gt;&lt;p&gt;The executables must be located manually.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Use custom BGMN installation</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QWidget" name="groupBgmnCustom" native="true">
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>BGMN executable</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditBgmnExec">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the path to the BGMN executable (BGMN.exe)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="pushButtonBgmnExec">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the path to the BGMN executable (BGMN.exe)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>MakeGEQ executable</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditMakeGeqExec">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the path to the MakeGEQ executable (MAKEGEQ.exe)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="pushButtonMakeGeq">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the path to the MakeGEQ executable (MAKEGEQ.exe)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_18">
+        <property name="text">
+         <string>Geomet executable</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEditGeometExec">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the path to the GEOMET executable (GEOMET.exe)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="pushButtonGeomet">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the path to the GEOMET executable (GEOMET.exe)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Teil executable</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEditTeilExec">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the path to the OUTPUT executable (OUTPUT.exe)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="pushButtonTeil">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the path to the OUTPUT executable (OUTPUT.exe)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_56">
+        <property name="text">
+         <string>Eflech executable</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lineEditEflechExec"/>
+      </item>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="pushButtonEflech">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Do not convert scan files to XY format:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditScanFilesNotConverted">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The BGMN refinement kernel only supports certain scan file formats natively. Other formats must be converted to XY ASCII format by Profex.&lt;/p&gt;&lt;p&gt;Enter the file extensions of those file formats that should &lt;span style=&quot; font-weight:700;&quot;&gt;not&lt;/span&gt; be converted to XY as a space-separated list.&lt;/p&gt;&lt;p&gt;Example: &lt;span style=&quot; font-family:'monospace';&quot;&gt;val xye&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Note: If the formats entered here are not supported by BGMN natively, the refinement will abort.&lt;/p&gt;&lt;p&gt;If unsure, enter &amp;quot;val xye&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonResetNotConvertFormats">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-undo"/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="6" column="0">
+    <widget class="QCheckBox" name="checkBoxWlLamFile">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked, all spectral lines specified in the *.lam file will be shown. &lt;/p&gt;&lt;p&gt;Otherwise only Ka1, Ka2 and Kb will be shown using hard-coded values.&lt;/p&gt;&lt;p&gt;If unsure, leave this option unchecked.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Spectral line cursor shows all wavelengths from BGMN *.lam file</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QCheckBox" name="checkBoxCreateReport">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked, a report of the refinement will be created automatically when the refinement completes.&lt;/p&gt;&lt;p&gt;The report is stored in the project directory in HTML format.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Create report after refinement</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QCheckBox" name="checkBoxOpenAddedStrFiles">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked, structure files added to the project using the Add/Remove function will be opened in a text editor&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Open newly added structure files</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Quantification GOALs</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="checkBoxManageGoals">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked, Profex manages the phase quantification GOALs in the control file when adding or removing phases. Manual edits to the GOALs will be overwritten.&lt;/p&gt;&lt;p&gt;If unchecke, the quantity GOALs must be managed manually after adding or removing phases.&lt;/p&gt;&lt;p&gt;If unsure, check this option.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Manage quantity GOALS</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBoxQuantGoals100">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked, quantity goals are normalized to 100%. Otherwise they are normalized to 1.0.&lt;/p&gt;&lt;p&gt;Changes will take effect after adding or removing phases.&lt;/p&gt;&lt;p&gt;If unsure, leave this option unchecked.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Normalize quantity GOALs to 100%</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <spacer name="verticalSpacer_8">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>498</width>
+       <height>96</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>lineEditBgmnExec</tabstop>
+  <tabstop>pushButtonBgmnExec</tabstop>
+  <tabstop>lineEditMakeGeqExec</tabstop>
+  <tabstop>pushButtonMakeGeq</tabstop>
+  <tabstop>lineEditGeometExec</tabstop>
+  <tabstop>pushButtonGeomet</tabstop>
+  <tabstop>lineEditTeilExec</tabstop>
+  <tabstop>pushButtonTeil</tabstop>
+  <tabstop>lineEditEflechExec</tabstop>
+  <tabstop>pushButtonEflech</tabstop>
+  <tabstop>checkBoxWlLamFile</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>checkBoxManageGoals</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBoxQuantGoals100</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>61</x>
+     <y>340</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>62</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

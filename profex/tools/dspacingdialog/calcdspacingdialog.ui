@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CalcDspacingDialog</class>
+ <widget class="QWidget" name="CalcDspacingDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>583</width>
+    <height>519</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Wavelength</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="radioButtonRadiationCharacteristic">
+        <property name="toolTip">
+         <string>Use characteristic wavelength to calculate 2θ angle</string>
+        </property>
+        <property name="text">
+         <string>Characteristic</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="WaveLengthComboBox" name="comboBoxRadiationCharacteristic">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Characteristic wavelength to calculate 2θ angle</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="radioButtonRadiationSynchrotron">
+        <property name="toolTip">
+         <string>Use custom wavelength to calculate 2θ angle</string>
+        </property>
+        <property name="text">
+         <string>Custom</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxRadiationSynchrotron">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Custom wavelength to calculate 2θ angle</string>
+        </property>
+        <property name="suffix">
+         <string> nm</string>
+        </property>
+        <property name="decimals">
+         <number>8</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Unit Cell</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0" colspan="8">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_14">
+          <property name="text">
+           <string>Phase Name</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lineEditPhaseName"/>
+        </item>
+        <item row="0" column="2">
+         <widget class="QToolButton" name="toolButtonFromProject">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Read values from currently selected phase in the open refinement project.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset theme="profex-refresh"/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Crystal System</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" colspan="2">
+         <widget class="QComboBox" name="comboBoxCrystalSystem">
+          <property name="toolTip">
+           <string>Crystal system</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>a</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxCellA">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Enter  the a axis length in nm</string>
+        </property>
+        <property name="suffix">
+         <string> nm</string>
+        </property>
+        <property name="decimals">
+         <number>8</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>α</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxCellAlpha">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Enter angle α in degrees</string>
+        </property>
+        <property name="suffix">
+         <string>°</string>
+        </property>
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="maximum">
+         <double>180.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="6">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>h</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="7">
+       <widget class="QSpinBox" name="spinBoxH">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Select h of the lattice plane (hkl), for which the spacing d is calculated</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>b</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxCellB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Enter the b axis length in nm</string>
+        </property>
+        <property name="suffix">
+         <string> nm</string>
+        </property>
+        <property name="decimals">
+         <number>8</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>β</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxCellBeta">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Enter angle β in degrees</string>
+        </property>
+        <property name="suffix">
+         <string>°</string>
+        </property>
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="maximum">
+         <double>180.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="6">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>k</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QSpinBox" name="spinBoxK">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Select k of the lattice plane (hkl), for which the spacing d is calculated</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>c</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxCellC">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Enter the c axis length in nm</string>
+        </property>
+        <property name="suffix">
+         <string> nm</string>
+        </property>
+        <property name="decimals">
+         <number>8</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>γ</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="4">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxCellGamma">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Enter angle γ in degrees</string>
+        </property>
+        <property name="suffix">
+         <string>°</string>
+        </property>
+        <property name="decimals">
+         <number>4</number>
+        </property>
+        <property name="maximum">
+         <double>180.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="5">
+       <spacer name="horizontalSpacer_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="6">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>l</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="7">
+       <widget class="QSpinBox" name="spinBoxL">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Select l of the lattice plane (hkl), for which the spacing d is calculated</string>
+        </property>
+        <property name="minimum">
+         <number>-99</number>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="4" colspan="4">
+       <widget class="QLineEdit" name="lineEditVolume">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="4">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Volume [nm³]</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Results</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>d [nm]</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditResultD">
+        <property name="toolTip">
+         <string>Lattice plane spacing d in nm</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_8">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>2θ [°]</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditResult2t">
+        <property name="toolTip">
+         <string>Diffraction angle 2θ of the lattice plane spacing (depends on the selected wavelength)</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_9">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButtonAppend">
+        <property name="toolTip">
+         <string>Append hkl line to list</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-add"/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTreeWidget" name="treeWidget">
+     <column>
+      <property name="text">
+       <string>Phase</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>h</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>k</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>l</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>d [nm]</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>2θ [°]</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QToolButton" name="toolButtonRemove">
+       <property name="toolTip">
+        <string>Remove selected entry</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-remove"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonClear">
+       <property name="toolTip">
+        <string>Clear list</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-delete"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonCopy">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-document-copy"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonSaveAs">
+       <property name="toolTip">
+        <string>Save list to file</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-save-as"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonClose">
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WaveLengthComboBox</class>
+   <extends>QComboBox</extends>
+   <header>wavelengthcombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>radioButtonRadiationCharacteristic</tabstop>
+  <tabstop>comboBoxRadiationCharacteristic</tabstop>
+  <tabstop>radioButtonRadiationSynchrotron</tabstop>
+  <tabstop>doubleSpinBoxRadiationSynchrotron</tabstop>
+  <tabstop>comboBoxCrystalSystem</tabstop>
+  <tabstop>doubleSpinBoxCellA</tabstop>
+  <tabstop>doubleSpinBoxCellB</tabstop>
+  <tabstop>doubleSpinBoxCellC</tabstop>
+  <tabstop>doubleSpinBoxCellAlpha</tabstop>
+  <tabstop>doubleSpinBoxCellBeta</tabstop>
+  <tabstop>doubleSpinBoxCellGamma</tabstop>
+  <tabstop>spinBoxH</tabstop>
+  <tabstop>spinBoxK</tabstop>
+  <tabstop>spinBoxL</tabstop>
+  <tabstop>lineEditResultD</tabstop>
+  <tabstop>lineEditResult2t</tabstop>
+  <tabstop>treeWidget</tabstop>
+  <tabstop>pushButtonClose</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>radioButtonRadiationCharacteristic</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBoxRadiationCharacteristic</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>60</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonRadiationSynchrotron</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleSpinBoxRadiationSynchrotron</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>88</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>561</x>
+     <y>89</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonClose</sender>
+   <signal>clicked()</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>572</x>
+     <y>508</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>487</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxRadiationCharacteristic</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>288</x>
+     <y>49</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>579</x>
+     <y>51</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxRadiationSynchrotron</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>561</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxCellA</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxCellB</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>217</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxCellC</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>159</x>
+     <y>246</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>583</x>
+     <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxCellAlpha</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>359</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxCellBeta</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>359</x>
+     <y>217</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBoxCellGamma</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>359</x>
+     <y>246</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>583</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxH</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>520</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>261</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxK</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>520</x>
+     <y>217</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>582</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxL</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>520</x>
+     <y>246</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>580</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxCrystalSystem</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateCrystalSystem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>244</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>579</x>
+     <y>25</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonRadiationCharacteristic</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>updateData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>41</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>53</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonAppend</sender>
+   <signal>clicked()</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>appendLine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>548</x>
+     <y>301</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>580</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>removeLine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>498</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>21</x>
+     <y>516</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonClear</sender>
+   <signal>clicked()</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>clearList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>117</x>
+     <y>513</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSaveAs</sender>
+   <signal>clicked()</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>507</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>238</x>
+     <y>516</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonCopy</sender>
+   <signal>clicked()</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>copyData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>494</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>223</x>
+     <y>511</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonFromProject</sender>
+   <signal>clicked()</signal>
+   <receiver>CalcDspacingDialog</receiver>
+   <slot>readFromProject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>260</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>582</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>updateData()</slot>
+  <slot>appendLine()</slot>
+  <slot>updateCrystalSystem()</slot>
+  <slot>removeLine()</slot>
+  <slot>clearList()</slot>
+  <slot>saveAs()</slot>
+  <slot>copyData()</slot>
+  <slot>readFromProject()</slot>
+ </slots>
+</ui>

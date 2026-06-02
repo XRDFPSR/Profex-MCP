@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title></title>
+</head>
+<body>
+<h1>Search-Match Module</h1>
+<p>This module is used for phase identification by searching the structure repositories for matching phases.</p>
+<h2>Getting started</h2>
+<h3>Step 1: Phases</h3>
+<p>Select the structure repositories used for phase matching. The search-match process can be slow.
+Only including relevant repositories speeds up the process significantly.</p>
+<h3>Step 2: Restrictions (optional)</h3>
+<p>Limit the search-match process to phases with specific chemical compositions. This can be helpful if the chemical
+composition of the sample is known. Limiting the search process to phases matching the known composition significantly
+improves the hit rate. By clicking on elements in the periodic table, the elements are cycled through the following
+modes:
+</p>
+<ul><li>Optional: Phases containing the element and phases not containing it are included in the search.</li>
+<li>Mandatory: Only phases containing the element are included in the search. Phases not containing it are ignored.</li>
+<li>At least one: Phases containing at least one of all elements set to this state are included in the search.
+For example, setting Mg, Fe, Ca to "At least one" will match MgCO<sub>3</sub>, FeCo<sub>3</sub>, CaCO<sub>3</sub>, and (Mg,Ca)(CO<sub>3</sub>)<sub>2</sub>.</li>
+<li>Discarded: Phases containing the element are ignored.</li>
+</ul>
+Discard optional is a shortcut to set all optional elements to discarded.<p></p>
+<h3>Step 3: Controls</h3>
+<p>Phases are matched to the dataset by running a Rietveld refinement with restricted parameters and comparing
+the goodness of fit. Here some refinement parameters can be controlled. They mostly affect the speed of the process
+and the variability during phase matching.
+</p>
+<ul><li>Instrument: If a refinement project has already been created, information about the instrument will be
+taken from the project. Else select the instrument configuration and radiation used to measure the dataset.</li>
+<li>Number of iteration: Typically 10 iterations are sufficient to assess the quality of fit.</li>
+<li>Minimum angle: Set this angle just below the first observed peak. Setting it lower unnecessarily slows
+down the matching process. Setting it higher deteriorates the hit rate.</li>
+<li>Maximum angle: Make sure that the peaks required to identify the phases are included. But it is not necessary
+to include more than a few strong peaks for each phase. For example, if all phases have strong peaks around 30 deg,
+setting the maximum angle to 40 deg is sufficient. Setting it higher unnecessarily slows down the matching process.</li>
+<li>Set number of background coefficients: Normally the automatic mode works well. Leave this unchecked.</li>
+<li>Unit cell variability: Specify how far the cell parameters may diverge from the starting values during the
+matching process. Start with "strict". If no matching phases are found, setting it to "medium" or "loose"
+may help finding similar but not identical phases.</li>
+<li>Allow anisotropic parameters: Normally phase matching restricts the refinement to isotropic parameters.
+In samples with strong anisotropy (anisotropic crystallite sizes or texture), enabling this option
+may improve the hit rate.</li>
+<li>Refine sample heigth displacement: Only enable this option if the sample shows strong signs of height displacement.
+Otherwise, false positive matches may be found.</li>
+<li>Crystallinity: Specify how much peak broadening is refined during phase matching. "High" allows minor
+broadening, "nano" allows severe broadening. Set this option to the average peak width of the dataset.
+Choosing a wrong option increases the risk for false positive matches.</li>
+</ul>
+<p></p>
+<h3>Step 4: Running Search-Match</h3>
+<p>Select "Run -&gt; Search-Match" from the menu (or click the "Eye" button in the menu bar) to start the process.</p>
+<h3>Step 5: Evaluating Results and Searching Residuals</h3>
+<p>The matched phases are listed with descending figure of merit. The best match is always listed at the top of the score list.</p>
+<p>To evaluate the score list, proceed as follows:</p>
+<ol><li>Selecting a phase in the score list displays its hkl line positions in the graph and the content of the structure file in the "Structure File" editor. Use this function to decide whether
+or not the phase is really present.</li>
+<li>If the phase is confirmed to be present, pin it by clicking the "arrow down" button at the bottom of the score list.
+This will temporarily add the phase to the refinement project.</li>
+<li>If more unassigned peaks are present, repeat the search-match process. Pinned phases will be included in the
+peak fitting, and search-match will focus on the residual peaks.</li>
+<li>Repeat this process until all peaks are assigned to a phase.</li>
+<li>Once all peaks are assigned, the pinned phases must be permanently added to the refinement project.
+Click "Project -&gt; Add-Remove phase" to open the phase dialog. All pinned phases are pre-checked. Click "ok"
+to add them to the project.</li>
+</ol>
+<p>The column "Source" in the list of pinned phases indicates if the phase was pinned as a result of a search-match run
+("matched"), or if it was previously added to the refinement project ("project"). Note that phases of source
+"project" cannot be unpinned ("arrow-up" button). They must be removed from the refinement project.</p>
+<p>The score list can be exported to CSV format using the button "Save the score list". Selected matches can be cleared by
+clicking the "unselect matches" button at the top of the module. This unselects all selected structures and clears the
+hkl lines displayed on the graph.</p>
+</body>
+</html>

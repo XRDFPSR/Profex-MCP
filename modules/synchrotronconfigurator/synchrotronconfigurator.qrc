@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/synchrotronconfigurator">
+        <file>svg/drawingBeamLineConfig.svg</file>
+        <file>svg/drawingProfileFit.svg</file>
+        <file>helpFiles/primaryBeamConfig.html</file>
+        <file>helpFiles/detectorConfig.html</file>
+        <file>helpFiles/supportPeaks.html</file>
+        <file>helpFiles/computationRange.html</file>
+        <file>helpFiles/computedProfiles.html</file>
+        <file>svg/dark-mode/collimator-active.svg</file>
+        <file>svg/dark-mode/collimator-inactive.svg</file>
+        <file>svg/dark-mode/detector-active.svg</file>
+        <file>svg/dark-mode/detector-inactive.svg</file>
+        <file>svg/dark-mode/sample-capillary-active.svg</file>
+        <file>svg/dark-mode/sample-capillary-inactive.svg</file>
+        <file>svg/light-mode/collimator-active.svg</file>
+        <file>svg/light-mode/collimator-inactive.svg</file>
+        <file>svg/light-mode/detector-active.svg</file>
+        <file>svg/light-mode/detector-inactive.svg</file>
+        <file>svg/light-mode/sample-capillary-active.svg</file>
+        <file>svg/light-mode/sample-capillary-inactive.svg</file>
+        <file>helpFiles/sampleConfig.html</file>
+        <file>helpFiles/detectorConfigExpert.html</file>
+    </qresource>
+</RCC>

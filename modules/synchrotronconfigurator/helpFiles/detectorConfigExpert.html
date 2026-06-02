@@ -1,0 +1,29 @@
+<h1>Detector Configuration</h1>
+<h2>Parameter description</h2>
+<ul>
+<li><b>Detector pixel size (p):</b> The size of the detector pixels in mm.</li>
+<li><b>Detector layer thickness (t):</b> The thickness of the sensitive layer of the detector surface in mm.</li>
+<li><b>Detector material:</b> The material of which the detector's sensitive layer is composed.</li>
+<li><b>Linear absorption coefficient:</b> The linear absorption coefficient in cm<sup>-1</sup> of the radiation in the detector's sensitive layer.</li>
+<li><b>Positional correction:</b> Select if a correction of the peak position and shape due to penetration into the detector surface layer is applied.
+<ul><li><b>None:</b> Skip the positional correction.</li>
+<li><b>exGaussian:</b> Use an exponentially modified Gaussian function. Note: The Pseudo-Voigt shape parameter will be ignored.</li>
+<li><b>Pseudo-Voigt Convolution:</b> Use a convolution of a Pseudo-Voigt peak with an exponential decay function. If the shape parameter is set to 0 (for a pure Gaussian function),
+the result will be identical to the exGaussian function.</li>
+</ul>
+</li>
+<li><b>Apply cutoff:</b> (only for Pseudo-Voigt convolution) Limits the exponential decay function to the path length in the sensitive detector layer.</li>
+</ul>
+<p>Checkboxes are used for fitting the parameters to support peaks. See page "Support Peaks" for more information.</p>
+<h2>Setup</h2>
+<p>Additional detector materials can be added in the Preferences.</p>
+<p>If the detector material is unkonwn, but the linear absorption coefficient is known, set the detector material to &lt;unknown&gt; and enter the absorption coefficient directly.</p>
+<h2>Description</h2>
+<p>The profile calculation applies two corrections to the intensity and shape:
+<ul>
+<li>A 2&theta; dependent correction of the intensity if a significant amount of the radiation passes the detector layer without being absorbed.</li>
+<li>A 2&theta; dependent distortion and displacement of the profiles due to penetration of the beams into the detector layer at an inclined angle.</li>
+</ul>
+Both the wavelength and absorption coefficient must be known for the two corrections. If the option "Positional correction" is set to "None", the intensity correction will still
+be applied. To disable the intensity correction, enter an absorption coefficient of 0.0.
+</p>

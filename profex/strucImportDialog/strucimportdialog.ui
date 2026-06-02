@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StrucImportDialog</class>
+ <widget class="QMainWindow" name="StrucImportDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Import Structure Files</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>STR File</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="CodeEditor" name="textEditStr" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Source File</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="CodeEditor" name="textEditSource" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="action_Load_source_files"/>
+    <addaction name="action_Search_COD"/>
+    <addaction name="action_Retrieve_COD_records"/>
+    <addaction name="separator"/>
+    <addaction name="action_Save"/>
+    <addaction name="actionSave_all"/>
+    <addaction name="separator"/>
+    <addaction name="actionRemove_file"/>
+    <addaction name="actionClose_all_files"/>
+    <addaction name="actionClose_verified_files"/>
+    <addaction name="separator"/>
+    <addaction name="action_Export_messages"/>
+    <addaction name="actionExport_graphs"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
+   </widget>
+   <widget class="QMenu" name="menu_Run">
+    <property name="title">
+     <string>&amp;Run</string>
+    </property>
+    <addaction name="actionConvert_source_file"/>
+    <addaction name="separator"/>
+    <addaction name="action_Verify_structure"/>
+    <addaction name="actionVerify_all_structures"/>
+    <addaction name="separator"/>
+    <addaction name="action_Abort"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Run"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dockWidgetFiles">
+   <property name="windowTitle">
+    <string>Structures</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QGridLayout" name="gridLayout_4">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QListWidget" name="listWidgetFiles"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidgetOutput">
+   <property name="windowTitle">
+    <string>Output Protocol</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidgetGraph">
+   <property name="windowTitle">
+    <string>Verification Graph</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3"/>
+  </widget>
+  <widget class="QToolBar" name="toolBarFile">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_Load_source_files"/>
+   <addaction name="action_Search_COD"/>
+   <addaction name="action_Retrieve_COD_records"/>
+   <addaction name="actionRemove_file"/>
+   <addaction name="actionClose_all_files"/>
+   <addaction name="actionClose_verified_files"/>
+   <addaction name="action_Save"/>
+   <addaction name="actionSave_all"/>
+  </widget>
+  <widget class="QToolBar" name="toolBarWaveLength">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="action_Verify_structure">
+   <property name="icon">
+    <iconset theme="profex-run"/>
+   </property>
+   <property name="text">
+    <string>&amp;Verify structure</string>
+   </property>
+  </action>
+  <action name="actionVerify_all_structures">
+   <property name="icon">
+    <iconset theme="profex-run-batch"/>
+   </property>
+   <property name="text">
+    <string>Verify all &amp;structures</string>
+   </property>
+  </action>
+  <action name="action_Abort">
+   <property name="text">
+    <string>&amp;Abort</string>
+   </property>
+  </action>
+  <action name="action_Load_source_files">
+   <property name="icon">
+    <iconset theme="profex-folder-text"/>
+   </property>
+   <property name="text">
+    <string>&amp;Load source files...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="action_Search_COD">
+   <property name="icon">
+    <iconset theme="profex-database-search"/>
+   </property>
+   <property name="text">
+    <string>Search &amp;COD...</string>
+   </property>
+  </action>
+  <action name="action_Retrieve_COD_records">
+   <property name="icon">
+    <iconset theme="profex-database-query"/>
+   </property>
+   <property name="text">
+    <string>&amp;Retrieve COD records...</string>
+   </property>
+  </action>
+  <action name="action_Save">
+   <property name="icon">
+    <iconset theme="profex-save-as"/>
+   </property>
+   <property name="text">
+    <string>&amp;Save...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSave_all">
+   <property name="icon">
+    <iconset theme="profex-save-all"/>
+   </property>
+   <property name="text">
+    <string>Save &amp;all...</string>
+   </property>
+  </action>
+  <action name="action_Export_messages">
+   <property name="text">
+    <string>&amp;Export protocol...</string>
+   </property>
+  </action>
+  <action name="actionExport_graphs">
+   <property name="text">
+    <string>Export &amp;graphs...</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset theme="profex-exit"/>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionRemove_file">
+   <property name="icon">
+    <iconset theme="profex-document-close"/>
+   </property>
+   <property name="text">
+    <string>Close file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionClose_all_files">
+   <property name="icon">
+    <iconset theme="profex-document-close-all"/>
+   </property>
+   <property name="text">
+    <string>Close all files</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+W</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionClose_verified_files">
+   <property name="icon">
+    <iconset theme="profex-document-close-all-verified"/>
+   </property>
+   <property name="text">
+    <string>Close verified files</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionConvert_source_file">
+   <property name="icon">
+    <iconset theme="profex-refresh"/>
+   </property>
+   <property name="text">
+    <string>Convert source file</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CodeEditor</class>
+   <extends>QWidget</extends>
+   <header>3rdparty/codeeditor/codeeditor.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionClose</sender>
+   <signal>triggered()</signal>
+   <receiver>StrucImportDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

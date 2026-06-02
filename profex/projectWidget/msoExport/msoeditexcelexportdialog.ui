@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MsoEditExcelExportDialog</class>
+ <widget class="QDialog" name="MsoEditExcelExportDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Excel File</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="radioButtonFileName">
+        <property name="text">
+         <string>Select File</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditExcelFile"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QToolButton" name="toolButtonSelectExcelFile">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-document-open">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <widget class="QRadioButton" name="radioButtonFileProject">
+        <property name="text">
+         <string>&lt;ProjectName&gt;.xlsx</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="3">
+       <widget class="QRadioButton" name="radioButtonNew">
+        <property name="text">
+         <string>New File</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tableWidgetConfig">
+     <column>
+      <property name="text">
+       <string>Phase</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Parameter</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Worksheet</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Row</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Column</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="toolButtonAddParam">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-add">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonRemoveParam">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-remove">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>MsoEditExcelExportDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>238</x>
+     <y>275</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>MsoEditExcelExportDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>238</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonAddParam</sender>
+   <signal>clicked()</signal>
+   <receiver>MsoEditExcelExportDialog</receiver>
+   <slot>addParam()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>34</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>29</x>
+     <y>243</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonRemoveParam</sender>
+   <signal>clicked()</signal>
+   <receiver>MsoEditExcelExportDialog</receiver>
+   <slot>removeParam()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>59</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSelectExcelFile</sender>
+   <signal>clicked()</signal>
+   <receiver>MsoEditExcelExportDialog</receiver>
+   <slot>selectFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>187</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>235</x>
+     <y>12</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addParam()</slot>
+  <slot>removeParam()</slot>
+  <slot>selectFile()</slot>
+ </slots>
+</ui>

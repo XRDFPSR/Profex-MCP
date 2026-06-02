@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SearchMatchWidget</class>
+ <widget class="QWidget" name="SearchMatchWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>548</width>
+    <height>538</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabPhases">
+      <attribute name="title">
+       <string>Phases</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="scrollAreaPhases">
+         <property name="frameShape">
+          <enum>QFrame::Shape::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Plain</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContentsPhases">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>544</width>
+            <height>510</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <layout class="QGridLayout" name="gridLayout_4">
+             <item row="0" column="0">
+              <widget class="QRadioButton" name="radioButtonFav">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Fa&amp;vorites</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="labelNumPhasesFavs">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QToolButton" name="toolButtonHelp">
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show the context help for this module.&lt;/p&gt;&lt;p&gt;(Window -&amp;gt; Context Help)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="text">
+                  <string>...</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="profex-help"/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <widget class="QRadioButton" name="radioButtonDir">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>D&amp;irectories</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="labelNumPhasesAll">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>98</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTreeWidget" name="treeWidgetDirectories">
+             <column>
+              <property name="text">
+               <string notr="true">1</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabRestrictions">
+      <attribute name="title">
+       <string>Restrictions</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="PeriodicTableWidget" name="periodicTable" native="true"/>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBoxToggleAllRestrictions">
+         <property name="title">
+          <string>Change all</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>452</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabControls">
+      <attribute name="title">
+       <string>Controls</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="scrollAreaControls">
+         <property name="frameShape">
+          <enum>QFrame::Shape::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Plain</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContentsControls">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>544</width>
+            <height>510</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="2" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Instrument configuration</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Unit cell variability</string>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="0" colspan="2">
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Sample properties:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="0" colspan="2">
+            <widget class="QCheckBox" name="checkBoxEps2">
+             <property name="toolTip">
+              <string>Refine EPS2</string>
+             </property>
+             <property name="text">
+              <string>Refine sample height displacement</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0" colspan="2">
+            <widget class="QCheckBox" name="checkBoxAniso">
+             <property name="toolTip">
+              <string>Set ONLYISO=N</string>
+             </property>
+             <property name="text">
+              <string>Allow anisotropic parameters</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="Line" name="line_2">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="17" column="0" colspan="2">
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QDoubleSpinBox" name="doubleSpinBoxWmin">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>Clip data below this angle</string>
+             </property>
+             <property name="maximum">
+              <double>180.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QDoubleSpinBox" name="doubleSpinBoxSynchrotron">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="suffix">
+              <string> nm</string>
+             </property>
+             <property name="decimals">
+              <number>7</number>
+             </property>
+             <property name="maximum">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.000100000000000</double>
+             </property>
+             <property name="value">
+              <double>0.070000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QCheckBox" name="checkBoxSetWmin">
+             <property name="toolTip">
+              <string>WMIN</string>
+             </property>
+             <property name="text">
+              <string>Minimum angle</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="comboBoxLambda">
+             <property name="toolTip">
+              <string>Select the type of characeristic radiation used to collect the data</string>
+             </property>
+             <property name="editable">
+              <bool>true</bool>
+             </property>
+             <property name="placeholderText">
+              <string>&lt;select radiation&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QCheckBox" name="checkBoxSetWmax">
+             <property name="toolTip">
+              <string>WMAX</string>
+             </property>
+             <property name="text">
+              <string>Maximum angle</string>
+             </property>
+            </widget>
+           </item>
+           <item row="21" column="0" colspan="2">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="11" column="1">
+            <widget class="QComboBox" name="comboBoxUnitCellRefinement">
+             <property name="toolTip">
+              <string>Specify how the cell parameters are varied during phase matching.
+
+Start with &quot;Fix&quot; or &quot;Strict&quot;. This minimizes false positive matches. 
+If no phases match, set it to &quot;Medium&quot; or &quot;Loose&quot;. However, more
+false positive matches may be found.</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QComboBox" name="comboBoxInstrument">
+             <property name="toolTip">
+              <string>Instrument configuration used to collect the data</string>
+             </property>
+             <property name="editable">
+              <bool>true</bool>
+             </property>
+             <property name="placeholderText">
+              <string>&lt;select instrument&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="toolTip">
+              <string>ITMAX</string>
+             </property>
+             <property name="text">
+              <string>Number of iterations</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QSpinBox" name="spinBoxItMax">
+             <property name="toolTip">
+              <string>Set the maximum number of iterations (ITMAX)</string>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>1000</number>
+             </property>
+             <property name="value">
+              <number>10</number>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Crystallinity</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QDoubleSpinBox" name="doubleSpinBoxWmax">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>Clip data above this angle</string>
+             </property>
+             <property name="maximum">
+              <double>180.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QRadioButton" name="radioButtonSynchrotron">
+             <property name="toolTip">
+              <string>Monochromatic synchrotron radiation</string>
+             </property>
+             <property name="text">
+              <string>S&amp;ynchrotron radiation</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Refinement:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QRadioButton" name="radioButtonLambda">
+             <property name="toolTip">
+              <string>Characteristic radiation from a cathod ray tube</string>
+             </property>
+             <property name="text">
+              <string>Characteristic radiation</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="1">
+            <widget class="QComboBox" name="comboBoxCrystallinity">
+             <property name="toolTip">
+              <string>Specify the crystallinity of the unknown phases based on the peak width.
+In a residual search, enter the crystallinity of the residual peaks.
+
+If unsure, select &quot;medium&quot;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QSpinBox" name="spinBoxRU">
+             <property name="maximum">
+              <number>25</number>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QCheckBox" name="checkBoxRU">
+             <property name="text">
+              <string>Set number of background coefficients</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>Instrument:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="labelInstrumentMessage">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabResults">
+      <attribute name="title">
+       <string>Results</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QScrollArea" name="scrollAreaResults">
+         <property name="frameShape">
+          <enum>QFrame::Shape::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Plain</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContentsResults">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>544</width>
+            <height>510</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <widget class="QSplitter" name="splitter">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <widget class="QWidget" name="layoutWidget">
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout">
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="text">
+                    <string>Score List</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QProgressBar" name="progressBar">
+                   <property name="value">
+                    <number>24</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="toolButtonClearMatchSelection">
+                   <property name="toolTip">
+                    <string>Unselect all selected matches</string>
+                   </property>
+                   <property name="text">
+                    <string>...</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="profex-select-none"/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QTreeWidget" name="treeWidgetResults">
+                 <property name="selectionMode">
+                  <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
+                 </property>
+                 <column>
+                  <property name="text">
+                   <string notr="true">1</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="layoutWidget">
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <widget class="QLabel" name="label_3">
+                   <property name="text">
+                    <string>Pin Phases</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="toolButtonPin">
+                   <property name="toolTip">
+                    <string>Pin checked phases</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="profex-arrow-down"/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="toolButtonUnpin">
+                   <property name="toolTip">
+                    <string>Unpin selected phases</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="profex-arrow-up"/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="toolButtonSave">
+                   <property name="toolTip">
+                    <string>Save the score list</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="profex-save-as"/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QTabWidget" name="tabWidgetResults">
+                 <property name="currentIndex">
+                  <number>0</number>
+                 </property>
+                 <widget class="QWidget" name="tabPinned">
+                  <attribute name="title">
+                   <string>Pinned Phases</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_5">
+                   <item row="0" column="0">
+                    <widget class="QTreeWidget" name="treeWidgetPinned">
+                     <property name="selectionMode">
+                      <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
+                     </property>
+                     <column>
+                      <property name="text">
+                       <string notr="true">1</string>
+                      </property>
+                     </column>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tabStructure">
+                  <attribute name="title">
+                   <string>Structure File</string>
+                  </attribute>
+                  <layout class="QGridLayout" name="gridLayout_7">
+                   <item row="0" column="0">
+                    <widget class="ControlFileEdit" name="strFileEditor" native="true"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PeriodicTableWidget</class>
+   <extends>QWidget</extends>
+   <header>projectWidget/searchMatchWidget/periodictablewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ControlFileEdit</class>
+   <extends>QWidget</extends>
+   <header>projectWidget/controlfileedit.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>radioButtonFav</tabstop>
+  <tabstop>radioButtonDir</tabstop>
+  <tabstop>radioButtonLambda</tabstop>
+  <tabstop>radioButtonSynchrotron</tabstop>
+  <tabstop>treeWidgetResults</tabstop>
+  <tabstop>toolButtonPin</tabstop>
+  <tabstop>toolButtonUnpin</tabstop>
+  <tabstop>treeWidgetPinned</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>radioButtonLambda</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleSpinBoxSynchrotron</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>287</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonLambda</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>comboBoxLambda</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>287</x>
+     <y>101</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxSetWmax</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleSpinBoxWmax</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>234</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>287</x>
+     <y>233</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonPin</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchMatchWidget</receiver>
+   <slot>pin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>292</x>
+     <y>303</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>263</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonUnpin</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchMatchWidget</receiver>
+   <slot>unpin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>321</x>
+     <y>303</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>377</x>
+     <y>284</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxSetWmin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleSpinBoxWmin</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>287</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSave</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchMatchWidget</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>532</x>
+     <y>303</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>261</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonDir</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>treeWidgetDirectories</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>187</x>
+     <y>131</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxRU</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>spinBoxRU</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>193</x>
+     <y>244</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>294</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonHelp</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchMatchWidget</receiver>
+   <slot>showHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>44</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>537</x>
+     <y>-2</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonClearMatchSelection</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchMatchWidget</receiver>
+   <slot>clearMatchSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>run()</slot>
+  <slot>pin()</slot>
+  <slot>unpin()</slot>
+  <slot>save()</slot>
+  <slot>showHelp()</slot>
+  <slot>clearMatchSelection()</slot>
+ </slots>
+</ui>

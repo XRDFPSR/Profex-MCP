@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrefPageEflechConfig</class>
+ <widget class="QWidget" name="PrefPageEflechConfig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>471</width>
+    <height>439</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>BGMN - Peak Detection</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Detection Mode</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="checkBoxOverrideEpsilon">
+        <property name="toolTip">
+         <string>Override the default value for EPSILON to reduce or increase peak detection sensitivity</string>
+        </property>
+        <property name="text">
+         <string>Override default accuracy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxEpsilon">
+        <property name="toolTip">
+         <string>Default: 0.05 (REFLEXION), 0.03 (TRANSMISSION), 0.08 (CAPILLARY)</string>
+        </property>
+        <property name="prefix">
+         <string>EPSILON=</string>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.010000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QCheckBox" name="checkBoxTestD">
+        <property name="toolTip">
+         <string>TEST=D: Allow the model to delete peaks of insufficient goodness of fit</string>
+        </property>
+        <property name="text">
+         <string>Eliminate obsolete peaks</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QCheckBox" name="checkBoxTestN">
+        <property name="toolTip">
+         <string>TEST=N: Search for new peaks</string>
+        </property>
+        <property name="text">
+         <string>Search for new peaks</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Peak Profile</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="checkBoxTest2">
+        <property name="toolTip">
+         <string>TEST=2: Allow the switches &quot;N&quot; and &quot;-&quot; to use RP=2</string>
+        </property>
+        <property name="text">
+         <string>Allow RP=2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="checkBoxTest3">
+        <property name="toolTip">
+         <string>TEST=3: Allow the switches &quot;N&quot;, &quot;+&quot;, and &quot;-&quot; to use RP=3</string>
+        </property>
+        <property name="text">
+         <string>Allow RP=3</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QCheckBox" name="checkBoxTest4">
+        <property name="toolTip">
+         <string>TEST=4: Allow the switches &quot;N&quot; and &quot;+&quot; to use RP=4</string>
+        </property>
+        <property name="text">
+         <string>Allow RP=4</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Optimization</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="checkBoxTestP">
+        <property name="toolTip">
+         <string>TEST=+: Allow the model to increase the profile function from RP=2 -&gt; 3 -&gt; 4 to improve the fit</string>
+        </property>
+        <property name="text">
+         <string>Allow increment of profile function</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBoxTestM">
+        <property name="toolTip">
+         <string>TEST=-: Allow the model to reduce the profile function from RP=4 -&gt; 3 -&gt; 2 to improve the fit</string>
+        </property>
+        <property name="text">
+         <string>Allow reduction of profile function</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBoxTestU">
+        <property name="toolTip">
+         <string>TEST=U: Search for a simplification of the background polynomial during the fit</string>
+        </property>
+        <property name="text">
+         <string>Simplify background</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>428</width>
+       <height>47</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonDefault">
+       <property name="toolTip">
+        <string>Reset all settings</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-undo">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>checkBoxTestN</tabstop>
+  <tabstop>checkBoxTestD</tabstop>
+  <tabstop>checkBoxOverrideEpsilon</tabstop>
+  <tabstop>doubleSpinBoxEpsilon</tabstop>
+  <tabstop>checkBoxTest2</tabstop>
+  <tabstop>checkBoxTest3</tabstop>
+  <tabstop>checkBoxTest4</tabstop>
+  <tabstop>checkBoxTestP</tabstop>
+  <tabstop>checkBoxTestM</tabstop>
+  <tabstop>checkBoxTestU</tabstop>
+  <tabstop>toolButtonDefault</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>checkBoxOverrideEpsilon</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>doubleSpinBoxEpsilon</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>222</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>456</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonDefault</sender>
+   <signal>clicked()</signal>
+   <receiver>PrefPageEflechConfig</receiver>
+   <slot>resetSettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>341</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>resetSettings()</slot>
+ </slots>
+</ui>

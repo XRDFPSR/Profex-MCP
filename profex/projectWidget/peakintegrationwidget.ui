@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PeakIntegrationWidget</class>
+ <widget class="QWidget" name="PeakIntegrationWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QTableWidget" name="table"/>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QToolButton" name="toolButtonAddRange">
+        <property name="toolTip">
+         <string>Activate integral range selection mode.
+Double-click the start position of the integral on the graph. Then move to the end position and double-click again.</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-add">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonRemove">
+        <property name="toolTip">
+         <string>Remove selected range</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-remove">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonClear">
+        <property name="toolTip">
+         <string>Remove all ranges</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-delete">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonApplyToAll">
+        <property name="toolTip">
+         <string>Apply ranges to all open projects</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-document-clone">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonBackground">
+        <property name="toolTip">
+         <string>Subtract linear background</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-pattern">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonPaste">
+        <property name="toolTip">
+         <string>Paste data from clipboard.
+Data must be of format:
+
+range_name start_angle end_angle
+range_name start_angle end_angle
+range_name start_angle end_angle
+
+separated by tab or ;</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-document-export">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="buttonCenter">
+        <property name="toolTip">
+         <string>Shift all selected ranges to center on the highest intensity of the active scan.
+If no scan is active, the first scan is used.</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-peak-center">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButtonHelp">
+        <property name="toolTip">
+         <string>Show the context help for this module.
+(Window -&gt; Context Help)</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset theme="profex-help">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>PeakIntegrationWidget</receiver>
+   <slot>removeRange()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>397</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonClear</sender>
+   <signal>clicked()</signal>
+   <receiver>PeakIntegrationWidget</receiver>
+   <slot>removeAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>379</x>
+     <y>63</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonApplyToAll</sender>
+   <signal>clicked()</signal>
+   <receiver>PeakIntegrationWidget</receiver>
+   <slot>applyToAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>397</x>
+     <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBackground</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PeakIntegrationWidget</receiver>
+   <slot>toggleBackground(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>137</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonPaste</sender>
+   <signal>clicked()</signal>
+   <receiver>PeakIntegrationWidget</receiver>
+   <slot>paste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>164</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonCenter</sender>
+   <signal>clicked()</signal>
+   <receiver>PeakIntegrationWidget</receiver>
+   <slot>centerRanges()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>191</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>234</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonAddRange</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PeakIntegrationWidget</receiver>
+   <slot>addRange(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>379</x>
+     <y>18</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonHelp</sender>
+   <signal>clicked()</signal>
+   <receiver>PeakIntegrationWidget</receiver>
+   <slot>showHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>383</x>
+     <y>276</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>removeRange()</slot>
+  <slot>removeAll()</slot>
+  <slot>applyToAll()</slot>
+  <slot>toggleBackground(bool)</slot>
+  <slot>paste()</slot>
+  <slot>centerRanges()</slot>
+  <slot>addRange(bool)</slot>
+  <slot>showHelp()</slot>
+ </slots>
+</ui>

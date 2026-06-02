@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AtomicScatteringFactorDialog</class>
+ <widget class="QDialog" name="AtomicScatteringFactorDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>658</width>
+    <height>413</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BGMN Atomic Form Factors</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QListWidget" name="listWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ExtendedSelection</enum>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="plotWidget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Wavelength:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="WaveLengthComboBox" name="comboBoxWavelength">
+       <property name="toolTip">
+        <string>Select the wavelength used for the x-axis scale</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Debye-Waller Factor:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="spinBoxB">
+       <property name="toolTip">
+        <string>Select a Debye-Waller factor (thermal vibration)</string>
+       </property>
+       <property name="decimals">
+        <number>2</number>
+       </property>
+       <property name="maximum">
+        <double>25.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonResetB">
+       <property name="toolTip">
+        <string>Reset the Debye-Waller factor</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-delete">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="toolButtonSettings">
+       <property name="toolTip">
+        <string>Edit graph settings</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-preferences">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonExportCsv">
+       <property name="toolTip">
+        <string>Export current graph data as CSV file</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-save">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonSavePdf">
+       <property name="toolTip">
+        <string>Export current graph as PDF file</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-save-pdf">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonSavePng">
+       <property name="toolTip">
+        <string>Export current graph as PNG image</string>
+       </property>
+       <property name="icon">
+        <iconset theme="profex-export-image">
+         <normaloff>.</normaloff>.</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelCoordinatesX">
+       <property name="text">
+        <string>x=</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelCoordinatesY">
+       <property name="text">
+        <string>y=</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelU">
+       <property name="text">
+        <string>u=</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="toolTip">
+        <string>Close this dialog</string>
+       </property>
+       <property name="text">
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>3rdparty/qcustomplot/qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WaveLengthComboBox</class>
+   <extends>QComboBox</extends>
+   <header>wavelengthcombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>listWidget</tabstop>
+  <tabstop>comboBoxWavelength</tabstop>
+  <tabstop>spinBoxB</tabstop>
+  <tabstop>toolButtonResetB</tabstop>
+  <tabstop>toolButtonSettings</tabstop>
+  <tabstop>toolButtonExportCsv</tabstop>
+  <tabstop>toolButtonSavePdf</tabstop>
+  <tabstop>toolButtonSavePng</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>647</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonExportCsv</sender>
+   <signal>clicked()</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>exportData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>67</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>10</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSavePdf</sender>
+   <signal>clicked()</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>savePdf()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>97</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>54</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSavePng</sender>
+   <signal>clicked()</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>savePng()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>104</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxWavelength</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>waveLengthChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>189</x>
+     <y>267</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>218</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonResetB</sender>
+   <signal>clicked()</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>resetB()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>647</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>473</x>
+     <y>258</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxB</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>bChanged(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>617</x>
+     <y>267</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>472</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>atomSelectionChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>32</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>2</x>
+     <y>43</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButtonSettings</sender>
+   <signal>clicked()</signal>
+   <receiver>AtomicScatteringFactorDialog</receiver>
+   <slot>changeSettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>31</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>atomSelectionChanged()</slot>
+  <slot>waveLengthChanged()</slot>
+  <slot>exportData()</slot>
+  <slot>savePdf()</slot>
+  <slot>savePng()</slot>
+  <slot>bChanged(double)</slot>
+  <slot>resetB()</slot>
+  <slot>changeSettings()</slot>
+ </slots>
+</ui>
