@@ -47,18 +47,21 @@
 
 ---
 
-## Phase 4: MCP Server 实现
+## Phase 4: MCP Server 实现 ✅ (已完成)
 
 | # | 任务 | 状态 | 说明 |
 |---|------|------|------|
-| 4.1 | MCP Server 框架搭建 | ⬜ | Python MCP SDK 基础服务 |
-| 4.2 | Tool: `run_refinement` | ⬜ | 执行 BGMN 精修 |
-| 4.3 | Tool: `get_phase_results` | ⬜ | 获取物相定量结果 |
-| 4.4 | Tool: `search_phase` | ⬜ | 按名称/化学式搜索物相 |
-| 4.5 | Tool: `list_scans` | ⬜ | 列出已加载的 XRD 扫描 |
-| 4.6 | Resource: `profex://project/{id}/phases` | ⬜ | 物相数据结构化访问 |
-| 4.7 | Resource: `profex://project/{id}/report` | ⬜ | 精修报告访问 |
-| 4.8 | AI Editor MCP 集成文档 | ⬜ | 配置示例（VS Code, Cursor, Claude 等） |
+| 4.1 | MCP Server 框架搭建 | ✅ | Python MCP SDK 1.x 完整服务 |
+| 4.2 | Tool: list_projects / convert_file / parse_parameters | ✅ | 项目管理 + 文件转换 + 参数解析 |
+| 4.3 | Tool: list_scans / available_formats / search_phase | ✅ | 扫描列示 + 格式查询 + 物相搜索 |
+| 4.4 | Resource: profex:// 协议 | ✅ | project/params/info 三类资源 |
+| 4.5 | Prompt: analyze_xrd | ✅ | 引导式 XRD 分析工作流 |
+| 4.6 | AI Editor 集成文档 | ✅ | VS Code / Claude / Cursor 配置指南 |
+| 4.7 | .mcp.json 更新 | ✅ | 添加 profex-xrd MCP server 入口 |
+
+---
+
+## Phase 5: AI Agent 深层集成 (当前 — 规划中)
 
 ---
 
