@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyprofex"
+version = "0.1.0"
+description = "Python bindings and tools for Profex XRD/Rietveld analysis"
+readme = "README.md"
+license = { text = "GPL-2.0-or-later" }
+authors = [
+    { name = "PhaseAnalysisXRD" },
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+mcp = ["mcp>=1.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyprofex*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

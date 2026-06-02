@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+pyprofex/__init__.py
+pyprofex.egg-info/PKG-INFO
+pyprofex.egg-info/SOURCES.txt
+pyprofex.egg-info/dependency_links.txt
+pyprofex.egg-info/requires.txt
+pyprofex.egg-info/top_level.txt

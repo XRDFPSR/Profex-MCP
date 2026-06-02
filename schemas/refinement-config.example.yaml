@@ -1,0 +1,123 @@
+# BGMN Refinement Configuration (YAML)
+# Auto-generated from Profex project — human-readable alternative to raw .par files
+# 用法: pyprofex yaml-to-bgmn config.yaml > control.par
+
+# ─── Project Settings ──────────────────────────────────────────────────
+project:
+  name: "Example Refinement"
+  description: "Quartz Rietveld refinement example"
+  author: "PhaseAnalysisXRD"
+  date: "2026-06-02"
+
+# ─── Instrument Configuration ──────────────────────────────────────────
+instrument:
+  name: "PW1800"
+  type: "Bragg-Brentano"
+  geometry: "reflection"
+  source:
+    type: "sealed_tube"
+    target: "Cu"
+    voltage_kv: 40
+    current_ma: 40
+  optics:
+    divergence_slit_deg: 1.0
+    soller_slit_deg: 2.0
+    receiving_slit_mm: 0.2
+    monochromator: "graphite"
+  detector:
+    type: "scintillation"
+
+# ─── Data Files ────────────────────────────────────────────────────────
+data:
+  input_file: "data/quartz.xrdml"      # Input XRD pattern
+  format: "xrdml"                       # Format auto-detected
+  output_basename: "results/quartz"     # Output file basename
+  # Optional: Convert first
+  preprocess:
+    convert_to_xy: true
+    angle_range_deg: [10, 100]          # Limit angular range
+    smooth: false
+
+# ─── Global Refinement Parameters ──────────────────────────────────────
+refinement:
+  mode: "rietveld"                      # rietveld, le_bail, pawley, single_peak
+  max_cycles: 200
+  convergence_threshold: 0.0001
+  background:
+    model: "chebyshev"                  # chebyshev, polynomial, snip
+    polynomial_order: 6
+  zero_shift:
+    refine: true
+    initial: 0.0
+  displacement:
+    refine: true
+    initial: 0.0
+  # Profile function parameters (U, V, W for Caglioti)
+  profile_u:
+    refine: true
+    initial: 0.01
+  profile_v:
+    refine: true
+    initial: -0.01
+  profile_w:
+    refine: true
+    initial: 0.005
+  asymmetry:
+    refine: true
+    initial: 0.0
+
+# ─── Phases ────────────────────────────────────────────────────────────
+phases:
+  - name: "Quartz"
+    formula: "SiO2"
+    structure_file: "structures/quartz.str"
+    space_group: "P3_221"
+    weight_fraction:
+      refine: true
+      initial: 100.0
+    lattice_parameters:
+      a:
+        refine: true
+        initial: 4.913
+      c:
+        refine: true
+        initial: 5.405
+    crystallite_size_nm:
+      refine: true
+      initial: 100.0
+    microstrain:
+      refine: false
+      initial: 0.0
+    # Atomic positions (optional override from .str)
+    atoms:
+      - element: "Si"
+        x: 0.4697
+        y: 0.0
+        z: 0.0
+        occupancy: 1.0
+        biso:
+          refine: true
+          initial: 0.5
+      - element: "O"
+        x: 0.4135
+        y: 0.2669
+        z: 0.1191
+        occupancy: 1.0
+        biso:
+          refine: true
+          initial: 0.8
+
+# ─── Output Settings ───────────────────────────────────────────────────
+output:
+  report_html: true                      # Generate HTML report
+  plot_diff: true                        # Include difference plot
+  export_formats:                        # Additional export formats
+    - "gsas"
+    - "fullprof"
+  json_results: true                     # Output structured JSON
+
+# ─── MCP Integration ──────────────────────────────────────────────────
+mcp:
+  expose_results: true                   # Make results available via MCP
+  notify_on_complete: true               # Send notification when refinement done
+  structured_schema: "refinement-result"  # JSON schema identifier

@@ -1,0 +1,7 @@
+
+[dev]
+pytest
+pytest-cov
+
+[mcp]
+mcp>=1.0

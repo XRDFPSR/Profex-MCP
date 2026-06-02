@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "Profex Refinement Result",
+  "description": "Structured output from Profex/BGMN Rietveld refinement",
+  "type": "object",
+  "required": ["project_file", "rwp", "gof", "phases"],
+  "properties": {
+    "project_file": {
+      "type": "string",
+      "description": "Path to the Profex project file (.pro)"
+    },
+    "software": {
+      "type": "string",
+      "description": "Software version",
+      "default": "Profex 5.6.1"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "failed", "running", "idle", "aborted"],
+      "description": "Refinement status"
+    },
+    "rwp": {
+      "type": "number",
+      "description": "R-weighted pattern R-factor (Rwp)",
+      "minimum": 0
+    },
+    "rexp": {
+      "type": "number",
+      "description": "Expected R-factor (Rexp)",
+      "minimum": 0
+    },
+    "gof": {
+      "type": "number",
+      "description": "Goodness of fit (GoF = Rwp/Rexp)",
+      "minimum": 0
+    },
+    "durbin_watson": {
+      "type": "number",
+      "description": "Durbin-Watson statistic"
+    },
+    "phases": {
+      "type": "array",
+      "description": "List of refined phases",
+      "items": {
+        "$ref": "#/definitions/Phase"
+      }
+    },
+    "scans": {
+      "type": "array",
+      "description": "List of scans used in refinement",
+      "items": {
+        "$ref": "#/definitions/Scan"
+      }
+    },
+    "bgmn_parameters": {
+      "type": "object",
+      "description": "Raw BGMN refinement parameters",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "number" },
+          "esd": { "type": ["number", "null"] }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Phase": {
+      "type": "object",
+      "required": ["name", "weight_fraction"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Phase name"
+        },
+        "formula": {
+          "type": "string",
+          "description": "Chemical formula"
+        },
+        "weight_fraction": {
+          "type": "number",
+          "description": "Weight fraction (0-1 or percent)",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "weight_fraction_esd": {
+          "type": "number",
+          "description": "Estimated standard deviation of weight fraction"
+        },
+        "crystal_system": {
+          "type": "string",
+          "enum": ["triclinic", "monoclinic", "orthorhombic", "tetragonal",
+                   "trigonal", "hexagonal", "cubic"]
+        },
+        "space_group": {
+          "type": "string",
+          "description": "Space group symbol (e.g. Fm-3m)"
+        },
+        "space_group_number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 230
+        },
+        "a": { "type": "number", "description": "Unit cell a (Angstrom)" },
+        "b": { "type": "number", "description": "Unit cell b (Angstrom)" },
+        "c": { "type": "number", "description": "Unit cell c (Angstrom)" },
+        "alpha": { "type": "number", "description": "Unit cell alpha (degrees)" },
+        "beta": { "type": "number", "description": "Unit cell beta (degrees)" },
+        "gamma": { "type": "number", "description": "Unit cell gamma (degrees)" },
+        "cell_volume": { "type": "number", "description": "Unit cell volume (Angstrom^3)" },
+        "density": { "type": "number", "description": "Calculated density (g/cm^3)" },
+        "r_bragg": { "type": "number", "description": "Bragg R-factor" },
+        "grain_size_nm": { "type": "number", "description": "Crystallite size (nm)" },
+        "microstrain": { "type": "number", "description": "Microstrain (epsilon0)" }
+      }
+    },
+    "Scan": {
+      "type": "object",
+      "required": ["name", "type"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["measured", "refined", "background", "difference", "synthetic", "hkl"]
+        },
+        "source_file": { "type": "string" },
+        "wavelength": { "type": "number" },
+        "data_points": { "type": "integer" },
+        "angle_range": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "number" },
+            "max": { "type": "number" }
+          }
+        }
+      }
+    }
+  }
+}
