@@ -32,14 +32,18 @@
 
 ---
 
-## Phase 3: Headless CLI / Python 桥接 (当前)
+## Phase 3: Headless CLI / Python 桥接 ✅ (已完成)
 
 | # | 任务 | 状态 | 说明 |
 |---|------|------|------|
-| 3.1 | Python pybind11 绑定 | ⬜ | 暴露核心 XRD 计算函数到 Python |
-| 3.2 | JSON 结构化输出格式 | ⬜ | 精修结果标准 JSON schema |
-| 3.3 | Headless 运行模式 | ⬜ | Profex 命令行模式，无需 GUI |
-| 3.4 | BGMN 参数 YAML 配置 | ⬜ | 使用 YAML 而非 BGMN 原生格式配置 |
+| 3.1 | Python 包 — pyprofex | ✅ | XRD 计算 + BGMN .par 解析 + ProfexCLI 封装 |
+| 3.2 | JSON 结构化输出格式 | ✅ | JSON Schema 完整定义 (phases, Rwp, GoF, cell params) |
+| 3.3 | Headless CLI 模式 | ✅ | profex_cli.py (convert/info/parse-params/results) + --json 输出 |
+| 3.4 | BGMN 参数 YAML 配置 | ✅ | YAML 替代 raw BGMN 格式的完整示例 |
+
+---
+
+## Phase 4: MCP Server 实现 (当前)
 
 ---
 
