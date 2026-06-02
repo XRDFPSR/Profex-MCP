@@ -22,6 +22,11 @@
 #include <QString>
 #include <QProcess>
 
+/** \brief Generic external process handler with optional Wine support.
+ *
+ *  Wraps QProcess to execute an external refinement or helper executable.
+ *  Supports running under Wine (Windows emulation) and provides signals
+ *   for output polling, completion, and abort notification. */
 class ProcessHandler : public QObject
 {
 Q_OBJECT

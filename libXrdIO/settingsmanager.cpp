@@ -20,6 +20,8 @@
 #include <QtMath>
 #include <QStandardPaths>
 #include <QGuiApplication>
+#include <QDebug>
+#include <QDateTime>
 #include <QPalette>
 #include <QDir>
 #include <QUuid>

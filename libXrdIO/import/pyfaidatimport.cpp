@@ -27,8 +27,8 @@ PyFaiDatImport::PyFaiDatImport(QObject *parent)
 
 bool PyFaiDatImport::isSupported(const QByteArray &ba)
 {
-    if (ba.first(25) == QByteArray("# == pyFAI calibration ==")) return true;
-    if (ba.first(17) == QByteArray("# pyfai_version =")) return true;
+    if (ba.left(25) == QByteArray("# == pyFAI calibration ==")) return true;
+    if (ba.left(17) == QByteArray("# pyfai_version =")) return true;
     return false;
 }
 
@@ -67,7 +67,7 @@ double PyFaiDatImport::parseWaveLength(const QStringList &l)
     static QRegularExpression rx("^# [Ww]avelength(?::|\\s=) ([\\d\\.\\+-eE]+) m");
 
     for (int i = 0; i < l.size(); ++i) {
-        if (l.at(i).first(1) != "#") {
+        if (l.at(i).left(1) != "#") {
             return 0.0;
         }
 
@@ -86,7 +86,7 @@ void PyFaiDatImport::parseData(const QStringList &l, QVector<double> &x, QVector
     static QRegularExpression rx("^\\s*([\\d\\.\\+-eE]+)\\s+([\\d\\.\\+-eE]+)");
 
     for (int i = 0; i < l.size(); ++i) {
-        if (l.at(i).first(1) == "#") continue;
+        if (l.at(i).left(1) == "#") continue;
         QRegularExpressionMatch rm = rx.match(l.at(i));
         if (rm.hasMatch()) {
             x.push_back(rm.captured(1).toDouble());

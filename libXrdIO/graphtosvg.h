@@ -25,6 +25,7 @@
 #include <QBuffer>
 #include <QFont>
 #include <QRect>
+#include <cmath>
 
 #if defined XRDIO
 #define XRDIO_EXPORT Q_DECL_EXPORT

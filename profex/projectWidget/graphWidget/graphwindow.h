@@ -39,9 +39,14 @@
 #include "../../../libXrdIO/structs.h"
 #include "../../../libXrdIO/functions.h"
 
-/**
-  *@author Nicola Doebelin
-  */
+/** \brief Primary XRD pattern graph display widget.
+ *
+ *  Renders 2D diffraction data (scans) with configurable axis scales
+ *   (2\u03B8, d, Q; linear, sqrt, log10), zoom, pan, HKL tick marks,
+ *   peak previews, anchor points for manual fitting, legend display,
+ *   and printing/SVG export. Handles mouse and keyboard interaction
+ *   for interactive data exploration. */
+/**@author Nicola Doebelin*/
 
 struct tTip {
     QRect pos;

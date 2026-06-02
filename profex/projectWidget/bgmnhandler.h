@@ -26,6 +26,12 @@
 #include "../libXrdIO/settingsmanager.h"
 #include "../libXrdIO/structs.h"
 
+/** \brief Handler for managing BGMN refinement subprocesses.
+ *
+ *  Encapsulates a QProcess running the BGMN refinement executable,
+ *   tracks cycle progress, and emits signals on completion or abort.
+ *  Supports initialization, execution with arguments, polling output,
+ *   and graceful termination. */
 class BgmnHandler : public QObject
 {
 Q_OBJECT

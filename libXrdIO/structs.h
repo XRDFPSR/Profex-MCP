@@ -33,6 +33,7 @@
 
 namespace global {
 
+/** Types of files supported by the IO system. */
 enum FileType {
     DEVICE_ASCII,
     DEVICE_BINARY,
@@ -42,45 +43,50 @@ enum FileType {
     BINARY
 };
 
+/** Units for peak position values. */
 enum PositionUnit {
-    TWOTHETA,
-    DNM,
-    DANGSTROM
+    TWOTHETA,   /**< Degrees 2-theta. */
+    DNM,        /**< d-spacing in nanometers. */
+    DANGSTROM   /**< d-spacing in Angstroms. */
 };
 
+/** Item types for report tree structure (parent, child, or page break). */
 enum ReportItemType {
     PARENT,
     CHILD,
     PAGEBREAK
 };
 
+/** Current state of a refinement process. */
 enum RefinementStatus {
-    IDLE,
-    RUNNING,
-    MATCHING,
-    COMPLETED,
-    SCHEDULED,
-    ABORTED,
-    FAILURE,
-    CRASH,
-    FITSCHEDULED,
-    FITRUNNING
+    IDLE,           /**< No refinement running. */
+    RUNNING,        /**< Refinement is in progress. */
+    MATCHING,       /**< Pattern matching is in progress. */
+    COMPLETED,      /**< Refinement completed successfully. */
+    SCHEDULED,      /**< Refinement is scheduled to run. */
+    ABORTED,        /**< Refinement was aborted by user. */
+    FAILURE,        /**< Refinement failed. */
+    CRASH,          /**< Refinement process crashed. */
+    FITSCHEDULED,   /**< Fit scheduled to run. */
+    FITRUNNING      /**< Fit is in progress. */
 };
 
+/** Controls which part of the UI is updated when results change. */
 enum ViewUpdateMode{
-    RESULTS,
-    DISPLAY
+    RESULTS,    /**< Update only the results display. */
+    DISPLAY     /**< Update the graphical display. */
 };
 
+/** Describes a highlighted region on a plot, with optional center line and label. */
 struct HighlightRegion {
-    QString name;
-    QPointF start;
-    QPointF end;
-    bool centerLine;
-    QColor fillColor;
-    QPen centerLinePen;
-    QRectF boundingRect;
-    QRectF labelBoundingRect;
+    QString name;           /**< Display name for the region. */
+    QPointF start;          /**< Start point of the highlighted area. */
+    QPointF end;            /**< End point of the highlighted area. */
+    bool centerLine;        /**< Whether to draw a center line through the region. */
+    QColor fillColor;       /**< Fill color for the highlighted area. */
+    QPen centerLinePen;     /**< Pen used for the center line. */
+    QRectF boundingRect;    /**< Bounding rectangle of the region. */
+    QRectF labelBoundingRect; /**< Bounding rectangle for the label. */
 
     HighlightRegion(QString n,
                     QPointF s,
@@ -96,49 +102,55 @@ struct HighlightRegion {
         centerLinePen(cl) {}
 };
 
+/** Metadata for a BGMN preset file including its path and type. */
 struct BgmnPresetFile {
-    QFileInfo fileInfo;
-    QString relativePath;
-    QString md5Hash;
-    FileType type;
+    QFileInfo fileInfo;       /**< File information for the preset. */
+    QString relativePath;     /**< Relative path to the preset file. */
+    QString md5Hash;          /**< MD5 hash for integrity checking. */
+    FileType type;            /**< Type of the preset file. */
 };
 
+/** Defines a range over which peak search or background is evaluated. */
 struct PeakRange {
-    QString name;
-    double start;
-    double end;
-    int background;
+    QString name;         /**< Name or label of the range. */
+    double start;         /**< Start position of the range. */
+    double end;           /**< End position of the range. */
+    int background;       /**< Background order or identifier for this range. */
 };
 
+/** Represents a variable used in curve fitting with its constraints. */
 struct CurveFitVariable {
-    QString name;
-    QString value;
-    QString lowerLimit;
-    QString upperLimit;
-    QString checkState;
+    QString name;         /**< Name of the variable. */
+    QString value;        /**< Current value of the variable. */
+    QString lowerLimit;   /**< Lower bound for the variable. */
+    QString upperLimit;   /**< Upper bound for the variable. */
+    QString checkState;   /**< Check state (e.g., "unchecked", "fixed", "refined"). */
 };
 
+/** Parameters for the SNIP background estimation algorithm. */
 struct BaseLineSnip {
-    int m;
-    int mode;
+    int m;      /**< Window width parameter for the SNIP algorithm. */
+    int mode;   /**< Clipping mode (e.g., linear or quadratic). */
 
     BaseLineSnip() : m(), mode() {}
     BaseLineSnip(int _m, int _mode) : m(_m), mode(_mode) {}
 };
 
+/** Wyckoff position information for a crystallographic site. */
 struct WyckoffPosition {
-    int itNum;
-    int setting;
-    QString name;
-    QVector<QStringList> operators;
+    int itNum;                     /**< International Tables number for the space group. */
+    int setting;                   /**< Setting number of the space group. */
+    QString name;                  /**< Wyckoff letter designation. */
+    QVector<QStringList> operators; /**< Symmetry operators for this position. */
 };
 
+/** A single refinement result with name, value, estimated standard deviation and error text. */
 struct Result{
-    QString name;
-    double value;
-    double esd;
-    QString error;
-    int precision;
+    QString name;         /**< Name or label of the result. */
+    double value;         /**< Numeric value of the result. */
+    double esd;           /**< Estimated standard deviation. */
+    QString error;        /**< Error message if the result could not be computed. */
+    int precision;         /**< Number of decimal places for display. */
 
     Result() : name(), value(), esd(), error(), precision() {}
     Result(QString n, double v, double e) : name(n), value(v), esd(e), error(QString()), precision(-1) {}
@@ -146,24 +158,26 @@ struct Result{
     Result(QString n, double v, double e, QString r, int p) : name(n), value(v), esd(e), error(r), precision(p) {}
 };
 
+/** An oxide component with name, weight fraction and its estimated standard deviation. */
 struct Oxide{
-    QString name;
-    double weight;
-    double esd;
+    QString name;     /**< Chemical formula of the oxide (e.g., "SiO2"). */
+    double weight;    /**< Weight fraction of the oxide. */
+    double esd;       /**< Estimated standard deviation of the weight. */
 
     Oxide() : name(), weight(), esd() {}
     Oxide(QString _o, double _w, double _e) : name(_o), weight(_w), esd(_e) {}
 };
 
+/** Describes an Excel import/export object linking a spreadsheet cell to a phase parameter. */
 struct AxObjectExcel{
-    QString file;
-    int worksheet;
-    int row;
-    int col;
-    QString phase;
-    QString parameter;
-    QString filter;
-    QString output;
+    QString file;        /**< Path to the Excel file. */
+    int worksheet;       /**< Worksheet index (0-based). */
+    int row;             /**< Row number in the worksheet. */
+    int col;             /**< Column number in the worksheet. */
+    QString phase;       /**< Name of the associated phase. */
+    QString parameter;   /**< Name of the associated parameter. */
+    QString filter;      /**< Filter string for selecting data. */
+    QString output;      /**< Output caption for the imported value. */
 
     AxObjectExcel() : file(), worksheet(), row(), col(), phase(), parameter(), filter(), output() {}
     AxObjectExcel(QString _f, int _w, int _r, int _c, QString _ph, QString _pa)
@@ -172,40 +186,42 @@ struct AxObjectExcel{
         : file(_f), worksheet(_w), row(_r), col(_c), phase(_ph), parameter(_pa), filter(_fi), output(_cap) {}
 };
 
+/** Characteristic X-ray wavelengths for an element (K-alpha1, K-alpha2, K-beta). */
 struct CharWaveLength{
-    QString element;
-    double ka1;
-    double ka2;
-    double kb;
+    QString element;    /**< Element symbol. */
+    double ka1;         /**< K-alpha1 wavelength in Angstroms. */
+    double ka2;         /**< K-alpha2 wavelength in Angstroms. */
+    double kb;          /**< K-beta wavelength in Angstroms. */
 
     CharWaveLength(QString _e, double _ka1, double _ka2, double _kb) : element(_e), ka1(_ka1), ka2(_ka2), kb(_kb) {}
 };
 
+/** Nine-parameter atomic scattering factor function (f = sum(a_i * exp(-b_i * s^2)) + c). */
 struct ScatteringFactorFunction{
-    QString element;
-    double a1;
-    double b1;
-    double a2;
-    double b2;
-    double a3;
-    double b3;
-    double a4;
-    double b4;
-    double c;
+    QString element;    /**< Element or ion symbol. */
+    double a1;          /**< First coefficient a1. */
+    double b1;          /**< First exponent coefficient b1. */
+    double a2;          /**< Second coefficient a2. */
+    double b2;          /**< Second exponent coefficient b2. */
+    double a3;          /**< Third coefficient a3. */
+    double b3;          /**< Third exponent coefficient b3. */
+    double a4;          /**< Fourth coefficient a4. */
+    double b4;          /**< Fourth exponent coefficient b4. */
+    double c;           /**< Constant term c. */
 
     ScatteringFactorFunction() : element(), a1(), b1(), a2(), b2(), a3(), b3(), a4(), b4(), c() {}
     ScatteringFactorFunction(QString _e, double _a1, double _b1, double _a2, double _b2, double _a3, double _b3, double _a4, double _b4, double _c)
         : element(_e), a1(_a1), b1(_b1), a2(_a2), b2(_b2), a3(_a3), b3(_b3), a4(_a4), b4(_b4), c(_c) {}
 };
 
+/** Multiplier used for converting between internal and display coordinate representations. */
 static const double dMult(10000000.0);
 
-// a string containing a sequencial list of:
-//
-// "Atom number;Atome Name;Molecular Weight;Standard Oxide Name;Molecular Weight Standard Oxide;"
-//
-// split into a string list at ";" and process in chunks of 5 elements to access the data
-//
+/**
+ * Periodic table atom data string containing a sequential list of:
+ * "Atom number;Atom Name;Molecular Weight;Standard Oxide Name;Molecular Weight Standard Oxide;"
+ * Split into a string list at ";" and process in chunks of 5 elements to access the data.
+ */
 const QString atoms = QStringLiteral(
         "1;H;1.0079;H2O;18.0152;"
         "2;He;4.0026;He;4.0026;"
@@ -327,14 +343,18 @@ const QString atoms = QStringLiteral(
         "118;Og;294.21;Og;294.21"
 );
 
+/** Regular expression matching line endings (CR, LF, or CR+LF). */
 const QRegularExpression rxLineEnding("\\r\\n?|\\n");
+/** String pattern for line ending matching. */
 const QString rxLineEndingPattern("\\r\\n?|\\n");
+/** Regular expression for matching floating-point numbers. */
 const QRegularExpression rxDouble("[+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?");
+/** String pattern for floating-point number matching. */
 const QString rxDoublePattern("[+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?");
 
-/*
- * all element symbols supprted by BGMN capitalized in an regexp pattern
- * dual letter symbols must appear at the beginning of the list, else "C" would also match "CA"
+/**
+ * All element symbols supported by BGMN capitalized in a regexp pattern.
+ * Dual letter symbols must appear at the beginning of the list, else "C" would also match "CA".
  */
 const QString rxElements = QStringLiteral("HE|LI|BE|NE|NA|MG|AL|SI|CL|AR|CA|SC|TI|CR|MN|FE|"
                          "NI|CO|CU|ZN|GA|GE|AS|SE|BR|KR|RB|SR|ZR|NB|MO|TC|RU|RH|PD|AG|CD|IN|"
@@ -344,7 +364,9 @@ const QString rxElements = QStringLiteral("HE|LI|BE|NE|NA|MG|AL|SI|CL|AR|CA|SC|T
                          "H|B|C|N|O|F|P|S|K|V|Y|I|W|U"
 );
 
+/** Default global goals pattern for BGMN refinement (sum, amorphous, Q, and Qabs goals). */
 const QString defaultBgmnGlobalGoals = QStringLiteral("^[^\\/]+\\/sum$\n^Amorph$\n^Q\\S+$\n^Qabs\\S+$");
+/** Default local goals pattern for BGMN refinement (phase-specific parameters). */
 const QString defaultBgmnLocalGoals = QStringLiteral("^A$\n^B$\n^C$\n^ALPHA$\n^BETA$\n^GAMMA$\n^UNIT$\n^GrainSize\\(-?\\d+,-?\\d+,-?\\d+\\)$");
 
 const QStringList BgmnScatteringFactorSymbols = {

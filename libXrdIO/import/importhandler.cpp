@@ -528,7 +528,7 @@ void ImportHandler::sumScans(QVector<Scan> &scanHeap)
     // create a copy of the largest scan in scanHeap, so it contains the first set of intensities and
     // all auxilary information. Then remove the largest scan from scanHeap to avoid processing it twice.
     Scan sScan = scanHeap.at(pos);
-    scanHeap.erase(scanHeap.constBegin()+pos);
+    scanHeap.erase(scanHeap.begin()+pos);
 
     // loop over all other scans and add the intensities
     for (int i = 0; i < scanHeap.size(); ++i) {

@@ -39,6 +39,13 @@ static const QString tempAuxString("temporaryPeakData");
 
 class BgmnPresetHandlerGui;
 
+/** \brief Project widget for BGMN refinements.
+ *
+ *  Main user-interface component for creating, editing, running, and
+ *   analyzing BGMN Rietveld refinement projects. Manages control files,
+ *   scan data, structure models, refinement execution (BGMN / Eflech),
+ *   result parsing, and reporting. Inherits the abstract ProjectWidget
+ *   base and overrides all refinement-specific operations. */
 class BgmnProjectWidget : public ProjectWidget
 {
     friend class BgmnPresetHandlerGui;

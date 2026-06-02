@@ -1,7 +1,8 @@
 TEMPLATE = lib
 CONFIG += qt warn_on
 QT -= gui
-QT += core core5compat
+QT += core
+# core5compat is only needed for Qt6 builds; for Qt5 it's not available
 DESTDIR = $$OUT_PWD/../lib
 
 !win32:CONFIG += staticlib

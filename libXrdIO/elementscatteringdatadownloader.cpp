@@ -3,6 +3,7 @@
 #include <QTextStream>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QDataStream>
 #include <QDebug>
 
 ElementScatteringDataDownloader::ElementScatteringDataDownloader()

@@ -59,6 +59,14 @@ struct phaseData {
 
 class ProjectSelectTreeItem;
 
+/** \brief Abstract base class for all refinement project widgets.
+ *
+ *  Provides the common interface and shared functionality for project
+ *   widgets of different refinement engines (BGMN, FullProf, etc.).
+ *  Manages the graph view, scan list, control file editors, chemistry
+ *   table, convergence display, peak integration, search-match, and
+ *   peak-fit sub-widgets. Subclasses must implement refinement-specific
+ *   operations such as runRefinement(), abort(), load(), and type(). */
 class ProjectWidget : public QTabWidget
 {
     Q_OBJECT

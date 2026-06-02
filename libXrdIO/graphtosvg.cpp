@@ -22,6 +22,7 @@
 #include <QPainter>
 #include <QString>
 #include <QDebug>
+#include <QtMath>
 
 GraphToSvg::GraphToSvg(const QVector<Scan> &_sheap, double _eps1, double _eps2, double _eps3)
     : scanHeap(_sheap), eps1(_eps1), eps2(_eps2), eps3(_eps3)

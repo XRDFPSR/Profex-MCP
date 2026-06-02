@@ -23,6 +23,12 @@
 #include "../graphWidget/abstractgraphview.h"
 #include "../libXrdIO/scan.h"
 
+/** \brief Widget listing and managing loaded diffraction scans.
+ *
+ *  Displays all loaded scans in a tree-like list, showing per-scan
+ *   properties (visibility, offsets, scaling, color, style). Supports
+ *   sorting, export, removal, copy, noise addition, and context-menu
+ *   operations. Emits signals when the active scan changes. */
 class ScanListWidget : public AbstractGraphView
 {
     Q_OBJECT

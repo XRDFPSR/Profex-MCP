@@ -1,0 +1,27 @@
+CompileFlags:
+  Add:
+    - "-I/workspace/profex/profex/libXrdIO"
+    - "-I/workspace/profex/profex/libXrdIO/crystal"
+    - "-I/workspace/profex/profex/libXrdIO/curveFitting"
+    - "-I/workspace/profex/profex/libXrdIO/import"
+    - "-I/workspace/profex/profex/libXrdIO/export"
+    - "-I/workspace/profex/profex/libXrdIO/parser"
+    - "-I/workspace/profex/profex/libXrdIO/colorMaps"
+    - "-I/workspace/profex/profex/profex"
+    - "-I/workspace/profex/profex/profex/preferencesDialog"
+    - "-I/workspace/profex/profex/profex/projectWidget"
+    - "-I/workspace/profex/profex/profex/projectWidget/graphWidget"
+    - "-I/workspace/profex/profex/profex/projectWidget/peakFitWidget"
+    - "-I/workspace/profex/profex/profex/tools"
+    - "-I/workspace/profex/profex/quazip"
+    - "-I/workspace/profex/profex/zlib"
+    - "-std=c++17"
+  Remove:
+    - "-fPIC"
+    - "-march=*"
+
+Diagnostics:
+  Suppress:
+    - "unused-parameter"
+    - "unused-function"
+    - "unused-variable"

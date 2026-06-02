@@ -8,6 +8,7 @@ TARGET = xrdio
 TEMPLATE = lib
 QT += core gui xml qml concurrent sql svg
 CONFIG += c++17
+CONFIG += warn_off
 DESTDIR = $$OUT_PWD/../lib
 !win32:CONFIG += static
 win32:CONFIG += shared

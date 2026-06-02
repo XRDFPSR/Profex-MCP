@@ -20,6 +20,9 @@
 #include <QDebug>
 #include <QDir>
 #include <QTextStream>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <QTextCodec>
+#endif
 
 BgmnFileIO::BgmnFileIO()
 {
@@ -302,7 +305,11 @@ QString BgmnFileIO::readTextFile(const QString &fileName)
     }
 
     QTextStream in(&f);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     in.setEncoding(QStringConverter::System);
+#else
+    in.setCodec("System");
+#endif
     QString r(in.readAll());
     f.close();
     return r;
@@ -318,7 +325,11 @@ QStringList BgmnFileIO::readTextFileLines(const QString &fileName)
     }
 
     QTextStream in(&f);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     in.setEncoding(QStringConverter::System);
+#else
+    in.setCodec("System");
+#endif
     QStringList l;
     QString str;
     bool read = true;
@@ -347,7 +358,11 @@ bool BgmnFileIO::writeTextFile(const QString &fileName, const QString &content)
     }
 
     QTextStream out(&f);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     out.setEncoding(QStringConverter::System);
+#else
+    out.setCodec("System");
+#endif
     out << content;
     f.close();
 

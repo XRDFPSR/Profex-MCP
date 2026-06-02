@@ -28,7 +28,7 @@ AsciiXyImport::AsciiXyImport(QObject *parent) :
 bool AsciiXyImport::isSupported(const QByteArray &ba)
 {
     // ignore some other ASCII xy formats for which separate import filters exist
-    if (ba.first(25) == QByteArray("# == pyFAI calibration ==")) return false;
+    if (ba.left(25) == QByteArray("# == pyFAI calibration ==")) return false;
 
     QStringList header = QString(ba).simplified().split(global::rxLineEnding);
 

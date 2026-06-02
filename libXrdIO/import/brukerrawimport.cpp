@@ -739,29 +739,27 @@ int BrukerRawImport::readV4(const QByteArray &a, QVector<Scan> &scanHeap, const 
         pos += 160 + iExtraRecordSize;
 
         /* V4 Intensities */
-        QList<Scan> scans(iNoCounts, Scan(name, QColor(), 1));
-
+        QList<Scan> scans;
+        scans.reserve(iNoCounts);
         for (int j = 0; j < iNoCounts; ++j) {
-            scans[j].setSourceFileName(fname);
-            scans[j].setAuxInfo("FormatVersion", QVariant("RAW4"));
-
-            scans[j].setName(name + (iNoCounts > 1 ? QString(" - %1").arg(j, 2, 10, QLatin1Char('0')) : QString()));
-            scans[j].setComment(comment);
-            scans[j].setAuxInfo("MeasureDate", QVariant(szDate));
-            scans[j].setAuxInfo("MeasureTime", QVariant(szTime));
-            scans[j].setWaveLength(lambda1);
-            scans[j].setWaveLength2(lambda2);
-            scans[j].setTimePerStep(fStepTime);
-
-            scans[j].pDataAngle().reserve(iSteps);
-            scans[j].pDataIntensity().reserve(iSteps);
-            scans[j].setStepSize(fIncrement);
-
-            scans[j].addAuxInfo(varInfoMap);
-            scans[j].addAuxInfo(hwConfMap);
-            scans[j].addAuxInfo(rangeHeaderMap);
-
-            scans[j].setTypes(Scan::XY | Scan::MEASURED);
+            Scan s(name, QColor(), 1);
+            s.setSourceFileName(fname);
+            s.setAuxInfo("FormatVersion", QVariant("RAW4"));
+            s.setName(name + (iNoCounts > 1 ? QString(" - %1").arg(j, 2, 10, QLatin1Char('0')) : QString()));
+            s.setComment(comment);
+            s.setAuxInfo("MeasureDate", QVariant(szDate));
+            s.setAuxInfo("MeasureTime", QVariant(szTime));
+            s.setWaveLength(lambda1);
+            s.setWaveLength2(lambda2);
+            s.setTimePerStep(fStepTime);
+            s.pDataAngle().reserve(iSteps);
+            s.pDataIntensity().reserve(iSteps);
+            s.setStepSize(fIncrement);
+            s.addAuxInfo(varInfoMap);
+            s.addAuxInfo(hwConfMap);
+            s.addAuxInfo(rangeHeaderMap);
+            s.setTypes(Scan::XY | Scan::MEASURED);
+            scans.append(s);
         }
 
         // read data
