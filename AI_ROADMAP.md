@@ -61,17 +61,17 @@
 
 ---
 
-## Phase 5: AI Agent 深层集成 (当前)
+## Phase 5: AI Agent 深层集成 ✅ (已完成)
 
 | # | 任务 | 状态 | 说明 |
 |---|------|------|------|
-| 5.1 | **MCP Tool: run_refinement** | ⬜ | 通过 subprocess 调用 BGMN 执行精修，返回结构化结果 |
-| 5.2 | **MCP Tool: get_results** | ⬜ | 解析 .par 文件提取精修结果（Rwp/GoF/物相定量） |
-| 5.3 | **MCP Tool: batch_refine** | ⬜ | 批量精修编排 + AI 自动参数探索 |
-| 5.4 | **MCP Resource: 精修报告** | ⬜ | 报告生成 + 结果对比 |
-| 5.5 | **AI Search-Match 助手** | ⬜ | 基于 COD 数据库的自动物相鉴定 |
-| 5.6 | **XRD RAG 知识库** | ⬜ | Profex/BGMN 文档 + XRD 理论语义搜索 |
-| 5.7 | **Refinement Advisor Prompt** | ⬜ | AI 精修顾问 — 参数选择和问题诊断 |
+| 5.1 | **MCP Tool: run_refinement** | ✅ | 通过 subprocess 调用 BGMN 精修引擎 |
+| 5.2 | **MCP Tool: get_results** | ✅ | .par 解析提取 Rwp/GoF/物相定量 |
+| 5.3 | **MCP Tool: batch_refine** | ✅ | 多参数组合自动批量精修 |
+| 5.4 | **MCP Tool: list_sav_files** | ✅ | .sav 控制文件发现 |
+| 5.5 | **AI Search-Match 助手** | ✅ | COD 数据库物相鉴定工作流 (prompt) |
+| 5.6 | **XRD RAG 知识库** | ✅ | bgmn-parameters + rietveld + phase-ID |
+| 5.7 | **Refinement Advisor Prompt** | ✅ | AI 精修顾问 — 参数选择和问题诊断 |
 
 ---
 
