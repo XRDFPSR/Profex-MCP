@@ -88,9 +88,10 @@ def parse_bgmn_par(filepath: str | Path) -> dict[str, dict]:
                 if not line or line.startswith("#") or line.startswith("!"):
                     continue
                 m = re.match(
-                    r'(\w[\w\d_]*)\s*=\s*'
-                    r'([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)'
-                    r'(?:\s+([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?))?',
+                    r'(\w[\w\d_\[\]]*)'  # key, may include [N] for phase index
+                    r'\s*=\s*'
+                    r'([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)'  # value
+                    r'(?:\s+([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?))?',  # optional esd
                     line,
                 )
                 if m:

@@ -146,11 +146,11 @@ def parse_bgmn_param_file(filepath: str | Path) -> dict:
                 continue
 
             m = re.match(
-                r'(\w[\w\d_]*)'       # key
+                r'(\w[\w\d_\[\]]*)'       # key (may include [N] for phase index)
                 r'\s*=\s*'
                 r'([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)'  # value
                 r'(?:\s+([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?))?'  # optional esd
-                r'(?:\s*#.*)?$',  # optional comment
+                r'(?:\s*[#!].*)?$',  # optional comment
                 line,
             )
             if m:

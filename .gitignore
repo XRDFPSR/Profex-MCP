@@ -39,3 +39,8 @@ cmake_install.cmake
 *.pdb
 *.ilk
 *.exp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

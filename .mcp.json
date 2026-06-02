@@ -35,6 +35,12 @@
       "command": "python",
       "args": ["/workspace/profex/profex/pyprofex/mcp_server.py"],
       "description": "Profex MCP Server — XRD analysis tools for AI agents"
+    },
+    "profex-refine": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["/workspace/profex/profex/pyprofex/mcp_server_refine.py"],
+      "description": "Profex Refinement MCP Server — run/analyze/batch refinedments"
     }
   }
 }

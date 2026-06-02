@@ -114,7 +114,7 @@ def cmd_parse_params(args: argparse.Namespace) -> None:
             if not line or line.startswith("#") or line.startswith("!"):
                 continue
             m = re.match(
-                r'(\w[\w\d_]*)\s*=\s*'
+                r'(\w[\w\d_\[\]]*)\s*=\s*'
                 r'([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)'
                 r'(?:\s+([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?))?'
                 r'(?:\s*[#!].*)?$',

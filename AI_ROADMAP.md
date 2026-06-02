@@ -61,18 +61,17 @@
 
 ---
 
-## Phase 5: AI Agent 深层集成 (当前 — 规划中)
-
----
-
-## Phase 5: AI Agent 深层集成
+## Phase 5: AI Agent 深层集成 (当前)
 
 | # | 任务 | 状态 | 说明 |
 |---|------|------|------|
-| 5.1 | AI 驱动的参数优化 | ⬜ | LLM 自动优化精修参数 |
-| 5.2 | 自动物相鉴定助手 | ⬜ | AI 辅助 Search-Match |
-| 5.3 | RAG 知识库 | ⬜ | XRD/Profex 文档语义搜索 |
-| 5.4 | 批量处理脚本 | ⬜ | AI 驱动的批量精修编排 |
+| 5.1 | **MCP Tool: run_refinement** | ⬜ | 通过 subprocess 调用 BGMN 执行精修，返回结构化结果 |
+| 5.2 | **MCP Tool: get_results** | ⬜ | 解析 .par 文件提取精修结果（Rwp/GoF/物相定量） |
+| 5.3 | **MCP Tool: batch_refine** | ⬜ | 批量精修编排 + AI 自动参数探索 |
+| 5.4 | **MCP Resource: 精修报告** | ⬜ | 报告生成 + 结果对比 |
+| 5.5 | **AI Search-Match 助手** | ⬜ | 基于 COD 数据库的自动物相鉴定 |
+| 5.6 | **XRD RAG 知识库** | ⬜ | Profex/BGMN 文档 + XRD 理论语义搜索 |
+| 5.7 | **Refinement Advisor Prompt** | ⬜ | AI 精修顾问 — 参数选择和问题诊断 |
 
 ---
 
