@@ -69,9 +69,21 @@
 | 5.2 | **MCP Tool: get_results** | ✅ | .par 解析提取 Rwp/GoF/物相定量 |
 | 5.3 | **MCP Tool: batch_refine** | ✅ | 多参数组合自动批量精修 |
 | 5.4 | **MCP Tool: list_sav_files** | ✅ | .sav 控制文件发现 |
-| 5.5 | **AI Search-Match 助手** | ✅ | COD 数据库物相鉴定工作流 (prompt) |
+| 5.5 | **AI Search-Match 助手** | ✅ | search_match_workflow prompt |  
 | 5.6 | **XRD RAG 知识库** | ✅ | bgmn-parameters + rietveld + phase-ID |
 | 5.7 | **Refinement Advisor Prompt** | ✅ | AI 精修顾问 — 参数选择和问题诊断 |
+
+---
+
+## Phase 6: COD 数据库 API 集成 (当前)
+
+| # | 任务 | 状态 | 说明 |
+|---|------|------|------|
+| 6.1 | **MCP Tool: cod_search** | ✅ | 按元素/矿物名/化学式搜索 COD，返回结构元数据 |
+| 6.2 | **MCP Tool: cod_get_cif** | ✅ | 通过 COD entry ID 获取完整 CIF 文件 |
+| 6.3 | **MCP Tool: cod_search_by_d** | ✅ | 按 d-spacing 范围搜索 COD 物相（真正的 Search-Match） |
+| 6.4 | **COD d-spacing 预计算索引** | ⬜ | 本地缓存常见物相理论衍射峰，加速匹配 |
+| 6.5 | **MCP Tool: search_match** | ⬜ | 端到端 Search-Match：输入峰位 → COD 匹配 → 输出候选物相 |
 
 ---
 

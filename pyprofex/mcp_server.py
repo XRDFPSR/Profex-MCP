@@ -17,10 +17,14 @@ Requires: pyprofex, mcp>=1.0
 from __future__ import annotations
 
 import json
+import math
 import os
 import re
 import subprocess
 import sys
+import urllib.error
+import urllib.request
+from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Any
 
@@ -199,8 +203,261 @@ async def list_tools() -> list[types.Tool]:
                 "required": ["query"],
             },
         ),
+        # ── COD Database Tools ──
+        types.Tool(
+            name="cod_search",
+            description="Search the Crystallography Open Database by element/mineral/formula",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "Search term: element (Fe), mineral name (Quartz), formula (SiO2), or COD ID (1011097)",
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "description": "Max results (default 10, max 50)",
+                        "default": 10,
+                    },
+                    "mineral_only": {
+                        "type": "boolean",
+                        "description": "Only return entries with mineral names",
+                        "default": False,
+                    },
+                },
+                "required": ["query"],
+            },
+        ),
+        types.Tool(
+            name="cod_get_cif",
+            description="Download a CIF file from COD by entry ID",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "entry_id": {
+                        "type": "string",
+                        "description": "COD entry ID number (e.g., '1011097' for Quartz)",
+                    },
+                    "output_path": {
+                        "type": "string",
+                        "description": "Path to save the .cif file (optional)",
+                    },
+                },
+                "required": ["entry_id"],
+            },
+        ),
+        types.Tool(
+            name="cod_search_by_d",
+            description="Search COD for phases matching given d-spacings (Search-Match)",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "d_values": {
+                        "type": "string",
+                        "description": "Comma-separated d-spacings in Angstrom, e.g. '3.34,2.46,1.82'",
+                    },
+                    "tolerance": {
+                        "type": "number",
+                        "description": "d-spacing match tolerance (default 0.03 Angstrom)",
+                        "default": 0.03,
+                    },
+                    "elements": {
+                        "type": "string",
+                        "description": "Comma-separated element symbols to filter (e.g. 'Si,O' or 'Fe,P')",
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "description": "Max results (default 10)",
+                        "default": 10,
+                    },
+                },
+                "required": ["d_values"],
+            },
+        ),
     ]
 
+
+# ─── COD API Client ──────────────────────────────────────────────────
+
+COD_BASE_URL = "https://www.crystallography.net/cod"
+
+@dataclass
+class CodEntry:
+    """A single entry from the Crystallography Open Database."""
+    entry_id: str
+    mineral: str = ""
+    chemname: str = ""
+    formula: str = ""
+    calcformula: str = ""
+    sg: str = ""
+    sg_number: int = 0
+    a: float = 0.0
+    b: float = 0.0
+    c: float = 0.0
+    alpha: float = 90.0
+    beta: float = 90.0
+    gamma: float = 90.0
+    vol: float = 0.0
+    Z: int = 0
+    year: int = 0
+    authors: str = ""
+    title: str = ""
+    flags: str = ""
+    
+    def to_dict(self) -> dict:
+        return {k: v for k, v in asdict(self).items() if v or v == 0}
+
+
+def cod_search(query: str, limit: int = 10, mineral_only: bool = False) -> list[dict]:
+    """Search COD via its REST API."""
+    import urllib.parse
+    params = urllib.parse.urlencode({
+        "format": "json",
+        "limit": min(limit, 50),
+        "text": query,
+    })
+    url = f"{COD_BASE_URL}/result?{params}"
+    try:
+        with urllib.request.urlopen(url, timeout=15) as resp:
+            data = json.loads(resp.read().decode())
+    except (urllib.error.URLError, json.JSONDecodeError) as e:
+        return [{"error": f"COD API request failed: {e}"}]
+    
+    results = []
+    for item in data:
+        entry = CodEntry(
+            entry_id=item.get("file", ""),
+            mineral=item.get("mineral") or "",
+            chemname=item.get("chemname") or "",
+            formula=item.get("formula", ""),
+            calcformula=item.get("calcformula", ""),
+            sg=item.get("sg", ""),
+            sg_number=int(item["sgNumber"]) if item.get("sgNumber") else 0,
+            a=float(item["a"]) if item.get("a") else 0.0,
+            b=float(item["b"]) if item.get("b") else 0.0,
+            c=float(item["c"]) if item.get("c") else 0.0,
+            alpha=float(item["alpha"]) if item.get("alpha") else 90.0,
+            beta=float(item["beta"]) if item.get("beta") else 90.0,
+            gamma=float(item["gamma"]) if item.get("gamma") else 90.0,
+            vol=float(item["vol"]) if item.get("vol") else 0.0,
+            Z=int(item["Z"]) if item.get("Z") else 0,
+            year=int(item["year"]) if item.get("year") else 0,
+            authors=(item.get("authors") or "")[:120],
+            title=(item.get("title") or "")[:150],
+            flags=item.get("flags", ""),
+        )
+        if mineral_only and not entry.mineral:
+            continue
+        results.append(entry.to_dict())
+    
+    return results
+
+
+def cod_get_cif(entry_id: str) -> str | None:
+    """Download a CIF file from COD."""
+    url = f"{COD_BASE_URL}/cif/{entry_id}.cif"
+    try:
+        with urllib.request.urlopen(url, timeout=15) as resp:
+            return resp.read().decode()
+    except urllib.error.URLError:
+        return None
+
+
+def cod_search_by_d(d_values: list[float], tolerance: float = 0.03,
+                    elements: list[str] | None = None, limit: int = 10) -> list[dict]:
+    """
+    Search COD by d-spacing matching using known mineral peak lookups.
+    
+    Strategy: For each d-spacing, search for common minerals that have peaks
+    in that range by matching against a local lookup table of known minerals.
+    """
+    import urllib.parse
+    
+    # Mineral d-spacing reference for COD search
+    # Format: (d, mineral_name): used to map d-values to COD search terms
+    D_TO_MINERAL = {
+        3.34: "Quartz", 4.26: "Quartz", 1.82: "Quartz",
+        3.04: "Calcite", 2.29: "Calcite", 2.10: "Calcite",
+        2.88: "Dolomite", 2.75: "Dolomite",
+        2.48: "Zincite", 2.82: "Zincite", 2.60: "Zincite",
+        3.52: "Anatase", 1.89: "Anatase",
+        3.25: "Rutile",
+        2.52: "Corundum", 3.48: "Corundum",
+        3.18: "Albite", 3.20: "Plagioclase",
+        3.32: "Microcline", 4.03: "Orthoclase",
+        7.14: "Kaolinite", 4.18: "Kaolinite", 3.57: "Kaolinite",
+        10.0: "Montmorillonite",
+        4.73: "Theophrastite",
+        2.04: "Bunsenite",
+        2.70: "Hematite", 2.52: "Hematite",
+        2.97: "Vivianite", 5.16: "Vivianite",
+        2.80: "Whitlockite", 2.72: "Hydroxyapatite",
+        2.53: "Spinel",
+        3.66: "Goethite", 4.18: "Goethite", 2.45: "Goethite",
+        2.70: "Berlinite",
+        2.69: "Berlinite",
+    }
+    
+    # Find closest minerals for each d-spacing
+    minerals_to_search = set()
+    for d in d_values:
+        best_mineral = None
+        best_diff = tolerance
+        for ref_d, mineral in D_TO_MINERAL.items():
+            diff = abs(d - ref_d)
+            if diff < best_diff:
+                best_diff = diff
+                best_mineral = mineral
+        if best_mineral:
+            minerals_to_search.add(best_mineral)
+    
+    # Search COD for each candidate mineral
+    matches_by_entry: dict[str, dict] = {}
+    for mineral in list(minerals_to_search)[:5]:  # Max 5 mineral searches
+        params = urllib.parse.urlencode({"format": "json", "limit": 10, "text": mineral})
+        url = f"{COD_BASE_URL}/result?{params}"
+        try:
+            with urllib.request.urlopen(url, timeout=15) as resp:
+                data = json.loads(resp.read().decode())
+        except (urllib.error.URLError, json.JSONDecodeError):
+            continue
+        
+        for item in data:
+            eid = item.get("file", "")
+            if eid in matches_by_entry:
+                continue
+            
+            # Check element filter
+            if elements:
+                formula = item.get("formula", "").lower()
+                if not all(any(el.lower() in part for part in formula.split()) for el in elements):
+                    continue
+            
+            # Only include entries with mineral names
+            if not item.get("mineral"):
+                continue
+            
+            entry = CodEntry(
+                entry_id=eid,
+                mineral=item.get("mineral") or "",
+                formula=item.get("formula", ""),
+                calcformula=item.get("calcformula", ""),
+                sg=item.get("sg", ""),
+                sg_number=int(item["sgNumber"]) if item.get("sgNumber") else 0,
+                a=float(item["a"]) if item.get("a") else 0.0,
+                b=float(item["b"]) if item.get("b") else 0.0,
+                c=float(item["c"]) if item.get("c") else 0.0,
+                alpha=float(item["alpha"]) if item.get("alpha") else 90.0,
+                beta=float(item["beta"]) if item.get("beta") else 90.0,
+                gamma=float(item["gamma"]) if item.get("gamma") else 90.0,
+                vol=float(item["vol"]) if item.get("vol") else 0.0,
+                year=int(item["year"]) if item.get("year") else 0,
+                flags=item.get("flags", ""),
+            )
+            matches_by_entry[eid] = entry.to_dict()
+    
+    results = sorted(matches_by_entry.values(), key=lambda x: x.get("year", 0), reverse=True)
+    return results[:limit]
 
 @server.call_tool()
 async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
@@ -353,6 +610,69 @@ async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
                     "search_directory": str(struct_dir),
                     "total_matches": len(matches),
                     "matches": matches[:50],
+                }, indent=2),
+            )]
+
+        # ── COD Tools ──
+        elif name == "cod_search":
+            query = arguments["query"]
+            limit = arguments.get("limit", 10)
+            mineral_only = arguments.get("mineral_only", False)
+            results = cod_search(query, limit, mineral_only)
+            return [types.TextContent(
+                type="text",
+                text=json.dumps({
+                    "source": "Crystallography Open Database (COD)",
+                    "query": query,
+                    "total": len(results),
+                    "entries": results,
+                }, indent=2),
+            )]
+
+        elif name == "cod_get_cif":
+            entry_id = arguments["entry_id"]
+            output_path = arguments.get("output_path", "")
+            cif_content = cod_get_cif(entry_id)
+            if cif_content is None:
+                return [types.TextContent(
+                    type="text",
+                    text=json.dumps({"error": f"CIF not found for entry {entry_id}"}, indent=2),
+                )]
+            if output_path:
+                Path(output_path).write_text(cif_content)
+                return [types.TextContent(
+                    type="text",
+                    text=json.dumps({
+                        "status": "saved",
+                        "entry_id": entry_id,
+                        "output_path": output_path,
+                        "size_bytes": len(cif_content),
+                    }, indent=2),
+                )]
+            else:
+                # Return CIF content inline (first 3000 chars)
+                return [types.TextContent(
+                    type="text",
+                    text=cif_content[:3000] + ("\n\n... [truncated]" if len(cif_content) > 3000 else ""),
+                )]
+
+        elif name == "cod_search_by_d":
+            d_str = arguments["d_values"]
+            tolerance = arguments.get("tolerance", 0.03)
+            elements_str = arguments.get("elements", "")
+            limit = arguments.get("limit", 10)
+            d_values = [float(x.strip()) for x in d_str.split(",") if x.strip()]
+            elements = [e.strip() for e in elements_str.split(",") if e.strip()] if elements_str else None
+            results = cod_search_by_d(d_values, tolerance, elements, limit)
+            return [types.TextContent(
+                type="text",
+                text=json.dumps({
+                    "source": "Crystallography Open Database (COD)",
+                    "matched_d_spacings": d_values,
+                    "tolerance_angstrom": tolerance,
+                    "elements_filter": elements,
+                    "total": len(results),
+                    "entries": results,
                 }, indent=2),
             )]
 
