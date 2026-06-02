@@ -274,6 +274,34 @@ async def list_tools() -> list[types.Tool]:
                 "required": ["d_values"],
             },
         ),
+        # ── Search-Match Tool ──
+        types.Tool(
+            name="search_match",
+            description="Run full Search-Match: input XRD data + EDX elements → identified phases",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "data_file": {
+                        "type": "string",
+                        "description": "Path to XRD data file (.txt/.xy/.xrdml etc)",
+                    },
+                    "elements": {
+                        "type": "string",
+                        "description": "Comma-separated EDX-detected elements (e.g. 'Zn,Ca' or 'Fe,P')",
+                    },
+                    "n_expected": {
+                        "type": "integer",
+                        "description": "Expected number of phases (optional)",
+                    },
+                    "wavelength": {
+                        "type": "number",
+                        "description": "X-ray wavelength in Angstrom (default: 1.54056 for Cu Ka1)",
+                        "default": 1.54056,
+                    },
+                },
+                "required": ["data_file", "elements"],
+            },
+        ),
     ]
 
 
@@ -675,6 +703,77 @@ async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
                     "entries": results,
                 }, indent=2),
             )]
+
+        elif name == "search_match":
+            data_file = arguments["data_file"]
+            elements_str = arguments["elements"]
+            n_expected = arguments.get("n_expected", 0)
+            wavelength = arguments.get("wavelength", 1.54056)
+            
+            elements = [e.strip() for e in elements_str.split(",") if e.strip()]
+            from search_match import independent_score_all
+            import math, re
+            
+            filepath = Path(data_file)
+            if not filepath.exists():
+                return [types.TextContent(
+                    type="text",
+                    text=json.dumps({"error": f"File not found: {data_file}"}, indent=2),
+                )]
+            
+            data = []
+            with open(filepath) as f:
+                for line in f:
+                    line = line.strip()
+                    if not line: continue
+                    if line.startswith(("/","#","<")): continue
+                    first = line.split()[0] if line.split() else ""
+                    if first in ["voltage","current","Slits","Scanning","Group","Sample","diffractometer"]: continue
+                    if "=" in first: continue
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        try: data.append((float(parts[0]), float(parts[1])))
+                        except ValueError: continue
+            
+            if len(data) < 10:
+                return [types.TextContent(type="text", text=json.dumps({"error": "Too few data points"}, indent=2))]
+            
+            angles = [d[0] for d in data]; intens = [d[1] for d in data]
+            w = 2; sm = []
+            for i in range(len(intens)):
+                s=max(0,i-w); e=min(len(intens),i+w+1); sm.append(sum(intens[s:e])/(e-s))
+            bw=max(30,len(sm)//30); bg=[]
+            for i in range(len(sm)):
+                s=max(0,i-bw); e=min(len(sm),i+bw+1); bg.append(min(sm[s:e]))
+            cor=[max(0,sm[i]-bg[i]) for i in range(len(sm))]
+            
+            peaks_tt = []
+            for i in range(1,len(cor)-1):
+                if cor[i]>cor[i-1] and cor[i]>=cor[i+1]:
+                    lm=min(cor[max(0,i-8):i+1]); rm=min(cor[i:min(len(cor),i+9)])
+                    prom=cor[i]-min(lm,rm)
+                    if prom>60:
+                        d=2*cor[i]-cor[i-1]-cor[i+1]
+                        ref=angles[i]+(cor[i-1]-cor[i+1])/(d*2)*(angles[1]-angles[0]) if abs(d)>1e-10 else angles[i]
+                        peaks_tt.append(ref)
+            
+            obs_d = []
+            for tt in sorted(set(round(p,4) for p in peaks_tt)):
+                tr=math.radians(tt/2.0)
+                if math.sin(tr)>0:
+                    d=wavelength/(2*math.sin(tr))
+                    obs_d.append(round(d,4))
+            obs_d = obs_d[:15]
+            
+            result = independent_score_all(obs_d, elements, n_expected=n_expected)
+            
+            return [types.TextContent(type="text", text=json.dumps({
+                "source": "pyprofex search_match (27 minerals)",
+                "data_file": data_file, "elements": elements,
+                "n_expected": n_expected,
+                "total_peaks_found": len(peaks_tt),
+                **result,
+            }, indent=2, ensure_ascii=False))]
 
         else:
             return [types.TextContent(
