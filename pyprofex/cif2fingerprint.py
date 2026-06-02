@@ -39,7 +39,6 @@ class CifParser:
 
     def _get_val(self, tag: str) -> str:
         """Get a single CIF value by tag."""
-        # Look for `_tag value` pattern
         m = re.search(
             rf'_{tag}\s+'
             r"('[^']*'|\"[^\"]*\"|[^\s]+)",
@@ -49,15 +48,21 @@ class CifParser:
             return m.group(1).strip("'\" ")
         return ""
 
+    def _clean_float(self, s: str) -> float:
+        """Convert CIF float string to float, handling esd in parentheses."""
+        s = s.strip().strip("'\" ")
+        s = re.sub(r'\([^)]*\)', '', s)
+        return float(s)
+
     def _parse(self):
         """Parse basic CIF metadata."""
-        self.a = float(self._get_val("cell_length_a") or 0)
-        self.b = float(self._get_val("cell_length_b") or 0)
-        self.c = float(self._get_val("cell_length_c") or 0)
-        self.alpha = float(self._get_val("cell_angle_alpha") or 90)
-        self.beta = float(self._get_val("cell_angle_beta") or 90)
-        self.gamma = float(self._get_val("cell_angle_gamma") or 90)
-        self.vol = float(self._get_val("cell_volume") or 0)
+        self.a = self._clean_float(self._get_val("cell_length_a") or "0")
+        self.b = self._clean_float(self._get_val("cell_length_b") or "0")
+        self.c = self._clean_float(self._get_val("cell_length_c") or "0")
+        self.alpha = self._clean_float(self._get_val("cell_angle_alpha") or "90")
+        self.beta = self._clean_float(self._get_val("cell_angle_beta") or "90")
+        self.gamma = self._clean_float(self._get_val("cell_angle_gamma") or "90")
+        self.vol = self._clean_float(self._get_val("cell_volume") or "0")
         self.Z = int(float(self._get_val("cell_formula_units_Z") or 1))
         self.sg_hm = self._get_val("symmetry_space_group_name_H-M")
         self.sg_hall = self._get_val("symmetry_space_group_name_Hall")
@@ -177,22 +182,66 @@ class CifParser:
 
 # ─── Metric Tensor & d-spacing ───────────────────────────────────────
 
-def metric_tensor(a, b, c, alpha, beta, gamma):
-    """Calculate the metric tensor for the unit cell."""
+def reciprocal_metric_tensor(a, b, c, alpha, beta, gamma):
+    """Calculate the reciprocal metric tensor G*.
+    
+    G*[i][j] = a*i · a*j where a*i are reciprocal lattice vectors.
+    """
     ar = math.radians(alpha)
     br = math.radians(beta)
     gr = math.radians(gamma)
+    
+    # Direct metric tensor
     G = [
         [a*a, a*b*math.cos(gr), a*c*math.cos(br)],
         [a*b*math.cos(gr), b*b, b*c*math.cos(ar)],
         [a*c*math.cos(br), b*c*math.cos(ar), c*c],
     ]
-    return G
+    
+    # Volume of unit cell
+    V = a * b * c * math.sqrt(
+        1 - math.cos(ar)**2 - math.cos(br)**2 - math.cos(gr)**2
+        + 2 * math.cos(ar) * math.cos(br) * math.cos(gr)
+    )
+    
+    if V <= 0:
+        return G, V
+    
+    # Reciprocal metric tensor: G* = G⁻¹ * V²... actually G*_ij = (a*i·a*j)
+    # Using: a* = (b×c)/V, etc.
+    # G*_11 = a*·a* = (b×c)·(b×c)/V² = b²c²sin²(α)/V²
+    # But easier: G* = G⁻¹ (inverse of direct metric tensor)
+    # For a 3x3 symmetric matrix:
+    det = (G[0][0] * (G[1][1]*G[2][2] - G[1][2]*G[1][2])
+           - G[0][1] * (G[1][0]*G[2][2] - G[1][2]*G[0][2])
+           + G[0][2] * (G[1][0]*G[1][2] - G[1][1]*G[0][2]))
+    
+    if abs(det) < 1e-20:
+        return G, V
+    
+    inv_det = 1.0 / det
+    Gstar = [
+        [(G[1][1]*G[2][2] - G[1][2]*G[1][2]) * inv_det,
+         (G[0][2]*G[1][2] - G[0][1]*G[2][2]) * inv_det,
+         (G[0][1]*G[1][2] - G[0][2]*G[1][1]) * inv_det],
+        [(G[0][2]*G[1][2] - G[0][1]*G[2][2]) * inv_det,
+         (G[0][0]*G[2][2] - G[0][2]*G[0][2]) * inv_det,
+         (G[0][1]*G[0][2] - G[0][0]*G[1][2]) * inv_det],
+        [(G[0][1]*G[1][2] - G[0][2]*G[1][1]) * inv_det,
+         (G[0][1]*G[0][2] - G[0][0]*G[1][2]) * inv_det,
+         (G[0][0]*G[1][1] - G[0][1]*G[0][1]) * inv_det],
+    ]
+    
+    return Gstar, V
 
-def d_spacing_hkl(G, h, k, l):
-    """Calculate d-spacing from metric tensor and Miller indices."""
-    d2_inv = (h*h*G[0][0] + k*k*G[1][1] + l*l*G[2][2]
-              + 2*h*k*G[0][1] + 2*h*l*G[0][2] + 2*k*l*G[1][2])
+
+def d_spacing_hkl(Gstar, h, k, l):
+    """Calculate d-spacing from reciprocal metric tensor and Miller indices.
+    
+    1/d² = h·G*·h  (where h = [h k l]ᵀ)
+    """
+    d2_inv = (h*h*Gstar[0][0] + k*k*Gstar[1][1] + l*l*Gstar[2][2]
+              + 2*h*k*Gstar[0][1] + 2*h*l*Gstar[0][2] + 2*k*l*Gstar[1][2])
     if d2_inv <= 0:
         return 0.0
     return math.sqrt(1.0 / d2_inv)
@@ -343,21 +392,30 @@ def calculate_powder_pattern(cif_text, d_min=0.8, wavelength=1.54056, top_n=20):
     if parser.a == 0:
         return []
     
-    G = metric_tensor(parser.a, parser.b, parser.c, parser.alpha, parser.beta, parser.gamma)
+    Gstar, V = reciprocal_metric_tensor(parser.a, parser.b, parser.c, parser.alpha, parser.beta, parser.gamma)
+    if V <= 0:
+        return []
     
-    # Determine hkl range
-    max_h = max_k = max_l = int(parser.a / d_min) + 2
+    # Determine hkl range based on d_min
+    max_h = max_k = max_l = int(parser.a / d_min) + 3
+    
+    # Multiplicity tracking
+    reflection_map = {}  # (d_rounded, equivalent_hkl) -> (h,k,l,intensity)
     
     reflections = []
+    reflection_map = {}
     
     for h in range(-max_h, max_h + 1):
         for k in range(-max_k, max_k + 1):
-            for l in range(-max_l, max_l + 1):
+            for l in range(0, max_l + 1):  # l >= 0 to avoid Friedel pairs
                 if h == 0 and k == 0 and l == 0:
                     continue
-                d = d_spacing_hkl(G, h, k, l)
+                d = d_spacing_hkl(Gstar, h, k, l)
                 if d < d_min or d <= 0:
                     continue
+                
+                # Filter by systematic absences for common space groups
+                # Centrosymmetric: all reflections considered
                 
                 two_theta = 2 * math.degrees(math.asin(wavelength / (2 * d)))
                 if two_theta > 150 or two_theta < 1:
@@ -378,15 +436,27 @@ def calculate_powder_pattern(cif_text, d_min=0.8, wavelength=1.54056, top_n=20):
                 lp = lp_correction(two_theta, wavelength)
                 intensity = F_sq * lp
                 
-                reflections.append({
-                    "h": h, "k": k, "l": l,
-                    "d": round(d, 4),
-                    "two_theta": round(two_theta, 4),
-                    "intensity": intensity,
-                    "F_sq": round(F_sq, 2),
-                })
+                # Round d to merge equivalent reflections
+                d_rounded = round(d, 2)  # Merge reflections within 0.01Å
+                key = (d_rounded, h >= 0 and k >= 0 and l >= 0)
+                
+                if key in reflection_map:
+                    # Add to existing (multiplicity)
+                    existing = reflection_map[key]
+                    existing["multiplicity"] += 1
+                    existing["intensity"] += intensity
+                else:
+                    reflection_map[key] = {
+                        "h": h, "k": k, "l": l,
+                        "d": round(d, 4),
+                        "two_theta": round(two_theta, 4),
+                        "intensity": intensity,
+                        "F_sq": round(F_sq, 2),
+                        "multiplicity": 1,
+                    }
     
     # Sort by intensity descending
+    reflections = list(reflection_map.values())
     reflections.sort(key=lambda r: r["intensity"], reverse=True)
     
     # Normalize intensities to I_max = 100
