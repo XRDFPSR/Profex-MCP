@@ -1,0 +1,34 @@
+{
+  "servers": {
+    "profex-build": {
+      "type": "command",
+      "command": "bash",
+      "args": [
+        "-c",
+        "cd /workspace/profex/profex && qmake profex.pro && make -j$(nproc) 2>&1"
+      ],
+      "description": "Build Profex from source using qmake"
+    },
+    "profex-cmake": {
+      "type": "command",
+      "command": "bash",
+      "args": [
+        "-c",
+        "mkdir -p /workspace/profex/profex/build && cd /workspace/profex/profex/build && cmake .. && cmake --build . -j$(nproc) 2>&1"
+      ],
+      "description": "Build Profex from source using CMake"
+    },
+    "profex-code-search": {
+      "type": "command",
+      "command": "grep",
+      "args": ["-rn", "--include=\"*.cpp\"", "--include=\"*.h\"", "--include=\"*.ui\"", "{query}", "/workspace/profex/profex/"],
+      "description": "Search Profex source code"
+    },
+    "profex-changelog": {
+      "type": "command",
+      "command": "bash",
+      "args": ["-c", "head -100 /workspace/profex/profex/changelog.txt"],
+      "description": "View Profex changelog"
+    }
+  }
+}

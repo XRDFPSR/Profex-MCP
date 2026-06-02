@@ -1,0 +1,41 @@
+# Build artifacts
+build/
+*-build/
+*.o
+*.obj
+*.exe
+*.app
+Makefile
+*.make
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+.rcc/
+
+# IDE files
+.pro.user*
+.cbproj*
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Qt Creator
+*.autosave
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# macOS
+.DS_Store
+*.dSYM/
+
+# Linux
+*.so*
+
+# Windows
+*.pdb
+*.ilk
+*.exp
