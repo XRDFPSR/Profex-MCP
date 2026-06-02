@@ -29,6 +29,12 @@
       "command": "bash",
       "args": ["-c", "head -100 /workspace/profex/profex/changelog.txt"],
       "description": "View Profex changelog"
+    },
+    "profex-xrd": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["/workspace/profex/profex/pyprofex/mcp_server.py"],
+      "description": "Profex MCP Server — XRD analysis tools for AI agents"
     }
   }
 }
