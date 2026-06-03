@@ -38,34 +38,31 @@ CurveFitValueList::~CurveFitValueList()
 QStringList CurveFitValueList::names() const
 {
     QStringList l;
-    l.resize(_values.size());
-
+    l.reserve(_values.size());
     for (int i = 0; i < _values.size(); ++i) {
-        l[i] = _values.at(i).name();
+        l.append(_values.at(i).name());
     }
 
     return l;
 }
 
-QList<double> CurveFitValueList::values() const
+QVector<double> CurveFitValueList::values() const
 {
-    QList<double> l;
-    l.resize(_values.size());
-
+    QVector<double> l;
+    l.reserve(_values.size());
     for (int i = 0; i < _values.size(); ++i) {
-        l[i] = _values.at(i).value();
+        l.append(_values.at(i).value());
     }
 
     return l;
 }
 
-QList<double> CurveFitValueList::esds() const
+QVector<double> CurveFitValueList::esds() const
 {
-    QList<double> l;
-    l.resize(_values.size());
-
+    QVector<double> l;
+    l.reserve(_values.size());
     for (int i = 0; i < _values.size(); ++i) {
-        l[i] = _values.at(i).esd();
+        l.append(_values.at(i).esd());
     }
 
     return l;

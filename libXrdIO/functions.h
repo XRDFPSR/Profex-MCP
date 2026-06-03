@@ -361,7 +361,7 @@ public:
     //! \param p  Centre position in x-units.
     //! \param h  Half-width at half-maximum (HWHM) in x-units.
     //! \return   Vector of evaluated Gaussian intensities.
-    static QList<double> getGaussianH(const QList<double> &x, double a, double p, double h);
+    static QVector<double> getGaussianH(const QVector<double> &x, double a, double p, double h);
 
     //! \brief Evaluate a Gaussian peak (parameterised by FWHM).
     //! \param x  Vector of x-values at which to evaluate.
@@ -369,7 +369,7 @@ public:
     //! \param p  Centre position in x-units.
     //! \param f  Full-width at half-maximum (FWHM) in x-units.
     //! \return   Vector of evaluated Gaussian intensities.
-    static QList<double> getGaussianF(const QList<double> &x, double a, double p, double f);
+    static QVector<double> getGaussianF(const QVector<double> &x, double a, double p, double f);
 
     //! \brief Evaluate a Gaussian peak (parameterised by sigma).
     //! \param x  Vector of x-values at which to evaluate.
@@ -377,7 +377,7 @@ public:
     //! \param p  Centre position in x-units.
     //! \param s  Standard deviation sigma in x-units.
     //! \return   Vector of evaluated Gaussian intensities.
-    static QList<double> getGaussianS(const QList<double> &x, double a, double p, double s);
+    static QVector<double> getGaussianS(const QVector<double> &x, double a, double p, double s);
 
     //! \brief Evaluate a Lorentzian peak (parameterised by HWHM).
     //! \param x  Vector of x-values at which to evaluate.
@@ -385,7 +385,7 @@ public:
     //! \param p  Centre position in x-units.
     //! \param h  Half-width at half-maximum (HWHM) in x-units.
     //! \return   Vector of evaluated Lorentzian intensities.
-    static QList<double> getLorentzianH(const QList<double> &x, double a, double p, double h);
+    static QVector<double> getLorentzianH(const QVector<double> &x, double a, double p, double h);
 
     //! \brief Evaluate a Lorentzian peak (parameterised by FWHM).
     //! \param x  Vector of x-values at which to evaluate.
@@ -393,7 +393,7 @@ public:
     //! \param p  Centre position in x-units.
     //! \param f  Full-width at half-maximum (FWHM) in x-units.
     //! \return   Vector of evaluated Lorentzian intensities.
-    static QList<double> getLorentzianF(const QList<double> &x, double a, double p, double f);
+    static QVector<double> getLorentzianF(const QVector<double> &x, double a, double p, double f);
 
     //! \brief Evaluate a Pseudo-Voigt peak (parameterised by HWHM).
     //! \param x   Vector of x-values at which to evaluate.
@@ -402,7 +402,7 @@ public:
     //! \param h   Half-width at half-maximum (HWHM) in x-units (common to both Gauss and Lorentz).
     //! \param sh  Shape parameter (0 = pure Gaussian, 1 = pure Lorentzian).
     //! \return    Vector of evaluated Pseudo-Voigt intensities.
-    static QList<double> getPseudoVoigtH(const QList<double> &x, double a, double p, double h, double sh);
+    static QVector<double> getPseudoVoigtH(const QVector<double> &x, double a, double p, double h, double sh);
 
     //! \brief Evaluate a Pseudo-Voigt peak (parameterised by FWHM).
     //! \param x   Vector of x-values at which to evaluate.
@@ -411,7 +411,7 @@ public:
     //! \param f   Full-width at half-maximum (FWHM) in x-units (common to both Gauss and Lorentz).
     //! \param sh  Shape parameter (0 = pure Gaussian, 1 = pure Lorentzian).
     //! \return    Vector of evaluated Pseudo-Voigt intensities.
-    static QList<double> getPseudoVoigtF(const QList<double> &x, double a, double p, double f, double sh);
+    static QVector<double> getPseudoVoigtF(const QVector<double> &x, double a, double p, double f, double sh);
 
     //! \brief Convert atomic coordinates from fractional to Cartesian.
     //! \param fx   Fractional x coordinate.
@@ -435,7 +435,7 @@ public:
     //! \param a  First input vector (e.g. underlying pattern).
     //! \param b  Second input vector (e.g. kernel / instrument profile).
     //! \return   Convolution result (same size as the larger input).
-    static QList<double> convolute(const QList<double> &a, const QList<double> &b);
+    static QVector<double> convolute(const QVector<double> &a, const QVector<double> &b);
 
     inline static QKeySequence keyCopy()
     {

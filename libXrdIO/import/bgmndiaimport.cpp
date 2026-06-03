@@ -255,7 +255,7 @@ double BgmnDiaImport::getWaveLength(const QByteArray &line)
     return wl;
 }
 
-bool BgmnDiaImport::parseBinaryData(QList<QList<double> > &data, const QList<QByteArray> &lines)
+bool BgmnDiaImport::parseBinaryData(QList<QVector<double> > &data, const QList<QByteArray> &lines)
 {
     _totalDataLines = 0;
 
@@ -298,9 +298,9 @@ bool BgmnDiaImport::parseBinaryData(QList<QList<double> > &data, const QList<QBy
         } else {
             // New x encountered: compute and store averages for the previous group.
             QList<double> avg;
-            avg.resize(groupSum.size());
+            avg.reserve(groupSum.size());
             for (int i = 0; i < groupSum.size(); ++i) {
-                avg[i] = groupSum[i] / groupCount;
+                avg.append(groupSum[i] / groupCount);
             }
             uniqueX.append(currentX);
             avgYCols.append(avg);
@@ -314,9 +314,9 @@ bool BgmnDiaImport::parseBinaryData(QList<QList<double> > &data, const QList<QBy
     // Process the final group (if any).
     if (!firstGroup) {
         QList<double> avg;
-        avg.resize(groupSum.size());
+        avg.reserve(groupSum.size());
         for (int i = 0; i < groupSum.size(); ++i) {
-            avg[i] = groupSum[i] / groupCount;
+            avg.append(groupSum[i] / groupCount);
         }
         uniqueX.append(currentX);
         avgYCols.append(avg);
@@ -326,7 +326,8 @@ bool BgmnDiaImport::parseBinaryData(QList<QList<double> > &data, const QList<QBy
     // Each row: first element is the unique x value, followed by the averaged y columns.
     data.clear();
     for (int i = 0; i < uniqueX.size(); ++i) {
-        QList<double> row;
+        QVector<double> row;
+        row.reserve(1 + avgYCols[i].size());
         row.append(uniqueX[i]);
         // Append each averaged y value.
         for (double val : avgYCols[i]) {

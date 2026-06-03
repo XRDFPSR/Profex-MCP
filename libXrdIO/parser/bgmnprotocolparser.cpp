@@ -16,6 +16,8 @@
  ***************************************************************************/
 
 #include "bgmnprotocolparser.h"
+#include <QtMath>
+#include <cmath>
 #include "../libXrdIO/structs.h"
 #include <QDebug>
 

@@ -323,10 +323,7 @@ QStringList BgmnStrParser::getElements() const
     QStringList el;
     QMultiMap<int, CrystalAtom> map = parseAtoms();
 
-    QMultiMapIterator<int, CrystalAtom> it(map);
-
-    while (it.hasNext()) {
-        it.next();
+    for (auto it = map.constBegin(); it != map.constEnd(); ++it) {
         if (!el.contains(it.value().element().toUpper())) {
             el.append(it.value().element().toUpper());
         }
@@ -348,7 +345,7 @@ QString BgmnStrParser::setSubstitution(const QString &l, bool &ok)
         QString el = rm.captured(1);
         double d = 1.0;
 
-        if (rm.hasCaptured(2)) {
+        if (!rm.captured(2).isEmpty()) {
             d = rm.captured(2).toDouble();
         }
 
@@ -362,28 +359,24 @@ QString BgmnStrParser::setSubstitution(const QString &l, bool &ok)
     return l;
 }
 
-/*
- * processes an E=... line by removing code for a refined substitution
- */
-QString BgmnStrParser::revertSubstutition(const QString &l, bool &ok)
+static QString revertSubstutition(const QString &s, bool &ok)
 {
-    QString s(l);
-    static QRegularExpression rx("^E=\\(([A-Z\\+\\-\\d]+)\\S+\\s+PARAM=\\S+=(\\d\\.?\\d*)\\S+");
-    QRegularExpressionMatch rm = rx.match(s);
+    QString l = s.simplified();
+    static QRegularExpression rx(QStringLiteral("^E=\\((\\w+)\\(p\\),XX\\(([+-]?\\d+\\.?\\d*)-p\\)\\) PARAM=p=\\2_0\\^\\2$"));
 
+    QRegularExpressionMatch rm = rx.match(l);
     if (rm.hasMatch()) {
         QString el = rm.captured(1);
         double d = 1.0;
 
-        if (rm.hasCaptured(2)) {
+        if (!rm.captured(2).isEmpty()) {
             d = rm.captured(2).toDouble();
         }
 
         QString nStr = QString("E=%1").arg(el);
         if (!qFuzzyCompare(d, 1.0)) nStr += QString("(%1)").arg(d, 0, 'f', 4);
-        s.replace(rx, nStr);
         ok = true;
-        return s;
+        return nStr;
     }
 
     ok = false;

@@ -271,7 +271,7 @@ QString CifParser2::multiLineToken(const QStringList &l, int &n)
         // loop till the end of the list
         if (l.at(i).size() > 0) {
             // line contains text
-            if (l.at(i).first(1) != ";") {
+            if (l.at(i).at(0) != QLatin1Char(';')) {
                 // append the line
                 tk.append(l.at(i));
                 ++i;

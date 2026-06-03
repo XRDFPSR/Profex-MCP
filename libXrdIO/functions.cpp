@@ -19,6 +19,7 @@
 #include "functions.h"
 #include "3rdparty/alglib/src/fasttransforms.h"
 #include <QDebug>
+#include <QtMath>
 #include <math.h>
 
 #ifndef M_PI
@@ -1074,12 +1075,12 @@ void global::Functions::fractionalToCartesian(double a, double b, double c,
     cz = v / (a * b * std::sin(gamma)) * fzn;
 }
 
-QList<double> global::Functions::convolute(const QList<double> &profile1, const QList<double> &profile2)
+QVector<double> global::Functions::convolute(const QVector<double> &profile1, const QVector<double> &profile2)
 {
     int size1 = profile1.size();
     int size2 = profile2.size();
 
-    QList<double> convY(size1 + size2 - 1, 0.0);
+    QVector<double> convY(size1 + size2 - 1, 0.0);
 
     // Convert QList to raw arrays for AlgLib compatibility
     alglib::real_1d_array arr1;
@@ -1100,21 +1101,21 @@ QList<double> global::Functions::convolute(const QList<double> &profile1, const 
     return convY;
 }
 
-QList<double> global::Functions::getGaussianH(const QList<double> &x, double a, double p, double h)
+QVector<double> global::Functions::getGaussianH(const QVector<double> &x, double a, double p, double h)
 {
     double s = h / std::sqrt(2.0 * std::log(2.0));
     return getGaussianS(x, a, p, s);
 }
 
-QList<double> global::Functions::getGaussianF(const QList<double> &x, double a, double p, double f)
+QVector<double> global::Functions::getGaussianF(const QVector<double> &x, double a, double p, double f)
 {
     double s = 0.5 * f / std::sqrt(2.0 * std::log(2.0));
     return getGaussianS(x, a, p, s);
 }
 
-QList<double> global::Functions::getGaussianS(const QList<double> &x, double a, double p, double s)
+QVector<double> global::Functions::getGaussianS(const QVector<double> &x, double a, double p, double s)
 {
-    QList<double> y;
+    QVector<double> y;
     y.resize(x.size());
 
     for (int i = 0; i < x.size(); ++i) {
@@ -1124,9 +1125,9 @@ QList<double> global::Functions::getGaussianS(const QList<double> &x, double a, 
     return y;
 }
 
-QList<double> global::Functions::getLorentzianH(const QList<double> &x, double a, double p, double h)
+QVector<double> global::Functions::getLorentzianH(const QVector<double> &x, double a, double p, double h)
 {
-    QList<double> y;
+    QVector<double> y;
     y.resize(x.size());
 
     for (int i = 0; i < x.size(); ++i) {
@@ -1137,20 +1138,20 @@ QList<double> global::Functions::getLorentzianH(const QList<double> &x, double a
     return y;
 }
 
-QList<double> global::Functions::getLorentzianF(const QList<double> &x, double a, double p, double f)
+QVector<double> global::Functions::getLorentzianF(const QVector<double> &x, double a, double p, double f)
 {
     return getLorentzianH(x, a, p, 0.5 * f);
 }
 
-QList<double> global::Functions::getPseudoVoigtH(const QList<double> &x, double a, double p, double h, double sh)
+QVector<double> global::Functions::getPseudoVoigtH(const QVector<double> &x, double a, double p, double h, double sh)
 {
     if (qFuzzyIsNull(sh))       return getLorentzianH(x, a, p, h);
     if (qFuzzyCompare(sh, 1.0)) return getGaussianH(x, a, p, h);
 
-    QList<double> gy = getGaussianH(x, a, p, h);
-    QList<double> ly = getLorentzianH(x, a, p, h);
+    QVector<double> gy = getGaussianH(x, a, p, h);
+    QVector<double> ly = getLorentzianH(x, a, p, h);
 
-    QList<double> y;
+    QVector<double> y;
     y.resize(qMin(gy.size(), ly.size()));
 
     for (int i = 0; i < qMin(gy.size(), ly.size()); ++i) {
@@ -1160,7 +1161,7 @@ QList<double> global::Functions::getPseudoVoigtH(const QList<double> &x, double 
     return y;
 }
 
-QList<double> global::Functions::getPseudoVoigtF(const QList<double> &x, double a, double p, double f, double sh)
+QVector<double> global::Functions::getPseudoVoigtF(const QVector<double> &x, double a, double p, double f, double sh)
 {
     return getPseudoVoigtH(x, a, p, 0.5 * f, sh);
 }

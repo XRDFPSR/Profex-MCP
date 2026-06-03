@@ -19,6 +19,7 @@
 #define CURVEHANDLER_H
 
 #include "../libXrdIO/curveFitting/genericcurve.h"
+#include <memory>
 
 #if defined XRDIO
  #define XRDIO_EXPORT Q_DECL_EXPORT

@@ -17,6 +17,8 @@
 
 #include "spgrdatparser.h"
 #include <QFile>
+#include <QStringList>
+#include <QDebug>
 #include <QRegularExpression>
 
 SpgrDatParser::SpgrDatParser()

@@ -57,7 +57,7 @@ class XRDIO_EXPORT BgmnDiaImport : public GenericImport
         int createScans(QVector<Scan> &, const QString &);
         double getWaveLength(const QByteArray &);
         QStringList getStructureNames(const QByteArray &);
-        bool parseBinaryData(QList<QList<double> > &, const QList<QByteArray> &);
+        bool parseBinaryData(QList<QVector<double> > &, const QList<QByteArray> &);
 
         bool parseDouble(const char *&ptr, const char *end, double &value);
         LineDataColumns parseLineColumns(const QByteArray &line);

@@ -121,8 +121,8 @@ bool BgmnGeqParser::mergeGeqFiles(const QStringList &inFiles, const QString &out
             return false;
         }
 
-        _sinxmin = qMin(_sinxmin, BgmnFileIO::hex2float(_if.mid(16, sizeFloat)));
-        _sinxmax = qMax(_sinxmax, BgmnFileIO::hex2float(_if.mid(20, sizeFloat)));
+        _sinxmin = qMin<float>(_sinxmin, BgmnFileIO::hex2float(_if.mid(16, sizeFloat)));
+        _sinxmax = qMax<float>(_sinxmax, BgmnFileIO::hex2float(_if.mid(20, sizeFloat)));
         _headers.append(_if.mid(0, 124));
 
         int step = 4 * sizeFloat + sizeInt;

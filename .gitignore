@@ -1,12 +1,4 @@
-
 # Build artifacts
-# CMake
-# IDE files
-# Linux
-# Python
-# Qt Creator
-# Windows
-# macOS
 *-build/
 *.app
 *.autosave
@@ -21,24 +13,34 @@
 *.pyc
 *.pyo
 *.so*
+*.a
 *.swo
 *.swp
-.DS_Store
+.qmake.stash
+moc_predefs.h
+Makefile
+
+# IDE files
 .cbproj*
 .idea/
-.pkl\n.json\n__pycache__/\ncif_cache/\n*.egg-info/\nbuild_logs/\nCOD/
 .pro.user*
 .rcc/
 .vscode/
 CMakeCache.txt
 CMakeFiles/
-Makefile
-__pycache__/
-build/
 cmake_install.cmake
 moc_*.cpp
 qrc_*.cpp
 ui_*.h
+
+# Linux
+.DS_Store
+
+# Python
+__pycache__/
+*.egg-info/
+*.pyc
+*.pyo
 
 # pyprofex generated data files
 *.pkl
@@ -54,4 +56,4 @@ ui_*.h
 *.zip
 cif_cache/
 build_logs/
-
+COD/

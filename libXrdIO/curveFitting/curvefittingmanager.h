@@ -72,8 +72,8 @@ public:
     inline double esd(int i) const {return _values.at(i).esd();}
 
     QStringList names() const;
-    QList<double> values() const;
-    QList<double> esds() const;
+    QVector<double> values() const;
+    QVector<double> esds() const;
 
 private:
     QList<CurveFitValue> _values;

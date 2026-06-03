@@ -500,7 +500,7 @@ void ChemTableData::buildTableElements()
     tableStructElements.setElementLabels(sortElements(elem));
     tableStructElements.setPhaseQuantities(phaseQuantityValues);
 
-    QMultiMapIterator it(phaseWeightDataElement);
+    QMapIterator<Phase, Oxide> it(phaseWeightDataElement);
 
     while (it.hasNext()) {
         it.next();
@@ -522,7 +522,7 @@ void ChemTableData::buildTableAtomic()
     tableStructAtoms.setElementLabels(sortElements(atom));
     tableStructAtoms.setPhaseQuantities(phaseQuantityValues);
 
-    QMultiMapIterator it(phaseWeightDataAtomic);
+    QMapIterator<Phase, Oxide> it(phaseWeightDataAtomic);
 
     while (it.hasNext()) {
         it.next();
@@ -544,7 +544,7 @@ void ChemTableData::buildTableOxides()
     tableStructOxides.setElementLabels(sortOxides(oxid));
     tableStructOxides.setPhaseQuantities(phaseQuantityValues);
 
-    QMultiMapIterator it(phaseWeightDataOxide);
+    QMapIterator<Phase, Oxide> it(phaseWeightDataOxide);
 
     while (it.hasNext()) {
         it.next();
