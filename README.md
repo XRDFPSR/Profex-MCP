@@ -236,4 +236,4 @@ BGMN refinement kernel is bundled with permission. Visit [http://www.bgmn.de/](h
 - **Profex Website**: [https://www.profex-xrd.org/](https://www.profex-xrd.org/)
 - **BGMN Kernel**: [http://www.bgmn.de/](http://www.bgmn.de/)
 - **Crystallography Open Database**: [https://www.crystallography.net/](https://www.crystallography.net/)
-- **Qualx2**: [https://www.unige.ch/qualx2/](https://www.unige.ch/qualx2/)
+- **Qualx2**: [https://www.ba.ic.cnr.it/softwareic/qualx/](https://www.ba.ic.cnr.it/softwareic/qualx/)
