@@ -1,46 +1,57 @@
+
 # Build artifacts
-build/
+# CMake
+# IDE files
+# Linux
+# Python
+# Qt Creator
+# Windows
+# macOS
 *-build/
+*.app
+*.autosave
+*.dSYM/
+*.exe
+*.exp
+*.ilk
+*.make
 *.o
 *.obj
-*.exe
-*.app
+*.pdb
+*.pyc
+*.pyo
+*.so*
+*.swo
+*.swp
+.DS_Store
+.cbproj*
+.idea/
+.pkl\n.json\n__pycache__/\ncif_cache/\n*.egg-info/\nbuild_logs/\nCOD/
+.pro.user*
+.rcc/
+.vscode/
+CMakeCache.txt
+CMakeFiles/
 Makefile
-*.make
+__pycache__/
+build/
+cmake_install.cmake
 moc_*.cpp
 qrc_*.cpp
 ui_*.h
-.rcc/
 
-# IDE files
-.pro.user*
-.cbproj*
-.idea/
-.vscode/
-*.swp
-*.swo
+# pyprofex generated data files
+*.pkl
+*.json
+*.mtb
+*.mtu
+*.mtn
+*.mti
+*.mqs
+*.mqn
+*.sq
+*.db3
+*.zip
+cif_cache/
+build_logs/
 
-# Qt Creator
-*.autosave
-
-# CMake
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-
-# macOS
-.DS_Store
-*.dSYM/
-
-# Linux
-*.so*
-
-# Windows
-*.pdb
-*.ilk
-*.exp
-
-# Python
-__pycache__/
-*.pyc
-*.pyo

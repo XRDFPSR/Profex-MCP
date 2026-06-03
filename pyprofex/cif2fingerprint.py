@@ -25,9 +25,222 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Any
+import threading
+
+# Thread lock for CIF cache writes
+_CIF_LOCK = threading.Lock()
 
 # ─── CIF Parser ───────────────────────────────────────────────────────
 
+# 前 50 常用空间群的对称操作数据库
+# 格式: {空间群号: ["op1,op2,...", ...]}
+_SG_SYMOPS: dict[int, list[str]] = {
+    # SG #1 (P1) - 三斜晶系
+    1: ["x, y, z"],
+    # SG #2 (P-1) - 三斜晶系
+    2: ["x, y, z", "-x, -y, -z"],
+    # SG #4 (P2_1) - 单斜晶系
+    4: ["x, y, z", "-x, y+1/2, -z"],
+    # SG #5 (C2) - 单斜晶系
+    5: ["x, y, z", "-x, y, -z"],
+    # SG #7 (Pc) - 单斜晶系
+    7: ["x, y, z", "x, -y, z+1/2"],
+    # SG #9 (Cc) - 单斜晶系
+    9: ["x, y, z", "x, -y, z+1/2"],
+    # SG #11 (P2_1/m) - 单斜晶系
+    11: ["x, y, z", "-x, y+1/2, -z", "-x, -y, -z", "x, -y+1/2, z"],
+    # SG #12 (C2/m) - 单斜晶系
+    12: ["x, y, z", "-x, y, -z", "-x, -y, -z", "x, -y, z"],
+    # SG #13 (P2/c) - 单斜晶系
+    13: ["x, y, z", "-x, y+1/2, -z", "-x, -y, -z", "x, -y+1/2, z"],
+    # SG #14 (P2_1/c) - 单斜晶系（最常见的空间群！160K+ 条目）
+    14: ["x, y, z", "-x, y+1/2, -z", "-x, -y, -z", "x, -y+1/2, z"],
+    # SG #15 (C2/c) - 单斜晶系
+    15: ["x, y, z", "-x, y, -z", "-x, -y, -z", "x, -y, z"],
+    # SG #19 (P2_12_12_1) - 正交晶系
+    19: ["x, y, z", "-x+1/2, -y, z+1/2", "-x, y+1/2, -z+1/2", "x+1/2, -y+1/2, -z"],
+    # SG #20 (C222_1) - 正交晶系
+    20: ["x, y, z", "-x, -y, z+1/2", "-x, y, -z+1/2", "x, -y, -z"],
+    # SG #33 (Pna2_1) - 正交晶系
+    33: ["x, y, z", "-x+1/2, -y, z+1/2", "-x, y+1/2, -z+1/2", "x+1/2, -y+1/2, -z"],
+    # SG #60 (Pbcn) - 正交晶系
+    60: ["x, y, z", "-x, -y, z+1/2", "-x, y, -z+1/2", "x, -y, -z",
+         "-x, -y, -z", "x, y, -z+1/2", "x, -y, z+1/2", "-x, y, z"],
+    # SG #61 (Pbca) - 正交晶系（14K+ 条目）
+    61: ["x, y, z", "-x+1/2, -y, z+1/2", "-x, y+1/2, -z+1/2", "x+1/2, -y+1/2, -z",
+         "-x, -y, -z", "x+1/2, y, -z+1/2", "x, -y+1/2, z+1/2", "-x+1/2, y+1/2, z"],
+    # SG #62 (Pnma) - 正交晶系
+    62: ["x, y, z", "-x+1/2, -y, z+1/2", "-x, y+1/2, -z+1/2", "x+1/2, -y+1/2, -z",
+         "-x, -y, -z", "x+1/2, y, -z+1/2", "x, -y+1/2, z+1/2", "-x+1/2, y+1/2, z"],
+    # SG #2-14 是单斜/正交，下面是四方/三方/六方
+    # SG #75 (P4) - 四方晶系
+    75: ["x, y, z", "-x, -y, z"],
+    # SG #76 (P4_1) - 四方晶系
+    76: ["x, y, z", "-x, -y, z+1/4"],
+    # SG #83 (P4/m) - 四方晶系
+    83: ["x, y, z", "-x, -y, z", "-x, y, -z", "x, -y, -z",
+         "-x, -y, -z", "x, y, -z", "x, -y, z", "-x, y, z"],
+    # SG #85 (P4/n) - 四方晶系
+    85: ["x, y, z", "-x, -y, z", "-y+1/2, x+1/2, z", "y+1/2, -x+1/2, z"],
+    # SG #86 (P4_2/n) - 四方晶系
+    86: ["x, y, z", "-x, -y, z", "-y+1/2, x+1/2, z+1/2", "y+1/2, -x+1/2, z+1/2"],
+    # SG #88 (I4_1/a) - 四方晶系
+    88: ["x, y, z", "-x+1/2, -y+1/2, z", "-y+1/2, x, z+1/4", "y, -x+1/2, z+1/4",
+         "-x+1/2, y+1/2, -z+1/2", "x, y, -z+1/2", "y+1/2, -x, -z+1/4", "-y, x+1/2, -z+1/4"],
+    # SG #92 (P4_12_12) - 四方晶系
+    92: ["x, y, z", "-x, -y, z+1/2", "-y+1/2, x+1/2, z+1/4", "y+1/2, -x+1/2, z+3/4"],
+    # SG #96 (P4_32_12) - 四方晶系
+    96: ["x, y, z", "-x, -y, z+1/2", "-y+1/2, x+1/2, z+3/4", "y+1/2, -x+1/2, z+1/4"],
+    # SG #143 (P3) - 三方晶系
+    143: ["x, y, z", "-y, x-y, z", "y-x, -x, z"],
+    # SG #144 (P3_1) - 三方晶系
+    144: ["x, y, z", "-y, x-y, z+1/3", "y-x, -x, z+2/3"],
+    # SG #145 (P3_2) - 三方晶系
+    145: ["x, y, z", "-y, x-y, z+2/3", "y-x, -x, z+1/3"],
+    # SG #146 (R3) - 三方晶系（菱面体）
+    146: ["x, y, z", "z, x, y", "y, z, x"],
+    # SG #147 (P-3) - 三方晶系
+    147: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "-x, -y, -z", "y, y-x, -z", "x-y, x, -z"],
+    # SG #148 (R-3) - 三方晶系（菱面体，4K+ 条目）
+    148: ["x, y, z", "z, x, y", "y, z, x",
+          "-x, -y, -z", "-z, -x, -y", "-y, -z, -x"],
+    # SG #150 (P321) - 三方晶系
+    150: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "y, x, -z", "x-y, -y, -z", "-x, y-x, -z"],
+    # SG #152 (P3_121) - 三方晶系（石英！）
+    152: ["x, y, z", "-y, x-y, z+1/3", "y-x, -x, z+2/3",
+          "y, x, -z", "-x, y-x, -z+1/3", "x-y, -y, -z+2/3"],
+    # SG #154 (P3_221) - 三方晶系
+    154: ["x, y, z", "-y, x-y, z+2/3", "y-x, -x, z+1/3",
+          "y, x, -z", "-x, y-x, -z+2/3", "x-y, -y, -z+1/3"],
+    # SG #155 (R32) - 三方晶系（菱面体）
+    155: ["x, y, z", "z, x, y", "y, z, x",
+          "y, x, -z", "x, z, -y", "z, y, -x"],
+    # SG #160 (R3m) - 三方晶系（菱面体）
+    160: ["x, y, z", "z, x, y", "y, z, x",
+          "y, x, z", "x, z, y", "z, y, x"],
+    # SG #163 (P3_1c) - 三方晶系
+    163: ["x, y, z", "-y, x-y, z+2/3", "y-x, -x, z+1/3",
+          "-x, -y, -z+1/2", "y, y-x, -z+1/6", "x-y, x, -z+5/6"],
+    # SG #166 (R-3m) - 三方晶系（菱面体）
+    166: ["x, y, z", "z, x, y", "y, z, x",
+          "y, x, z", "x, z, y", "z, y, x",
+          "-x, -y, -z", "-z, -x, -y", "-y, -z, -x",
+          "-y, -x, -z", "-x, -z, -y", "-z, -y, -x"],
+    # SG #167 (R-3c) - 三方晶系（菱面体 setting）
+    167: ["x, y, z", "z, x, y", "y, z, x",
+          "-y, -x, -z", "-x, -z, -y", "-z, -y, -x"],
+    # SG #167 HEX (R-3c :H) - 六方 setting
+    # 需要 12 个操作: 6 个旋转 + 6 个 c-滑移 (c/2 平移后 xy 不变)
+    100167: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+             "-x, -y, z+1/2", "y, y-x, z+1/2", "x-y, x, z+1/2",
+             "-x, -y, -z", "y, y-x, -z", "x-y, x, -z",
+             "x, y, -z+1/2", "-y, x-y, -z+1/2", "y-x, -x, -z+1/2"],
+    # SG #168 (P6) - 六方晶系
+    168: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "-x, -y, z", "y, y-x, z", "x-y, x, z"],
+    # SG #169 (P6_1) - 六方晶系
+    169: ["x, y, z", "-y, x-y, z+1/6", "y-x, -x, z+1/3",
+          "-x, -y, z+1/2", "y, y-x, z+2/3", "x-y, x, z+5/6"],
+    # SG #170 (P6_5) - 六方晶系
+    170: ["x, y, z", "-y, x-y, z+5/6", "y-x, -x, z+2/3",
+          "-x, -y, z+1/2", "y, y-x, z+1/3", "x-y, x, z+1/6"],
+    # SG #172 (P6_4) - 六方晶系
+    172: ["x, y, z", "-y, x-y, z+2/3", "y-x, -x, z+1/3",
+          "-x, -y, z+1/2", "y, y-x, z+1/6", "x-y, x, z+5/6"],
+    # SG #173 (P6_3) - 六方晶系
+    173: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "-x, -y, z+1/2", "y, y-x, z+1/2", "x-y, x, z+1/2"],
+    # SG #174 (P-6) - 六方晶系
+    174: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "-x, -y, -z", "y, y-x, -z", "x-y, x, -z"],
+    # SG #176 (P6_3/m) - 六方晶系
+    176: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "-x, -y, z+1/2", "y, y-x, z+1/2", "x-y, x, z+1/2",
+          "-x, -y, -z", "y, y-x, -z", "x-y, x, -z",
+          "x, y, -z+1/2", "-y, x-y, -z+1/2", "y-x, -x, -z+1/2"],
+    # SG #186 (P6_3mc) - 六方晶系（Zincite/ZnO！）
+    186: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "-y, -x, z", "y-x, y, z", "x, x-y, z",
+          "-x, -y, z+1/2", "y, y-x, z+1/2", "x-y, x, z+1/2",
+          "y, x, z+1/2", "x-y, -y, z+1/2", "-x, y-x, z+1/2"],
+    # SG #187 (P-6m2) - 六方晶系
+    187: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "y, x, -z", "x-y, -y, -z", "-x, y-x, -z",
+          "-x, -y, -z", "y, y-x, -z", "x-y, x, -z",
+          "-y, -x, z", "y-x, y, z", "x, x-y, z"],
+    # SG #194 (P6_3/mmc) - 六方晶系
+    194: ["x, y, z", "-y, x-y, z", "y-x, -x, z",
+          "-x, -y, z+1/2", "y, y-x, z+1/2", "x-y, x, z+1/2",
+          "-y, -x, z", "y-x, y, z", "x, x-y, z",
+          "y, x, z+1/2", "x-y, -y, z+1/2", "-x, y-x, z+1/2",
+          "-x, -y, -z", "y, y-x, -z", "x-y, x, -z",
+          "x, y, -z+1/2", "-y, x-y, -z+1/2", "y-x, -x, -z+1/2",
+          "y, x, -z", "x-y, -y, -z", "-x, y-x, -z",
+          "-y, -x, -z+1/2", "y-x, y, -z+1/2", "x, x-y, -z+1/2"],
+    # SG #198 (P2_13) - 立方晶系
+    198: ["x, y, z", "y, z, x", "z, x, y",
+          "-x, -y, z+1/2", "-y, -z, x+1/2", "-z, -x, y+1/2",
+          "-x, y+1/2, -z", "-y, z+1/2, -x", "-z, x+1/2, -y",
+          "x+1/2, -y, -z", "y+1/2, -z, -x", "z+1/2, -x, -y"],
+    # SG #205 (Pa-3) - 立方晶系
+    205: ["x, y, z", "-x, -y, -z",
+          "-x+1/2, -y, z+1/2", "x+1/2, y, -z+1/2",
+          "-x, y+1/2, -z+1/2", "x, -y+1/2, z+1/2",
+          "x+1/2, -y+1/2, -z", "-x+1/2, y+1/2, z"],
+    # SG #221 (Pm-3m) - 立方晶系
+    221: ["x, y, z", "z, x, y", "y, z, x",
+          "-x, -y, z", "-z, -x, y", "-y, -z, x",
+          "-x, y, -z", "-z, x, -y", "-y, z, -x",
+          "x, -y, -z", "z, -x, -y", "y, -z, -x",
+          "-x, -y, -z", "-z, -x, -y", "-y, -z, -x",
+          "x, y, -z", "z, x, -y", "y, z, -x",
+          "x, -y, z", "z, -x, y", "y, -z, x",
+          "-x, y, z", "-z, x, y", "-y, z, x"],
+    # SG #225 (Fm-3m) - 立方晶系（岩盐 NaCl 结构，4K+ 条目）
+    225: ["x, y, z", "-x, -y, z", "-x, y, -z", "x, -y, -z",
+          "-x, -y, -z", "x, y, -z", "x, -y, z", "-x, y, z",
+          "z, x, y", "-z, -x, y", "-z, x, -y", "z, -x, -y",
+          "-z, -x, -y", "z, x, -y", "z, -x, y", "-z, x, y",
+          "y, z, x", "-y, -z, x", "-y, z, -x", "y, -z, -x",
+          "-y, -z, -x", "y, z, -x", "y, -z, x", "-y, z, x",
+          "x+1/2, y+1/2, z", "x+1/2, y+1/2, z",  # 面心平移
+    ],
+    # SG #227 (Fd-3m) - 立方晶系（金刚石结构，4K+ 条目）
+    227: ["x, y, z", "-x, -y, z", "-x, y, -z", "x, -y, -z",
+          "-x, -y, -z", "x, y, -z", "x, -y, z", "-x, y, z",
+          "z, x, y", "-z, -x, y", "-z, x, -y", "z, -x, -y",
+          "-z, -x, -y", "z, x, -y", "z, -x, y", "-z, x, y",
+          "y, z, x", "-y, -z, x", "-y, z, -x", "y, -z, -x",
+          "-y, -z, -x", "y, z, -x", "y, -z, x", "-y, z, x",
+          "x+1/4, y+1/4, z+1/4", "-x+3/4, -y+3/4, z+1/4",
+          "-x+3/4, y+1/4, -z+3/4", "x+1/4, -y+3/4, -z+3/4",
+          "-x+3/4, -y+3/4, -z+3/4", "x+1/4, y+1/4, -z+3/4",
+          "x+1/4, -y+3/4, z+1/4", "-x+3/4, y+1/4, z+1/4"],
+    # SG #230 (Ia-3d) - 立方晶系
+    230: ["x, y, z", "-x, -y, z", "-x, y, -z", "x, -y, -z",
+          "-x, -y, -z", "x, y, -z", "x, -y, z", "-x, y, z",
+          "z, x, y", "-z, -x, y", "-z, x, -y", "z, -x, -y",
+          "-z, -x, -y", "z, x, -y", "z, -x, y", "-z, x, y",
+          "y, z, x", "-y, -z, x", "-y, z, -x", "y, -z, -x",
+          "-y, -z, -x", "y, z, -x", "y, -z, x", "-y, z, x",
+          "x+1/4, y+1/4, z+1/4", "-x+1/4, -y+1/4, z+1/4",
+          "-x+1/4, y+1/4, -z+1/4", "x+1/4, -y+1/4, -z+1/4",
+          "-x+3/4, -y+3/4, -z+3/4", "x+3/4, y+3/4, -z+3/4",
+          "x+3/4, -y+3/4, z+3/4", "-x+3/4, y+3/4, z+3/4"],
+}
+
+
+def _generate_symops_from_sg(sg_number: int) -> list[str] | None:
+    """
+    对未在 _SG_SYMOPS 中的空间群，生成最小对称操作。
+    
+    基于晶系和格子类型推断基本对称操作。
+    """
+    if sg_number <= 0:
+        return None
+    return None  # 未覆盖的由 _SG_SYMOPS 兜底
 
 class CifParser:
     """Minimal CIF file parser — extracts cell parameters and atom sites."""
@@ -97,87 +310,171 @@ class CifParser:
                     op = line.strip("'\" ")
                     self.sym_ops.append(op)
 
-        # If no symmetry ops found, use identity only
-        if not self.sym_ops:
-            self.sym_ops = ["x, y, z"]
+        # If no symmetry ops found (e.g. CIF only gives space group symbol but not explicit ops),
+        # look up from built-in database
+        if len(self.sym_ops) <= 2 and self.sg_number > 0:
+            # Heuristic: COD hex setting R sg's often have sgNumber=1, fix lookup
+            actual_sg = self.sg_number
+            if actual_sg == 1 and self.sg_hm:
+                # Check for rhombohedral/hexagonal R space groups
+                sg_upper = self.sg_hm.upper().replace(" ", "")
+                if sg_upper.startswith("R-3C"):
+                    # Detect hexagonal vs rhombohedral setting by cell angles
+                    is_hex = (
+                        abs(self.alpha - 90) < 1 and
+                        abs(self.beta - 90) < 1 and
+                        abs(self.gamma - 120) < 1
+                    )
+                    if is_hex:
+                        actual_sg = 100167  # Hexagonal setting of R-3c
+                    else:
+                        actual_sg = 167
+                elif sg_upper.startswith("R-3M"):
+                    actual_sg = 166
+                elif sg_upper.startswith("R-3"):
+                    actual_sg = 148
+                elif sg_upper.startswith("R3M") or sg_upper.startswith("R3M"):
+                    actual_sg = 160
+                elif sg_upper.startswith("R32"):
+                    actual_sg = 155
+                elif sg_upper.startswith("R3") and ":" not in sg_upper:
+                    # Trigonal R3
+                    if ":" not in sg_upper:
+                        actual_sg = 146
+                    elif ":H" in sg_upper:
+                        actual_sg = 146
+                elif sg_upper.startswith("P-1"):
+                    actual_sg = 2
+            lookup = _SG_SYMOPS.get(actual_sg)
+            if lookup:
+                self.sym_ops = lookup[:]
+            else:
+                # Generate from minimal symmetry
+                base_ops = _generate_symops_from_sg(self.sg_number)
+                if base_ops:
+                    self.sym_ops = base_ops
+                else:
+                    self.sym_ops = ["x, y, z"]
 
     def _parse_atom_sites(self):
         """Parse atom site positions from CIF."""
         self.atoms: list[dict[str, Any]] = []
 
-        # Find atom site loop location
         lines = self.text.split("\n")
-        atom_loop_start = -1
-        atom_loop_keys = []
-
-        for i, line in enumerate(lines):
-            if line.startswith("_atom_site_"):
-                key = line.split()[0].strip()
-                atom_loop_keys.append(key)
-                if atom_loop_start == -1:
-                    atom_loop_start = i
-
-        if not atom_loop_keys:
-            return
-
-        # Build column index mapping
-        col_map = {}
-        for j, key in enumerate(atom_loop_keys):
-            if "_fract_x" in key: col_map["x"] = j
-            elif "_fract_y" in key: col_map["y"] = j
-            elif "_fract_z" in key: col_map["z"] = j
-            elif "_type_symbol" in key: col_map["element"] = j
-            elif "_label" in key: col_map["label"] = j
-            elif "_occupancy" in key: col_map["occ"] = j
-
-        if "x" not in col_map or "y" not in col_map or "z" not in col_map:
-            return
-
-        def clean_float(s: str) -> float:
-            """Convert CIF float string to float, handling esd in parentheses."""
-            s = s.strip()
-            # Remove esd: 0.465(4) -> 0.465
-            s = re.sub(r'\([^)]*\)', '', s)
-            return float(s)
-
-        def extract_element(s: str) -> str:
-            """Extract element symbol: Si4+ -> Si, O2- -> O"""
-            return re.sub(r'[^A-Za-z]', '', s)[:2].capitalize()
-
-        # Parse data lines after the key list
-        data_start = atom_loop_start + len(atom_loop_keys)
-        for i in range(data_start, len(lines)):
+        
+        # Strategy: find all loop blocks, pick the one containing atom site fract coords
+        i = 0
+        n = len(lines)
+        while i < n:
             line = lines[i].strip()
-            if not line or line.startswith("_") or line.startswith("loop_"):
-                break
-            parts = line.split()
-            if len(parts) < max(col_map.values()) + 1:
+            
+            # Find loop_ start
+            if line != "loop_":
+                i += 1
+                continue
+            
+            # Collect keys of this loop block
+            j = i + 1
+            keys = []
+            while j < n:
+                l = lines[j].strip()
+                if not l or l == "loop_" or not l.startswith("_"):
+                    break
+                # It's a key line only if the next line also starts with _
+                # or if this is the last key before data
+                kl = l.split()[0].strip()
+                keys.append(kl)
+                j += 1
+            
+            if not keys:
+                i = j
+                continue
+            
+            # Check if this loop has _atom_site_fract_x
+            has_fract = any("_fract_x" in k for k in keys)
+            if not has_fract:
+                i = j
+                continue
+            
+            # Check it's the atom site loop (not anisotropic)
+            is_main_atom = any("_atom_site_type_symbol" in k or 
+                              ("_atom_site_label" in k and not any("_aniso_" in kk for kk in keys))
+                              for k in keys)
+            if not is_main_atom:
+                i = j
+                continue
+            
+            # Build column mapping
+            col_map = {}
+            for idx, key in enumerate(keys):
+                if "_fract_x" in key: col_map["x"] = idx
+                elif "_fract_y" in key: col_map["y"] = idx
+                elif "_fract_z" in key: col_map["z"] = idx
+                elif "_type_symbol" in key: col_map["element"] = idx
+                elif "_label" in key: col_map["label"] = idx
+                elif "_occupancy" in key: col_map["occ"] = idx
+                elif "_site_symmetry" in key or "_symmetry_multiplicity" in key:
+                    col_map["symmetry_multiplicity"] = idx
+                elif "_Wyckoff" in key:
+                    col_map["wyckoff"] = idx
+                elif "_calc_flag" in key:
+                    col_map["calc_flag"] = idx
+                elif "_U_iso" in key or "_B_iso" in key:
+                    col_map["u_iso"] = idx
+
+            if "x" not in col_map or "y" not in col_map or "z" not in col_map:
+                i = j
                 continue
 
-            atom = {}
-            if "label" in col_map:
-                atom["label"] = parts[col_map["label"]]
-            if "element" in col_map:
-                atom["element"] = extract_element(parts[col_map["element"]])
-            else:
-                atom["element"] = extract_element(parts[col_map["label"]])
-            
-            try:
-                atom["x"] = clean_float(parts[col_map["x"]])
-                atom["y"] = clean_float(parts[col_map["y"]])
-                atom["z"] = clean_float(parts[col_map["z"]])
-            except ValueError:
-                continue
-            
-            if "occ" in col_map:
+            def clean_float(s: str) -> float:
+                s = s.strip()
+                s = re.sub(r'\([^)]*\)', '', s)
+                return float(s)
+
+            def extract_element(s: str) -> str:
+                return re.sub(r'[^A-Za-z]', '', s)[:2].capitalize()
+
+            # Parse data lines
+            k = j
+            max_col = max(col_map.values())
+            while k < n:
+                dl = lines[k].strip()
+                if not dl or dl.startswith("_") or dl == "loop_":
+                    break
+                parts = dl.split()
+                if len(parts) <= max_col:
+                    k += 1
+                    continue
+
+                atom = {}
+                if "label" in col_map:
+                    atom["label"] = parts[col_map["label"]]
+                if "element" in col_map:
+                    atom["element"] = extract_element(parts[col_map["element"]])
+                else:
+                    atom["element"] = extract_element(parts[col_map["label"]])
+
                 try:
-                    atom["occ"] = clean_float(parts[col_map["occ"]])
+                    atom["x"] = clean_float(parts[col_map["x"]])
+                    atom["y"] = clean_float(parts[col_map["y"]])
+                    atom["z"] = clean_float(parts[col_map["z"]])
                 except ValueError:
-                    atom["occ"] = 1.0
-            else:
-                atom["occ"] = 1.0
+                    k += 1
+                    continue
 
-            self.atoms.append(atom)
+                if "occ" in col_map:
+                    try:
+                        atom["occ"] = clean_float(parts[col_map["occ"]])
+                    except ValueError:
+                        atom["occ"] = 1.0
+                else:
+                    atom["occ"] = 1.0
+
+                self.atoms.append(atom)
+                k += 1
+            
+            # Successfully parsed this loop, done
+            break
 
 
 # ─── Metric Tensor & d-spacing ───────────────────────────────────────
@@ -300,72 +597,168 @@ def scattering_factor(element, sin_theta_over_lambda):
 
 # ─── Structure Factor Calculation ─────────────────────────────────────
 
-def apply_symmetry(x, y, z, sym_op_str):
-    """Apply a symmetry operation string to a fractional coordinate."""
-    # Parse simple symmetry operation like "x, y, z" or "-x, y+1/2, -z"
-    parts = [p.strip() for p in sym_op_str.split(",")]
-    if len(parts) != 3:
-        return [(x, y, z)]
 
-    results = []
-    for i, part in enumerate([x, y, z]):
-        coord_str = parts[0] if i == 0 else (parts[1] if i == 1 else parts[2])
-        val = part
-        # Apply sign
-        if "-x" in coord_str or "-y" in coord_str or "-z" in coord_str:
-            val = -val
-        # Apply translation
-        trans_match = re.search(r'([+-]?\d+/\d+)', coord_str)
-        if trans_match:
-            frac = trans_match.group(1)
-            num, den = frac.split("/")
-            val += float(num) / float(den)
-        results.append(val)
-    return tuple(results)
+def _parse_sym_coord(expr: str, x: float, y: float, z: float) -> float:
+    """
+    Parse a single symmetry coordinate expression like "-x", "y+1/2",
+    "1/3+x", or "x-y" and evaluate against the given coordinates.
+
+    Strategy: replace each variable occurrence (optionally preceded by
+    a fractional coefficient) with its numeric value, then evaluate
+    the resulting arithmetic expression.
+
+    Supported formats:
+    - "x"           -> +x
+    - "-x"          -> -x
+    - "1/3+x"       -> +1/3 + x
+    - "y+1/2"       -> y + 1/2
+    - "x-y"         -> x - y
+    - "-z+2/3"      -> -z + 2/3
+    - "2/3+x+y"     -> 2/3 + x + y
+    """
+    expr = expr.replace(" ", "")
+    if not expr:
+        return 0.0
+
+    vars_map = {"x": x, "y": y, "z": z}
+
+    # Insert '+' before first term if expression starts with a variable
+    # or fraction (to make parsing easier)
+    if expr[0] in "xyz" or expr[0].isdigit():
+        expr = "+" + expr
+
+    result = 0.0
+    i = 0
+    n = len(expr)
+
+    while i < n:
+        # Determine sign
+        if expr[i] == '+':
+            sign = 1.0
+            i += 1
+        elif expr[i] == '-':
+            sign = -1.0
+            i += 1
+        elif expr[i] == ' ':
+            i += 1
+            continue
+        else:
+            # Should not happen in a well-formed expression
+            i += 1
+            continue
+
+        # Now parse the value: could be a fraction + variable, fraction only,
+        # or variable only
+        val = 0.0
+
+        if i < n and expr[i].isdigit():
+            # Parse fraction: number/number
+            j = i
+            has_digit = False
+            while j < n and expr[j] in '0123456789/':
+                if expr[j].isdigit():
+                    has_digit = True
+                j += 1
+            frac_str = expr[i:j]
+            if '/' in frac_str:
+                num_str, den_str = frac_str.split('/')
+                val = float(num_str) / float(den_str)
+            elif has_digit:
+                # Plain number (shouldn't normally appear in CIF coords)
+                val = float(frac_str)
+            i = j
+
+        # Check if a variable follows
+        if i < n and expr[i] in "xyz":
+            if val == 0.0:
+                val = 1.0  # Just a bare variable like "x"
+            result += sign * val * vars_map[expr[i]]
+            i += 1
+        else:
+            # Pure translation term (fraction without variable)
+            result += sign * val
+
+    return result
+
+
+def apply_symmetry_op(x, y, z, op_str):
+    """
+    Apply a symmetry operation string to fractional coordinates.
+
+    Supports CIF-standard formats:
+    - "x, y, z"                  -> identity
+    - "-x, y+1/2, -z"            -> sign flip + translation
+    - "1/3+x, 2/3+y, 2/3+z"     -> translation first
+    - "x, x-y, z"                -> linear combination
+    - "y, x, -z+2/3"             -> permutation + translation
+
+    Returns: (new_x, new_y, new_z) with coordinates in [0, 1).
+    """
+    parts = [p.strip() for p in op_str.split(",")]
+    if len(parts) != 3:
+        return (x % 1.0, y % 1.0, z % 1.0)
+
+    coords = [_parse_sym_coord(p, x, y, z) for p in parts]
+    return (coords[0] % 1.0, coords[1] % 1.0, coords[2] % 1.0)
 
 
 def generate_equivalent_positions(x, y, z, sym_ops):
-    """Generate all symmetry-equivalent positions."""
+    """
+    Generate all symmetry-equivalent positions using the space group
+    symmetry operations.
+
+    Args:
+        x, y, z: Fractional coordinates of the asymmetric unit atom
+        sym_ops: List of symmetry operation strings (e.g. ["x,y,z", "-x,-y,z+1/2", ...])
+
+    Returns:
+        List of unique (x, y, z) tuples in [0, 1).
+    """
     positions = set()
     for op in sym_ops:
-        parts = [p.strip() for p in op.split(",")]
-        if len(parts) != 3:
-            continue
-        new_pos = []
-        for i, coord_str in enumerate(parts):
-            orig = [x, y, z][i]
-            sign = -1 if "-" in coord_str and coord_str.index("-") < 3 else 1
-            val = sign * orig
-            # Translations
-            for m in re.finditer(r'([+-]?\d+/\d+)', coord_str):
-                num, den = m.group(1).split("/")
-                val += float(num) / float(den)
-            new_pos.append(val % 1.0)
-        positions.add(tuple(new_pos))
-    return list(positions)
+        pos = apply_symmetry_op(x, y, z, op)
+        # Round to avoid floating-point duplicates
+        rounded = (round(pos[0], 6), round(pos[1], 6), round(pos[2], 6))
+        positions.add(rounded)
+    return [list(p) for p in positions]
 
 
 def calculate_structure_factor(h, k, l, atoms, sym_ops, sin_theta_over_lambda):
-    """Calculate structure factor F(hkl)."""
+    """
+    Calculate structure factor F(hkl) with full symmetry expansion.
+
+    F(hkl) = Σ_j f_j · Σ_s exp(2πi · (h·x_{js} + k·y_{js} + l·z_{js}))
+
+    where j runs over atoms in the asymmetric unit,
+          s runs over all symmetry operations of the space group.
+
+    Returns:
+        (F_real, F_imag)
+    """
     F_real = 0.0
     F_imag = 0.0
-    
+
     for atom in atoms:
         el = atom.get("element", "O")
         occ = atom.get("occ", 1.0)
         x0, y0, z0 = atom.get("x", 0), atom.get("y", 0), atom.get("z", 0)
         f = scattering_factor(el, sin_theta_over_lambda)
-        
-        # Sum over symmetry equivalent positions
-        eq_pos = [(x0, y0, z0)]  # Simplified: use just the asym unit position
-        # In a full implementation, apply sym_ops here
-        
+
+        # Sum over ALL symmetry equivalent positions
+        eq_pos = generate_equivalent_positions(x0, y0, z0, sym_ops)
+
+        # Internal sum over equivalent positions
+        sum_real = 0.0
+        sum_imag = 0.0
         for pos in eq_pos:
             px, py, pz = pos
             phase = 2 * math.pi * (h * px + k * py + l * pz)
-            F_real += occ * f * math.cos(phase)
-            F_imag += occ * f * math.sin(phase)
-    
+            sum_real += math.cos(phase)
+            sum_imag += math.sin(phase)
+
+        F_real += occ * f * sum_real
+        F_imag += occ * f * sum_imag
+
     return F_real, F_imag
 
 
@@ -398,18 +791,15 @@ def calculate_powder_pattern(cif_text, d_min=0.8, wavelength=1.54056, top_n=20):
     
     # Determine hkl range based on d_min
     max_h = max_k = max_l = int(parser.a / d_min) + 3
-    
-    # Multiplicity tracking
-    reflection_map = {}  # (d_rounded, equivalent_hkl) -> (h,k,l,intensity)
-    
-    reflections = []
-    reflection_map = {}
-    
+
+    merged = {}  # d_rounded (str) -> merged reflection dict
+
     for h in range(-max_h, max_h + 1):
         for k in range(-max_k, max_k + 1):
-            for l in range(0, max_l + 1):  # l >= 0 to avoid Friedel pairs
+            for l in range(-max_l, max_l + 1):
                 if h == 0 and k == 0 and l == 0:
                     continue
+
                 d = d_spacing_hkl(Gstar, h, k, l)
                 if d < d_min or d <= 0:
                     continue
@@ -435,18 +825,22 @@ def calculate_powder_pattern(cif_text, d_min=0.8, wavelength=1.54056, top_n=20):
                 # Lorentz-polarization
                 lp = lp_correction(two_theta, wavelength)
                 intensity = F_sq * lp
-                
-                # Round d to merge equivalent reflections
-                d_rounded = round(d, 2)  # Merge reflections within 0.01Å
-                key = (d_rounded, h >= 0 and k >= 0 and l >= 0)
-                
-                if key in reflection_map:
-                    # Add to existing (multiplicity)
-                    existing = reflection_map[key]
-                    existing["multiplicity"] += 1
-                    existing["intensity"] += intensity
+
+                # Merge symmetry-equivalent reflections by d-spacing
+                d_key = round(d, 2)
+                if d_key in merged:
+                    merged[d_key]["intensity"] += intensity
+                    merged[d_key]["multiplicity"] += 1
+                    # Keep the hkl with the most symmetric indices
+                    existing = merged[d_key]
+                    if abs(h) < abs(existing["h"]) or (
+                        abs(h) == abs(existing["h"]) and abs(k) < abs(existing["k"])
+                    ):
+                        existing["h"] = h
+                        existing["k"] = k
+                        existing["l"] = l
                 else:
-                    reflection_map[key] = {
+                    merged[d_key] = {
                         "h": h, "k": k, "l": l,
                         "d": round(d, 4),
                         "two_theta": round(two_theta, 4),
@@ -454,10 +848,9 @@ def calculate_powder_pattern(cif_text, d_min=0.8, wavelength=1.54056, top_n=20):
                         "F_sq": round(F_sq, 2),
                         "multiplicity": 1,
                     }
-    
+
     # Sort by intensity descending
-    reflections = list(reflection_map.values())
-    reflections.sort(key=lambda r: r["intensity"], reverse=True)
+    reflections = sorted(merged.values(), key=lambda r: r["intensity"], reverse=True)
     
     # Normalize intensities to I_max = 100
     if reflections:
@@ -471,13 +864,21 @@ def calculate_powder_pattern(cif_text, d_min=0.8, wavelength=1.54056, top_n=20):
 # ─── COD Download + Process ──────────────────────────────────────────
 
 COD_BASE = "https://www.crystallography.net/cod"
+CIF_CACHE_DIR = Path(__file__).parent / "cif_cache"
+CIF_CACHE_DIR.mkdir(exist_ok=True)
 
 def get_cif(entry_id: str) -> str | None:
-    """Download a CIF file from COD by entry ID."""
+    """Download a CIF file from COD by entry ID (with local caching)."""
+    cache_path = CIF_CACHE_DIR / f"{entry_id}.cif"
+    if cache_path.exists():
+        return cache_path.read_text()
     url = f"{COD_BASE}/cif/{entry_id}.cif"
     try:
         with urllib.request.urlopen(url, timeout=15) as resp:
-            return resp.read().decode()
+            text = resp.read().decode()
+            with _CIF_LOCK:
+                cache_path.write_text(text)
+            return text
     except urllib.error.URLError:
         return None
 

@@ -203,6 +203,39 @@ async def list_tools() -> list[types.Tool]:
                 "required": ["query"],
             },
         ),
+        # ── Search-Match Tool ──
+        types.Tool(
+            name="identify_phases",
+            description="Identify crystalline phases from d-spacings using Search-Match. Input observed peak positions (in Angstrom) plus optional element hints.",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "d_spacings": {
+                        "type": "array",
+                        "items": {"type": "number"},
+                        "description": "List of observed d-spacings in Angstrom, sorted descending",
+                    },
+                    "elements": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Optional element symbols as a hint (e.g. [\"Fe\", \"O\"])",
+                        "default": [],
+                    },
+                    "n_expected": {
+                        "type": "integer",
+                        "description": "Expected number of phases (0=auto)",
+                        "default": 0,
+                    },
+                    "method": {
+                        "type": "string",
+                        "enum": ["iterative", "independent"],
+                        "description": "Search method: 'iterative' (iterative subtraction, default) or 'independent' (score all independently)",
+                        "default": "iterative",
+                    },
+                },
+                "required": ["d_spacings"],
+            },
+        ),
         # ── COD Database Tools ──
         types.Tool(
             name="cod_search",
@@ -577,6 +610,54 @@ async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
                     "scans": sorted(scans, key=lambda s: s["name"]),
                 }, indent=2),
             )]
+
+        elif name == "identify_phases":
+            d_spacings = arguments["d_spacings"]
+            elements = arguments.get("elements", [])
+            n_expected = arguments.get("n_expected", 0)
+            method = arguments.get("method", "iterative")
+
+            # Validate
+            if not d_spacings or len(d_spacings) < 2:
+                return [types.TextContent(
+                    type="text",
+                    text=json.dumps({"error": "At least 2 d-spacings required"}, indent=2),
+                )]
+
+            d_spacings = sorted(d_spacings, reverse=True)
+
+            try:
+                from search_match import get_db, independent_score_all, iterative_search_match
+                # Warm up DB
+                get_db()
+
+                if method == "iterative":
+                    result = iterative_search_match(
+                        d_spacings, elements,
+                        n_expected=n_expected,
+                        min_peaks=3, min_fom=0.3,
+                    )
+                else:
+                    result = independent_score_all(
+                        d_spacings, elements,
+                        n_expected=n_expected if n_expected > 0 else 5,
+                        min_peaks=3,
+                    )
+
+                return [types.TextContent(
+                    type="text",
+                    text=json.dumps(result, indent=2, default=str),
+                )]
+            except ImportError as e:
+                return [types.TextContent(
+                    type="text",
+                    text=json.dumps({"error": f"Search-Match engine not available: {str(e)}"}, indent=2),
+                )]
+            except Exception as e:
+                return [types.TextContent(
+                    type="text",
+                    text=json.dumps({"error": f"Search-Match failed: {str(e)}"}, indent=2),
+                )]
 
         elif name == "available_formats":
             data = {

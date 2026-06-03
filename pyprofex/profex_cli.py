@@ -1,211 +1,95 @@
 #!/usr/bin/env python3
 """
-profex-cli — Profex Headless Command-Line Interface
-
-Provides structured access to Profex XRD analysis capabilities without
-requiring the Qt GUI. Acts as a bridge between Profex and AI agents.
-
-Usage:
-    profex-cli convert input.raw output.xy
-    profex-cli refine project.pro [--preset default]
-    profex-cli results project.pro --json
-    profex-cli parse-params bgmn.par
-    profex-cli info supported-formats
+pyprofex entry point — CLI interface for phase identification.
+Build with: pyinstaller --onefile pyprofex/profex_cli.py
 """
+import sys, os, json
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from __future__ import annotations
-
-import argparse
-import json
-import os
-import subprocess
-import sys
-from pathlib import Path
-
-# Global JSON flag, set by main() from parsed args
-_json_output = False
-
-
-def json_or_print(data: dict, plain: str) -> None:
-    """Print data as JSON or plain text based on global --json flag."""
-    global _json_output
-    if _json_output:
-        print(json.dumps(data, indent=2, default=str))
-    else:
-        print(plain)
-
-
-def find_profex_home() -> Path:
-    """Locate the Profex installation directory."""
-    env_home = os.environ.get("PROFEX_HOME")
-    if env_home:
-        return Path(env_home)
-    # Check relative to this script
-    script_dir = Path(__file__).resolve().parent
-    for candidate in [script_dir, script_dir.parent, script_dir.parents[1]]:
-        if (candidate / "profex" / "profex").exists() or (candidate / "profex.pro").exists():
-            return candidate
-    return Path.cwd()
-
-
-def cmd_convert(args: argparse.Namespace) -> None:
-    """Convert XRD data file to XY format."""
-    profex_home = find_profex_home()
-    pxanytoxy = profex_home / "cmdtools" / "pxanytoxy" / "pxanytoxy"
-
-    if not pxanytoxy.exists():
-        print(f"Error: pxanytoxy not found at {pxanytoxy}. Build it first.", file=sys.stderr)
-        sys.exit(1)
-
-    output = args.output or Path(args.input).with_suffix(".xy")
-    cmd = [str(pxanytoxy), "-i", str(args.input), "-o", str(output)]
-    result = subprocess.run(cmd, capture_output=True, text=True)
-
-    if result.returncode != 0:
-        print(f"Error: {result.stderr}", file=sys.stderr)
-        sys.exit(1)
-
-    if args.json:
-        print(json.dumps({"input": str(args.input), "output": str(output), "status": "ok"}))
-    else:
-        print(f"Converted: {args.input} -> {output}")
-
-
-def cmd_info(args: argparse.Namespace) -> None:
-    """Display Profex information."""
-    if args.topic == "supported-formats":
-        info = {
-            "import": [
-                "Bruker RAW (V3, V4)", "Bruker BRML", "PANalytical XRDML",
-                "Rigaku RAW/DAT/DIF/RAS/RASX/XML/BIN",
-                "Philips RD/UDF", "Stoe RAW/PRO", "Thermo RAW/NI/TXL",
-                "GSAS Std, FullProf DAT/PRF/SUB", "Jade MDI/XML",
-                "CHI, XYE, XY", "NeXus RAW", "SEIFERT VAL",
-                "pyFAI DAT", "BGMN DIA",
-            ],
-            "export": [
-                "ASCII XY/TXT/HKL", "GSAS Std", "FullProf DAT",
-                "Fityk FIT", "Gnuplot", "Grace (xmgrace)",
-                "Philips UDF", "PDF CIF",
-            ],
-            "version": "Profex 5.6.1",
-        }
-        if args.json:
-            print(json.dumps(info, indent=2))
-        else:
-            print("Supported Import Formats:")
-            for fmt in info["import"]:
-                print(f"  - {fmt}")
-            print("\nSupported Export Formats:")
-            for fmt in info["export"]:
-                print(f"  - {fmt}")
-    else:
-        print(f"Unknown topic: {args.topic}")
-
-
-def cmd_parse_params(args: argparse.Namespace) -> None:
-    """Parse a BGMN .par file and output structured data."""
-    import re
-
-    params: dict[str, dict] = {}
-    with open(args.file) as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#") or line.startswith("!"):
-                continue
-            m = re.match(
-                r'(\w[\w\d_\[\]]*)\s*=\s*'
-                r'([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?)'
-                r'(?:\s+([+-]?\d+\.?\d*(?:[eE][+-]?\d+)?))?'
-                r'(?:\s*[#!].*)?$',
-                line,
-            )
-            if m:
-                key = m.group(1)
-                val = float(m.group(2))
-                esd = float(m.group(3)) if m.group(3) else None
-                params[key] = {"value": val, "esd": esd}
-
-    if args.json:
-        print(json.dumps(params, indent=2))
-    else:
-        for key, data in params.items():
-            esd_str = f" ± {data['esd']}" if data["esd"] is not None else ""
-            print(f"  {key} = {data['value']}{esd_str}")
-
-
-def cmd_results(args: argparse.Namespace) -> None:
-    """
-    Extract refinement results from a completed Profex project.
-
-    This reads the BGMN .par output files from a Profex project
-    directory and produces structured output.
-    """
-    project_path = Path(args.project)
-    if not project_path.exists():
-        print(f"Error: Project not found: {args.project}", file=sys.stderr)
-        sys.exit(1)
-
-    # Look for output .par files in the project directory
-    project_dir = project_path.parent
-    base = project_path.stem
-    par_files = list(project_dir.glob(f"{base}*.par"))
-
-    if not par_files:
-        print(f"Warning: No .par files found for project '{base}'", file=sys.stderr)
-        if args.json:
-            print(json.dumps({"status": "no_results", "project_file": str(project_path)}))
-        return
-
-    results = {
-        "project_file": str(project_path),
-        "status": "completed",
-        "par_files": [str(p) for p in par_files],
-    }
-
-    if args.json:
-        print(json.dumps(results, indent=2))
-    else:
-        print(f"Project: {project_path}")
-        print(f"Status: completed")
-        for pf in par_files:
-            print(f"  Parameter file: {pf}")
-
-
-def main() -> None:
-    global _json_output
-
-    parser = argparse.ArgumentParser(
-        description="Profex Headless CLI — XRD analysis from the command line",
-        add_help=True)
-    parser.add_argument("--json", action="store_true", help="Output in JSON format")
-    sub = parser.add_subparsers(dest="command", required=True)
-
-    # convert
-    p_conv = sub.add_parser("convert", help="Convert XRD data file to XY format")
-    p_conv.add_argument("input", type=str, help="Input file (any supported format)")
-    p_conv.add_argument("output", type=str, nargs="?", default=None, help="Output file (.xy)")
-    p_conv.set_defaults(func=cmd_convert)
-
-    # info
-    p_info = sub.add_parser("info", help="Display Profex information")
-    p_info.add_argument("topic", type=str, nargs="?", default="supported-formats",
-                        help="Info topic (e.g. supported-formats)")
-    p_info.set_defaults(func=cmd_info)
-
-    # parse-params
-    p_pp = sub.add_parser("parse-params", help="Parse a BGMN .par parameter file")
-    p_pp.add_argument("file", type=str, help="Path to .par file")
-    p_pp.set_defaults(func=cmd_parse_params)
-
-    # results
-    p_res = sub.add_parser("results", help="Extract refinement results from a project")
-    p_res.add_argument("project", type=str, help="Path to .pro project file")
-    p_res.set_defaults(func=cmd_results)
-
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="pyprofex — XRD Phase Identification CLI")
+    sub = parser.add_subparsers(dest="command")
+    
+    # search-match
+    sm = sub.add_parser("search", help="Identify phases from d-spacings")
+    sm.add_argument("d_spacings", type=float, nargs="+", help="Observed d-spacings in Å")
+    sm.add_argument("--elements", "-e", type=str, default="", help="Element hints, comma-separated")
+    sm.add_argument("--n", type=int, default=0, help="Expected number of phases")
+    sm.add_argument("--method", choices=["iterative", "independent"], default="iterative")
+    
+    # list-db
+    ld = sub.add_parser("list-db", help="List fingerprints in the database")
+    ld.add_argument("--search", "-s", type=str, default="", help="Search by name")
+    ld.add_argument("--limit", "-l", type=int, default=20)
+    
+    # db-info
+    sub.add_parser("db-info", help="Show database statistics")
+    
+    # mcp-server
+    mcp = sub.add_parser("mcp", help="Run MCP server")
+    mcp.add_argument("--transport", choices=["stdio", "sse"], default="stdio")
+    mcp.add_argument("--port", type=int, default=8100)
+    
+    # suggest-elements
+    se = sub.add_parser("suggest-elements", help="Suggest elements from d-spacings")
+    se.add_argument("d_spacings", type=float, nargs="+")
+    
     args = parser.parse_args()
-    _json_output = args.json
-    args.func(args)
+    
+    if args.command == "search":
+        from search_match import get_db, iterative_search_match, independent_score_all
+        get_db()
+        elements = [e.strip() for e in args.elements.split(",") if e.strip()]
+        if args.method == "iterative":
+            result = iterative_search_match(args.d_spacings, elements, n_expected=args.n)
+        else:
+            result = independent_score_all(args.d_spacings, elements, n_expected=args.n or 5)
+        print(json.dumps(result, indent=2, default=str))
+    
+    elif args.command == "list-db":
+        from search_match import get_db
+        db = get_db()
+        results = []
+        for k, v in db.items():
+            if args.search and args.search.lower() not in v["name"].lower():
+                continue
+            pk = [round(p[0], 4) for p in v["d_spacings"][:5]]
+            results.append({"name": v["name"], "formula": v["formula"],
+                            "n_peaks": len(v["d_spacings"]), "top_d": pk,
+                            "source": v["_source"]})
+            if len(results) >= args.limit:
+                break
+        print(json.dumps(results, indent=2))
+    
+    elif args.command == "db-info":
+        from search_match import get_db
+        db = get_db()
+        sources = {}
+        for v in db.values():
+            s = v.get("_source", "unknown")
+            sources[s] = sources.get(s, 0) + 1
+        print(json.dumps({
+            "total_fingerprints": len(db),
+            "by_source": sources,
+            "peak_stats": {
+                "min": min(len(v["d_spacings"]) for v in db.values()),
+                "max": max(len(v["d_spacings"]) for v in db.values()),
+                "avg": round(sum(len(v["d_spacings"]) for v in db.values()) / len(db), 1),
+            }
+        }, indent=2))
+    
+    elif args.command == "suggest-elements":
+        from search_match import suggest_elements
+        els = suggest_elements(args.d_spacings)
+        print(json.dumps({"suggested_elements": els}, indent=2))
+    
+    elif args.command == "mcp":
+        from mcp_server import main as mcp_main
+        mcp_main()
+    
+    else:
+        parser.print_help()
 
 
 if __name__ == "__main__":
