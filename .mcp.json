@@ -1,46 +1,16 @@
 {
-  "servers": {
-    "profex-build": {
-      "type": "command",
-      "command": "bash",
-      "args": [
-        "-c",
-        "cd /workspace/profex/profex && qmake profex.pro && make -j$(nproc) 2>&1"
-      ],
-      "description": "Build Profex from source using qmake"
-    },
-    "profex-cmake": {
-      "type": "command",
-      "command": "bash",
-      "args": [
-        "-c",
-        "mkdir -p /workspace/profex/profex/build && cd /workspace/profex/profex/build && cmake .. && cmake --build . -j$(nproc) 2>&1"
-      ],
-      "description": "Build Profex from source using CMake"
-    },
-    "profex-code-search": {
-      "type": "command",
-      "command": "grep",
-      "args": ["-rn", "--include=\"*.cpp\"", "--include=\"*.h\"", "--include=\"*.ui\"", "{query}", "/workspace/profex/profex/"],
-      "description": "Search Profex source code"
-    },
-    "profex-changelog": {
-      "type": "command",
-      "command": "bash",
-      "args": ["-c", "head -100 /workspace/profex/profex/changelog.txt"],
-      "description": "View Profex changelog"
-    },
+  "mcpServers": {
     "profex-xrd": {
-      "type": "stdio",
-      "command": "python",
-      "args": ["/workspace/profex/profex/pyprofex/mcp_server.py"],
-      "description": "Profex MCP Server — XRD analysis tools for AI agents"
+      "command": "python3",
+      "args": ["-m", "pyprofex.mcp_server"],
+      "cwd": ".",
+      "description": "Profex XRD analysis MCP server — Search-Match, COD database, phase identification, data conversion"
     },
     "profex-refine": {
-      "type": "stdio",
-      "command": "python",
-      "args": ["/workspace/profex/profex/pyprofex/mcp_server_refine.py"],
-      "description": "Profex Refinement MCP Server — run/analyze/batch refinedments"
+      "command": "python3",
+      "args": ["-m", "pyprofex.mcp_server_refine"],
+      "cwd": ".",
+      "description": "Profex BGMN refinement MCP server — run, analyze, batch refine"
     }
   }
 }

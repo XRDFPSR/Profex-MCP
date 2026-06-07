@@ -1,239 +1,223 @@
-# Profex — Open Source XRD & Rietveld Refinement
+# Profex-MCP
 
-[![License: GPL v2+](https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg)](LICENSE)
+**Headless MCP servers for Profex / BGMN XRD analysis**
 
-**Profex** is a graphical program for Rietveld refinement of powder X-ray diffraction (XRD) data, based on the [BGMN](http://www.bgmn.de/) refinement kernel. It supports phase identification, phase quantification, structure refinement, and provides a large set of convenience features for powder diffraction analysis.
+[![GPLv2 License](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)]()
+[![MCP Protocol](https://img.shields.io/badge/MCP-1.0+-green.svg)](https://modelcontextprotocol.io)
 
-This repository adds **AI-agent-friendly features, MCP (Model Context Protocol) integration, and a standalone Python Search-Match engine** with an auto-generated mineral fingerprint database (2980 entries).
+Profex-MCP 为经典粉末 XRD 分析工具 [Profex](https://www.profex-xrd.org/) 和 [BGMN](https://www.bgmn.de/) 提供了 AI 友好的 MCP 接口。通过两组 MCP 服务器，AI 智能体可以:
 
-| Attribute        | Value                                      |
-|------------------|--------------------------------------------|
-| **Version**      | 5.6.1 (Profex) + v0.4.0 (pyprofex)        |
-| **Upstream**     | [profex-xrd.org](https://www.profex-xrd.org/) |
-| **Kernel**       | BGMN ([bgmn.de](http://www.bgmn.de/))      |
-| **License**      | GNU General Public License v2 or later     |
-| **Language**     | C++ (Qt 5/6) + Python (Search-Match engine) |
-| **Platforms**    | Windows, Linux, macOS                      |
-
----
-
-## Quick Start — Search-Match CLI
-
-```
-# Download the binary from Releases
-wget https://github.com/PhaseAnalysisXRD/profex/releases/download/v0.4.0/pyprofex
-chmod +x pyprofex
-
-# Identify phases from d-spacings
-./pyprofex search 4.255 3.343 2.457 2.282 2.237 --elements Si,O
-
-# Show database statistics
-./pyprofex db-info
-
-# List fingerprints in the database
-./pyprofex list-db --search quartz
-
-# Run MCP server for AI assistants
-./pyprofex mcp
-```
-
-The binary is a **25MB standalone executable** containing the full 2980-entry fingerprint database.
+- 🔬 **物相鉴定 (Search-Match)** — 从衍射峰位自动识别物相
+- 📡 **COD 数据库查询** — 在线搜索 COD 晶体学数据库
+- ⚙️ **BGMN 精修控制** — 执行、监控、批量精修
+- 🧪 **数据格式转换** — XRD 数据文件格式互相转换
+- 🤖 **AI 增强分析** — 精修顾问、搜索匹配工作流
 
 ---
 
-## pyprofex — Python Search-Match Engine
-
-A Python CLI tool for XRD phase identification, located in `pyprofex/`. Requires no Qt, no compiled binaries — pure Python.
-
-### Commands
-
-| Command | Description |
-|---------|-------------|
-| `search <d-spacings>` | Identify phases from observed d-spacings |
-| `list-db [--search name]` | List/browse the fingerprint database |
-| `db-info` | Show database statistics |
-| `suggest-elements <d-spacings>` | Suggest elements from observed peak positions |
-| `mcp` | Run MCP server for AI assistant integration |
-
-### Fingerprint Database (2980 entries)
-
-| Source | Count | Description |
-|--------|-------|-------------|
-| **Auto-generated from COD CIF** | 2262 | Calculated with symmetry expansion + structure factor |
-| **POWCOD inorganic minerals** | 691 | From Qualx2 database (<150 peaks, mineral names only) |
-| **Manually verified** | 27 | Calibrated against known standard patterns |
-| **Total** | **2980** | Coverage: 87% of 177 common minerals |
-
-### Performance
-
-- **Load time**: 0.023s (pre-compiled pickle)
-- **Single-phase accuracy**: 100%
-- **Multi-phase accuracy**: ~30-40% (on 2980-entry database with diverse candidates)
-- **Search speed**: <0.5s per sample
-
----
-
-## Project Structure
+## 项目结构 / Structure
 
 ```
-profex/
-├── profex/               # Main GUI application (Qt Widgets)
-├── libXrdIO/             # Core I/O and data processing library
-│   ├── crystal/          # Crystal structure calculations
-│   ├── curveFitting/     # Peak fitting models
-│   ├── parser/           # BGMN/CIF/COD file parsers
-│   ├── import/           # XRD data format importers (30+ formats)
-│   └── export/           # Data export handlers
-├── cmdtools/             # Command-line tools
-│   ├── pxanytoxy/        # XRD format converter
-│   └── pxapplypreset/    # Preset application CLI
-├── pyprofex/             # Python Search-Match engine [🚀 NEW]
-│   ├── profex_cli.py     # CLI entry point
-│   ├── search_match.py   # Unified search engine (manual + auto + POWCOD)
-│   ├── cif2fingerprint.py # CIF → powder diffraction calculator
-│   ├── mcp_server.py     # MCP server for AI integration
-│   ├── peaks.py          # Peak finding and Gaussian fitting
-│   ├── fingerprints.py   # Manually verified fingerprints (27)
-│   ├── fingerprints_auto.py  # Auto-generated CIF fingerprints (2262)
-│   ├── build_fingerprints.py # Pipeline: COD db3 → CIF → fingerprints
-│   ├── build_powcod_fingerprints.py  # Qualx2 POWCOD extractor
-│   └── build_unified_db.py  # Multi-source fingerprint merger
-├── modules/              # Optional standalone modules
-├── quazip/               # Zip archive support (bundled)
-└── zlib/                 # Compression library (bundled)
+Profex-MCP/
+├── pyprofex/                          # ✅ Python MCP 服务器 + 分析引擎
+│   ├── mcp_server.py                  # MCP Server: XRD 分析 (11 tools)
+│   ├── mcp_server_refine.py           # MCP Server: BGMN 精修 (4 tools)
+│   ├── search_match.py                # Search-Match 引擎 (迭代扣除 + 独立评分)
+│   ├── peaks.py                       # 寻峰算法 (高斯拟合)
+│   ├── fingerprints.py                # 手动验证指纹库 (27 矿物)
+│   ├── fingerprints_auto.py           # CIF 自动生成指纹库 (~2260 矿物)
+│   ├── fingerprints_unified.pkl       # 🔥 预编译统一指纹库 (2289 矿物, 0.02s 加载)
+│   ├── profex_cli.py                  # CLI 入口
+│   ├── build_fingerprints.py          # COD db3 → 指纹库构建工具
+│   ├── build_unified_db.py            # 三个指纹源 → 统一 pickle
+│   ├── build_powcod_fingerprints.py   # Qualx2 POWCOD 数据库转换
+│   ├── cif2fingerprint.py             # CIF → 理论衍射花样计算引擎
+│   ├── tests/                         # pytest 测试集
+│   └── pyproject.toml                 # Python 包配置
+├── profex/                            # Profex C++ 源码 (Qt5, 未修改)
+├── cmdtools/                          # Profex 命令行工具源码
+├── modules/                           # 可选的 Profex 模块
+├── mcp-server/                        # MCP 集成文档
+├── knowledge-base/                    # XRD/Rietveld/BGMN RAG 知识库
+├── .mcp.json                          # MCP 宿主集成配置
+├── AI_ROADMAP.md                      # 完整开发路线图
+└── SEARCH_MATCH_ROADMAP.md            # Search-Match 优化路线图
 ```
 
 ---
 
-## Build from Source (Qt/C++ Profex)
+## 快速开始 / Quick Start
 
-### Prerequisites
+### 前置要求
 
-- **Qt 5.12+** or **Qt 6.x** (with widgets, network, xml, concurrent modules)
-- **C++17** compatible compiler (GCC 9+, Clang 12+, MSVC 2019+)
-- **zlib** development headers
+- **Python 3.10+**
+- **Profex + BGMN** 二进制文件（可选 — 用于精修工具）
 
-### Quick Build (qmake)
+### 1️⃣ 安装 Python 依赖
 
 ```bash
-cd profex
-qmake profex.pro
-make -j$(nproc)
-./profex/profex
+git clone https://github.com/XRDFPSR/Profex-MCP.git
+cd Profex-MCP
+
+pip install -r pyprofex/requirements.txt 2>/dev/null || \
+pip install numpy scipy mcp>=1.0
 ```
 
-**On Debian/Ubuntu:**
-```bash
-sudo apt install build-essential qtbase5-dev qt5-qmake \
-  libqt5widgets5 libqt5network5 qttools5-dev-tools zlib1g-dev
-```
+核心依赖：
+- `mcp>=1.0` — MCP 协议框架
+- `numpy` — 数值计算
+- `scipy` — 寻峰 (find_peaks_cwt)
 
----
-
-## CIF → Powder Diffraction Engine
-
-The `cif2fingerprint.py` module computes theoretical powder diffraction patterns from CIF files:
-
-1. Parse CIF: cell parameters, space group symmetry operations, atom sites
-2. Generate all hkl combinations (d_min = 0.8Å)
-3. Calculate d-spacings via reciprocal metric tensor
-4. Apply full symmetry expansion to all atom positions
-5. Calculate structure factor F(hkl) with Cromer-Mann scattering factors
-6. Apply Lorentz-polarization correction
-7. Normalize intensities to I_max = 100
-
-**Supported:** 50 common space groups via `_SG_SYMOPS` database (including P3₁21, P6₃mc, R-3c, Fm-3m, etc.), automatic R-3c hexagonal setting detection.
-
----
-
-## MCP (Model Context Protocol) Support
-
-The MCP server enables AI assistants to perform XRD analysis through structured tool calls:
-
-### Tools
-
-| Tool | Description |
-|------|-------------|
-| `list_projects` | List Profex project files |
-| `convert_file` | Convert XRD data between formats |
-| `parse_parameters` | Parse BGMN `.par` files |
-| `identify_phases` | **Search-Match**: identify phases from d-spacings (with element hints) |
-| `cod_search` | Search Crystallography Open Database |
-| `search_phase` | Search available structure files |
-
-### Usage with Claude Desktop / MCP Clients
-
-```json
-{
-  "mcpServers": {
-    "profex": {
-      "command": "/path/to/pyprofex",
-      "args": ["mcp"]
-    }
-  }
-}
-```
-
----
-
-## Release Binary
-
-Download the standalone 25MB executable from the [Releases page](https://github.com/PhaseAnalysisXRD/profex/releases).
+### 2️⃣ 验证安装
 
 ```bash
-# Linux x86_64
-wget https://github.com/PhaseAnalysisXRD/profex/releases/download/v0.4.0/pyprofex
-chmod +x pyprofex
-./pyprofex --help
+# 验证 Search-Match 引擎
+python3 -c "from pyprofex.search_match import get_db; db = get_db(); print(f'{len(db)} fingerprints loaded')"
+
+# 验证 MCP Server 导入
+python3 -c "from pyprofex.mcp_server import server; print('mcp_server OK')"
+from pyprofex.mcp_server_refine import server_refine; print('mcp_server_refine OK')"
 ```
 
-> **Note**: Windows and macOS builds are not yet available. The binary can be cross-compiled or run under WSL.
+### 3️⃣ 启动 MCP 服务器
+
+```bash
+# XRD 分析 (Search-Match + COD + 数据转换)
+python3 pyprofex/mcp_server.py
+
+# BGMN 精修
+python3 pyprofex/mcp_server_refine.py
+```
 
 ---
 
-## AI Roadmap
+## MCP 工具清单
 
-### ✅ Completed
+### XRD 分析 (`mcp_server.py`) — 11 个工具
 
-- [x] CIF symmetry expansion engine (50 space groups)
-- [x] Auto-generated fingerprint database from COD (2262 minerals)
-- [x] POWCOD inorganic mineral database (691 entries)
-- [x] Multi-source unified fingerprint DB (2980 entries)
-- [x] Iterative Search-Match with exclusive scoring
-- [x] MCP server with identify_phases tool
-- [x] Standalone CLI binary (25MB)
-- [x] GitHub Actions CI
-- [x] Build scripts (build.sh, setup-dev.sh)
-- [x] AI agent config (.clangd, .mcp.json)
+| 工具 | 功能 |
+|------|------|
+| `list_projects` | 列示 Profex 项目文件 |
+| `convert_file` | XRD 数据格式转换 |
+| `parse_parameters` | 解析 BGMN .par 文件 |
+| `list_scans` | 列示 XRD 扫描数据 |
+| `available_formats` | 列出支持的格式 |
+| `search_phase` | 搜索物相结构文件 |
+| **`identify_phases`** | 🔥 **核心工具**: 从 d-spacing 列表自动识别物相 (Search-Match) |
+| `cod_search` | COD 数据库搜索 |
+| `cod_get_cif` | 下载 COD CIF 文件 |
+| `cod_search_by_d` | 按 d-spacing 搜索 COD |
+| **`search_match`** | 🔥 **端到端管线**: 加载 XRD 数据 → 寻峰 → Search-Match |
 
-### 🔄 Future
+### 精修控制 (`mcp_server_refine.py`) — 4 个工具
 
-- [ ] Cross-platform binary builds (Windows, macOS)
-- [ ] Improved multi-phase accuracy via machine learning
-- [ ] March-Dollase preferred orientation correction
-- [ ] Split Pearson VII peak fitting
-- [ ] FOM confidence scoring with uncertainty estimation
-- [ ] Direct XRD data file → Search-Match pipeline
+| 工具 | 功能 |
+|------|------|
+| `run_refinement` | 通过 .sav 控制文件执行 BGMN 精修 |
+| `get_results` | 解析 .par 精修结果 (Rwp, GoF, 物相定量) |
+| `batch_refine` | 多参数组合自动批量精修 |
+| `list_sav_files` | 列示 .sav 控制文件 |
 
----
+### Prompts (提示词模版)
 
-## Contributing
-
-This is a fork aimed at AI-enhanced XRD analysis. Contributions, issues, and suggestions are welcome.
-
----
-
-## License
-
-Profex is **free software** released under the **GNU General Public License v2 or later**. See [LICENSE](LICENSE) for details.
-
-BGMN refinement kernel is bundled with permission. Visit [http://www.bgmn.de/](http://www.bgmn.de/) for BGMN source code.
+| 提示词 | 功能 |
+|--------|------|
+| `refine_advisor` | AI 精修顾问 — 参数选择和问题诊断 |
+| `search_match_workflow` | 引导式 Search-Match 工作流 |
 
 ---
 
-## References
+## Search-Match 引擎
 
-- **Profex Website**: [https://www.profex-xrd.org/](https://www.profex-xrd.org/)
-- **BGMN Kernel**: [http://www.bgmn.de/](http://www.bgmn.de/)
-- **Crystallography Open Database**: [https://www.crystallography.net/](https://www.crystallography.net/)
-- **Qualx2**: [https://www.ba.ic.cnr.it/softwareic/qualx/](https://www.ba.ic.cnr.it/softwareic/qualx/)
+核心 Search-Match 引擎位于 `search_match.py`，支持：
+
+### 算法特性
+
+- **多源指纹库**：手动验证库 (27) + CIF 自动生成库 (~2260) = **2289 条指纹**
+- **快速加载**：预编译 pickle 加载仅需 **0.02s**
+- **迭代扣除算法**：逐相匹配 → 扣除 → 迭代，支持多相混合样品
+- **独立评分算法**：对所有候选独立评分，推荐最优
+- **稀有度加权评分**：对匹配到"稀有"峰（少数候选能匹配的峰）的物相加分
+- **强度加权 FOM**：强峰的匹配权重更高
+- **择优取向检测**：标记可能的择优取向效应
+- **元素过滤**：结合 EDX/EDS 元素信息提升准确度
+
+### 评分指标
+
+| 指标 | 说明 |
+|------|------|
+| `matches` | 匹配的理论峰数 |
+| `intensity_coverage` | 强度加权覆盖率 (0-1) |
+| `fom` | 综合置信度 (matches × intensity / unmatched) |
+| `element_coverage` | 元素覆盖率 |
+| `preferred_orientation` | 择优取向标记 |
+
+### 使用示例
+
+```python
+from pyprofex.search_match import iterative_search_match
+
+d_spacings = [3.34, 2.46, 1.82, 1.54, 1.38]  # Quartz
+result = iterative_search_match(d_spacings, ['Si', 'O'])
+for p in result['phases']:
+    print(f"{p['name']}: matches={p['matches']}, FOM={p['fom']}")
+```
+
+---
+
+## COD 数据库接口
+
+集成 [Crystallography Open Database (COD)](http://www.crystallography.net/) 在线 API：
+
+| 查询 | 示例 |
+|------|------|
+| 按元素 | `cod_search("Fe,O")` → 含 Fe 和 O 的物相 |
+| 按矿物名 | `cod_search("Quartz")` → 石英条目 |
+| 按化学式 | `cod_search("SiO2")` → 二氧化硅条目 |
+| 按 COD ID | `cod_search("1011097")` → 下载指定 CIF |
+| d-spacing 匹配 | `cod_search_by_d("3.34,2.46,1.82")` → d 值匹配 |
+
+---
+
+## 项目路线图 / Roadmap
+
+所有 Phase 1-6 开发阶段已完成 ✅。[查看完整路线图](AI_ROADMAP.md)
+
+| 阶段 | 内容 | 状态 |
+|------|------|------|
+| Phase 1 | 项目基础建设 (LICENSE, README, .gitignore, Doxygen, Qt5 兼容) | ✅ |
+| Phase 2 | 构建脚本与 CI (build.sh, setup-dev.sh, GitHub Actions) | ✅ |
+| Phase 3 | Headless CLI + Python 桥接 (profex_cli.py, JSON schema, YAML) | ✅ |
+| Phase 4 | MCP Server (11 个工具, 资源, 提示词, AI Editor 集成) | ✅ |
+| Phase 5 | AI 深层集成 (精修控制, 批量精修, 报告生成, XRD RAG) | ✅ |
+| Phase 6 | COD 数据库 API (搜索, CIF 下载, d-spacing 匹配) | ✅ |
+| Phase S0-S3 | Search-Match 优化 (迭代扣除, 自适应容差, 非晶检测) | ✅ |
+| — | **统一指纹库 pickle 构建** | ✅ |
+
+### 下一步
+
+- [ ] 扩展指纹库到全部 COD (530K 条目)
+- [ ] 增加 PXRD 数据自动预处理管线
+- [ ] CI/CD (GitHub Actions 自动化测试)
+- [ ] Docker 镜像（含 Profex + BGMN 预装）
+
+---
+
+## 衍生说明 / Derivation
+
+本项目源自 [Profex](https://www.profex-xrd.org/) (GPLv2+)，由 Nico B. 和同事们开发。Profex 是一款基于 Qt5 的 BGMN GUI 界面，用于粉末 XRD 的 Rietveld 精修。
+
+**Profex-MCP 在此基础上增加了：**
+
+1. **MCP 服务器** — 通过 stdio/SSE 协议暴露 Profex/BGMN 功能
+2. **Python 桥接** — Search-Match、数据格式转换、物相解析
+3. **COD 数据库集成** — 在线 API 和 2289 矿物指纹库
+4. **AI 工作流** — 精修顾问、Search-Match 引导、迭代扣除算法
+5. **RAG 知识库** — BGMN 参数、Rietveld 原理、物相鉴定策略
+
+---
+
+## 许可证 / License
+
+**GNU General Public License v2.0 or later (GPL-2.0-or-later)**
